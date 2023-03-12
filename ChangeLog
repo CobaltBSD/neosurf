@@ -1,0 +1,7 @@
+0.1 - Mar 12, 2023
+- Added Visurf support
+- Updated libcss to master-02232023
+- Removed Perl from netsurf/tools/Makefile
+- Disabled some sections of code which break LibreSSL
+- Added pre-built text assets to the source tree to bypass Perl dependency
+- Updated all library makefiles to build shared instead of static libraries

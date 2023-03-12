@@ -1,0 +1,619 @@
+Grammar
+
+    0 $accept: toplevel $end
+
+    1 level_filter: T_LEVEL_SPECIFIER T_LEVEL
+
+    2 category_filter: T_CATEGORY_SPECIFIER T_PATTERN
+
+    3 filename_filter: T_FILENAME_SPECIFIER T_PATTERN
+
+    4 dirname_filter: T_DIRNAME_SPECIFIER T_PATTERN
+
+    5 funcname_filter: T_FUNCNAME_SPECIFIER T_PATTERN
+
+    6 basic_filter: level_filter
+    7             | category_filter
+    8             | filename_filter
+    9             | dirname_filter
+   10             | funcname_filter
+
+   11 and_filter: '(' filter T_OP_AND filter ')'
+
+   12 or_filter: '(' filter T_OP_OR filter ')'
+
+   13 xor_filter: '(' filter '^' filter ')'
+
+   14 binary_filter: and_filter
+   15              | or_filter
+   16              | xor_filter
+
+   17 not_filter: '!' filter
+
+   18 filter: not_filter
+   19       | binary_filter
+   20       | basic_filter
+
+   21 toplevel: filter
+   22         | error
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    '!' (33) 17
+    '(' (40) 11 12 13
+    ')' (41) 11 12 13
+    '^' (94) 13
+    error (256) 22
+    T_PATTERN <patt> (258) 2 3 4 5
+    T_LEVEL <level> (259) 1
+    T_CATEGORY_SPECIFIER (260) 2
+    T_FILENAME_SPECIFIER (261) 3
+    T_LEVEL_SPECIFIER (262) 1
+    T_DIRNAME_SPECIFIER (263) 4
+    T_FUNCNAME_SPECIFIER (264) 5
+    T_OP_AND (265) 11
+    T_OP_OR (266) 12
+
+
+Nonterminals, with rules where they appear
+
+    $accept (16)
+        on left: 0
+    level_filter <filter> (17)
+        on left: 1
+        on right: 6
+    category_filter <filter> (18)
+        on left: 2
+        on right: 7
+    filename_filter <filter> (19)
+        on left: 3
+        on right: 8
+    dirname_filter <filter> (20)
+        on left: 4
+        on right: 9
+    funcname_filter <filter> (21)
+        on left: 5
+        on right: 10
+    basic_filter <filter> (22)
+        on left: 6 7 8 9 10
+        on right: 20
+    and_filter <filter> (23)
+        on left: 11
+        on right: 14
+    or_filter <filter> (24)
+        on left: 12
+        on right: 15
+    xor_filter <filter> (25)
+        on left: 13
+        on right: 16
+    binary_filter <filter> (26)
+        on left: 14 15 16
+        on right: 19
+    not_filter <filter> (27)
+        on left: 17
+        on right: 18
+    filter <filter> (28)
+        on left: 18 19 20
+        on right: 11 12 13 17 21
+    toplevel <filter> (29)
+        on left: 21 22
+        on right: 0
+
+
+State 0
+
+    0 $accept: • toplevel $end
+    1 level_filter: • T_LEVEL_SPECIFIER T_LEVEL
+    2 category_filter: • T_CATEGORY_SPECIFIER T_PATTERN
+    3 filename_filter: • T_FILENAME_SPECIFIER T_PATTERN
+    4 dirname_filter: • T_DIRNAME_SPECIFIER T_PATTERN
+    5 funcname_filter: • T_FUNCNAME_SPECIFIER T_PATTERN
+    6 basic_filter: • level_filter
+    7             | • category_filter
+    8             | • filename_filter
+    9             | • dirname_filter
+   10             | • funcname_filter
+   11 and_filter: • '(' filter T_OP_AND filter ')'
+   12 or_filter: • '(' filter T_OP_OR filter ')'
+   13 xor_filter: • '(' filter '^' filter ')'
+   14 binary_filter: • and_filter
+   15              | • or_filter
+   16              | • xor_filter
+   17 not_filter: • '!' filter
+   18 filter: • not_filter
+   19       | • binary_filter
+   20       | • basic_filter
+   21 toplevel: • filter
+   22         | • error
+
+    error                 shift, and go to state 1
+    T_CATEGORY_SPECIFIER  shift, and go to state 2
+    T_FILENAME_SPECIFIER  shift, and go to state 3
+    T_LEVEL_SPECIFIER     shift, and go to state 4
+    T_DIRNAME_SPECIFIER   shift, and go to state 5
+    T_FUNCNAME_SPECIFIER  shift, and go to state 6
+    '('                   shift, and go to state 7
+    '!'                   shift, and go to state 8
+
+    level_filter     go to state 9
+    category_filter  go to state 10
+    filename_filter  go to state 11
+    dirname_filter   go to state 12
+    funcname_filter  go to state 13
+    basic_filter     go to state 14
+    and_filter       go to state 15
+    or_filter        go to state 16
+    xor_filter       go to state 17
+    binary_filter    go to state 18
+    not_filter       go to state 19
+    filter           go to state 20
+    toplevel         go to state 21
+
+
+State 1
+
+   22 toplevel: error •
+
+    $default  reduce using rule 22 (toplevel)
+
+
+State 2
+
+    2 category_filter: T_CATEGORY_SPECIFIER • T_PATTERN
+
+    T_PATTERN  shift, and go to state 22
+
+
+State 3
+
+    3 filename_filter: T_FILENAME_SPECIFIER • T_PATTERN
+
+    T_PATTERN  shift, and go to state 23
+
+
+State 4
+
+    1 level_filter: T_LEVEL_SPECIFIER • T_LEVEL
+
+    T_LEVEL  shift, and go to state 24
+
+
+State 5
+
+    4 dirname_filter: T_DIRNAME_SPECIFIER • T_PATTERN
+
+    T_PATTERN  shift, and go to state 25
+
+
+State 6
+
+    5 funcname_filter: T_FUNCNAME_SPECIFIER • T_PATTERN
+
+    T_PATTERN  shift, and go to state 26
+
+
+State 7
+
+    1 level_filter: • T_LEVEL_SPECIFIER T_LEVEL
+    2 category_filter: • T_CATEGORY_SPECIFIER T_PATTERN
+    3 filename_filter: • T_FILENAME_SPECIFIER T_PATTERN
+    4 dirname_filter: • T_DIRNAME_SPECIFIER T_PATTERN
+    5 funcname_filter: • T_FUNCNAME_SPECIFIER T_PATTERN
+    6 basic_filter: • level_filter
+    7             | • category_filter
+    8             | • filename_filter
+    9             | • dirname_filter
+   10             | • funcname_filter
+   11 and_filter: • '(' filter T_OP_AND filter ')'
+   11           | '(' • filter T_OP_AND filter ')'
+   12 or_filter: • '(' filter T_OP_OR filter ')'
+   12          | '(' • filter T_OP_OR filter ')'
+   13 xor_filter: • '(' filter '^' filter ')'
+   13           | '(' • filter '^' filter ')'
+   14 binary_filter: • and_filter
+   15              | • or_filter
+   16              | • xor_filter
+   17 not_filter: • '!' filter
+   18 filter: • not_filter
+   19       | • binary_filter
+   20       | • basic_filter
+
+    T_CATEGORY_SPECIFIER  shift, and go to state 2
+    T_FILENAME_SPECIFIER  shift, and go to state 3
+    T_LEVEL_SPECIFIER     shift, and go to state 4
+    T_DIRNAME_SPECIFIER   shift, and go to state 5
+    T_FUNCNAME_SPECIFIER  shift, and go to state 6
+    '('                   shift, and go to state 7
+    '!'                   shift, and go to state 8
+
+    level_filter     go to state 9
+    category_filter  go to state 10
+    filename_filter  go to state 11
+    dirname_filter   go to state 12
+    funcname_filter  go to state 13
+    basic_filter     go to state 14
+    and_filter       go to state 15
+    or_filter        go to state 16
+    xor_filter       go to state 17
+    binary_filter    go to state 18
+    not_filter       go to state 19
+    filter           go to state 27
+
+
+State 8
+
+    1 level_filter: • T_LEVEL_SPECIFIER T_LEVEL
+    2 category_filter: • T_CATEGORY_SPECIFIER T_PATTERN
+    3 filename_filter: • T_FILENAME_SPECIFIER T_PATTERN
+    4 dirname_filter: • T_DIRNAME_SPECIFIER T_PATTERN
+    5 funcname_filter: • T_FUNCNAME_SPECIFIER T_PATTERN
+    6 basic_filter: • level_filter
+    7             | • category_filter
+    8             | • filename_filter
+    9             | • dirname_filter
+   10             | • funcname_filter
+   11 and_filter: • '(' filter T_OP_AND filter ')'
+   12 or_filter: • '(' filter T_OP_OR filter ')'
+   13 xor_filter: • '(' filter '^' filter ')'
+   14 binary_filter: • and_filter
+   15              | • or_filter
+   16              | • xor_filter
+   17 not_filter: • '!' filter
+   17           | '!' • filter
+   18 filter: • not_filter
+   19       | • binary_filter
+   20       | • basic_filter
+
+    T_CATEGORY_SPECIFIER  shift, and go to state 2
+    T_FILENAME_SPECIFIER  shift, and go to state 3
+    T_LEVEL_SPECIFIER     shift, and go to state 4
+    T_DIRNAME_SPECIFIER   shift, and go to state 5
+    T_FUNCNAME_SPECIFIER  shift, and go to state 6
+    '('                   shift, and go to state 7
+    '!'                   shift, and go to state 8
+
+    level_filter     go to state 9
+    category_filter  go to state 10
+    filename_filter  go to state 11
+    dirname_filter   go to state 12
+    funcname_filter  go to state 13
+    basic_filter     go to state 14
+    and_filter       go to state 15
+    or_filter        go to state 16
+    xor_filter       go to state 17
+    binary_filter    go to state 18
+    not_filter       go to state 19
+    filter           go to state 28
+
+
+State 9
+
+    6 basic_filter: level_filter •
+
+    $default  reduce using rule 6 (basic_filter)
+
+
+State 10
+
+    7 basic_filter: category_filter •
+
+    $default  reduce using rule 7 (basic_filter)
+
+
+State 11
+
+    8 basic_filter: filename_filter •
+
+    $default  reduce using rule 8 (basic_filter)
+
+
+State 12
+
+    9 basic_filter: dirname_filter •
+
+    $default  reduce using rule 9 (basic_filter)
+
+
+State 13
+
+   10 basic_filter: funcname_filter •
+
+    $default  reduce using rule 10 (basic_filter)
+
+
+State 14
+
+   20 filter: basic_filter •
+
+    $default  reduce using rule 20 (filter)
+
+
+State 15
+
+   14 binary_filter: and_filter •
+
+    $default  reduce using rule 14 (binary_filter)
+
+
+State 16
+
+   15 binary_filter: or_filter •
+
+    $default  reduce using rule 15 (binary_filter)
+
+
+State 17
+
+   16 binary_filter: xor_filter •
+
+    $default  reduce using rule 16 (binary_filter)
+
+
+State 18
+
+   19 filter: binary_filter •
+
+    $default  reduce using rule 19 (filter)
+
+
+State 19
+
+   18 filter: not_filter •
+
+    $default  reduce using rule 18 (filter)
+
+
+State 20
+
+   21 toplevel: filter •
+
+    $default  reduce using rule 21 (toplevel)
+
+
+State 21
+
+    0 $accept: toplevel • $end
+
+    $end  shift, and go to state 29
+
+
+State 22
+
+    2 category_filter: T_CATEGORY_SPECIFIER T_PATTERN •
+
+    $default  reduce using rule 2 (category_filter)
+
+
+State 23
+
+    3 filename_filter: T_FILENAME_SPECIFIER T_PATTERN •
+
+    $default  reduce using rule 3 (filename_filter)
+
+
+State 24
+
+    1 level_filter: T_LEVEL_SPECIFIER T_LEVEL •
+
+    $default  reduce using rule 1 (level_filter)
+
+
+State 25
+
+    4 dirname_filter: T_DIRNAME_SPECIFIER T_PATTERN •
+
+    $default  reduce using rule 4 (dirname_filter)
+
+
+State 26
+
+    5 funcname_filter: T_FUNCNAME_SPECIFIER T_PATTERN •
+
+    $default  reduce using rule 5 (funcname_filter)
+
+
+State 27
+
+   11 and_filter: '(' filter • T_OP_AND filter ')'
+   12 or_filter: '(' filter • T_OP_OR filter ')'
+   13 xor_filter: '(' filter • '^' filter ')'
+
+    T_OP_AND  shift, and go to state 30
+    T_OP_OR   shift, and go to state 31
+    '^'       shift, and go to state 32
+
+
+State 28
+
+   17 not_filter: '!' filter •
+
+    $default  reduce using rule 17 (not_filter)
+
+
+State 29
+
+    0 $accept: toplevel $end •
+
+    $default  accept
+
+
+State 30
+
+    1 level_filter: • T_LEVEL_SPECIFIER T_LEVEL
+    2 category_filter: • T_CATEGORY_SPECIFIER T_PATTERN
+    3 filename_filter: • T_FILENAME_SPECIFIER T_PATTERN
+    4 dirname_filter: • T_DIRNAME_SPECIFIER T_PATTERN
+    5 funcname_filter: • T_FUNCNAME_SPECIFIER T_PATTERN
+    6 basic_filter: • level_filter
+    7             | • category_filter
+    8             | • filename_filter
+    9             | • dirname_filter
+   10             | • funcname_filter
+   11 and_filter: • '(' filter T_OP_AND filter ')'
+   11           | '(' filter T_OP_AND • filter ')'
+   12 or_filter: • '(' filter T_OP_OR filter ')'
+   13 xor_filter: • '(' filter '^' filter ')'
+   14 binary_filter: • and_filter
+   15              | • or_filter
+   16              | • xor_filter
+   17 not_filter: • '!' filter
+   18 filter: • not_filter
+   19       | • binary_filter
+   20       | • basic_filter
+
+    T_CATEGORY_SPECIFIER  shift, and go to state 2
+    T_FILENAME_SPECIFIER  shift, and go to state 3
+    T_LEVEL_SPECIFIER     shift, and go to state 4
+    T_DIRNAME_SPECIFIER   shift, and go to state 5
+    T_FUNCNAME_SPECIFIER  shift, and go to state 6
+    '('                   shift, and go to state 7
+    '!'                   shift, and go to state 8
+
+    level_filter     go to state 9
+    category_filter  go to state 10
+    filename_filter  go to state 11
+    dirname_filter   go to state 12
+    funcname_filter  go to state 13
+    basic_filter     go to state 14
+    and_filter       go to state 15
+    or_filter        go to state 16
+    xor_filter       go to state 17
+    binary_filter    go to state 18
+    not_filter       go to state 19
+    filter           go to state 33
+
+
+State 31
+
+    1 level_filter: • T_LEVEL_SPECIFIER T_LEVEL
+    2 category_filter: • T_CATEGORY_SPECIFIER T_PATTERN
+    3 filename_filter: • T_FILENAME_SPECIFIER T_PATTERN
+    4 dirname_filter: • T_DIRNAME_SPECIFIER T_PATTERN
+    5 funcname_filter: • T_FUNCNAME_SPECIFIER T_PATTERN
+    6 basic_filter: • level_filter
+    7             | • category_filter
+    8             | • filename_filter
+    9             | • dirname_filter
+   10             | • funcname_filter
+   11 and_filter: • '(' filter T_OP_AND filter ')'
+   12 or_filter: • '(' filter T_OP_OR filter ')'
+   12          | '(' filter T_OP_OR • filter ')'
+   13 xor_filter: • '(' filter '^' filter ')'
+   14 binary_filter: • and_filter
+   15              | • or_filter
+   16              | • xor_filter
+   17 not_filter: • '!' filter
+   18 filter: • not_filter
+   19       | • binary_filter
+   20       | • basic_filter
+
+    T_CATEGORY_SPECIFIER  shift, and go to state 2
+    T_FILENAME_SPECIFIER  shift, and go to state 3
+    T_LEVEL_SPECIFIER     shift, and go to state 4
+    T_DIRNAME_SPECIFIER   shift, and go to state 5
+    T_FUNCNAME_SPECIFIER  shift, and go to state 6
+    '('                   shift, and go to state 7
+    '!'                   shift, and go to state 8
+
+    level_filter     go to state 9
+    category_filter  go to state 10
+    filename_filter  go to state 11
+    dirname_filter   go to state 12
+    funcname_filter  go to state 13
+    basic_filter     go to state 14
+    and_filter       go to state 15
+    or_filter        go to state 16
+    xor_filter       go to state 17
+    binary_filter    go to state 18
+    not_filter       go to state 19
+    filter           go to state 34
+
+
+State 32
+
+    1 level_filter: • T_LEVEL_SPECIFIER T_LEVEL
+    2 category_filter: • T_CATEGORY_SPECIFIER T_PATTERN
+    3 filename_filter: • T_FILENAME_SPECIFIER T_PATTERN
+    4 dirname_filter: • T_DIRNAME_SPECIFIER T_PATTERN
+    5 funcname_filter: • T_FUNCNAME_SPECIFIER T_PATTERN
+    6 basic_filter: • level_filter
+    7             | • category_filter
+    8             | • filename_filter
+    9             | • dirname_filter
+   10             | • funcname_filter
+   11 and_filter: • '(' filter T_OP_AND filter ')'
+   12 or_filter: • '(' filter T_OP_OR filter ')'
+   13 xor_filter: • '(' filter '^' filter ')'
+   13           | '(' filter '^' • filter ')'
+   14 binary_filter: • and_filter
+   15              | • or_filter
+   16              | • xor_filter
+   17 not_filter: • '!' filter
+   18 filter: • not_filter
+   19       | • binary_filter
+   20       | • basic_filter
+
+    T_CATEGORY_SPECIFIER  shift, and go to state 2
+    T_FILENAME_SPECIFIER  shift, and go to state 3
+    T_LEVEL_SPECIFIER     shift, and go to state 4
+    T_DIRNAME_SPECIFIER   shift, and go to state 5
+    T_FUNCNAME_SPECIFIER  shift, and go to state 6
+    '('                   shift, and go to state 7
+    '!'                   shift, and go to state 8
+
+    level_filter     go to state 9
+    category_filter  go to state 10
+    filename_filter  go to state 11
+    dirname_filter   go to state 12
+    funcname_filter  go to state 13
+    basic_filter     go to state 14
+    and_filter       go to state 15
+    or_filter        go to state 16
+    xor_filter       go to state 17
+    binary_filter    go to state 18
+    not_filter       go to state 19
+    filter           go to state 35
+
+
+State 33
+
+   11 and_filter: '(' filter T_OP_AND filter • ')'
+
+    ')'  shift, and go to state 36
+
+
+State 34
+
+   12 or_filter: '(' filter T_OP_OR filter • ')'
+
+    ')'  shift, and go to state 37
+
+
+State 35
+
+   13 xor_filter: '(' filter '^' filter • ')'
+
+    ')'  shift, and go to state 38
+
+
+State 36
+
+   11 and_filter: '(' filter T_OP_AND filter ')' •
+
+    $default  reduce using rule 11 (and_filter)
+
+
+State 37
+
+   12 or_filter: '(' filter T_OP_OR filter ')' •
+
+    $default  reduce using rule 12 (or_filter)
+
+
+State 38
+
+   13 xor_filter: '(' filter '^' filter ')' •
+
+    $default  reduce using rule 13 (xor_filter)
