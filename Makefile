@@ -5,8 +5,6 @@
 # The TARGET variable changes what toolkit is built for valid values are:
 #  gtk2 (default if unset)
 #  gtk3
-#  riscos
-#  framebuffer
 #  amiga
 #  cocoa
 #  atari
@@ -39,7 +37,7 @@ NSLIB_RO_TARG := librufl libpencil
 
 
 # Build Environment
-export TARGET ?= gtk2
+export TARGET ?= gtk3
 TMP_PREFIX := $(CURDIR)/inst-$(TARGET)
 export PKG_CONFIG_PATH := $(TMP_PREFIX)/lib/pkgconfig:$(PKG_CONFIG_PATH)
 export PATH := $(PATH):$(TMP_PREFIX)/bin/
@@ -60,30 +58,20 @@ endif
 
 
 # only build what we require for the target
-ifeq ($(TARGET),riscos)
-  NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG) $(NSLIB_RO_TARG)
+ifeq ($(TARGET),amiga)
+  NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG)
   NSBUILD_TARG := $(NSGENBIND_TARG)
 else
-  ifeq ($(TARGET),framebuffer)
-    NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG)  $(NSLIB_FB_TARG)
+  ifeq ($(TARGET),cocoa)
+    NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG) 
     NSBUILD_TARG := $(NSGENBIND_TARG)
   else
-    ifeq ($(TARGET),amiga)
-      NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG)
+    ifeq ($(TARGET),atari)
+      NSLIB_TARG := $(NSLIB_ALL_TARG)
       NSBUILD_TARG := $(NSGENBIND_TARG)
     else
-      ifeq ($(TARGET),cocoa)
-        NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG) 
-        NSBUILD_TARG := $(NSGENBIND_TARG)
-      else
-        ifeq ($(TARGET),atari)
-          NSLIB_TARG := $(NSLIB_ALL_TARG)
-          NSBUILD_TARG := $(NSGENBIND_TARG)
-        else
-          NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG) 
-          NSBUILD_TARG := $(NSGENBIND_TARG)
-        endif
-      endif
+      NSLIB_TARG := $(NSLIB_ALL_TARG) $(NSLIB_SVGTINY_TARG) 
+      NSBUILD_TARG := $(NSGENBIND_TARG)
     endif
   endif
 endif

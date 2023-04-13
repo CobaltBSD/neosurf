@@ -22,15 +22,15 @@
 
 #ifndef YYLTYPE
 /* Bison <3.0 */
-#define YYLTYPE YYLTYPE
+#define YYLTYPE yyltype
 #else
 /* Bison 3.0 or later */
 /* Keep in sync with the defined API prefix */
 #define NSGENBIND_LTYPE_IS_DECLARED 1
 #endif
 
-typedef struct YYLTYPE {
-        struct YYLTYPE *next;
+typedef struct yyltype {
+        struct yyltype *next;
         int start_line;
         char *filename;
 
@@ -38,7 +38,7 @@ typedef struct YYLTYPE {
         int first_column;
         int last_line;
         int last_column;
-} YYLTYPE;
+} yyltype;
 
 
 #define YYLLOC_DEFAULT(Current, Rhs, N)                                \
@@ -93,7 +93,7 @@ typedef struct YYLTYPE {
 
 static char *errtxt;
 
-static void nsgenbind_error(YYLTYPE *locp,
+static void nsgenbind_error(yyltype *locp,
                             char *filename,
                             struct genbind_node **genbind_ast,
                             const char *str)

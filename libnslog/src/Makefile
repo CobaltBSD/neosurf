@@ -38,6 +38,6 @@ endif
 
 $(BUILDDIR)/%-parser.c $(BUILDDIR)/%-parser.h: src/%-parser.y
 	$(VQ)$(ECHO) "	 BISON: $<"
-	$(Q)$(BISON) -d -t $(BISON_DEFINES) --report=all --output=$(BUILDDIR)/$(*F)-parser.c --defines=$(BUILDDIR)/$(*F)-parser.h $<
+	$(Q)$(BISON) -d -t $(BISON_DEFINES) --output=$(BUILDDIR)/$(*F)-parser.c --defines=$(BUILDDIR)/$(*F)-parser.h $<
 
 include $(NSBUILD)/Makefile.subdir

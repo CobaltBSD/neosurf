@@ -34,9 +34,15 @@ else
   endif
 endif
 
-$(BUILDDIR)/%-parser.c $(BUILDDIR)/%-parser.h: src/%-parser.y
+#$(BUILDDIR)/%-parser.c $(BUILDDIR)/%-parser.h: src/%-parser.y
+#	$(VQ)$(ECHO) "   BISON: $<"
+#	$(Q)$(BISON) -d -t $(BISON_DEFINES) --output=$(BUILDDIR)/$(*F)-parser.c --defines=$(BUILDDIR)/$(*F)-parser.h $<
+$(BUILDDIR)/nsgenbind-parser.c $(BUILDDIR)/nsgenbind-parser.h: src/nsgenbind-parser.y
 	$(VQ)$(ECHO) "   BISON: $<"
-	$(Q)$(BISON) -d -t $(BISON_DEFINES) --report=all --output=$(BUILDDIR)/$(*F)-parser.c --defines=$(BUILDDIR)/$(*F)-parser.h $<
+	$(Q)$(BISON) -d -t $(BISON_DEFINES) --output=$(BUILDDIR)/nsgenbind-parser.c --defines=$(BUILDDIR)/nsgenbind-parser.h -p nsgenbind_ $<
+$(BUILDDIR)/webidl-parser.c $(BUILDDIR)/webidl-parser.h: src/webidl-parser.y
+	$(VQ)$(ECHO) "   BISON: $<"
+	$(Q)$(BISON) -d -t $(BISON_DEFINES) --output=$(BUILDDIR)/webidl-parser.c --defines=$(BUILDDIR)/webidl-parser.h -p webidl_ $<
 
 # Grab the core makefile
 include $(NSBUILD)/Makefile.subdir

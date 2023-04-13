@@ -1,3 +1,9 @@
+0.2 - Apr 13 2023
+- Added byacc compatibility to the build system
+- Removed the broken and largely useless framebuffer driver
+- Minor build system improvements and fixes
+- Removed outdated RiscOS target and its associated libraries
+
 0.1 - Mar 12, 2023
 - Added Visurf support
 - Updated libcss to master-02232023
