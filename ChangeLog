@@ -1,3 +1,11 @@
+0.3 - Apr 19 2023
+- Removed unused libutf8proc support
+- Fixed LibreSSL compatibility
+- Removes all frontends except for gtk3 and visurf
+- Converted build system to CMake
+- Removed the about:testament page
+- Separated common code into libnetsurf
+
 0.2 - Apr 13 2023
 - Added byacc compatibility to the build system
 - Removed the broken and largely useless framebuffer driver

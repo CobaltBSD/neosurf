@@ -1,0 +1,45 @@
+#!/usr/bin/awk -f
+#
+# This is the default URL filter for visurf. It is an awk script, but you may
+# replace it with any programming langauge so long as, for each URL printed to
+# stdin, it writes the desired URL to stdout.
+#
+# The first section, BEGIN and this function, are used to create a helper
+# function for URL encoding text. You can see it in use in the last rule.
+#
+# Each rule is a regular expression which matches a certain URL pattern, and an
+# action which is executed on a match. All of the default actions shown here
+# either print the URL or a modified form of it. The "next" directive is used
+# to prevent any further rules from matching - it's important to only print one
+# output URL for each input URL.
+BEGIN {
+	for (i = 0; i <= 255; i++)
+		ord[sprintf("%c", i)] = i
+}
+function escape(str, c, len, res) {
+	len = length(str)
+	res = ""
+	for (i = 1; i <= len; i++) {
+		c = substr(str, i, 1);
+		if (c ~ /[0-9A-Za-z]/)
+			res = res c
+		else
+			res = res "%" sprintf("%02X", ord[c])
+	}
+	return res
+}
+
+# Open protocol:... directly
+/^[A-Za-z][A-Za-z0-9+.-]*:.*$/ { print $0; next }
+
+# Treat :8080 as http://localhost:8080
+/^:[0-9]+.*$/ { print "http://localhost" $0; next }
+
+# Treat alpha.alpha/... as an http:// URL
+/^([a-z]+\.)?[a-z]+\.[a-z]+\/?.*/ { print "https://" $0; next }
+
+# IPv4 Addresses
+/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+[:\/].*$/ { print "http://" $0; next }
+
+# Open everything else as a search
+{ print "https://html.duckduckgo.com/html?q=" escape($0); next }

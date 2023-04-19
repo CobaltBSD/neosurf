@@ -1,7 +1,0 @@
-/*
- * Test with empty IDL file
- */
-
-binding duk_libdom {
-	webidl "empty.idl";
-};
