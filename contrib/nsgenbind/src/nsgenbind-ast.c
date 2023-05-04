@@ -26,7 +26,7 @@
 static FILE *genbind_parsetracef;
 
 /* parser and lexer interface */
-extern int nsgenbind_debug;
+int nsgenbind_debug;
 extern int nsgenbind__flex_debug;
 extern void nsgenbind_restart(FILE*);
 extern int nsgenbind_parse(char *filename, struct genbind_node **genbind_ast);

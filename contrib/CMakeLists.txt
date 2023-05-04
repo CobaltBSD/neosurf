@@ -9,5 +9,4 @@ add_subdirectory(libnsutils)
 add_subdirectory(libparserutils)
 add_subdirectory(libsvgtiny)
 add_subdirectory(libwapcaplet)
-add_subdirectory(nsgenbind)
-add_subdirectory(librosprite)
+# nsgenbind is built separately

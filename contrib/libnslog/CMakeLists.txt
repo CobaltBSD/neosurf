@@ -25,3 +25,5 @@ add_dependencies(nslog
 )
 
 #target_link_libraries(css)
+
+install(TARGETS nslog DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

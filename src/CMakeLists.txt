@@ -1,3 +1,12 @@
+# Build nsgenbind at configure time
+execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ${CMAKE_SOURCE_DIR}/contrib/nsgenbind -G ${CMAKE_GENERATOR})
+execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/nsgenbind)
+
+execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/duktape)
+execute_process(COMMAND ${CMAKE_BINARY_DIR}/contrib/nsgenbind/nsgenbind -I ${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/WebIDL ${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape/netsurf.bnd ${CMAKE_BINARY_DIR}/duktape)
+
+aux_source_directory(${CMAKE_BINARY_DIR}/duktape DSRC)
+
 add_library(netsurf SHARED
 	content/content.c
 	content/content_factory.c
@@ -61,11 +70,10 @@ add_library(netsurf SHARED
 	content/handlers/image/gif.c
 	content/handlers/image/ico.c
 	content/handlers/image/jpeg.c
-	content/handlers/image/nssprite.c
 	content/handlers/image/png.c
 	content/handlers/image/svg.c
 	#content/handlers/image/video.c # requires gstreamer
-	content/handlers/image/webp.c # requires libwebp
+#	content/handlers/image/webp.c # requires libwebp
 	content/handlers/javascript/fetcher.c
 	content/handlers/javascript/content.c
 	content/handlers/javascript/duktape/dukky.c
@@ -74,7 +82,7 @@ add_library(netsurf SHARED
 	desktop/cookie_manager.c
 	desktop/knockout.c
 	desktop/hotlist.c
-	desktop/mouse.c
+#	desktop/mouse.c
 	desktop/plot_style.c
 	desktop/print.c
 	desktop/search.c
@@ -100,11 +108,11 @@ add_library(netsurf SHARED
 	desktop/textinput.c
 	desktop/gui_factory.c
 	desktop/save_pdf.c
-	desktop/font_haru.c
+#	desktop/font_haru.c
 	utils/bloom.c
 	utils/corestrings.c
 	utils/file.c
-	utils/filename.c
+#	utils/filename.c
 	utils/filepath.c
 	utils/hashmap.c
 	utils/hashtable.c
@@ -122,7 +130,7 @@ add_library(netsurf SHARED
 	utils/useragent.c
 	utils/utf8.c
 	utils/utils.c
-	utils/http/challenge.c
+#	utils/http/challenge.c
 	utils/http/generics.c
 	utils/http/primitives.c
 	utils/http/parameter.c
@@ -130,233 +138,10 @@ add_library(netsurf SHARED
 	utils/http/content-disposition.c
 	utils/http/content-type.c
 	utils/http/strict-transport-security.c
-	utils/http/www-authenticate.c
+#	utils/http/www-authenticate.c
 	utils/nsurl/nsurl.c
 	utils/nsurl/parse.c
-
-	# Bindings
-	../gen/duktape/binding.c
-	../gen/duktape/event_init.c
-	../gen/duktape/ui_event_init.c
-	../gen/duktape/composition_event_init.c
-	../gen/duktape/event_modifier_init.c
-	../gen/duktape/keyboard_event_init.c
-	../gen/duktape/mouse_event_init.c
-	../gen/duktape/wheel_event_init.c
-	../gen/duktape/focus_event_init.c
-	../gen/duktape/storage_event_init.c
-	../gen/duktape/close_event_init.c
-	../gen/duktape/event_source_init.c
-	../gen/duktape/message_event_init.c
-	../gen/duktape/error_event_init.c
-	../gen/duktape/page_transition_event_init.c
-	../gen/duktape/hash_change_event_init.c
-	../gen/duktape/pop_state_event_init.c
-	../gen/duktape/drag_event_init.c
-	../gen/duktape/hit_region_options.c
-	../gen/duktape/canvas_rendering_context2d_settings.c
-	../gen/duktape/related_event_init.c
-	../gen/duktape/autocomplete_error_event_init.c
-	../gen/duktape/track_event_init.c
-	../gen/duktape/custom_event_init.c
-	../gen/duktape/console.c
-	../gen/duktape/url_search_params.c
-	../gen/duktape/url.c
-	../gen/duktape/event.c
-	../gen/duktape/mutation_event.c
-	../gen/duktape/ui_event.c
-	../gen/duktape/composition_event.c
-	../gen/duktape/keyboard_event.c
-	../gen/duktape/mouse_event.c
-	../gen/duktape/wheel_event.c
-	../gen/duktape/focus_event.c
-	../gen/duktape/css.c
-	../gen/duktape/pseudo_element.c
-	../gen/duktape/svg_element.c
-	../gen/duktape/css_style_declaration.c
-	../gen/duktape/css_rule.c
-	../gen/duktape/css_namespace_rule.c
-	../gen/duktape/css_margin_rule.c
-	../gen/duktape/css_grouping_rule.c
-	../gen/duktape/css_page_rule.c
-	../gen/duktape/css_media_rule.c
-	../gen/duktape/css_import_rule.c
-	../gen/duktape/css_style_rule.c
-	../gen/duktape/css_rule_list.c
-	../gen/duktape/style_sheet_list.c
-	../gen/duktape/style_sheet.c
-	../gen/duktape/css_style_sheet.c
-	../gen/duktape/media_list.c
-	../gen/duktape/event_target.c
-	../gen/duktape/node.c
-	../gen/duktape/element.c
-	../gen/duktape/html_element.c
-	../gen/duktape/html_font_element.c
-	../gen/duktape/html_directory_element.c
-	../gen/duktape/html_frame_element.c
-	../gen/duktape/html_frame_set_element.c
-	../gen/duktape/html_marquee_element.c
-	../gen/duktape/html_applet_element.c
-	../gen/duktape/storage_event.c
-	../gen/duktape/storage.c
-	../gen/duktape/worker_location.c
-	../gen/duktape/worker_navigator.c
-	../gen/duktape/shared_worker.c
-	../gen/duktape/worker.c
-	../gen/duktape/worker_global_scope.c
-	../gen/duktape/shared_worker_global_scope.c
-	../gen/duktape/dedicated_worker_global_scope.c
-	../gen/duktape/broadcast_channel.c
-	../gen/duktape/message_port.c
-	../gen/duktape/message_channel.c
-	../gen/duktape/close_event.c
-	../gen/duktape/web_socket.c
-	../gen/duktape/event_source.c
-	../gen/duktape/message_event.c
-	../gen/duktape/image_bitmap.c
-	../gen/duktape/external.c
-	../gen/duktape/mime_type.c
-	../gen/duktape/plugin.c
-	../gen/duktape/mime_type_array.c
-	../gen/duktape/plugin_array.c
-	../gen/duktape/navigator.c
-	../gen/duktape/error_event.c
-	../gen/duktape/application_cache.c
-	../gen/duktape/before_unload_event.c
-	../gen/duktape/page_transition_event.c
-	../gen/duktape/hash_change_event.c
-	../gen/duktape/pop_state_event.c
-	../gen/duktape/location.c
-	../gen/duktape/history.c
-	../gen/duktape/bar_prop.c
-	../gen/duktape/window.c
-	../gen/duktape/drag_event.c
-	../gen/duktape/data_transfer_item.c
-	../gen/duktape/data_transfer_item_list.c
-	../gen/duktape/data_transfer.c
-	../gen/duktape/touch.c
-	../gen/duktape/path2d.c
-	../gen/duktape/drawing_style.c
-	../gen/duktape/image_data.c
-	../gen/duktape/text_metrics.c
-	../gen/duktape/canvas_pattern.c
-	../gen/duktape/canvas_gradient.c
-	../gen/duktape/canvas_rendering_context2d.c
-	../gen/duktape/canvas_proxy.c
-	../gen/duktape/html_canvas_element.c
-	../gen/duktape/html_template_element.c
-	../gen/duktape/html_script_element.c
-	../gen/duktape/html_dialog_element.c
-	../gen/duktape/related_event.c
-	../gen/duktape/html_menu_item_element.c
-	../gen/duktape/html_menu_element.c
-	../gen/duktape/html_details_element.c
-	../gen/duktape/validity_state.c
-	../gen/duktape/autocomplete_error_event.c
-	../gen/duktape/html_legend_element.c
-	../gen/duktape/html_field_set_element.c
-	../gen/duktape/html_meter_element.c
-	../gen/duktape/html_progress_element.c
-	../gen/duktape/html_output_element.c
-	../gen/duktape/html_keygen_element.c
-	../gen/duktape/html_text_area_element.c
-	../gen/duktape/html_option_element.c
-	../gen/duktape/html_opt_group_element.c
-	../gen/duktape/html_data_list_element.c
-	../gen/duktape/html_select_element.c
-	../gen/duktape/html_button_element.c
-	../gen/duktape/html_input_element.c
-	../gen/duktape/html_label_element.c
-	../gen/duktape/html_form_element.c
-	../gen/duktape/html_table_cell_element.c
-	../gen/duktape/html_table_header_cell_element.c
-	../gen/duktape/html_table_data_cell_element.c
-	../gen/duktape/html_table_row_element.c
-	../gen/duktape/html_table_section_element.c
-	../gen/duktape/html_table_col_element.c
-	../gen/duktape/html_table_caption_element.c
-	../gen/duktape/html_table_element.c
-	../gen/duktape/html_area_element.c
-	../gen/duktape/html_map_element.c
-	../gen/duktape/track_event.c
-	../gen/duktape/time_ranges.c
-	../gen/duktape/text_track_cue.c
-	../gen/duktape/text_track_cue_list.c
-	../gen/duktape/text_track.c
-	../gen/duktape/text_track_list.c
-	../gen/duktape/media_controller.c
-	../gen/duktape/video_track.c
-	../gen/duktape/video_track_list.c
-	../gen/duktape/audio_track.c
-	../gen/duktape/audio_track_list.c
-	../gen/duktape/media_error.c
-	../gen/duktape/html_media_element.c
-	../gen/duktape/html_track_element.c
-	../gen/duktape/html_audio_element.c
-	../gen/duktape/html_video_element.c
-	../gen/duktape/html_param_element.c
-	../gen/duktape/html_object_element.c
-	../gen/duktape/html_embed_element.c
-	../gen/duktape/html_iframe_element.c
-	../gen/duktape/html_image_element.c
-	../gen/duktape/html_source_element.c
-	../gen/duktape/html_picture_element.c
-	../gen/duktape/html_mod_element.c
-	../gen/duktape/html_br_element.c
-	../gen/duktape/html_span_element.c
-	../gen/duktape/html_time_element.c
-	../gen/duktape/html_data_element.c
-	../gen/duktape/html_anchor_element.c
-	../gen/duktape/html_div_element.c
-	../gen/duktape/html_dlist_element.c
-	../gen/duktape/html_li_element.c
-	../gen/duktape/html_ulist_element.c
-	../gen/duktape/html_olist_element.c
-	../gen/duktape/html_quote_element.c
-	../gen/duktape/html_pre_element.c
-	../gen/duktape/html_hr_element.c
-	../gen/duktape/html_paragraph_element.c
-	../gen/duktape/html_heading_element.c
-	../gen/duktape/html_body_element.c
-	../gen/duktape/html_style_element.c
-	../gen/duktape/html_meta_element.c
-	../gen/duktape/html_link_element.c
-	../gen/duktape/html_base_element.c
-	../gen/duktape/html_title_element.c
-	../gen/duktape/html_head_element.c
-	../gen/duktape/html_html_element.c
-	../gen/duktape/html_unknown_element.c
-	../gen/duktape/dom_element_map.c
-	../gen/duktape/dom_string_map.c
-	../gen/duktape/html_collection.c
-	../gen/duktape/html_options_collection.c
-	../gen/duktape/node_list.c
-	../gen/duktape/radio_node_list.c
-	../gen/duktape/html_form_controls_collection.c
-	../gen/duktape/html_all_collection.c
-	../gen/duktape/xml_serializer.c
-	../gen/duktape/dom_parser.c
-	../gen/duktape/dom_token_list.c
-	../gen/duktape/dom_settable_token_list.c
-	../gen/duktape/node_filter.c
-	../gen/duktape/tree_walker.c
-	../gen/duktape/node_iterator.c
-	../gen/duktape/range.c
-	../gen/duktape/character_data.c
-	../gen/duktape/comment.c
-	../gen/duktape/processing_instruction.c
-	../gen/duktape/text.c
-	../gen/duktape/attr.c
-	../gen/duktape/named_node_map.c
-	../gen/duktape/dom_implementation.c
-	../gen/duktape/document.c
-	../gen/duktape/xml_document.c
-	../gen/duktape/mutation_record.c
-	../gen/duktape/mutation_observer.c
-	../gen/duktape/document_type.c
-	../gen/duktape/document_fragment.c
-	../gen/duktape/event_listener.c
-	../gen/duktape/custom_event.c
+	${DSRC}
 )
 
 add_executable(netsurf-vi
@@ -397,7 +182,7 @@ add_executable(netsurf-gtk3
 	frontends/gtk/search.c
 	frontends/gtk/tabs.c
 	frontends/gtk/toolbar.c
-	frontends/gtk/gettext.c
+#	frontends/gtk/gettext.c
 	frontends/gtk/compat.c
 	frontends/gtk/viewdata.c
 	frontends/gtk/viewsource.c
@@ -412,11 +197,33 @@ add_executable(netsurf-gtk3
 	frontends/gtk/page_info.c
 )
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/src -std=c99 -Werror -g -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include -Wno-unused-parameter -I${CMAKE_SOURCE_DIR}/src/content/handlers -Wno-unused-but-set-variable -I${CMAKE_SOURCE_DIR}/contrib/libcss/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include -I${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include -I${CMAKE_SOURCE_DIR}/contrib/libnsgif/include -I${CMAKE_SOURCE_DIR}/contrib/librosprite/include -Wno-cast-align -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_SOURCE_DIR}/gen -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/visurf/res\\\" -I${CMAKE_SOURCE_DIR}/src/frontends -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_CURL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NSSPRITE -DWITH_NS_SVG -DWITH_NSPSL -I${CMAKE_SOURCE_DIR}/contrib/libnspsl/include -DLIBCURL_VERSION_NUM=0x073800 -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNETSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGP_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/gtk/res\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNETSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF")
+if(NEOSURF_BUILD_XXD)
+	add_executable(xxd
+		xxd.c
+	)
+endif()
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/src -std=c99 -Werror -g -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include -Wno-unused-parameter -I${CMAKE_SOURCE_DIR}/src/content/handlers -Wno-unused-but-set-variable -I${CMAKE_SOURCE_DIR}/contrib/libcss/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include -I${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include -I${CMAKE_SOURCE_DIR}/contrib/libnsgif/include -I${CMAKE_SOURCE_DIR}/contrib/librosprite/include -Wno-cast-align -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_BINARY_DIR} -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/visurf/res\\\" -I${CMAKE_SOURCE_DIR}/src/frontends -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_CURL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -DWITH_NSPSL -I${CMAKE_SOURCE_DIR}/contrib/libnspsl/include -DLIBCURL_VERSION_NUM=0x073800 -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNETSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGP_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/gtk/res\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNETSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/gen -I${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape -I${CMAKE_BINARY_DIR}/duktape")
 
 # Note: libnspsl used for detecting supercookies
-target_link_libraries(netsurf css dom nsbmp nsgif jpeg rosprite m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto nspsl webp)
-target_link_libraries(netsurf-vi css dom nsbmp nsgif jpeg rosprite m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto nspsl netsurf)
-target_link_libraries(netsurf-gtk3 css dom nsbmp nsgif jpeg rosprite m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto nspsl netsurf gtk-3 glib-2.0 gdk-3 gdk_pixbuf-2.0 gio-2.0)
+target_link_libraries(netsurf css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto nspsl webp)
+target_link_libraries(netsurf-vi css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto nspsl netsurf)
+target_link_libraries(netsurf-gtk3 css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto nspsl netsurf gtk-3 glib-2.0 gdk-3 gdk_pixbuf-2.0 gio-2.0)
 
 #TODO: All .ui files in src/frontends/gtk/res/gtk3 need to go into $HOME/.config/netsurf
+
+install(TARGETS netsurf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(TARGETS netsurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(TARGETS netsurf-gtk3 DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+if(NEOSURF_INSTALL_NSGENBIND)
+	install(FILES ${CMAKE_BINARY_DIR}/contrib/nsgenbind/nsgenbind DESTINATION ${CMAKE_INSTALL_PREFIX}/bin PERMISSIONS WORLD_EXECUTE)
+endif()
+
+if(NEOSURF_INSTALL_GEN_PARSER)
+	install(FILES ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser/gen_parser DESTINATION ${CMAKE_INSTALL_PREFIX}/bin PERMISSIONS WORLD_EXECUTE)
+endif()
+
+if(NEOSURF_BUILD_XXD)
+	install(TARGETS xxd DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()

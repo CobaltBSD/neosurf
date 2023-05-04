@@ -183,3 +183,35 @@ static inline css_error set_content(
 
 	return CSS_OK;
 }'''
+
+get_side = '''\
+static inline uint8_t get_{0}(
+		const css_computed_style *style,
+		css_fixed *length, css_unit *unit)
+{{
+	uint32_t bits = style->i.bits[{1}_INDEX];
+	bits &= {1}_MASK;
+	bits >>= {1}_SHIFT;
+
+	/* 7bits: uuuuutt : units | type */
+	if ((bits & 0x3) == CSS_{1}_SET) {{
+		*length = style->i.{0};
+		*unit = bits >> 2;
+	}}
+
+	return (bits & 0x3);
+}}
+static inline uint8_t get_{0}_bits(
+		const css_computed_style *style)
+{{
+	uint32_t bits = style->i.bits[{1}_INDEX];
+	bits &= {1}_MASK;
+	bits >>= {1}_SHIFT;
+
+	/* 7bits: uuuuutt : units | type */
+	return bits;
+}}'''
+overrides['get']['top'] = get_side.format('top', 'TOP')
+overrides['get']['right'] = get_side.format('right', 'RIGHT')
+overrides['get']['bottom'] = get_side.format('bottom', 'BOTTOM')
+overrides['get']['left'] = get_side.format('left', 'LEFT')

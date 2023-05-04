@@ -2908,67 +2908,13 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="no">Google</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Yahoo!</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Microsoft Live</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Buisiness.com</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Omgili</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">BBC News</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Ubuntu Packages</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Creative Commons</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Ask</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Answers</col>
-      </row>
-      <row>
         <col id="0" translatable="no">Dictionary.com</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">YouTube</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">AeroMP3</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">AOL</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Baidu</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Amazon</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">Ebay</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">IMBD</col>
-      </row>
-      <row>
-        <col id="0" translatable="no">ESPN</col>
       </row>
       <row>
         <col id="0" translatable="no">Wikipedia</col>
       </row>
       <row>
-        <col id="0" translatable="no">DuckDuckGo</col>
+        <col id="0" translatable="no">DuckDuckGo HTML</col>
       </row>
     </data>
   </object>

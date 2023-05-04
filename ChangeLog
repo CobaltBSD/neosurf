@@ -1,3 +1,17 @@
+0.4 - May 3 2023
+- Switched default browser to DuckDuckGo
+- duktape bindings are now generated automatically
+- Added a proper install rule
+- Added CMake option for installing nsgenbind
+- Added CMake option for building and installing an xxd implementation
+- Removed librsvg support in favor of libsvgtiny
+- Removed support for RiscOS sprites (image/x-riscos-sprite)
+- Further reductions to unnecessary source code
+- libsvgtiny colors are now generated automatically with gperf
+- libcss element properties and selectors are now generated automatically at configure time
+- Fixed flex and bison support for nsgenbind
+- Added CMake option for installing genparser from libcss
+
 0.3 - Apr 19 2023
 - Removed unused libutf8proc support
 - Fixed LibreSSL compatibility

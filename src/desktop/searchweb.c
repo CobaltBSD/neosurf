@@ -35,9 +35,9 @@
 #include "desktop/gui_internal.h"
 
 struct search_provider {
-	char *name; /**< readable name such as 'google', 'yahoo', etc */
-	char *hostname; /**< host address such as www.google.com */
-	char *searchstring; /** < such as "www.google.com?search=%s" */
+	char *name; /**< readable name such as 'duckduckgo', 'seeks', etc */
+	char *hostname; /**< host address such as www.duckduckgo.com/html */
+	char *searchstring; /** < such as "www.duckduckgo.com/html?q=%s" */
 	char *ico; /** < location of domain's favicon */
 	hlcache_handle *ico_handle;
 };
@@ -53,7 +53,7 @@ static struct search_web_ctx_s {
 } search_web_ctx;
 
 
-static const char *default_providers = "Google|www.google.com|http://www.google.com/search?q=%s|http://www.google.com/favicon.ico|\n";
+static const char *default_providers = "DuckDuckGo|www.duckduckgo.com|http://www.duckduckgo.com/html?q=%s|http://www.duckduckgo.com/favicon.ico|\n";
 
 static const char *default_search_icon_url = "resource:icons/search.png";
 

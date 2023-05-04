@@ -48,8 +48,10 @@ webidl_error(YYLTYPE *locp, struct webidl_node **winbind_ast, const char *str)
  /* bison prior to 2.4 cannot cope with %define api.pure so we use the
   *  deprecated directive 
   */
-%pure-parser
-%error-verbose
+//%pure-parser
+%define api.pure
+//%error-verbose
+%define parse.error verbose
 %parse-param { struct webidl_node **webidl_ast }
 
 %union

@@ -49,7 +49,7 @@ style = {
     ('font_weight', 4),
     ('justify_content', 3),
     ('list_style_position', 2),
-    ('list_style_type', 6),
+    ('list_style_type', 4),
     ('overflow_x', 3),
     ('overflow_y', 3),
     ('outline_style', 4),

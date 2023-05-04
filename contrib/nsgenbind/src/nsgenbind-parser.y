@@ -9,11 +9,13 @@
  /* bison prior to 2.4 cannot cope with %define api.pure so we use the
   *  deprecated directive
   */
-%pure-parser
+//%pure-parser
+%define api.pure
 
 %locations
 
-%error-verbose
+//%error-verbose
+%define parse.error verbose
  /* would use api.prefix but it needs to be different between bison
   *  2.5 and 2.6
   */

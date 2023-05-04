@@ -38,8 +38,8 @@
 #include "javascript/content.h"
 
 #include "duktape/binding.h"
-#include "duktape/generics.js.inc"
-#include "duktape/polyfill.js.inc"
+#include "generics.js.inc"
+#include "polyfill.js.inc"
 
 #include "duktape.h"
 #include "dukky.h"
@@ -582,6 +582,7 @@ void js_initialise(void)
 	/* Disabled force-on for forthcoming release */
 	/* nsoption_set_bool(enable_javascript, true);
 	 */
+
 	javascript_init();
 }
 

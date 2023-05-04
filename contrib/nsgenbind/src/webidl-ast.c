@@ -22,7 +22,7 @@
  */
 static FILE *webidl_parsetracef;
 
-extern int webidl_debug;
+int webidl_debug;
 extern int webidl__flex_debug;
 extern void webidl_restart(FILE*);
 extern int webidl_parse(struct webidl_node **webidl_ast);
