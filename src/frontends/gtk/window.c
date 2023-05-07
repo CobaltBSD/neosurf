@@ -37,14 +37,14 @@
 #include "utils/nsoption.h"
 #include "utils/messages.h"
 #include "utils/nsurl.h"
-#include "netsurf/inttypes.h"
-#include "netsurf/content.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/mouse.h"
-#include "netsurf/window.h"
-#include "netsurf/plotters.h"
-#include "netsurf/form.h"
-#include "netsurf/keypress.h"
+#include "neosurf/inttypes.h"
+#include "neosurf/content.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/mouse.h"
+#include "neosurf/window.h"
+#include "neosurf/plotters.h"
+#include "neosurf/form.h"
+#include "neosurf/keypress.h"
 #include "desktop/searchweb.h"
 #include "desktop/textinput.h"
 
@@ -399,7 +399,7 @@ nsgtk_window_button_release_event(GtkWidget *widget,
 		nsgtk_toolbar_item_activate(g->toolbar, FORWARD_BUTTON);
 		break;
 	default:
-		NSLOG(netsurf, DEBUG, "event button %d", event->button);
+		NSLOG(neosurf, DEBUG, "event button %d", event->button);
 		break;
 	}
 
@@ -464,7 +464,7 @@ nsgtk_window_scroll_event(GtkWidget *widget,
 		break;
 #endif
 	default:
-		NSLOG(netsurf, INFO, "Unhandled mouse scroll direction");
+		NSLOG(neosurf, INFO, "Unhandled mouse scroll direction");
 		return TRUE;
 	}
 
@@ -830,7 +830,7 @@ gui_window_create(struct browser_window *bw,
 
 	res = nsgtk_builder_new_from_resname("tabcontents", &tab_builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Tab contents UI builder init failed");
+		NSLOG(neosurf, INFO, "Tab contents UI builder init failed");
 		return NULL;
 	}
 
@@ -843,7 +843,7 @@ gui_window_create(struct browser_window *bw,
 		return NULL;
 	}
 
-	NSLOG(netsurf, INFO, "Creating gui window %p for browser window %p",
+	NSLOG(neosurf, INFO, "Creating gui window %p for browser window %p",
 	      g, bw);
 
 	g->bw = bw;
@@ -991,7 +991,7 @@ gui_window_create(struct browser_window *bw,
 	/* Finally we need to focus the location bar if requested */
 	if (flags & GW_CREATE_FOCUS_LOCATION) {
 		if (nsgtk_window_item_activate(g, OPENLOCATION_BUTTON) != NSERROR_OK) {
-			NSLOG(netsurf, WARNING, "Unable to focus location input");
+			NSLOG(neosurf, WARNING, "Unable to focus location input");
 		}
 	}
 
@@ -1001,10 +1001,10 @@ gui_window_create(struct browser_window *bw,
 
 static void gui_window_destroy(struct gui_window *gw)
 {
-	NSLOG(netsurf, INFO, "gui_window: %p", gw);
+	NSLOG(neosurf, INFO, "gui_window: %p", gw);
 	assert(gw != NULL);
 	assert(gw->bw != NULL);
-	NSLOG(netsurf, INFO, "scaffolding: %p", gw->scaffold);
+	NSLOG(neosurf, INFO, "scaffolding: %p", gw->scaffold);
 
 	/* kill off any throbber that might be running */
 	nsgtk_schedule(-1, next_throbber_frame, gw);
@@ -1020,7 +1020,7 @@ static void gui_window_destroy(struct gui_window *gw)
 		gw->next->prev = gw->prev;
 	}
 
-	NSLOG(netsurf, INFO, "window list head: %p", window_list);
+	NSLOG(neosurf, INFO, "window list head: %p", window_list);
 }
 
 
@@ -1044,13 +1044,13 @@ gui_window_set_icon(struct gui_window *gw, struct hlcache_handle *icon)
 	if (icon != NULL) {
 		icon_bitmap = content_get_bitmap(icon);
 		if (icon_bitmap != NULL) {
-			NSLOG(netsurf, INFO, "Using %p bitmap", icon_bitmap);
+			NSLOG(neosurf, INFO, "Using %p bitmap", icon_bitmap);
 			gw->icon = nsgdk_pixbuf_get_from_surface(icon_bitmap->surface, 16, 16);
 		}
 	}
 
 	if (gw->icon == NULL) {
-		NSLOG(netsurf, INFO, "Using default favicon");
+		NSLOG(neosurf, INFO, "Using default favicon");
 		g_object_ref(favicon_pixbuf);
 		gw->icon = favicon_pixbuf;
 	}
@@ -1377,7 +1377,7 @@ gui_window_create_form_select_menu(struct gui_window *g,
 	item = 0;
 	option = form_select_get_option(control, item);
 	while (option != NULL) {
-		NSLOG(netsurf, INFO, "Item %"PRIdPTR" option %p text %s",
+		NSLOG(neosurf, INFO, "Item %"PRIdPTR" option %p text %s",
 		      item, option, option->text);
 		menu_item = gtk_check_menu_item_new_with_label(option->text);
 		if (option->selected) {
@@ -1425,10 +1425,10 @@ gui_window_file_gadget_open(struct gui_window *g,
 			NSGTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
 			NULL);
 
-	NSLOG(netsurf, INFO, "*** open dialog: %p", dialog);
+	NSLOG(neosurf, INFO, "*** open dialog: %p", dialog);
 
 	int ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	NSLOG(netsurf, INFO, "*** return value: %d", ret);
+	NSLOG(neosurf, INFO, "*** return value: %d", ret);
 	if (ret == GTK_RESPONSE_ACCEPT) {
 		char *filename;
 

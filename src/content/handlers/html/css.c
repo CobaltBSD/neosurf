@@ -33,8 +33,8 @@
 #include "utils/nsoption.h"
 #include "utils/corestrings.h"
 #include "utils/log.h"
-#include "netsurf/misc.h"
-#include "netsurf/content.h"
+#include "neosurf/misc.h"
+#include "neosurf/content.h"
 #include "content/hlcache.h"
 #include "css/css.h"
 #include "desktop/gui_internal.h"
@@ -110,21 +110,21 @@ html_convert_css_callback(hlcache_handle *css,
 	switch (event->type) {
 
 	case CONTENT_MSG_DONE:
-		NSLOG(netsurf, INFO, "done stylesheet slot %d '%s'", i,
+		NSLOG(neosurf, INFO, "done stylesheet slot %d '%s'", i,
 		      nsurl_access(hlcache_handle_get_url(css)));
 		parent->base.active--;
-		NSLOG(netsurf, INFO, "%d fetches active", parent->base.active);
+		NSLOG(neosurf, INFO, "%d fetches active", parent->base.active);
 		break;
 
 	case CONTENT_MSG_ERROR:
-		NSLOG(netsurf, INFO, "stylesheet %s failed: %s",
+		NSLOG(neosurf, INFO, "stylesheet %s failed: %s",
 		      nsurl_access(hlcache_handle_get_url(css)),
 		      event->data.errordata.errormsg);
 
 		hlcache_handle_release(css);
 		s->sheet = NULL;
 		parent->base.active--;
-		NSLOG(netsurf, INFO, "%d fetches active", parent->base.active);
+		NSLOG(neosurf, INFO, "%d fetches active", parent->base.active);
 		break;
 
 	case CONTENT_MSG_POINTER:
@@ -161,7 +161,7 @@ html_stylesheet_from_domnode(html_content *c,
 
 	exc = dom_node_get_text_content(node, &style);
 	if ((exc != DOM_NO_ERR) || (style == NULL)) {
-		NSLOG(netsurf, INFO, "No text content");
+		NSLOG(neosurf, INFO, "No text content");
 		return NSERROR_OK;
 	}
 
@@ -192,7 +192,7 @@ html_stylesheet_from_domnode(html_content *c,
 	nsurl_unref(url);
 
 	c->base.active++;
-	NSLOG(netsurf, INFO, "%d fetches active", c->base.active);
+	NSLOG(neosurf, INFO, "%d fetches active", c->base.active);
 
 	return NSERROR_OK;
 }
@@ -265,13 +265,13 @@ html_css_process_modified_style(html_content *c, struct html_stylesheet *s)
 
 	error = html_stylesheet_from_domnode(c, s->node, &sheet);
 	if (error != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Failed to update sheet");
+		NSLOG(neosurf, INFO, "Failed to update sheet");
 		content_broadcast_error(&c->base, error, NULL);
 		return false;
 	}
 
 	if (sheet != NULL) {
-		NSLOG(netsurf, INFO, "Updating sheet %p with %p", s->sheet,
+		NSLOG(neosurf, INFO, "Updating sheet %p with %p", s->sheet,
 		      sheet);
 
 		if (s->sheet != NULL) {
@@ -281,7 +281,7 @@ html_css_process_modified_style(html_content *c, struct html_stylesheet *s)
 			default:
 				hlcache_handle_abort(s->sheet);
 				c->base.active--;
-				NSLOG(netsurf, INFO, "%d fetches active",
+				NSLOG(neosurf, INFO, "%d fetches active",
 				      c->base.active);
 			}
 			hlcache_handle_release(s->sheet);
@@ -333,7 +333,7 @@ bool html_css_update_style(html_content *c, dom_node *style)
 		s = html_create_style_element(c, style);
 	}
 	if (s == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Could not find or create inline stylesheet for %p",
 		      style);
 		return false;
@@ -443,7 +443,7 @@ bool html_css_process_link(html_content *htmlc, dom_node *node)
 	}
 	dom_string_unref(href);
 
-	NSLOG(netsurf, INFO, "linked stylesheet %i '%s'",
+	NSLOG(neosurf, INFO, "linked stylesheet %i '%s'",
 	      htmlc->stylesheet_count, nsurl_access(joined));
 
 	/* extend stylesheets array to allow for new sheet */
@@ -479,7 +479,7 @@ bool html_css_process_link(html_content *htmlc, dom_node *node)
 	htmlc->stylesheet_count++;
 
 	htmlc->base.active++;
-	NSLOG(netsurf, INFO, "%d fetches active", htmlc->base.active);
+	NSLOG(neosurf, INFO, "%d fetches active", htmlc->base.active);
 
 	return true;
 
@@ -565,7 +565,7 @@ nserror html_css_quirks_stylesheets(html_content *c)
 		}
 
 		c->base.active++;
-		NSLOG(netsurf, INFO, "%d fetches active", c->base.active);
+		NSLOG(neosurf, INFO, "%d fetches active", c->base.active);
 	}
 
 	return ns_error;
@@ -610,7 +610,7 @@ nserror html_css_new_stylesheets(html_content *c)
 	}
 
 	c->base.active++;
-	NSLOG(netsurf, INFO, "%d fetches active", c->base.active);
+	NSLOG(neosurf, INFO, "%d fetches active", c->base.active);
 
 
 	if (nsoption_bool(block_advertisements)) {
@@ -624,7 +624,7 @@ nserror html_css_new_stylesheets(html_content *c)
 		}
 
 		c->base.active++;
-		NSLOG(netsurf, INFO, "%d fetches active", c->base.active);
+		NSLOG(neosurf, INFO, "%d fetches active", c->base.active);
 
 	}
 
@@ -637,7 +637,7 @@ nserror html_css_new_stylesheets(html_content *c)
 	}
 
 	c->base.active++;
-	NSLOG(netsurf, INFO, "%d fetches active", c->base.active);
+	NSLOG(neosurf, INFO, "%d fetches active", c->base.active);
 
 	return ns_error;
 }

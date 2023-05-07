@@ -29,9 +29,9 @@
 
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/content_type.h"
-#include "netsurf/mouse.h" /* mouse state enums */
-#include "netsurf/console.h" /* console state and flags enums */
+#include "neosurf/content_type.h"
+#include "neosurf/mouse.h" /* mouse state enums */
+#include "neosurf/console.h" /* console state and flags enums */
 
 struct browser_window;
 struct browser_window_features;

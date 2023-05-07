@@ -31,7 +31,7 @@
 #ifndef NETSURF_DESKTOP_OPTIONS_H_
 #define NETSURF_DESKTOP_OPTIONS_H_
 
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 
 /* defines for system colour table */
 #define NSOPTION_SYS_COLOUR_START NSOPTION_sys_colour_ActiveBorder
@@ -121,7 +121,7 @@ NSOPTION_BOOL(background_images, true)
 NSOPTION_BOOL(animate_images, true)
 
 /** Whether to execute javascript */
-NSOPTION_BOOL(enable_javascript, false)
+NSOPTION_BOOL(enable_javascript, true)
 
 /** Maximum time (in seconds) to wait for a script to run */
 NSOPTION_INTEGER(script_timeout, 10)

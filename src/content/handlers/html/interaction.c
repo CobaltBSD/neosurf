@@ -35,12 +35,12 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/nsoption.h"
-#include "netsurf/content.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/mouse.h"
-#include "netsurf/misc.h"
-#include "netsurf/layout.h"
-#include "netsurf/keypress.h"
+#include "neosurf/content.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/mouse.h"
+#include "neosurf/misc.h"
+#include "neosurf/layout.h"
+#include "neosurf/keypress.h"
 #include "content/hlcache.h"
 #include "content/textsearch.h"
 #include "desktop/frames.h"
@@ -276,7 +276,7 @@ html__image_coords_dom_user_data_handler(dom_node_operation operation,
 		break;
 
 	default:
-		NSLOG(netsurf, INFO, "User data operation not handled.");
+		NSLOG(neosurf, INFO, "User data operation not handled.");
 		assert(0);
 	}
 }
@@ -847,7 +847,7 @@ gadget_mouse_action(html_content *html,
 						    form_select_menu_callback,
 						    c);
 			if (res != NSERROR_OK) {
-				NSLOG(netsurf, ERROR, "%s",
+				NSLOG(neosurf, ERROR, "%s",
 				      messages_get_errorcode(res));
 				html->visible_select_menu = NULL;
 			}
@@ -1502,7 +1502,7 @@ html_mouse_action(struct content *c,
 	}
 
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, ERROR, "%s", messages_get_errorcode(res));
+		NSLOG(neosurf, ERROR, "%s", messages_get_errorcode(res));
 	}
 
 	return res;

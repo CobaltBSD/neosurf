@@ -23,11 +23,11 @@
 #include <stdlib.h>
 #include <png.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 #include "content/llcache.h"
 #include "content/content_protected.h"
 #include "content/content_factory.h"
@@ -76,7 +76,7 @@ enum nspng_cberr {
  */
 static void nspng_warning(png_structp png_ptr, png_const_charp warning_message)
 {
-	NSLOG(netsurf, INFO, "%s", warning_message);
+	NSLOG(neosurf, INFO, "%s", warning_message);
 }
 
 /**
@@ -84,7 +84,7 @@ static void nspng_warning(png_structp png_ptr, png_const_charp warning_message)
  */
 static void nspng_error(png_structp png_ptr, png_const_charp error_message)
 {
-	NSLOG(netsurf, INFO, "%s", error_message);
+	NSLOG(neosurf, INFO, "%s", error_message);
 	longjmp(png_jmpbuf(png_ptr), CBERR_LIBPNG);
 }
 
@@ -177,7 +177,7 @@ static void info_callback(png_structp png_s, png_infop info)
 	png_c->rowbytes = png_get_rowbytes(png_s, info);
 	png_c->interlace = (interlace == PNG_INTERLACE_ADAM7);
 
-	NSLOG(netsurf, INFO, "size %li * %li, rowbytes %"PRIsizet,
+	NSLOG(neosurf, INFO, "size %li * %li, rowbytes %"PRIsizet,
 	      (unsigned long)width, (unsigned long)height, png_c->rowbytes);
 }
 
@@ -260,7 +260,7 @@ static nserror nspng_create_png_data(nspng_content *png_c)
 
 	if (setjmp(png_jmpbuf(png_c->png))) {
 		png_destroy_read_struct(&png_c->png, &png_c->info, 0);
-		NSLOG(netsurf, INFO, "Failed to set callbacks");
+		NSLOG(neosurf, INFO, "Failed to set callbacks");
 		png_c->png = NULL;
 		png_c->info = NULL;
 
@@ -350,7 +350,7 @@ static bool nspng_process_data(struct content *c, const char *data,
 			 * up png conversion and signal the content
 			 * error 
 			 */
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Fatal PNG error during header, error content");
 
 			png_destroy_read_struct(&png_c->png, &png_c->info, 0);

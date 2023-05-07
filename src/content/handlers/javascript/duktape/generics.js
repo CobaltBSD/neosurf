@@ -7,7 +7,7 @@
  * object which is used by the rest of the bindings.
  */
 
-var NetSurf = {
+var NeoSurf = {
     /* The make-proxy call for list-type objects */
     makeListProxy: function(inner) {
 	return new Proxy(inner, {

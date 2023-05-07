@@ -34,7 +34,7 @@
 #include "content/content.h"
 #include "javascript/js.h"
 
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 
 #include "html/private.h"
 #include "html/object.h"
@@ -262,42 +262,42 @@ dom_SCRIPT_showed_up(html_content *htmlc, dom_html_script_element *script)
 	bool within;
 
 	if (!htmlc->enable_scripting) {
-		NSLOG(netsurf, INFO, "Encountered a script, but scripting is off, ignoring");
+		NSLOG(neosurf, INFO, "Encountered a script, but scripting is off, ignoring");
 		return;
 	}
 
-	NSLOG(netsurf, DEEPDEBUG, "Encountered a script, node %p showed up", script);
+	NSLOG(neosurf, DEEPDEBUG, "Encountered a script, node %p showed up", script);
 
 	exc = dom_html_script_element_get_flags(script, &flags);
 	if (exc != DOM_NO_ERR) {
-		NSLOG(netsurf, DEEPDEBUG, "Unable to retrieve flags, giving up");
+		NSLOG(neosurf, DEEPDEBUG, "Unable to retrieve flags, giving up");
 		return;
 	}
 
 	if (flags & DOM_HTML_SCRIPT_ELEMENT_FLAG_PARSER_INSERTED) {
-		NSLOG(netsurf, DEBUG, "Script was parser inserted, skipping");
+		NSLOG(neosurf, DEBUG, "Script was parser inserted, skipping");
 		return;
 	}
 
 	exc = dom_node_contains(htmlc->document, script, &within);
 	if (exc != DOM_NO_ERR) {
-		NSLOG(netsurf, DEBUG, "Unable to determine if script was within document, ignoring");
+		NSLOG(neosurf, DEBUG, "Unable to determine if script was within document, ignoring");
 		return;
 	}
 
 	if (!within) {
-		NSLOG(netsurf, DEBUG, "Script was not within the document, ignoring for now");
+		NSLOG(neosurf, DEBUG, "Script was not within the document, ignoring for now");
 		return;
 	}
 
 	res = html_process_script(htmlc, (dom_node *) script);
 	if (res == DOM_HUBBUB_OK) {
-		NSLOG(netsurf, DEEPDEBUG, "Inserted script has finished running");
+		NSLOG(neosurf, DEEPDEBUG, "Inserted script has finished running");
 	} else {
 		if (res == (DOM_HUBBUB_HUBBUB_ERR | HUBBUB_PAUSED)) {
-			NSLOG(netsurf, DEEPDEBUG, "Inserted script has launced asynchronously");
+			NSLOG(neosurf, DEEPDEBUG, "Inserted script has launced asynchronously");
 		} else {
-			NSLOG(netsurf, DEEPDEBUG, "Failure starting script");
+			NSLOG(neosurf, DEEPDEBUG, "Failure starting script");
 		}
 	}
 }
@@ -647,7 +647,7 @@ dom_default_action_DOMNodeInserted_cb(struct dom_event *evt, void *pw)
 				content_broadcast(&htmlc->base,
 						  CONTENT_MSG_GETTHREAD,
 						  &msg_data);
-				NSLOG(netsurf, INFO,
+				NSLOG(neosurf, INFO,
 				      "javascript context: %p (htmlc: %p)",
 				      htmlc->jsthread,
 				      htmlc);
@@ -763,7 +763,7 @@ html_dom_event_fetcher(dom_string *type,
 		  dom_default_action_phase phase,
 		  void **pw)
 {
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "phase:%d type:%s", phase, dom_string_data(type));
 
 	if (phase == DOM_DEFAULT_ACTION_END) {

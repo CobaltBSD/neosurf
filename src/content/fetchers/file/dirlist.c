@@ -29,8 +29,8 @@
 #include "utils/messages.h"
 #include "utils/nscolour.h"
 
-#include "netsurf/types.h"
-#include "netsurf/plot_style.h"
+#include "neosurf/types.h"
+#include "neosurf/plot_style.h"
 
 #include "dirlist.h"
 #include "desktop/system_colour.h"

@@ -26,7 +26,7 @@
 
 #include <stdbool.h>
 
-#include "netsurf/form.h"
+#include "neosurf/form.h"
 
 struct box;
 struct form_control;

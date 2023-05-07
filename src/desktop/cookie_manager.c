@@ -733,7 +733,7 @@ static void cookie_manager_delete_entry(struct cookie_manager_entry *e)
 			
 			urldb_delete_cookie(domain, path, name);
 		} else {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Delete cookie fail: ""need domain, path, and name.");
 		}
 	}
@@ -804,7 +804,7 @@ nserror cookie_manager_init(struct core_window_callback_table *cw_t,
 		return err;
 	}
 
-	NSLOG(netsurf, INFO, "Generating cookie manager data");
+	NSLOG(neosurf, INFO, "Generating cookie manager data");
 
 	/* Init. cookie manager treeview entry fields */
 	err = cookie_manager_init_entry_fields();
@@ -843,7 +843,7 @@ nserror cookie_manager_init(struct core_window_callback_table *cw_t,
 	/* Inform client of window height */
 	treeview_get_height(cm_ctx.tree);
 
-	NSLOG(netsurf, INFO, "Generated cookie manager data");
+	NSLOG(neosurf, INFO, "Generated cookie manager data");
 
 	return NSERROR_OK;
 }
@@ -855,7 +855,7 @@ nserror cookie_manager_fini(void)
 	int i;
 	nserror err;
 
-	NSLOG(netsurf, INFO, "Finalising cookie manager");
+	NSLOG(neosurf, INFO, "Finalising cookie manager");
 
 	cm_ctx.built = false;
 
@@ -878,7 +878,7 @@ nserror cookie_manager_fini(void)
 		return err;
 	}
 
-	NSLOG(netsurf, INFO, "Finalised cookie manager");
+	NSLOG(neosurf, INFO, "Finalised cookie manager");
 
 	return err;
 }

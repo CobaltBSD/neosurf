@@ -66,7 +66,7 @@ get_authentication_description(struct nsurl *url,
 
 	str = messages_get_buff(key, url_s, realm);
 	if (str != NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "key:%s url:%s realm:%s str:%s",
 		      key, url_s, realm, str);
 		*out_str = str;

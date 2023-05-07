@@ -24,27 +24,27 @@
 #include "utils/config.h"
 #include "utils/errors.h"
 #include "utils/file.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 #include "content/hlcache.h"
 #include "content/backing_store.h"
 
 #include "desktop/save_pdf.h"
 #include "desktop/download.h"
 #include "desktop/searchweb.h"
-#include "netsurf/download.h"
-#include "netsurf/fetch.h"
-#include "netsurf/misc.h"
-#include "netsurf/window.h"
-#include "netsurf/search.h"
-#include "netsurf/clipboard.h"
-#include "netsurf/utf8.h"
-#include "netsurf/layout.h"
-#include "netsurf/netsurf.h"
+#include "neosurf/download.h"
+#include "neosurf/fetch.h"
+#include "neosurf/misc.h"
+#include "neosurf/window.h"
+#include "neosurf/search.h"
+#include "neosurf/clipboard.h"
+#include "neosurf/utf8.h"
+#include "neosurf/layout.h"
+#include "neosurf/neosurf.h"
 
 /**
  * The global interface table.
  */
-struct netsurf_table *guit = NULL;
+struct neosurf_table *guit = NULL;
 
 
 static void gui_default_window_set_title(struct gui_window *g, const char *title)
@@ -697,8 +697,8 @@ static nserror verify_misc_register(struct gui_misc_table *gmt)
 }
 
 
-/* exported interface documented in netsurf/netsurf.h */
-nserror netsurf_register(struct netsurf_table *gt)
+/* exported interface documented in neosurf/neosurf.h */
+nserror neosurf_register(struct neosurf_table *gt)
 {
 	nserror err;
 

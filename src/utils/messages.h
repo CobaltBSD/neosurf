@@ -37,7 +37,7 @@
 #include <stdint.h>
 
 #include "utils/errors.h"
-#include "netsurf/ssl_certs.h"
+#include "neosurf/ssl_certs.h"
 
 /**
  * Read keys and values from messages file into the standard Messages hash.

@@ -31,7 +31,7 @@
 
 #include "desktop/global_history.h"
 #include "desktop/treeview.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 
 #define N_DAYS 28
 #define N_SEC_PER_DAY (60 * 60 * 24)
@@ -598,7 +598,7 @@ static nserror global_history_initialise_time(void)
 	/* get the current time */
 	t = time(NULL);
 	if (t == -1) {
-		NSLOG(netsurf, INFO, "time info unaviable");
+		NSLOG(neosurf, INFO, "time info unaviable");
 		return NSERROR_UNKNOWN;
 	}
 
@@ -609,7 +609,7 @@ static nserror global_history_initialise_time(void)
 	full_time->tm_hour = 0;
 	t = mktime(full_time);
 	if (t == -1) {
-		NSLOG(netsurf, INFO, "mktime failed");
+		NSLOG(neosurf, INFO, "mktime failed");
 		return NSERROR_UNKNOWN;
 	}
 
@@ -731,7 +731,7 @@ nserror global_history_init(struct core_window_callback_table *cw_t,
 		return err;
 	}
 
-	NSLOG(netsurf, INFO, "Loading global history");
+	NSLOG(neosurf, INFO, "Loading global history");
 
 	/* Init. global history treeview time */
 	err = global_history_initialise_time();
@@ -788,7 +788,7 @@ nserror global_history_init(struct core_window_callback_table *cw_t,
 	/* Inform client of window height */
 	treeview_get_height(gh_ctx.tree);
 
-	NSLOG(netsurf, INFO, "Loaded global history");
+	NSLOG(neosurf, INFO, "Loaded global history");
 
 	return NSERROR_OK;
 }
@@ -800,7 +800,7 @@ nserror global_history_fini(void)
 	int i;
 	nserror err;
 
-	NSLOG(netsurf, INFO, "Finalising global history");
+	NSLOG(neosurf, INFO, "Finalising global history");
 
 	gh_ctx.built = false;
 
@@ -818,7 +818,7 @@ nserror global_history_fini(void)
 		return err;
 	}
 
-	NSLOG(netsurf, INFO, "Finalised global history");
+	NSLOG(neosurf, INFO, "Finalised global history");
 
 	return err;
 }
@@ -835,7 +835,7 @@ nserror global_history_add(nsurl *url)
 
 	data = urldb_get_url_data(url);
 	if (data == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Can't add URL to history that's not present in urldb.");
 		return NSERROR_BAD_PARAMETER;
 	}
@@ -919,7 +919,7 @@ nserror global_history_export(const char *path, const char *title)
 		return NSERROR_SAVE_FAILED;
 
 	if (title == NULL)
-		title = "NetSurf Browsing History";
+		title = "NeoSurf Browsing History";
 
 	fputs("<!DOCTYPE html "
 		"PUBLIC \"//W3C/DTD HTML 4.01//EN\" "

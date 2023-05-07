@@ -23,9 +23,9 @@
 
 #include "utils/log.h"
 #include "utils/nsoption.h"
-#include "netsurf/inttypes.h"
-#include "netsurf/layout.h"
-#include "netsurf/plot_style.h"
+#include "neosurf/inttypes.h"
+#include "neosurf/layout.h"
+#include "neosurf/plot_style.h"
 #include "visurf/layout.h"
 #include "visurf/plotters.h"
 #include "visurf/pool-buffer.h"
@@ -63,7 +63,7 @@ nsfont_width(const plot_font_style_t *fstyle,
 
 	pango_layout_get_pixel_size(layout, width, NULL);
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "fstyle: %p string:\"%.*s\", length: %" PRIsizet ", width: %dpx",
 	      fstyle, (int)length, string, length, *width);
 	 

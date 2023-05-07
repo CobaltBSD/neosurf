@@ -27,8 +27,8 @@
 #include <gtk/gtk.h>
 
 #include "utils/log.h"
-#include "netsurf/keypress.h"
-#include "netsurf/plotters.h"
+#include "neosurf/keypress.h"
+#include "neosurf/plotters.h"
 #include "desktop/global_history.h"
 
 #include "gtk/compat.h"
@@ -220,7 +220,7 @@ nsgtk_global_history_init_menu(struct nsgtk_global_history_window *ghwin)
 		w = GTK_WIDGET(gtk_builder_get_object(ghwin->builder,
 						      event->widget));
 		if (w == NULL) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Unable to connect menu widget ""%s""",
 			      event->widget);
 		} else {
@@ -313,7 +313,7 @@ static nserror nsgtk_global_history_init(void)
 
 	res = nsgtk_builder_new_from_resname("globalhistory", &ncwin->builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "History UI builder init failed");
+		NSLOG(neosurf, INFO, "History UI builder init failed");
 		free(ncwin);
 		return res;
 	}

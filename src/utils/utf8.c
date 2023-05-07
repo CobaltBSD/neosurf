@@ -32,7 +32,7 @@
 #include "utils/log.h"
 #include "utils/utf8.h"
 
-#include "netsurf/utf8.h"
+#include "neosurf/utf8.h"
 #include "desktop/gui_internal.h"
 
 
@@ -468,7 +468,7 @@ bool utf8_save_text(const char *utf8_text, const char *path)
 
 	ret = guit->utf8->utf8_to_local(utf8_text, strlen(utf8_text), &conv);
 	if (ret != NSERROR_OK) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "failed to convert to local encoding, return %d", ret);
 		return false;
 	}
@@ -477,7 +477,7 @@ bool utf8_save_text(const char *utf8_text, const char *path)
 	if (out) {
 		int res = fputs(conv, out);
 		if (res < 0) {
-			NSLOG(netsurf, INFO, "Warning: writing data failed");
+			NSLOG(neosurf, INFO, "Warning: writing data failed");
 		}
 
 		res = fputs("\n", out);

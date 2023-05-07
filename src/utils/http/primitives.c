@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/http/primitives.h"
 
 /**

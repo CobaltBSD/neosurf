@@ -77,7 +77,7 @@ extern nserror nslog_set_filter_by_options(void);
 
 #include <nslog/nslog.h>
 
-NSLOG_DECLARE_CATEGORY(netsurf);
+NSLOG_DECLARE_CATEGORY(neosurf);
 NSLOG_DECLARE_CATEGORY(llcache);
 NSLOG_DECLARE_CATEGORY(fetch);
 NSLOG_DECLARE_CATEGORY(plot);

@@ -21,7 +21,7 @@
 
 #include "utils/nsoption.h"
 #include "utils/log.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 #include "desktop/search.h"
 
 #include "gtk/compat.h"
@@ -213,7 +213,7 @@ nsgtk_tab_switch_page_after(GtkNotebook *notebook,
 
 	/* check if trying to select the "add page" tab */
 	if (selpage != addpage) {
-		NSLOG(netsurf, INFO, "sel %d", selpagenum);
+		NSLOG(neosurf, INFO, "sel %d", selpagenum);
 		menubar = nsgtk_scaffolding_menu_bar(nsgtk_scaffolding_from_notebook(notebook));
 		gw = g_object_get_data(G_OBJECT(selpage), "gui_window");
 		if (gw != NULL) {
@@ -229,7 +229,7 @@ nsgtk_tab_switch_page_after(GtkNotebook *notebook,
 		return;
 	}
 
-	NSLOG(netsurf, INFO, "src %d sel %d", srcpagenum, selpagenum);
+	NSLOG(neosurf, INFO, "src %d sel %d", srcpagenum, selpagenum);
 
 	/* ensure the add tab is not already selected */
 	if ((srcpagenum == -1) || (srcpagenum == (gint)selpagenum)) {
@@ -244,7 +244,7 @@ nsgtk_tab_switch_page_after(GtkNotebook *notebook,
 		res = nsgtk_window_item_activate(gw, NEWTAB_BUTTON);
 	}
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Failed to open new tab.");
+		NSLOG(neosurf, INFO, "Failed to open new tab.");
 	}
 }
 

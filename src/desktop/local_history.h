@@ -23,7 +23,7 @@
 #include <stdint.h>
 
 #include "utils/errors.h"
-#include "netsurf/mouse.h"
+#include "neosurf/mouse.h"
 
 struct core_window_callback_table;
 struct redraw_context;

@@ -227,7 +227,7 @@ lwc_string *nsurl_get_component(const nsurl *url, nsurl_component part)
 				lwc_string_ref(url->components.fragment) : NULL;
 
 	default:
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Unsupported value passed to part param.");
 		assert(0);
 	}
@@ -303,7 +303,7 @@ bool nsurl_has_component(const nsurl *url, nsurl_component part)
 			return false;
 
 	default:
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Unsupported value passed to part param.");
 		assert(0);
 	}

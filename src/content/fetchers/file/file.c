@@ -44,7 +44,7 @@
 #endif
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/nsurl.h"
 #include "utils/dirent.h"
 #include "utils/corestrings.h"
@@ -54,7 +54,7 @@
 #include "utils/time.h"
 #include "utils/ring.h"
 #include "utils/file.h"
-#include "netsurf/fetch.h"
+#include "neosurf/fetch.h"
 #include "desktop/gui_internal.h"
 
 #include "content/fetch.h"
@@ -539,7 +539,7 @@ process_dir_ent(struct fetch_file_context *ctx,
 		return NSERROR_BAD_PARAMETER;
 	}
 
-	ret = netsurf_mkpath(&urlpath, NULL, 2, ctx->path, ent->d_name);
+	ret = neosurf_mkpath(&urlpath, NULL, 2, ctx->path, ent->d_name);
 	if (ret != NSERROR_OK) {
 		return ret;
 	}

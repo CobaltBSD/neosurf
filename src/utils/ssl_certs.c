@@ -30,7 +30,7 @@
 #include "utils/log.h"
 #include "utils/nsurl.h"
 
-#include "netsurf/ssl_certs.h"
+#include "neosurf/ssl_certs.h"
 
 /*
  * create new certificate chain

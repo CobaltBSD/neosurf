@@ -326,10 +326,10 @@ static css_error nscss_convert_css_data(struct content_css_data *c)
 		const char *url;
 
 		if (css_stylesheet_get_url(c->sheet, &url) == CSS_OK) {
-			NSLOG(netsurf, INFO, "Failed converting %p %s (%d)",
+			NSLOG(neosurf, INFO, "Failed converting %p %s (%d)",
 			      c, url, error);
 		} else {
-			NSLOG(netsurf, INFO, "Failed converting %p (%d)", c,
+			NSLOG(neosurf, INFO, "Failed converting %p (%d)", c,
 			      error);
 		}
 	}
@@ -605,7 +605,7 @@ css_error nscss_handle_import(void *pw, css_stylesheet *parent,
 	nsurl_unref(ns_ref);
 
 #ifdef NSCSS_IMPORT_TRACE
-	NSLOG(netsurf, INFO, "Import %d '%s' -> (handle: %p ctx: %p)",
+	NSLOG(neosurf, INFO, "Import %d '%s' -> (handle: %p ctx: %p)",
 	      c->import_count, lwc_string_data(url),
 	      c->imports[c->import_count].c, ctx);
 #endif
@@ -630,7 +630,7 @@ nserror nscss_import(hlcache_handle *handle,
 	css_error error = CSS_OK;
 
 #ifdef NSCSS_IMPORT_TRACE
-	NSLOG(netsurf, INFO, "Event %d for %p (%p)", event->type, handle, ctx);
+	NSLOG(neosurf, INFO, "Event %d for %p (%p)", event->type, handle, ctx);
 #endif
 
 	assert(ctx->css->imports[ctx->index].c == handle);
@@ -670,7 +670,7 @@ css_error nscss_import_complete(nscss_import_ctx *ctx)
 		error = nscss_register_imports(ctx->css);
 
 #ifdef NSCSS_IMPORT_TRACE
-	NSLOG(netsurf, INFO, "Destroying import context %p for %d", ctx,
+	NSLOG(neosurf, INFO, "Destroying import context %p for %d", ctx,
 	      ctx->index);
 #endif
 

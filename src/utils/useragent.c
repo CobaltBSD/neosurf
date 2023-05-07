@@ -28,8 +28,8 @@
 
 static const char *core_user_agent_string = NULL;
 
-#ifndef NETSURF_UA_FORMAT_STRING
-#define NETSURF_UA_FORMAT_STRING "NetSurf/%d.%d (%s)"
+#ifndef NEOSURF_UA_FORMAT_STRING
+#define NEOSURF_UA_FORMAT_STRING "NetSurf/%d.%d (%s)"
 #endif
 
 /**
@@ -48,9 +48,9 @@ user_agent_build_string(void)
                 sysname = un.sysname;
         }
 
-        len = snprintf(NULL, 0, NETSURF_UA_FORMAT_STRING,
-                       netsurf_version_major,
-                       netsurf_version_minor,
+        len = snprintf(NULL, 0, NEOSURF_UA_FORMAT_STRING,
+                       neosurf_version_major,
+                       neosurf_version_minor,
                        sysname);
         ua_string = malloc(len + 1);
         if (!ua_string) {
@@ -58,14 +58,14 @@ user_agent_build_string(void)
                 return;
         }
         snprintf(ua_string, len + 1,
-                 NETSURF_UA_FORMAT_STRING,
-                 netsurf_version_major,
-                 netsurf_version_minor,
+                 NEOSURF_UA_FORMAT_STRING,
+                 neosurf_version_major,
+                 neosurf_version_minor,
                  sysname);
 
         core_user_agent_string = ua_string;
 
-        NSLOG(netsurf, INFO, "Built user agent \"%s\"",
+        NSLOG(neosurf, INFO, "Built user agent \"%s\"",
               core_user_agent_string);
 }
 

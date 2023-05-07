@@ -74,7 +74,7 @@ const struct font_functions haru_nsfont = {
 static void error_handler(HPDF_STATUS error_no, HPDF_STATUS detail_no,
 		void *user_data)
 {
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "ERROR: in font_haru \n\terror_no=%x\n\tdetail_no=%d\n",
 	      (HPDF_UINT)error_no,
 	      (HPDF_UINT)detail_no);
@@ -146,7 +146,7 @@ bool haru_nsfont_width(const plot_font_style_t *fstyle,
 	*width = width_real;
 
 #ifdef FONT_HARU_DEBUG
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Measuring string: %s ; Calculated width: %f %i", string_nt,
 	      width_real, *width);
 #endif
@@ -206,7 +206,7 @@ bool haru_nsfont_position_in_string(const plot_font_style_t *fstyle,
 	*actual_x = real_width;
 
 #ifdef FONT_HARU_DEBUG
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Position in string: %s at x: %i; Calculated position: %i",
 	      string_nt,
 	      x,
@@ -255,7 +255,7 @@ bool haru_nsfont_split(const plot_font_style_t *fstyle,
 			HPDF_TRUE, &real_width);
 
 #ifdef FONT_HARU_DEBUG
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Splitting string: %s for width: %i ; Calculated position: %i Calculated real_width: %f",
 	      string_nt,
 	      x,
@@ -341,7 +341,7 @@ bool haru_nsfont_apply_style(const plot_font_style_t *fstyle,
 		strcat(font_name, "-Roman");
 
 #ifdef FONT_HARU_DEBUG
-	NSLOG(netsurf, INFO, "Setting font: %s", font_name);
+	NSLOG(neosurf, INFO, "Setting font: %s", font_name);
 #endif
 
 	size = fstyle->size;

@@ -38,7 +38,7 @@
 #include "utils/string.h"
 #include "utils/ascii.h"
 #include "utils/nsurl.h"
-#include "netsurf/plot_style.h"
+#include "neosurf/plot_style.h"
 #include "css/hints.h"
 #include "desktop/frame_types.h"
 #include "content/content_factory.h"
@@ -983,7 +983,7 @@ box_frameset(dom_node *n,
 	bool ok;
 
 	if (content->frameset) {
-		NSLOG(netsurf, INFO, "Error: multiple framesets in document.");
+		NSLOG(neosurf, INFO, "Error: multiple framesets in document.");
 		/* Don't convert children */
 		if (convert_children)
 			*convert_children = false;

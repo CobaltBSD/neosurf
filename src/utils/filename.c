@@ -84,7 +84,7 @@ const char *filename_request(void)
 		/* no available slots - create a new directory */
 		dir = filename_create_directory(NULL);
 		if (dir == NULL) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed to create a new directory.");
 			return NULL;
 		}
@@ -185,10 +185,10 @@ bool filename_initialise(void)
 	for (start = directory; *start != '\0'; start++) {
 		if (*start == '/') {
 			*start = '\0';
-			NSLOG(netsurf, INFO, "Creating \"%s\"", directory);
+			NSLOG(neosurf, INFO, "Creating \"%s\"", directory);
 			ret = nsmkdir(directory, S_IRWXU);
 			if (ret != 0 && errno != EEXIST) {
-				NSLOG(netsurf, INFO,
+				NSLOG(neosurf, INFO,
 				      "Failed to create directory \"%s\"",
 				      directory);
 				free(directory);
@@ -199,7 +199,7 @@ bool filename_initialise(void)
 		}
 	}
 
-	NSLOG(netsurf, INFO, "Temporary directory location: %s", directory);
+	NSLOG(neosurf, INFO, "Temporary directory location: %s", directory);
 	ret = nsmkdir(directory, S_IRWXU);
 
 	free(directory);
@@ -289,7 +289,7 @@ bool filename_flush_directory(const char *folder, int depth)
 		}
 
 		if (stat(child, &statbuf) == -1) {
-			NSLOG(netsurf, INFO, "Unable to stat %s: %s", child,
+			NSLOG(neosurf, INFO, "Unable to stat %s: %s", child,
 			      strerror(errno));
 			continue;
 		}
@@ -358,7 +358,7 @@ bool filename_flush_directory(const char *folder, int depth)
 				filename_delete_recursive(child);
 
 			if (remove(child))
-				NSLOG(netsurf, INFO, "Failed to remove '%s'",
+				NSLOG(neosurf, INFO, "Failed to remove '%s'",
 				      child);
 			else
 				changed = true;
@@ -403,7 +403,7 @@ bool filename_delete_recursive(char *folder)
 		}
 
 		if (stat(child, &statbuf) == -1) {
-			NSLOG(netsurf, INFO, "Unable to stat %s: %s", child,
+			NSLOG(neosurf, INFO, "Unable to stat %s: %s", child,
 			      strerror(errno));
 			continue;
 		}
@@ -416,7 +416,7 @@ bool filename_delete_recursive(char *folder)
 		}
 
 		if (remove(child)) {
-			NSLOG(netsurf, INFO, "Failed to remove '%s'", child);
+			NSLOG(neosurf, INFO, "Failed to remove '%s'", child);
 			closedir(parent);
 			return false;
 		}
@@ -482,7 +482,7 @@ static struct directory *filename_create_directory(const char *prefix)
 	/* allocate a new directory */
 	new_dir = malloc(sizeof(struct directory));
 	if (new_dir == NULL) {
-		NSLOG(netsurf, INFO, "No memory for malloc()");
+		NSLOG(neosurf, INFO, "No memory for malloc()");
 		return NULL;
 	}
 
@@ -516,7 +516,7 @@ static struct directory *filename_create_directory(const char *prefix)
 			 * whilst we are running if there is an error, so we
 			 * don't report this yet and try to create the
 			 * structure normally. */
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed to create optimised structure '%s'",
 			      filename_directory);
 		}
@@ -538,7 +538,7 @@ static struct directory *filename_create_directory(const char *prefix)
 
 			if (!is_dir(filename_directory)) {
 				if (nsmkdir(filename_directory, S_IRWXU)) {
-					NSLOG(netsurf, INFO,
+					NSLOG(neosurf, INFO,
 					      "Failed to create directory '%s'",
 					      filename_directory);
 					return NULL;

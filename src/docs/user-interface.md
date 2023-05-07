@@ -12,44 +12,13 @@ each frontend allowing the browser to be a native application.
 
 # Frontends
 
-As GUI toolkits are often applicable to a single Operating
-System (OS) some frontends are named for their OS instead of the
-toolkit e.g. RISC OS WIMP frontend is named riscos and the Windows
-win32 frontend is named windows.
-
-## amiga
-
-Frontend specific to the amiga
-
-## atari
-
-Frontend specific to the atari
-
-## beos
-
-Frontend specific to the Haiku OS
-
-## framebuffer
-
-There is a basic user guide for the [framebuffer](docs/using-framebuffer.md)
-
 ## gtk
 
-Frontend that uses the GTK+2 or GTK+3 toolkit
+Frontend that uses the GTK+3 toolkit
 
-## monkey
+## visurf
 
-This is the internal unit test frontend.
-
-There is a basic user guide [monkey](docs/using-monkey.md)
-
-## riscos
-
-Frontend for the RISC OS WIMP toolkit.
-
-## windows
-
-Frontend which uses the Microsodt win32 GDI toolkit.
+Frontend that uses the Vi bindings on Wayland
 
 # User configuration
 

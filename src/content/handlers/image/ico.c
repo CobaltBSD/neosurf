@@ -28,8 +28,8 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/bitmap.h"
-#include "netsurf/content.h"
+#include "neosurf/bitmap.h"
+#include "neosurf/content.h"
 #include "content/llcache.h"
 #include "content/content_protected.h"
 #include "content/content_factory.h"
@@ -161,7 +161,7 @@ static bool nsico_convert(struct content *c)
 	bmp = ico_find(ico->ico, 255, 255);
 	if (bmp == NULL) {
 		/* return error */
-		NSLOG(netsurf, INFO, "Failed to select icon");
+		NSLOG(neosurf, INFO, "Failed to select icon");
 		return false;
 	}
 
@@ -184,7 +184,7 @@ static bool nsico_redraw(struct content *c, struct content_redraw_data *data,
 	bmp = ico_find(ico->ico, data->width, data->height);
 	if (bmp == NULL) {
 		/* return error */
-		NSLOG(netsurf, INFO, "Failed to select icon");
+		NSLOG(neosurf, INFO, "Failed to select icon");
 		return false;
 	}
 
@@ -193,7 +193,7 @@ static bool nsico_redraw(struct content *c, struct content_redraw_data *data,
 		if (bmp_decode(bmp) != BMP_OK) {
 			return false;
 		} else {
-			NSLOG(netsurf, INFO, "Decoding bitmap");
+			NSLOG(neosurf, INFO, "Decoding bitmap");
 			guit->bitmap->modified(bmp->bitmap);
 		}
 
@@ -256,7 +256,7 @@ static void *nsico_get_internal(const struct content *c, void *context)
 	bmp = ico_find(ico->ico, 16, 16);
 	if (bmp == NULL) {
 		/* return error */
-		NSLOG(netsurf, INFO, "Failed to select icon");
+		NSLOG(neosurf, INFO, "Failed to select icon");
 		return NULL;
 	}
 
@@ -288,7 +288,7 @@ static bool nsico_is_opaque(struct content *c)
 	bmp = ico_find(ico->ico, 16, 16);
 	if (bmp == NULL) {
 		/* return error */
-		NSLOG(netsurf, INFO, "Failed to select icon");
+		NSLOG(neosurf, INFO, "Failed to select icon");
 		return false;
 	}
 

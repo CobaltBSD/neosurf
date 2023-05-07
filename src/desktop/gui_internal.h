@@ -32,6 +32,6 @@
 /**
  * The global operation table.
  */
-extern struct netsurf_table *guit;
+extern struct neosurf_table *guit;
 
 #endif

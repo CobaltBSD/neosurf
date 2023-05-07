@@ -25,8 +25,8 @@
 
 #include "utils/errors.h"
 #include "utils/utils.h"
-#include "netsurf/types.h"
-#include "netsurf/plot_style.h"
+#include "neosurf/types.h"
+#include "neosurf/plot_style.h"
 #include "desktop/selection.h"
 #include "desktop/save_text.h"
 

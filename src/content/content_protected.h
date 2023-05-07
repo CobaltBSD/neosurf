@@ -30,8 +30,8 @@
 #include <stdio.h>
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/content_type.h"
-#include "netsurf/mouse.h" /* mouse state enums */
+#include "neosurf/content_type.h"
+#include "neosurf/mouse.h" /* mouse state enums */
 
 struct nsurl;
 struct content_redraw_data;

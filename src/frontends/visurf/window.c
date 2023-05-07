@@ -9,11 +9,11 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <wayland-client.h>
-#include "netsurf/browser_window.h"
-#include "netsurf/keypress.h"
-#include "netsurf/mouse.h"
-#include "netsurf/plotters.h"
-#include "netsurf/window.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/keypress.h"
+#include "neosurf/mouse.h"
+#include "neosurf/plotters.h"
+#include "neosurf/window.h"
 #include "utils/errors.h"
 #include "utils/nsurl.h"
 #include "utils/log.h"
@@ -436,7 +436,7 @@ draw_frame(struct nsvi_window *win)
 			win->state->wl_shm, win->buffers,
 			win->width, win->height, win->scale);
 	if (!buffer) {
-		NSLOG(netsurf, WARNING, "Unable to obtain buffer");
+		NSLOG(neosurf, WARNING, "Unable to obtain buffer");
 		return false;
 	}
 	activebuffer = buffer;
@@ -606,7 +606,7 @@ nsvi_window_set_cursor(struct nsvi_window *win)
 	struct wl_cursor *cursor = wl_cursor_theme_get_cursor(
 		win->state->cursors, name);
 	if (!cursor) {
-		NSLOG(netsurf, WARNING,
+		NSLOG(neosurf, WARNING,
 			"Unable to select cursor %s, falling back to default",
 			name);
 		cursor = wl_cursor_theme_get_cursor(
@@ -830,7 +830,7 @@ nsvi_gui_window_create(struct browser_window *bw,
 	if (flags & GW_CREATE_FOCUS_LOCATION) {
 		// XXX: What should we do here? Tee up `exline open $url`?
 		// Under what circumstances does this happen?
-		NSLOG(netsurf, WARNING, "Location bar focus requested");
+		NSLOG(neosurf, WARNING, "Location bar focus requested");
 	}
 	if (flags & GW_CREATE_TAB) {
 		assert(existing);
@@ -1531,7 +1531,7 @@ nsvi_window_follow_hint(struct nsvi_window *win, struct link_hint *hint)
 
 	if (error != NSERROR_OK) {
 		// TODO: Display error
-		NSLOG(netsurf, ERROR, "Error following hint");
+		NSLOG(neosurf, ERROR, "Error following hint");
 	}
 
 	nsvi_window_finish_hints(gw);
@@ -1995,7 +1995,7 @@ nsvi_window_touch_pending(struct nsvi_window *win, struct touch_event *event)
 		}
 		break;
 	case 2:
-		NSLOG(netsurf, WARNING, "Initiate zoom interaction");
+		NSLOG(neosurf, WARNING, "Initiate zoom interaction");
 		break;
 	default:
 		abort(); // Invariant

@@ -21,7 +21,7 @@
 
 #include <libcss/libcss.h>
 
-#include "netsurf/css.h"
+#include "neosurf/css.h"
 
 /** DPI of the screen, in fixed point units */
 extern css_fixed nscss_screen_dpi;

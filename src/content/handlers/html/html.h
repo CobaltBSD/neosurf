@@ -28,10 +28,10 @@
 
 #include <stdbool.h>
 
-#include "netsurf/types.h"
-#include "netsurf/content_type.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/mouse.h"
+#include "neosurf/types.h"
+#include "neosurf/content_type.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/mouse.h"
 #include "desktop/frame_types.h"
 
 struct fetch_multipart_data;

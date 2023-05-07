@@ -35,18 +35,18 @@ method Document::write()
 	}
 	duk_concat(ctx, duk_get_top(ctx));
 	text = duk_safe_to_lstring(ctx, 0, &text_len);
-	NSLOG(netsurf, DEBUG, "Writing %*s", (int)text_len, text);
+	NSLOG(neosurf, DEBUG, "Writing %*s", (int)text_len, text);
 
 	err = dom_node_get_user_data(priv->parent.node,
 				     corestring_dom___ns_key_html_content_data,
 				     &htmlc);
 	if ((err != DOM_NO_ERR) || (htmlc == NULL)) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "error getting htmlc. parent node:%p htmlc:%p",
 		      priv->parent.node, htmlc);
 		return 0;
 	} else if (htmlc->parser == NULL) {
-		NSLOG(netsurf, INFO, "error; no parser for htmlc: %p", htmlc);
+		NSLOG(neosurf, INFO, "error; no parser for htmlc: %p", htmlc);
 		return 0;
 	}
 
@@ -70,17 +70,17 @@ method Document::writeln()
 	duk_concat(ctx, duk_get_top(ctx));
 	text = duk_safe_to_lstring(ctx, 0, &text_len);
 
-	NSLOG(netsurf, DEBUG, "Writeln %*s", (int)text_len, text);
+	NSLOG(neosurf, DEBUG, "Writeln %*s", (int)text_len, text);
 	err = dom_node_get_user_data(priv->parent.node,
 				     corestring_dom___ns_key_html_content_data,
 				     &htmlc);
 	if ((err != DOM_NO_ERR) || (htmlc == NULL)) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "error getting htmlc. parent node:%p htmlc:%p",
 		      priv->parent.node, htmlc);
 		return 0;
 	} else if (htmlc->parser == NULL) {
-		NSLOG(netsurf, INFO, "error; no parser for htmlc: %p", htmlc);
+		NSLOG(neosurf, INFO, "error; no parser for htmlc: %p", htmlc);
 		return 0;
 	}
 
@@ -379,7 +379,7 @@ getter Document::cookie()
 		}
 		return 1;
 	} else {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "error getting htmlc. parent node:%p htmlc:%p",
 		      priv->parent.node, htmlc);
 	}
@@ -405,11 +405,11 @@ setter Document::cookie()
 					   llcache_handle_get_url(htmlc->base.llcache),
 					   NULL); /* The referer, which we trust */
 		if (!ok) {
-			NSLOG(netsurf, DEEPDEBUG, "unable to set cookie: %s", cookie_str);
+			NSLOG(neosurf, DEEPDEBUG, "unable to set cookie: %s", cookie_str);
 			/* However there's no useful way to signal that to JS */
 		}
 	} else {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "error getting htmlc. parent node:%p htmlc:%p",
 		      priv->parent.node, htmlc);
 	}

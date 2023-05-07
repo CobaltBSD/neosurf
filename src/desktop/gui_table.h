@@ -45,7 +45,7 @@ struct gui_layout_table;
  *
  * Function table implementing interface operations for the browser core.
  */
-struct netsurf_table {
+struct neosurf_table {
 
 	/**
 	 * Browser table.

@@ -3,7 +3,7 @@
 #include <wayland-client.h>
 #include <xkbcommon/xkbcommon.h>
 #include "desktop/search.h"
-#include "netsurf/mouse.h"
+#include "neosurf/mouse.h"
 #include "visurf/pool-buffer.h"
 #include "visurf/visurf.h"
 #include "utils/nsurl.h"

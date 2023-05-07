@@ -26,7 +26,7 @@
 
 #include <dom/bindings/hubbub/parser.h>
 
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 #include "content/content_protected.h"
 #include "content/handlers/css/utils.h"
 

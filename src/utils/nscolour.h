@@ -25,7 +25,7 @@
 #ifndef _NETSURF_UTILS_NSCOLOUR_H_
 #define _NETSURF_UTILS_NSCOLOUR_H_
 
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 
 /**
  * NetSurf UI colour key.

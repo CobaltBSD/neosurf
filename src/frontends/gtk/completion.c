@@ -27,8 +27,8 @@
 #include "utils/messages.h"
 #include "utils/nsoption.h"
 #include "utils/nsurl.h"
-#include "netsurf/url_db.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/url_db.h"
+#include "neosurf/browser_window.h"
 #include "desktop/searchweb.h"
 
 #include "gtk/compat.h"

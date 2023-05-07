@@ -2,7 +2,7 @@
 <!--*- mode: xml -*-->
 <interface>
   <object class="GtkWindow" id="wndWarning">
-    <property name="title" translatable="yes">Warning from NetSurf</property>
+    <property name="title" translatable="yes">Warning from NeoSurf</property>
     <property name="window_position">GTK_WIN_POS_CENTER</property>
     <property name="icon_name">gtk-dialog-warning</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>

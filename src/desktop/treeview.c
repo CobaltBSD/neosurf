@@ -31,13 +31,13 @@
 #include "utils/nsurl.h"
 #include "utils/nscolour.h"
 #include "utils/nsoption.h"
-#include "netsurf/bitmap.h"
-#include "netsurf/content.h"
-#include "netsurf/plotters.h"
-#include "netsurf/clipboard.h"
-#include "netsurf/layout.h"
-#include "netsurf/keypress.h"
-#include "netsurf/core_window.h"
+#include "neosurf/bitmap.h"
+#include "neosurf/content.h"
+#include "neosurf/plotters.h"
+#include "neosurf/clipboard.h"
+#include "neosurf/layout.h"
+#include "neosurf/keypress.h"
+#include "neosurf/core_window.h"
 #include "content/hlcache.h"
 #include "css/utils.h"
 
@@ -2133,7 +2133,7 @@ treeview_cw_attach(treeview *tree,
 	assert(cw != NULL);
 
 	if (tree->cw_t != NULL || tree->cw_h != NULL) {
-		NSLOG(netsurf, INFO, "Treeview already attached.");
+		NSLOG(neosurf, INFO, "Treeview already attached.");
 		return NSERROR_UNKNOWN;
 	}
 	tree->cw_t = cw_t;
@@ -2207,7 +2207,7 @@ treeview_node_expand_internal(treeview *tree, treeview_node *node)
 
 	if (node->flags & TV_NFLAGS_EXPANDED) {
 		/* What madness is this? */
-		NSLOG(netsurf, INFO, "Tried to expand an expanded node.");
+		NSLOG(neosurf, INFO, "Tried to expand an expanded node.");
 		return NSERROR_OK;
 	}
 
@@ -2294,11 +2294,11 @@ nserror treeview_node_expand(treeview *tree, treeview_node *node)
 	nserror res;
 
 	res = treeview_node_expand_internal(tree, node);
-	NSLOG(netsurf, INFO, "Expanding!");
+	NSLOG(neosurf, INFO, "Expanding!");
 	if (res == NSERROR_OK) {
 		/* expansion was successful, attempt redraw */
 		treeview__redraw_from_node(tree, node);
-		NSLOG(netsurf, INFO, "Expanded!");
+		NSLOG(neosurf, INFO, "Expanded!");
 	}
 
 	return res;
@@ -2387,7 +2387,7 @@ treeview_node_contract_internal(treeview *tree, treeview_node *node)
 
 	if ((node->flags & TV_NFLAGS_EXPANDED) == false) {
 		/* What madness is this? */
-		NSLOG(netsurf, INFO, "Tried to contract a contracted node.");
+		NSLOG(neosurf, INFO, "Tried to contract a contracted node.");
 		return NSERROR_OK;
 	}
 
@@ -2420,11 +2420,11 @@ nserror treeview_node_contract(treeview *tree, treeview_node *node)
 	assert(tree != NULL);
 
 	res = treeview_node_contract_internal(tree, node);
-	NSLOG(netsurf, INFO, "Contracting!");
+	NSLOG(neosurf, INFO, "Contracting!");
 	if (res == NSERROR_OK) {
 		/* successful contraction, request redraw */
 		treeview__redraw_from_node(tree, node);
-		NSLOG(netsurf, INFO, "Contracted!");
+		NSLOG(neosurf, INFO, "Contracted!");
 	}
 
 	return res;
@@ -3639,7 +3639,7 @@ static nserror treeview_move_selection(treeview *tree, struct rect *rect)
 		break;
 
 	default:
-		NSLOG(netsurf, INFO, "Bad drop target for move.");
+		NSLOG(neosurf, INFO, "Bad drop target for move.");
 		return NSERROR_BAD_PARAMETER;
 	}
 
@@ -5334,7 +5334,7 @@ nserror treeview_init(void)
 		return NSERROR_OK;
 	}
 
-	NSLOG(netsurf, INFO, "Initialising treeview module");
+	NSLOG(neosurf, INFO, "Initialising treeview module");
 
 	font_pt_size = nsoption_int(treeview_font_size);
 	if (font_pt_size <= 0) {
@@ -5365,7 +5365,7 @@ nserror treeview_init(void)
 
 	tree_g.initialised++;
 
-	NSLOG(netsurf, INFO, "Initialised treeview module");
+	NSLOG(neosurf, INFO, "Initialised treeview module");
 
 	return NSERROR_OK;
 }
@@ -5381,12 +5381,12 @@ nserror treeview_fini(void)
 		return NSERROR_OK;
 
 	} else if (tree_g.initialised == 0) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Warning: tried to finalise uninitialised treeview module");
 		return NSERROR_OK;
 	}
 
-	NSLOG(netsurf, INFO, "Finalising treeview module");
+	NSLOG(neosurf, INFO, "Finalising treeview module");
 
 	for (i = 0; i < TREE_RES_LAST; i++) {
 		hlcache_handle_release(treeview_res[i].c);
@@ -5403,7 +5403,7 @@ nserror treeview_fini(void)
 
 	tree_g.initialised--;
 
-	NSLOG(netsurf, INFO, "Finalised treeview module");
+	NSLOG(neosurf, INFO, "Finalised treeview module");
 
 	return NSERROR_OK;
 }

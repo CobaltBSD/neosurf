@@ -28,9 +28,9 @@
 
 #include "utils/utils.h"
 #include "utils/messages.h"
-#include "netsurf/plotters.h"
-#include "netsurf/bitmap.h"
-#include "netsurf/content.h"
+#include "neosurf/plotters.h"
+#include "neosurf/bitmap.h"
+#include "neosurf/content.h"
 #include "content/llcache.h"
 #include "content/content_protected.h"
 #include "content/content_factory.h"

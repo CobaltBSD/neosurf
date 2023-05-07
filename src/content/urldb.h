@@ -26,8 +26,8 @@
 
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/url_db.h"
-#include "netsurf/cookie_db.h"
+#include "neosurf/url_db.h"
+#include "neosurf/cookie_db.h"
 
 /**
  * Destroy urldb

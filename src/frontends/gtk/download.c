@@ -30,7 +30,7 @@
 #include "utils/nsoption.h"
 #include "utils/string.h"
 #include "desktop/download.h"
-#include "netsurf/download.h"
+#include "neosurf/download.h"
 
 #include "gtk/warn.h"
 #include "gtk/scaffolding.h"
@@ -937,7 +937,7 @@ nserror nsgtk_download_init(void)
 
 	res = nsgtk_builder_new_from_resname("downloads", &builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Download UI builder init failed");
+		NSLOG(neosurf, INFO, "Download UI builder init failed");
 		return res;
 	}
 

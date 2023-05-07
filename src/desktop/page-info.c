@@ -29,12 +29,12 @@
 #include "utils/nsurl.h"
 #include "utils/nscolour.h"
 
-#include "netsurf/mouse.h"
-#include "netsurf/layout.h"
-#include "netsurf/keypress.h"
-#include "netsurf/plotters.h"
-#include "netsurf/core_window.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/mouse.h"
+#include "neosurf/layout.h"
+#include "neosurf/keypress.h"
+#include "neosurf/plotters.h"
+#include "neosurf/core_window.h"
+#include "neosurf/browser_window.h"
 
 #include "desktop/knockout.h"
 #include "desktop/page-info.h"
@@ -389,7 +389,7 @@ static nserror page_info__set_text(
 	int printed;
 	static const char *header[PAGE_STATE__COUNT] = {
 		[PAGE_STATE_UNKNOWN]         = "Provenance unknown",
-		[PAGE_STATE_INTERNAL]        = "NetSurf data",
+		[PAGE_STATE_INTERNAL]        = "NeoSurf data",
 		[PAGE_STATE_LOCAL]           = "Local data",
 		[PAGE_STATE_INSECURE]        = "Connection not secure",
 		[PAGE_STATE_SECURE_OVERRIDE] = "Connection not secure",

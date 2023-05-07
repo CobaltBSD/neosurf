@@ -21,8 +21,8 @@
 #include <stdlib.h>
 
 #include "utils/log.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/clipboard.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/clipboard.h"
 
 #include "gtk/toolbar_items.h"
 #include "gtk/window.h"

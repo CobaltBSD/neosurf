@@ -30,8 +30,8 @@
 #include "utils/nsoption.h"
 #include "utils/log.h"
 #include "utils/talloc.h"
-#include "netsurf/content.h"
-#include "netsurf/plotters.h"
+#include "neosurf/content.h"
+#include "neosurf/plotters.h"
 #include "content/hlcache.h"
 #include "css/utils.h"
 #include "html/box.h"
@@ -126,7 +126,7 @@ print_apply_settings(hlcache_handle *content, struct print_settings *settings)
 
 	content_reformat(content, false, page_content_width, 0);
 
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "New layout applied.New height = %d ; New width = %d ",
 	      content_get_height(content),
 	      content_get_width(content));

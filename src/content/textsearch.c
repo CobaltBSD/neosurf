@@ -30,7 +30,7 @@
 #include "utils/errors.h"
 #include "utils/utils.h"
 #include "utils/ascii.h"
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 #include "desktop/selection.h"
 
 #include "content/content.h"

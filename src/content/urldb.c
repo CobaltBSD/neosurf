@@ -94,9 +94,7 @@
 #include <string.h>
 #include <strings.h>
 #include <time.h>
-#ifdef WITH_NSPSL
-#include <nspsl.h>
-#endif
+#include <libpsl.h>
 
 #include "utils/inet.h"
 #include "utils/nsoption.h"
@@ -109,16 +107,11 @@
 #include "utils/nsurl.h"
 #include "utils/ascii.h"
 #include "utils/http.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 #include "desktop/cookie_manager.h"
 
 #include "content/content.h"
 #include "content/urldb.h"
-
-#ifdef WITH_AMISSL
-/* AmiSSL needs everything to be using bsdsocket directly to avoid conflicts */
-#include <proto/bsdsocket.h>
-#endif
 
 /**
  * cookie entry.
@@ -686,7 +679,7 @@ static bool urldb__host_is_ip_address(const char *host)
 		c[slash - host] = '\0';
 		sane_host = c;
 		host_len = slash - host;
-		NSLOG(netsurf, INFO, "WARNING: called with non-host '%s'",
+		NSLOG(neosurf, INFO, "WARNING: called with non-host '%s'",
 		      host);
 	}
 
@@ -1317,7 +1310,7 @@ urldb_match_path(const struct path_data *parent,
 	assert(parent->segment == NULL);
 
 	if (path[0] != '/') {
-		NSLOG(netsurf, INFO, "path is %s", path);
+		NSLOG(neosurf, INFO, "path is %s", path);
 	}
 
 	assert(path[0] == '/');
@@ -1447,13 +1440,13 @@ static void urldb_dump_paths(struct path_data *parent)
 
 	do {
 		if (p->segment != NULL) {
-			NSLOG(netsurf, INFO, "\t%s : %u",
+			NSLOG(neosurf, INFO, "\t%s : %u",
 			      lwc_string_data(p->scheme), p->port);
 
-			NSLOG(netsurf, INFO, "\t\t'%s'", p->segment);
+			NSLOG(neosurf, INFO, "\t\t'%s'", p->segment);
 
 			for (i = 0; i != p->frag_cnt; i++) {
-				NSLOG(netsurf, INFO, "\t\t\t#%s",
+				NSLOG(neosurf, INFO, "\t\t\t#%s",
 				      p->fragment[i]);
 			}
 		}
@@ -1484,9 +1477,9 @@ static void urldb_dump_hosts(struct host_part *parent)
 	struct host_part *h;
 
 	if (parent->part) {
-		NSLOG(netsurf, INFO, "%s", parent->part);
+		NSLOG(neosurf, INFO, "%s", parent->part);
 
-		NSLOG(netsurf, INFO, "\t%s invalid SSL certs",
+		NSLOG(neosurf, INFO, "\t%s invalid SSL certs",
 		      parent->permit_invalid_certs ? "Permits" : "Denies");
 	}
 
@@ -1539,7 +1532,7 @@ static void urldb_dump_search(struct search_node *parent, int depth)
 	}
 	s[i]= 0;
 
-	NSLOG(netsurf, INFO, "%s", s);
+	NSLOG(neosurf, INFO, "%s", s);
 
 	urldb_dump_search(parent->right, depth + 1);
 }
@@ -2889,14 +2882,14 @@ nserror urldb_load(const char *filename)
 
 	assert(filename);
 
-	NSLOG(netsurf, INFO, "Loading URL file %s", filename);
+	NSLOG(neosurf, INFO, "Loading URL file %s", filename);
 
 	if (url_bloom == NULL)
 		url_bloom = bloom_create(BLOOM_SIZE);
 
 	fp = fopen(filename, "r");
 	if (!fp) {
-		NSLOG(netsurf, INFO, "Failed to open file '%s' for reading",
+		NSLOG(neosurf, INFO, "Failed to open file '%s' for reading",
 		      filename);
 		return NSERROR_NOT_FOUND;
 	}
@@ -2908,12 +2901,12 @@ nserror urldb_load(const char *filename)
 
 	version = atoi(s);
 	if (version < MIN_URL_FILE_VERSION) {
-		NSLOG(netsurf, INFO, "Unsupported URL file version.");
+		NSLOG(neosurf, INFO, "Unsupported URL file version.");
 		fclose(fp);
 		return NSERROR_INVALID;
 	}
 	if (version > URL_FILE_VERSION) {
-		NSLOG(netsurf, INFO, "Unknown URL file version.");
+		NSLOG(neosurf, INFO, "Unknown URL file version.");
 		fclose(fp);
 		return NSERROR_INVALID;
 	}
@@ -2951,7 +2944,7 @@ nserror urldb_load(const char *filename)
 
 		h = urldb_add_host(host);
 		if (!h) {
-			NSLOG(netsurf, INFO, "Failed adding host: '%s'", host);
+			NSLOG(neosurf, INFO, "Failed adding host: '%s'", host);
 			fclose(fp);
 			return NSERROR_NOMEM;
 		}
@@ -2965,7 +2958,7 @@ nserror urldb_load(const char *filename)
 
 		/* no URLs => try next host */
 		if (urls == 0) {
-			NSLOG(netsurf, INFO, "No URLs for '%s'", host);
+			NSLOG(neosurf, INFO, "No URLs for '%s'", host);
 			continue;
 		}
 
@@ -3015,7 +3008,7 @@ nserror urldb_load(const char *filename)
 			 *       Need a nsurl_save too.
 			 */
 			if (nsurl_create(url, &nsurl) != NSERROR_OK) {
-				NSLOG(netsurf, INFO, "Failed inserting '%s'",
+				NSLOG(neosurf, INFO, "Failed inserting '%s'",
 				      url);
 				fclose(fp);
 				return NSERROR_NOMEM;
@@ -3029,7 +3022,7 @@ nserror urldb_load(const char *filename)
 			/* Copy and merge path/query strings */
 			if (nsurl_get(nsurl, NSURL_PATH | NSURL_QUERY,
 				      &path_query, &len) != NSERROR_OK) {
-				NSLOG(netsurf, INFO, "Failed inserting '%s'",
+				NSLOG(neosurf, INFO, "Failed inserting '%s'",
 				      url);
 				fclose(fp);
 				return NSERROR_NOMEM;
@@ -3041,7 +3034,7 @@ nserror urldb_load(const char *filename)
 			p = urldb_add_path(scheme_lwc, port, h, path_query,
 					   fragment_lwc, nsurl);
 			if (!p) {
-				NSLOG(netsurf, INFO, "Failed inserting '%s'",
+				NSLOG(neosurf, INFO, "Failed inserting '%s'",
 				      url);
 				fclose(fp);
 				return NSERROR_NOMEM;
@@ -3086,7 +3079,7 @@ nserror urldb_load(const char *filename)
 	}
 
 	fclose(fp);
-	NSLOG(netsurf, INFO, "Successfully loaded URL file");
+	NSLOG(neosurf, INFO, "Successfully loaded URL file");
 #undef MAXIMUM_URL_LENGTH
 
 	return NSERROR_OK;
@@ -3102,7 +3095,7 @@ nserror urldb_save(const char *filename)
 
 	fp = fopen(filename, "w");
 	if (!fp) {
-		NSLOG(netsurf, INFO, "Failed to open file '%s' for writing",
+		NSLOG(neosurf, INFO, "Failed to open file '%s' for writing",
 		      filename);
 		return NSERROR_SAVE_FAILED;
 	}
@@ -3852,9 +3845,6 @@ bool urldb_set_cookie(const char *header, nsurl *url, nsurl *referer)
 		struct cookie_internal_data *c;
 		char *dot;
 		size_t len;
-#ifdef WITH_NSPSL
-		const char *suffix;
-#endif
 
 		c = urldb_parse_cookie(url, &cur);
 		if (!c) {
@@ -3879,28 +3869,19 @@ bool urldb_set_cookie(const char *header, nsurl *url, nsurl *referer)
 			goto error;
 		}
 
-#ifdef WITH_NSPSL
 		/* check domain is not a public suffix */
 		dot = c->domain;
 		if (*dot == '.') {
 			dot++;
 		}
-		suffix = nspsl_getpublicsuffix(dot);
-		if (suffix == NULL) {
-			NSLOG(netsurf, INFO,
+
+		const psl_ctx_t *psl = psl_builtin();
+		if (psl_is_public_suffix(psl, dot)) {
+			NSLOG(neosurf, INFO,
 			      "domain %s was a public suffix domain", dot);
 			urldb_free_cookie(c);
 			goto error;
 		}
-#else
-		/* 4.3.2:ii Cookie domain must contain embedded dots */
-		dot = strchr(c->domain + 1, '.');
-		if (!dot || *(dot + 1) == '\0') {
-			/* no embedded dots */
-			urldb_free_cookie(c);
-			goto error;
-		}
-#endif
 
 		/* Domain match fetch host with cookie domain */
 		if (strcasecmp(lwc_string_data(host), c->domain) != 0) {
@@ -4295,7 +4276,7 @@ void urldb_load_cookies(const char *filename)
 		for (; *p && *p != '\t'; p++)	\
 			; /* do nothing */	\
 		if (p >= end) {			\
-			NSLOG(netsurf, INFO, "Overran input");	\
+			NSLOG(neosurf, INFO, "Overran input");	\
 			continue;		\
 		}				\
 		*p++ = '\0';			\
@@ -4305,7 +4286,7 @@ void urldb_load_cookies(const char *filename)
 		for (; *p && *p == '\t'; p++)	\
 			; /* do nothing */	\
 		if (p >= end) {			\
-			NSLOG(netsurf, INFO, "Overran input");	\
+			NSLOG(neosurf, INFO, "Overran input");	\
 			continue;		\
 		}				\
 	}
@@ -4334,7 +4315,7 @@ void urldb_load_cookies(const char *filename)
 
 			if (loaded_cookie_file_version <
 			    MIN_COOKIE_FILE_VERSION) {
-				NSLOG(netsurf, INFO,
+				NSLOG(neosurf, INFO,
 				      "Unsupported Cookie file version");
 				break;
 			}

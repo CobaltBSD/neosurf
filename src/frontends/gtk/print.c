@@ -36,7 +36,7 @@
 #include "utils/log.h"
 #include "utils/utils.h"
 #include "utils/nsoption.h"
-#include "netsurf/plotters.h"
+#include "neosurf/plotters.h"
 #include "desktop/print.h"
 #include "desktop/printer.h"
 
@@ -156,7 +156,7 @@ static inline void nsgtk_set_line_width(plot_style_fixed width)
 static nserror
 nsgtk_print_plot_clip(const struct redraw_context *ctx, const struct rect *clip)
 {
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Clipping. x0: %i ;\t y0: %i ;\t x1: %i ;\t y1: %i", clip->x0,
 	      clip->y0, clip->x1, clip->y1);	
 	
@@ -330,7 +330,7 @@ nsgtk_print_plot_rectangle(const struct redraw_context *ctx,
 		     const plot_style_t *style,
 		     const struct rect *rect)
 {
-	NSLOG(netsurf, INFO, "x0: %i ;\t y0: %i ;\t x1: %i ;\t y1: %i",
+	NSLOG(neosurf, INFO, "x0: %i ;\t y0: %i ;\t x1: %i ;\t y1: %i",
 	      rect->x0, rect->y0, rect->x1, rect->y1);
 
         if (style->fill_type != PLOT_OP_TYPE_NONE) { 
@@ -394,7 +394,7 @@ nsgtk_print_plot_polygon(const struct redraw_context *ctx,
 {
 	unsigned int i;
 
-	NSLOG(netsurf, INFO, "Plotting polygon.");	
+	NSLOG(neosurf, INFO, "Plotting polygon.");	
 
 	nsgtk_print_set_colour(style->fill_colour);
 	nsgtk_print_set_solid();
@@ -402,11 +402,11 @@ nsgtk_print_plot_polygon(const struct redraw_context *ctx,
 	cairo_set_line_width(gtk_print_current_cr, 0);
 	cairo_move_to(gtk_print_current_cr, p[0], p[1]);
 
-	NSLOG(netsurf, INFO, "Starting line at: %i\t%i", p[0], p[1]);
+	NSLOG(neosurf, INFO, "Starting line at: %i\t%i", p[0], p[1]);
 
 	for (i = 1; i != n; i++) {
 		cairo_line_to(gtk_print_current_cr, p[i * 2], p[i * 2 + 1]);
-		NSLOG(netsurf, INFO, "Drawing line to: %i\t%i", p[i * 2],
+		NSLOG(neosurf, INFO, "Drawing line to: %i\t%i", p[i * 2],
 		      p[i * 2 + 1]);
 	}
 
@@ -698,7 +698,7 @@ void gtk_print_signal_begin_print (GtkPrintOperation *operation,
 	int page_number;	
 	double height_on_page, height_to_print;
 	
-	NSLOG(netsurf, INFO, "Begin print");
+	NSLOG(neosurf, INFO, "Begin print");
 	
 	settings = user_data;
 		
@@ -717,7 +717,7 @@ void gtk_print_signal_begin_print (GtkPrintOperation *operation,
 		
 	} else {
 
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "page_width: %f ;page_height: %f; content height: %lf",
 		      settings->page_width,
 		      settings->page_height,
@@ -745,7 +745,7 @@ void gtk_print_signal_begin_print (GtkPrintOperation *operation,
 void gtk_print_signal_draw_page(GtkPrintOperation *operation,
 		GtkPrintContext *context, gint page_nr, gpointer user_data)
 {
-	NSLOG(netsurf, INFO, "Draw Page");
+	NSLOG(neosurf, INFO, "Draw Page");
 	gtk_print_current_cr = gtk_print_context_get_cairo_context(context);
 	print_draw_next_page(&gtk_printer, settings);
 }
@@ -757,7 +757,7 @@ void gtk_print_signal_draw_page(GtkPrintOperation *operation,
 void gtk_print_signal_end_print(GtkPrintOperation *operation,
 		GtkPrintContext *context, gpointer user_data)
 {
-	NSLOG(netsurf, INFO, "End print");	
+	NSLOG(neosurf, INFO, "End print");	
 	print_cleanup(content_to_print, &gtk_printer, user_data);
 }
 

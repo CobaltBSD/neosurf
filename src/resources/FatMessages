@@ -1,5 +1,5 @@
 #
-# Messages for NetSurf
+# Messages for NeoSurf
 #
 # Description
 # -----------
@@ -15,7 +15,7 @@
 #  should not be modified for translation purposes.
 #
 # Values must be UTF-8 encoded strings. When these strings are displayed in
-#  NetSurf's user interface, they are converted to the system's local character
+#  NeoSurf's user interface, they are converted to the system's local character
 #  set. As a result of this conversion process, unrepresentable characters are
 #  stripped from the displayed string.
 #
@@ -36,14 +36,14 @@
 # Globals
 # =======
 #
-en.all.NetSurf:NetSurf
-zh_CN.all.NetSurf:NetSurf
+en.all.NeoSurf:NeoSurf
+zh_CN.all.NeoSurf:NeoSurf
 
-en.all.NetSurfCopyright:© 2003-2020 The NetSurf Developers
-de.all.NetSurfCopyright:© 2003-2020 die NetSurf Entwickler
-nl.all.NetSurfCopyright:© 2003-2020 De NetSurf-ontwikkelaars
-it.all.NetSurfCopyright:© 2003-2020 A cura degli sviluppatori di NetSurf
-zh_CN.all.NetSurfCopyright:©2003-2020 NetSurf 开发人员
+en.all.NeoSurfCopyright:© 2003-2020 The NeoSurf Developers
+de.all.NeoSurfCopyright:© 2003-2020 die NeoSurf Entwickler
+nl.all.NeoSurfCopyright:© 2003-2020 De NeoSurf-ontwikkelaars
+it.all.NeoSurfCopyright:© 2003-2020 A cura degli sviluppatori di NeoSurf
+zh_CN.all.NeoSurfCopyright:©2003-2020 NeoSurf 开发人员
 
 
 # General
@@ -467,12 +467,12 @@ zh_CN.all.InvalidURL:无法理解地址 <em>%s</em>。
 # HTML error page
 # ===============
 #
-en.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Page error</title></head><body><h1>Sorry, NetSurf was unable to display this page</h1><p><strong>%s</strong></p></body></html>
-de.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Seitenfehler</title></head><body><h1>NetSurf konnte diese Seite leider nicht darstellen.</h1><p><strong>%s</strong></p></body></html>
-fr.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Erreur</title></head><body><h1>Désolé, NetSurf n'a pas pu afficher cette page</h1><p><strong>%s</strong></p></body></html>
-it.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Errore nella pagina</title></head><body><h1>Spiacente, NetSurf non è in grado di visualizzare questa pagina.</h1><p><strong>%s</strong></p></body></html>
-nl.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Pagina fout</title></head><body><h1>Sorry, NetSurf kan deze pagina</h1><p><strong>%s</strong></p>niet tonen.</body></html>
-zh_CN.all.ErrorPage:<!DOCTYPE HTML PUBLIC“-// W3C // DTD HTML 4.01 // zh_CN”“ http://www.w3.org/TR/html4/strict.dtd“><html><head><meta http-equiv =“ Content-Type” content =“ text / html; charset = UTF-8”> <title>页面错误</title> </head> <body> <h1>抱歉，  NetSurf 无法显示此页面</ h1> <p> <strong>%s </strong> </p> </body> </html>
+en.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Page error</title></head><body><h1>Sorry, NeoSurf was unable to display this page</h1><p><strong>%s</strong></p></body></html>
+de.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Seitenfehler</title></head><body><h1>NeoSurf konnte diese Seite leider nicht darstellen.</h1><p><strong>%s</strong></p></body></html>
+fr.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Erreur</title></head><body><h1>Désolé, NeoSurf n'a pas pu afficher cette page</h1><p><strong>%s</strong></p></body></html>
+it.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Errore nella pagina</title></head><body><h1>Spiacente, NeoSurf non è in grado di visualizzare questa pagina.</h1><p><strong>%s</strong></p></body></html>
+nl.all.ErrorPage:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Pagina fout</title></head><body><h1>Sorry, NeoSurf kan deze pagina</h1><p><strong>%s</strong></p>niet tonen.</body></html>
+zh_CN.all.ErrorPage:<!DOCTYPE HTML PUBLIC“-// W3C // DTD HTML 4.01 // zh_CN”“ http://www.w3.org/TR/html4/strict.dtd“><html><head><meta http-equiv =“ Content-Type” content =“ text / html; charset = UTF-8”> <title>页面错误</title> </head> <body> <h1>抱歉，  NeoSurf 无法显示此页面</ h1> <p> <strong>%s </strong> </p> </body> </html>
 
 
 # General errors
@@ -483,12 +483,12 @@ zh_CN.all.ErrorPage:<!DOCTYPE HTML PUBLIC“-// W3C // DTD HTML 4.01 // zh_CN”
 # These may be augmented with further relevant information, which
 # is displayed after the contents of the relevant token.
 #
-en.all.NoMemory:NetSurf is running out of memory. Please free some memory and try again.
+en.all.NoMemory:NeoSurf is running out of memory. Please free some memory and try again.
 de.all.NoMemory:Zu wenig Speicher. Bitte mehr Speicher zur Verfügung stellen und erneut versuchen.
-fr.all.NoMemory:NetSurf a besoin de plus de mémoire. Veuillez libérer de la mémoire et réessayer.
-it.all.NoMemory:Memoria insufficiente per l'esecuzione di NetSurf. Per favore liberane un pò e riprova nuovamente.
-nl.all.NoMemory:NetSurf heeft gebrek aan voldoende geheugen. Maak wat geheugen vrij en probeer het dan nog eens.
-zh_CN.all.NoMemory:NetSurf 内存不足。请释放一些内存，然后重试。
+fr.all.NoMemory:NeoSurf a besoin de plus de mémoire. Veuillez libérer de la mémoire et réessayer.
+it.all.NoMemory:Memoria insufficiente per l'esecuzione di NeoSurf. Per favore liberane un pò e riprova nuovamente.
+nl.all.NoMemory:NeoSurf heeft gebrek aan voldoende geheugen. Maak wat geheugen vrij en probeer het dan nog eens.
+zh_CN.all.NoMemory:NeoSurf 内存不足。请释放一些内存，然后重试。
 
 en.all.SaveError:The file could not be saved due to an error:
 de.all.SaveError:Die Datei konnte wegen eines Fehlers nicht gespeichert werden:
@@ -567,12 +567,12 @@ it.all.NoURLError:Inserisci un URL
 nl.all.NoURLError:Geef een adres op
 zh_CN.all.NoURLError:请输入 URL
 
-en.all.URIError:NetSurf was unable to parse this URI file due to a syntax error.
-de.all.URIError:NetSurf konnte die URI Datei nicht lesen. Syntax Fehler.
-fr.all.URIError:NetSurf est incapable de traiter ce fichier URI à cause d'une erreur de syntaxe.
-it.all.URIError:NetSurf non è stato in grado di processare questo file URI a causa di un errore di sintassi.
-nl.all.URIError:NetSurf kon dit URI-bestand niet verwerken vanwege een syntaxisfout.
-zh_CN.all.URIError:由于语法错误，NetSurf 无法解析此 URI 文件。
+en.all.URIError:NeoSurf was unable to parse this URI file due to a syntax error.
+de.all.URIError:NeoSurf konnte die URI Datei nicht lesen. Syntax Fehler.
+fr.all.URIError:NeoSurf est incapable de traiter ce fichier URI à cause d'une erreur de syntaxe.
+it.all.URIError:NeoSurf non è stato in grado di processare questo file URI a causa di un errore di sintassi.
+nl.all.URIError:NeoSurf kon dit URI-bestand niet verwerken vanwege een syntaxisfout.
+zh_CN.all.URIError:由于语法错误，NeoSurf 无法解析此 URI 文件。
 
 en.all.EmptyError:file is empty.
 de.all.EmptyError:Die Datei ist leer.
@@ -653,19 +653,19 @@ it.ro.DownloadWarn:Questo trasferimento potrebbe essere incompleto:
 nl.ro.DownloadWarn:Dit bestand is misschien niet compleet opgehaald:
 zh_CN.ro.DownloadWarn:此下载可能无法完成：
 
-en.ro.LongURL:The URL for this page is too long for NetSurf to display.
-de.ro.LongURL:The URL for this page is too long for NetSurf to display.
-fr.ro.LongURL:The URL for this page is too long for NetSurf to display.
-it.ro.LongURL:L'URL di questa pagina è troppo lungo per essere visualizzato su NetSurf.
-nl.ro.LongURL:Het adres van deze pagina is te lang voor NetSurf om te kunnen tonen.
-zh_CN.ro.LongURL:该页面的 URL 过长， NetSurf 无法显示。
+en.ro.LongURL:The URL for this page is too long for NeoSurf to display.
+de.ro.LongURL:The URL for this page is too long for NeoSurf to display.
+fr.ro.LongURL:The URL for this page is too long for NeoSurf to display.
+it.ro.LongURL:L'URL di questa pagina è troppo lungo per essere visualizzato su NeoSurf.
+nl.ro.LongURL:Het adres van deze pagina is te lang voor NeoSurf om te kunnen tonen.
+zh_CN.ro.LongURL:该页面的 URL 过长， NeoSurf 无法显示。
 
-en.ro.FontBadInst:An error occurred when initialising fonts due to the presence of obsolete copies of the ROM fonts on disc. NetSurf will exit and launch a program which will attempt to fix this.
+en.ro.FontBadInst:An error occurred when initialising fonts due to the presence of obsolete copies of the ROM fonts on disc. NeoSurf will exit and launch a program which will attempt to fix this.
 de.ro.FontBadInst:Font-Initialisierung fehlerhaft. Obsolete Kopien von ROM Fonts auf dem lokalem Speichermedium. Fehlerbehebung startet.
-fr.ro.FontBadInst:Une erreur s'est produite lors de l'initialisation des fontes à cause de la présence de copies obsolètes de fontes ROM sur disque. NetSurf va sortir et lancer un programme qui va tenter de réparer cela.
-it.ro.FontBadInst:Si è verificato un errore durante l'inizializzazione dei font a causa della presenza di una copia obsoleta dei font "ROM" nel disco. NetSurf verrà chiuso e si cercherà di lanciare un programma in grado di risolvere questo problema.
-nl.ro.FontBadInst:Probleem ontstaan bij het initialiseren van de lettertypen. Een schijf bevat een map met geactiveerde ROM-lettertypes die overbodig zijn. NetSurf wordt gestopt en activeert een programma die dit probleem probeert te verhelpen.
-zh_CN.ro.FontBadInst:因为磁盘上存在 ROM 字体的过时副本，初始化字体时出现错误。NetSurf 将退出并启动一个用于尝试修复此问题的程序。
+fr.ro.FontBadInst:Une erreur s'est produite lors de l'initialisation des fontes à cause de la présence de copies obsolètes de fontes ROM sur disque. NeoSurf va sortir et lancer un programme qui va tenter de réparer cela.
+it.ro.FontBadInst:Si è verificato un errore durante l'inizializzazione dei font a causa della presenza di una copia obsoleta dei font "ROM" nel disco. NeoSurf verrà chiuso e si cercherà di lanciare un programma in grado di risolvere questo problema.
+nl.ro.FontBadInst:Probleem ontstaan bij het initialiseren van de lettertypen. Een schijf bevat een map met geactiveerde ROM-lettertypes die overbodig zijn. NeoSurf wordt gestopt en activeert een programma die dit probleem probeert te verhelpen.
+zh_CN.ro.FontBadInst:因为磁盘上存在 ROM 字体的过时副本，初始化字体时出现错误。NeoSurf 将退出并启动一个用于尝试修复此问题的程序。
 
 en.ro.FontError:Failed to open font "Homerton.Medium" (%s).
 de.ro.FontError:Fehler beim öffnen des Fonts "Homerton.Medium" (%s).
@@ -681,12 +681,12 @@ it.ro.Resolvers:Non è stato configurato nessun nome per i domini dei server, pe
 nl.ro.Resolvers:Er zijn geen DNS-servers ingesteld, dus kunnen alleen lokale bestanden worden bekeken. Ga naar de netwerkinstellingen via !Boot om de DNS-server(s) in te stellen.
 zh_CN.ro.Resolvers:没有配置域名服务器，因此只能浏览本地文件。 使用配置来设置您的域名服务器。
 
-en.ro.Template:A window template is missing from the Templates file. Please reinstall NetSurf.
-de.ro.Template:Ein Template für ein Fenster fehlt in der Datei Templates. Bitte NetSurf neu installieren.
-fr.ro.Template:Un modèle de fenêtre est absent du fichier Templates. Réinstallez NetSurf SVP.
-it.ro.Template:Una finestra di template risulta mancante. Per favore reinstalla NetSurf.
-nl.ro.Template:Er ontbreekt een vensterdefinitie in het Templates-bestand. Installeer NetSurf opnieuw.
-zh_CN.ro.Template:Templates 文件中缺少窗口模板。请重新安装 NetSurf。
+en.ro.Template:A window template is missing from the Templates file. Please reinstall NeoSurf.
+de.ro.Template:Ein Template für ein Fenster fehlt in der Datei Templates. Bitte NeoSurf neu installieren.
+fr.ro.Template:Un modèle de fenêtre est absent du fichier Templates. Réinstallez NeoSurf SVP.
+it.ro.Template:Una finestra di template risulta mancante. Per favore reinstalla NeoSurf.
+nl.ro.Template:Er ontbreekt een vensterdefinitie in het Templates-bestand. Installeer NeoSurf opnieuw.
+zh_CN.ro.Template:Templates 文件中缺少窗口模板。请重新安装 NeoSurf。
 
 en.ro.NoPathError:To save, drag the icon to a directory display
 de.ro.NoPathError:Symbol in ein Verzeichnisfenster ziehen um zu Speichern.
@@ -724,26 +724,26 @@ it.ami.CompError:Impossibile aprire
 nl.ami.CompError:Niet te openen
 zh_CN.ami.CompError:无法打开
 
-en.ami.BMConvErr:NetSurf requires guigfx.library to display images in this mode
-de.ami.BMConvErr:NetSurf benötigt die guigfx.library für Bilder in diesem Mode
-fr.ami.BMConvErr:NetSurf requires guigfx.library to display images in this mode
-it.ami.BMConvErr:NetSurf richiede la guigfx.library per visualizzare le immagini in questa modalità
-nl.ami.BMConvErr:NetSurf requires guigfx.library to display images in this mode
-zh_CN.ami.BMConvErr:在这种模式下，NetSurf 需要 guigfx.library 来显示图像
+en.ami.BMConvErr:NeoSurf requires guigfx.library to display images in this mode
+de.ami.BMConvErr:NeoSurf benötigt die guigfx.library für Bilder in diesem Mode
+fr.ami.BMConvErr:NeoSurf requires guigfx.library to display images in this mode
+it.ami.BMConvErr:NeoSurf richiede la guigfx.library per visualizzare le immagini in questa modalità
+nl.ami.BMConvErr:NeoSurf requires guigfx.library to display images in this mode
+zh_CN.ami.BMConvErr:在这种模式下，NeoSurf 需要 guigfx.library 来显示图像
 
 en.ami.MultiTabClose:Are you sure you want to close multiple tabs?
 de.ami.MultiTabClose:Wirklich mehrere Tabs schließen?
 fr.ami.MultiTabClose:Are you sure you want to close multiple tabs?
-it.ami.MultiTabClose:Sono rimaste aperte più schede, sei sicuro di voler chiudere NetSurf?
+it.ami.MultiTabClose:Sono rimaste aperte più schede, sei sicuro di voler chiudere NeoSurf?
 nl.ami.MultiTabClose:Er zijn meerdere tabbladen geopend. Tabbladen allemaal sluiten?
 zh_CN.ami.MultiTabClose:您确定要关闭多个标签页吗？
 
-en.ami.TCPIPShutdown:The TCP/IP stack has signalled that it is about to shutdown and NetSurf must exit.  NetSurf will quit in 5 seconds unless this shutdown is aborted.
-de.ami.TCPIPShutdown:Der TCP/IP Stack geht grad' zur Hölle und reißt Netsurf mit sich. In genau 5 Sekunden - es sei denn, der Shutdown wird abgebrochen.
-fr.ami.TCPIPShutdown:The TCP/IP stack has signalled that it is about to shutdown and NetSurf must exit.  NetSurf will quit in 5 seconds unless this shutdown is aborted.
-it.ami.TCPIPShutdown:Lo stack TCP/IP ha dato segnale di essere in procinto di arresto,  NetSurf verrà chiuso.  NetSurf si chiuderà entro 5 secondi a meno che lo shutdown non venga interrotto.
-nl.ami.TCPIPShutdown:De TCP/IP-stack meldt dat deze wordt afgesloten waardoor NetSurf gestopt moet worden. NetSurf zal stoppen in 5 seconden, tenzij het afsluiten wordt afgebroken.
-zh_CN.ami.TCPIPShutdown:TCP/IP 堆栈已发出即将关闭的信号，并且 NetSurf 必须退出。除非中止关机，否则 NetSurf 将在 5 秒钟内退出。
+en.ami.TCPIPShutdown:The TCP/IP stack has signalled that it is about to shutdown and NeoSurf must exit.  NeoSurf will quit in 5 seconds unless this shutdown is aborted.
+de.ami.TCPIPShutdown:Der TCP/IP Stack geht grad' zur Hölle und reißt NeoSurf mit sich. In genau 5 Sekunden - es sei denn, der Shutdown wird abgebrochen.
+fr.ami.TCPIPShutdown:The TCP/IP stack has signalled that it is about to shutdown and NeoSurf must exit.  NeoSurf will quit in 5 seconds unless this shutdown is aborted.
+it.ami.TCPIPShutdown:Lo stack TCP/IP ha dato segnale di essere in procinto di arresto,  NeoSurf verrà chiuso.  NeoSurf si chiuderà entro 5 secondi a meno che lo shutdown non venga interrotto.
+nl.ami.TCPIPShutdown:De TCP/IP-stack meldt dat deze wordt afgesloten waardoor NeoSurf gestopt moet worden. NeoSurf zal stoppen in 5 seconden, tenzij het afsluiten wordt afgebroken.
+zh_CN.ami.TCPIPShutdown:TCP/IP 堆栈已发出即将关闭的信号，并且 NeoSurf 必须退出。除非中止关机，否则 NeoSurf 将在 5 秒钟内退出。
 
 en.ami.AbortShutdown:Abort shutdown
 de.ami.AbortShutdown:Shutdown abbrechen
@@ -766,9 +766,9 @@ nl.all.AbortDownload:Zeker weten dat deze ophaalopdracht afgebroken moet worden?
 zh_CN.all.AbortDownload:您确定要中止此下载任务吗？
 
 en.all.QuitDownload:One or more downloads are still in progress. Are you sure you wish to quit?
-de.all.QuitDownload:Das Herunterladen ein oder mehrerer Dateien wurde noch nicht abgeschlossen. Soll NetSurf trotzdem beendet werden ?
+de.all.QuitDownload:Das Herunterladen ein oder mehrerer Dateien wurde noch nicht abgeschlossen. Soll NeoSurf trotzdem beendet werden ?
 fr.all.QuitDownload:Un ou plusieurs téléchargements sont en cours. Êtes-vous sûr de vouloir quitter ?
-it.all.QuitDownload:Uno o più file si trovano in fase di scaricamento, sei sicuro di voler chiudere NetSurf?
+it.all.QuitDownload:Uno o più file si trovano in fase di scaricamento, sei sicuro di voler chiudere NeoSurf?
 nl.all.QuitDownload:Eén of meer ophaalopdrachten zijn nog in uitvoering. Toch afbreken?
 zh_CN.all.QuitDownload:一或多个下载任务仍在进行中。您确定要退出吗？
 
@@ -1559,12 +1559,12 @@ it.all.SSLCerts:Certificati SSL
 nl.all.SSLCerts:SSL-certificaten
 zh_CN.all.SSLCerts:SSL 证书
 
-en.all.SSLError:NetSurf failed to verify the authenticity of an SSL certificate. Please verify the details presented below.
-de.all.SSLError:NetSurf konnte ein SSL Zertifikat nicht prüfen. Bitte die Details unten beachten.
-fr.all.SSLError:NetSurf a échoué dans la vérification de l'authenticité d'un certificat SSL. Vérifier les détails présentés ci-dessous.
-it.all.SSLError:NetSurf non è stato in grado di verificare l'autenticità di questo certificato SSL, per favore verifica i dettagli presenti di seguito
-nl.all.SSLError:NetSurf kan de authenticiteit van een SSL-certificaat niet controleren. Controleer onderstaande details.
-zh_CN.all.SSLError:NetSurf 无法验证 SSL 证书的真实性。请验证下面显示的详细信息。
+en.all.SSLError:NeoSurf failed to verify the authenticity of an SSL certificate. Please verify the details presented below.
+de.all.SSLError:NeoSurf konnte ein SSL Zertifikat nicht prüfen. Bitte die Details unten beachten.
+fr.all.SSLError:NeoSurf a échoué dans la vérification de l'authenticité d'un certificat SSL. Vérifier les détails présentés ci-dessous.
+it.all.SSLError:NeoSurf non è stato in grado di verificare l'autenticità di questo certificato SSL, per favore verifica i dettagli presenti di seguito
+nl.all.SSLError:NeoSurf kan de authenticiteit van een SSL-certificaat niet controleren. Controleer onderstaande details.
+zh_CN.all.SSLError:NeoSurf 无法验证 SSL 证书的真实性。请验证下面显示的详细信息。
 
 en.all.SSL_Certificate_Subject:Subject: %s
 de.all.SSL_Certificate_Subject:Subject: %s
@@ -2081,12 +2081,12 @@ zh_CN.all.NoTitle:<无标题>
 
 # Tree export
 #
-en.all.TreeHotlist:NetSurf hotlist
-de.all.TreeHotlist:NetSurf Hotlist
-fr.all.TreeHotlist:Favoris de NetSurf
-it.all.TreeHotlist:Segnalibri di NetSurf
-nl.all.TreeHotlist:NetSurf-favorieten
-zh_CN.all.TreeHotlist:NetSurf 常用列表
+en.all.TreeHotlist:NeoSurf hotlist
+de.all.TreeHotlist:NeoSurf Hotlist
+fr.all.TreeHotlist:Favoris de NeoSurf
+it.all.TreeHotlist:Segnalibri di NeoSurf
+nl.all.TreeHotlist:NeoSurf-favorieten
+zh_CN.all.TreeHotlist:NeoSurf 常用列表
 
 
 # About user interface tokens
@@ -2094,17 +2094,17 @@ zh_CN.all.TreeHotlist:NetSurf 常用列表
 #
 # This secion is for tokens that have user information about the browser
 
-en.ami.NetSurfDesc:Small as a mouse, fast as a cheetah and available for free. NetSurf is a multi-platform web browser.
-fr.ami.NetSurfDesc:Petit comme une souris, rapide comme un guépard. NetSurf est un navigateur Web multi-plate-forme libre.
-it.ami.NetSurfDesc:Piccolo come un mouse e veloce come un ghepardo! NetSurf, il browser web opensource e multi-piattaforma
-nl.ami.NetSurfDesc:Klein als een muis, snel als een cheetah en gratis beschikbaar. NetSurf is een multi-platform webbrowser.
-zh_CN.ami.NetSurfDesc:NetSurf 体积小，速度快，并提供免费服务。NetSurf 是一个多平台的网络浏览器。
+en.ami.NeoSurfDesc:Small as a mouse, fast as a cheetah and available for free. NeoSurf is a multi-platform web browser.
+fr.ami.NeoSurfDesc:Petit comme une souris, rapide comme un guépard. NeoSurf est un navigateur Web multi-plate-forme libre.
+it.ami.NeoSurfDesc:Piccolo come un mouse e veloce come un ghepardo! NeoSurf, il browser web opensource e multi-piattaforma
+nl.ami.NeoSurfDesc:Klein als een muis, snel als een cheetah en gratis beschikbaar. NeoSurf is een multi-platform webbrowser.
+zh_CN.ami.NeoSurfDesc:NeoSurf 体积小，速度快，并提供免费服务。NeoSurf 是一个多平台的网络浏览器。
 
-en.gtk.AboutDesc:NetSurf is a small and fast web browser.
-fr.gtk.AboutDesc:NetSurf est un navigateur Web multi-plate-forme libre.
-it.gtk.AboutDesc:NetSurf, il browser web opensource e multi-piattaforma
-nl.gtk.AboutDesc:NetSurf is een kleine, snelle webbrowser met open broncode.
-zh_CN.gtk.AboutDesc:NetSurf 是一款体积小，速度快的网络浏览器。
+en.gtk.AboutDesc:NeoSurf is a small and fast web browser.
+fr.gtk.AboutDesc:NeoSurf est un navigateur Web multi-plate-forme libre.
+it.gtk.AboutDesc:NeoSurf, il browser web opensource e multi-piattaforma
+nl.gtk.AboutDesc:NeoSurf is een kleine, snelle webbrowser met open broncode.
+zh_CN.gtk.AboutDesc:NeoSurf 是一款体积小，速度快的网络浏览器。
 
 
 # Hotlist user interface tokens
@@ -2153,12 +2153,12 @@ zh_CN.all.EditFolder:重命名目录
 
 # Default hotlist page names
 #
-en.all.HotlistHomepage:NetSurf homepage
-de.all.HotlistHomepage:NetSurf Homepage
-fr.all.HotlistHomepage:Page d'accueil de NetSurf
-it.all.HotlistHomepage:Pagina iniziale di NetSurf
-nl.all.HotlistHomepage:NetSurf-startpagina
-zh_CN.all.HotlistHomepage:NetSurf 主页
+en.all.HotlistHomepage:NeoSurf homepage
+de.all.HotlistHomepage:NeoSurf Homepage
+fr.all.HotlistHomepage:Page d'accueil de NeoSurf
+it.all.HotlistHomepage:Pagina iniziale di NeoSurf
+nl.all.HotlistHomepage:NeoSurf-startpagina
+zh_CN.all.HotlistHomepage:NeoSurf 主页
 
 en.all.HotlistDocumentation:Documentation
 de.all.HotlistDocumentation:Dokumentation
@@ -2167,12 +2167,12 @@ it.all.HotlistDocumentation:Documentazione
 nl.all.HotlistDocumentation:Documentatie
 zh_CN.all.HotlistDocumentation:文档
 
-en.all.HotlistContact:Contact the NetSurf developers
-de.all.HotlistContact:Contact the NetSurf developers
-fr.all.HotlistContact:Contacter les développeurs de NetSurf
-it.all.HotlistContact:Contatta gli sviluppatori di NetSurf
-nl.all.HotlistContact:Contacteer (Eng.) de NetSurf-ontwikkelaars
-zh_CN.all.HotlistContact:联系 NetSurf 开发人员
+en.all.HotlistContact:Contact the NeoSurf developers
+de.all.HotlistContact:Contact the NeoSurf developers
+fr.all.HotlistContact:Contacter les développeurs de NeoSurf
+it.all.HotlistContact:Contatta gli sviluppatori di NeoSurf
+nl.all.HotlistContact:Contacteer (Eng.) de NeoSurf-ontwikkelaars
+zh_CN.all.HotlistContact:联系 NeoSurf 开发人员
 
 en.all.HotlistDownloads:Download the latest version
 de.all.HotlistDownloads:Download the latest version
@@ -2341,7 +2341,7 @@ zh_CN.all.Saturday:周六
 # Menus
 # =====
 #
-# This section defines the title and entry text for NetSurf's menus.
+# This section defines the title and entry text for NeoSurf's menus.
 #
 
 # Iconbar menu
@@ -2949,11 +2949,11 @@ it.all.HelpCredits:Ringraziamenti
 nl.all.HelpCredits:Bijdragen
 zh_CN.all.HelpCredits:制作人员名单
 
-en.all.HelpLicence:Licence
-de.all.HelpLicence:Lizenz
-it.all.HelpLicence:Licenza
-nl.all.HelpLicence:Licentie
-zh_CN.all.HelpLicence:许可证
+en.all.HelpLicense:License
+de.all.HelpLicense:Lizenz
+it.all.HelpLicense:Licenza
+nl.all.HelpLicense:Licentie
+zh_CN.all.HelpLicense:许可证
 
 en.ro.HelpInter:Interactive help
 de.ro.HelpInter:interaktive Hilfe
@@ -3691,12 +3691,12 @@ zh_CN.all.Abort:中止
 # This section contains tokens which are used in the Amiga
 # download window.
 #
-en.ami.amiDownloading:NetSurf: Downloading...
-de.ami.amiDownloading:NetSurf: Downloading...
-fr.ami.amiDownloading:NetSurf: Downloading...
-it.ami.amiDownloading:NetSurf: Scaricamento...
-nl.ami.amiDownloading:NetSurf: Downloading...
-zh_CN.ami.amiDownloading:NetSurf：正在下载…
+en.ami.amiDownloading:NeoSurf: Downloading...
+de.ami.amiDownloading:NeoSurf: Downloading...
+fr.ami.amiDownloading:NeoSurf: Downloading...
+it.ami.amiDownloading:NeoSurf: Scaricamento...
+nl.ami.amiDownloading:NeoSurf: Downloading...
+zh_CN.ami.amiDownloading:NeoSurf：正在下载…
 
 en.ami.amiDownload:%ld of %ld bytes downloaded
 de.ami.amiDownload:%ld von %ld Bytes heruntergeladen
@@ -3712,12 +3712,12 @@ it.ami.amiDownloadU:%ld byte scaricati
 nl.ami.amiDownloadU:%ld bytes opgehaald
 zh_CN.ami.amiDownloadU:已下载 %ld 个字节
 
-en.ami.amiDownloadComplete:NetSurf: Download completed
-de.ami.amiDownloadComplete:NetSurf: Download vollständig
-fr.ami.amiDownloadComplete:NetSurf: Download completed
-it.ami.amiDownloadComplete:NetSurf: Download completato
-nl.ami.amiDownloadComplete:NetSurf: Download voltooid
-zh_CN.ami.amiDownloadComplete:NetSurf：已完成下载
+en.ami.amiDownloadComplete:NeoSurf: Download completed
+de.ami.amiDownloadComplete:NeoSurf: Download vollständig
+fr.ami.amiDownloadComplete:NeoSurf: Download completed
+it.ami.amiDownloadComplete:NeoSurf: Download completato
+nl.ami.amiDownloadComplete:NeoSurf: Download voltooid
+zh_CN.ami.amiDownloadComplete:NeoSurf：已完成下载
 
 # Requesters
 #
@@ -3833,12 +3833,12 @@ zh_CN.gtk.gtkWorking: 正在处理
 
 # Dialogs
 #
-en.gtk.gtkQuit:Quit NetSurf?
-de.gtk.gtkQuit:NetSurf beenden?
-fr.gtk.gtkQuit:Quitter NetSurf ?
-it.gtk.gtkQuit:Sei sicuro di voler uscire da NetSurf?
-nl.gtk.gtkQuit:NetSurf afsluiten?
-zh_CN.gtk.gtkQuit:是否退出 NetSurf？
+en.gtk.gtkQuit:Quit NeoSurf?
+de.gtk.gtkQuit:NeoSurf beenden?
+fr.gtk.gtkQuit:Quitter NeoSurf ?
+it.gtk.gtkQuit:Sei sicuro di voler uscire da NeoSurf?
+nl.gtk.gtkQuit:NeoSurf afsluiten?
+zh_CN.gtk.gtkQuit:是否退出 NeoSurf？
 
 en.gtk.gtkDownloadsRunning:There are still downloads running, if you quit now these will be canceled and the files deleted.
 de.gtk.gtkDownloadsRunning:Es sind noch Downloads aktiv, beim Beenden werden sie abgebrochen und die Dateien gelöscht.
@@ -4539,12 +4539,12 @@ zh_CN.gtk.gtkFindClose:关闭搜索栏
 
 # GTK preferences dialog
 
-en.gtk.preferencesTitle:Netsurf Preferences
-de.gtk.preferencesTitle:Netsurf Einstellungen
-fr.gtk.preferencesTitle:Préférences de Netsurf
-it.gtk.preferencesTitle:Preferenze di Netsurf
-nl.gtk.preferencesTitle:Netsurf-voorkeuren
-zh_CN.gtk.preferencesTitle:NetSurf 首选项
+en.gtk.preferencesTitle:NeoSurf Preferences
+de.gtk.preferencesTitle:NeoSurf Einstellungen
+fr.gtk.preferencesTitle:Préférences de NeoSurf
+it.gtk.preferencesTitle:Preferenze di NeoSurf
+nl.gtk.preferencesTitle:NeoSurf-voorkeuren
+zh_CN.gtk.preferencesTitle:NeoSurf 首选项
 
 # Main tab
 en.gtk.preferencesMainTabtitle:Main
@@ -4614,7 +4614,7 @@ en.gtk.preferencesSearchProviderTooltip:The default web search provider
 de.gtk.preferencesSearchProviderTooltip:Voreingestellter Suchanbieter
 fr.gtk.preferencesSearchProviderTooltip:Le fournisseur de recherche sur le web par défaut
 it.gtk.preferencesSearchProviderTooltip:Provider di ricerca web predefinito
-nl.gtk.preferencesSearchProviderTooltip:Kies de standaardzoekmachine. NetSurf gebruikt deze in de zoekbalk.
+nl.gtk.preferencesSearchProviderTooltip:Kies de standaardzoekmachine. NeoSurf gebruikt deze in de zoekbalk.
 zh_CN.gtk.preferencesSearchProviderTooltip:默认网络搜索提供者
 
 en.gtk.preferencesDownloads:<b>Downloads</b>
@@ -5566,12 +5566,12 @@ it.all.ThemeInstDown:Per favore attendere lo scaricamento del tema grafico.
 nl.all.ThemeInstDown:Wacht tot het thema is opgehaald.
 zh_CN.all.ThemeInstDown:请等待下载主题。
 
-en.all.ThemeInvalid:The downloaded theme is invalid or requires a newer version of NetSurf.
-de.all.ThemeInvalid:Das geladene Thema ist fehlerhaft oder benötigt eine neuere Version von NetSurf.
-fr.all.ThemeInvalid:Le thème téléchargé est invalide ou nécessite une version plus récente de NetSurf.
-it.all.ThemeInvalid:Il tema scaricato non è compatibile oppure richiede una versione più recente di NetSurf.
-nl.all.ThemeInvalid:Het opgehaalde thema is niet (meer) in orde of vereist een nieuwere NetSurf-versie.
-zh_CN.all.ThemeInvalid:下载的主题无效或需要使用更高版本的 NetSurf。
+en.all.ThemeInvalid:The downloaded theme is invalid or requires a newer version of NeoSurf.
+de.all.ThemeInvalid:Das geladene Thema ist fehlerhaft oder benötigt eine neuere Version von NeoSurf.
+fr.all.ThemeInvalid:Le thème téléchargé est invalide ou nécessite une version plus récente de NeoSurf.
+it.all.ThemeInvalid:Il tema scaricato non è compatibile oppure richiede una versione più recente di NeoSurf.
+nl.all.ThemeInvalid:Het opgehaalde thema is niet (meer) in orde of vereist een nieuwere NeoSurf-versie.
+zh_CN.all.ThemeInvalid:下载的主题无效或需要使用更高版本的 NeoSurf。
 
 en.all.ThemeInstall:Would you like to install the theme '%s' by %s?
 de.all.ThemeInstall:Soll das Thema '%s' von %s installiert werden ?
@@ -5706,7 +5706,7 @@ nl.ro.HelpToolbar15:Dit is het Adressuggestie-symbool.|MKlik met KIES om een lij
 zh_CN.ro.HelpToolbar15:\T地址建议图标。|M\S打开最近键入的 URL 列表。
 
 en.ro.HelpToolbar16:\Tthrobber.|MIt animates while this \w is active.
-de.ro.HelpToolbar16:Das ist die Ladeaktivitätsanzeige.|MSie wird animiert, wenn NetSurf aktiv ist.
+de.ro.HelpToolbar16:Das ist die Ladeaktivitätsanzeige.|MSie wird animiert, wenn NeoSurf aktiv ist.
 fr.ro.HelpToolbar16:\Tle pulseur.|MIl s'anime lorsque cette \w est active.
 it.ro.HelpToolbar16:\Tthrobber animato durante le attività di rete
 nl.ro.HelpToolbar16:Dit is de Activiteitsindicator.|MDeze indicator beweegt zolang er actieve processen in het venster plaatsvinden.
@@ -5743,16 +5743,16 @@ zh_CN.ro.HelpStatus1:\T状态栏。|M它会显示相关浏览器 \w 正在执行
 en.ro.HelpIconMenu0:\Rview information about this software.
 de.ro.HelpIconMenu0:Zeigt Informationen zu dieser Software.
 fr.ro.HelpIconMenu0:\Rvoir des informations sur ce logiciel.
-it.ro.HelpIconMenu0:\Rmostra informazioni su NetSurf
+it.ro.HelpIconMenu0:\Rmostra informazioni su NeoSurf
 nl.ro.HelpIconMenu0:Verplaats de muispijl naar rechts om het informatievenster over dit programma te openen.
 zh_CN.ro.HelpIconMenu0:\R查看有关此软件的信息。
 
-en.ro.HelpIconMenu1:\Sview NetSurf's documentation.
-de.ro.HelpIconMenu1:Lädt die NetSurf Dokumentation in einem neuen Browserfenster.
-fr.ro.HelpIconMenu1:\Svoir la documentation de NetSurf.
-it.ro.HelpIconMenu1:\Smostra documentazione di NetSurf
-nl.ro.HelpIconMenu1:Klik met KIES om de documentatie van NetSurf te openen.
-zh_CN.ro.HelpIconMenu1:\S查看 NetSurf 的文档。
+en.ro.HelpIconMenu1:\Sview NeoSurf's documentation.
+de.ro.HelpIconMenu1:Lädt die NeoSurf Dokumentation in einem neuen Browserfenster.
+fr.ro.HelpIconMenu1:\Svoir la documentation de NeoSurf.
+it.ro.HelpIconMenu1:\Smostra documentazione di NeoSurf
+nl.ro.HelpIconMenu1:Klik met KIES om de documentatie van NeoSurf te openen.
+zh_CN.ro.HelpIconMenu1:\S查看 NeoSurf 的文档。
 
 en.ro.HelpIconMenu2:\Ropen a window.
 de.ro.HelpIconMenu2:Mauszeiger nach rechts bewegen, um ein Fenster zu öffnen.
@@ -5790,18 +5790,18 @@ nl.ro.HelpIconMenu2-3:Klik met KIES om het cookiesbeheervenster te openen.
 zh_CN.ro.HelpIconMenu2-3:\S打开 Cookie 管理 \w。
 
 en.ro.HelpIconMenu3:\Sopen the Choices dialogue box.
-de.ro.HelpIconMenu3:Öffnet einen Dialog mit Einstellungen für NetSurf.
+de.ro.HelpIconMenu3:Öffnet einen Dialog mit Einstellungen für NeoSurf.
 fr.ro.HelpIconMenu3:\Souvrir la boîte de dialogue des Préférences.
 it.ro.HelpIconMenu3:\Sapri una finestra di dialogo/scelta
-nl.ro.HelpIconMenu3:Klik met KIES om een dialoogvenster te openen waarin de NetSurf-instellingen kunnen worden ingesteld.
+nl.ro.HelpIconMenu3:Klik met KIES om een dialoogvenster te openen waarin de NeoSurf-instellingen kunnen worden ingesteld.
 zh_CN.ro.HelpIconMenu3:\S打开选择对话框。
 
-en.ro.HelpIconMenu4:\Squit NetSurf.
+en.ro.HelpIconMenu4:\Squit NeoSurf.
 de.ro.HelpIconMenu4:Beendet das Programm.|MAlle Browserfenster werden geschlossen. Downloads werden abgebrochen.
-fr.ro.HelpIconMenu4:\Squitter NetSurf.
-it.ro.HelpIconMenu4:\Schiudi NetSurf
-nl.ro.HelpIconMenu4:Klik met KIES om het programma NetSurf te stoppen.
-zh_CN.ro.HelpIconMenu4:\S退出 NetSurf 浏览器。
+fr.ro.HelpIconMenu4:\Squitter NeoSurf.
+it.ro.HelpIconMenu4:\Schiudi NeoSurf
+nl.ro.HelpIconMenu4:Klik met KIES om het programma NeoSurf te stoppen.
+zh_CN.ro.HelpIconMenu4:\S退出 NeoSurf 浏览器。
 
 en.ro.HelpBrowserMenu0:\Rsee the options relating to the current page.
 de.ro.HelpBrowserMenu0:Untermenü Seite.|MMenüpunkte beziehen sich auf die angezeigte Seite.
@@ -6125,12 +6125,12 @@ it.ro.HelpBrowserMenu3-4:\Sottieni nuovamente la pagina corrente.
 nl.ro.HelpBrowserMenu3-4:Klik met KIES om deze pagina opnieuw op te halen.
 zh_CN.ro.HelpBrowserMenu3-4:\S再次获取当前页面。
 
-en.ro.HelpBrowserMenu3-5:\Sstop NetSurf from continuing to load this page.
+en.ro.HelpBrowserMenu3-5:\Sstop NeoSurf from continuing to load this page.
 de.ro.HelpBrowserMenu3-5:Unterbricht den Ladevorgang und alle anderen Prozesse im aktuellen Browserfenster.
-fr.ro.HelpBrowserMenu3-5:\Sarrêter le chargement de la page par NetSurf.
-it.ro.HelpBrowserMenu3-5:\Simpedisci a NetSurf di continuare a caricare questa pagina.
+fr.ro.HelpBrowserMenu3-5:\Sarrêter le chargement de la page par NeoSurf.
+it.ro.HelpBrowserMenu3-5:\Simpedisci a NeoSurf di continuare a caricare questa pagina.
 nl.ro.HelpBrowserMenu3-5:Klik met KIES om het ophaalproces van deze pagina te stoppen.
-zh_CN.ro.HelpBrowserMenu3-5:\S阻止 NetSurf 继续加载此页面。
+zh_CN.ro.HelpBrowserMenu3-5:\S阻止 NeoSurf 继续加载此页面。
 
 en.ro.HelpBrowserMenu4:\Rset the local display options.
 de.ro.HelpBrowserMenu4:Untermenü Anzeige.|MFestlegen der Darstellungsparameter für das Browserfenster.
@@ -6174,12 +6174,12 @@ it.ro.HelpBrowserMenu4-1-2:\Salterna la visualizzazione delle animazioni.|MSe di
 nl.ro.HelpBrowserMenu4-1-2:Klik met KIES om het tonen van animaties aan of uit te zetten.|MWanneer uitgezet, wordt de eerste afbeelding van de animatie getoond.
 zh_CN.ro.HelpBrowserMenu4-1-2:\S切换显示动画。|M如果关闭，则会显示第一帧动画。
 
-en.ro.HelpBrowserMenu4-2:\Rcontrol the display of NetSurf's toolbars.
+en.ro.HelpBrowserMenu4-2:\Rcontrol the display of NeoSurf's toolbars.
 de.ro.HelpBrowserMenu4-2:Optionen zur Anzeige von Kontroll- und Steuerelementen.
-fr.ro.HelpBrowserMenu4-2:\Rcontroler l'affichage des barres d'outils de NetSurf.
-it.ro.HelpBrowserMenu4-2:\Rcontrolla la visualizzazione delle barre strumenti di NetSurf.
+fr.ro.HelpBrowserMenu4-2:\Rcontroler l'affichage des barres d'outils de NeoSurf.
+it.ro.HelpBrowserMenu4-2:\Rcontrolla la visualizzazione delle barre strumenti di NeoSurf.
 nl.ro.HelpBrowserMenu4-2:Verplaats de muispijl naar rechts om de gereedschapbalken aan te passen.
-zh_CN.ro.HelpBrowserMenu4-2:\R控制显示 NetSurf 工具栏。
+zh_CN.ro.HelpBrowserMenu4-2:\R控制显示 NeoSurf 工具栏。
 
 en.ro.HelpBrowserMenu4-2-0:\Stoggle the display of the toolbar buttons.|MURL bar uses the remaining space.
 de.ro.HelpBrowserMenu4-2-0:Schaltet die Schaltknöpfe am oberen Fensterrand ein/aus.|MDie Länge der Adressleiste wird angepaßt.
@@ -6230,12 +6230,12 @@ it.ro.HelpBrowserMenu4-3-1:\Simposta la non visualizzazione di tutto il processo
 nl.ro.HelpBrowserMenu4-3-1:Klik met KIES om het niet eerder tonen van de gehele pagina, nadat alle opgehaalde paginagegevens zijn verwerkt aan of uit te zetten.
 zh_CN.ro.HelpBrowserMenu4-3-1:\S切换是否在所有计算完成之前不显示所有内容。
 
-en.ro.HelpBrowserMenu4-4:\Smake your local display options the default options for NetSurf.
+en.ro.HelpBrowserMenu4-4:\Smake your local display options the default options for NeoSurf.
 de.ro.HelpBrowserMenu4-4:Übernimmt die vorgenommenen Anzeigeeinstellungen als globale Standardwerte für die Darstellung aller weiteren Seiten.
-fr.ro.HelpBrowserMenu4-4:\Spromouvoir vos options d'affichage locales en options par défaut pour NetSurf.
+fr.ro.HelpBrowserMenu4-4:\Spromouvoir vos options d'affichage locales en options par défaut pour NeoSurf.
 it.ro.HelpBrowserMenu4-4:\Simposta come predefinite tutte le impostazioni di visualizzazione.
-nl.ro.HelpBrowserMenu4-4:Klik met KIES om de gekozen weergave van dit browservenster als de standaardinstelling voor NetSurf te maken.
-zh_CN.ro.HelpBrowserMenu4-4:\S将本地显示选项设置为 NetSurf 的默认选项。
+nl.ro.HelpBrowserMenu4-4:Klik met KIES om de gekozen weergave van dit browservenster als de standaardinstelling voor NeoSurf te maken.
+zh_CN.ro.HelpBrowserMenu4-4:\S将本地显示选项设置为 NeoSurf 的默认选项。
 
 en.ro.HelpBrowserMenu4-5:\Rcontrol the default \w positioning.
 de.ro.HelpBrowserMenu4-5:Kontrolle über Anordnung und Positionierung neuer Fenster.
@@ -6266,18 +6266,18 @@ nl.ro.HelpBrowserMenu4-5-2:Klik met KIES om aan of uit te zetten, dat de positie
 zh_CN.ro.HelpBrowserMenu4-5-2:\S切换子窗口是否复制其父窗口的大小和位置。|M关闭后，所有新窗口都将在默认位置打开。
 
 en.ro.HelpBrowserMenu4-5-3:\S return to the default \w positioning.
-de.ro.HelpBrowserMenu4-5-3:Setzt die festgelegte Standardposition für Fenster auf einen in NetSurf voreingestellten Wert zurück.
+de.ro.HelpBrowserMenu4-5-3:Setzt die festgelegte Standardposition für Fenster auf einen in NeoSurf voreingestellten Wert zurück.
 fr.ro.HelpBrowserMenu4-5-3:\Srevenir au positionnement de fenêtre par défaut.
 it.ro.HelpBrowserMenu4-5-3:\Sritorna al posizionamento della finestra predefinito.
 nl.ro.HelpBrowserMenu4-5-3:Klik met KIES om de vensterpositie en omvang terug te zetten naar de oorspronkelijke standaardwaarden.
 zh_CN.ro.HelpBrowserMenu4-5-3:\S 返回默认的\w 位置。
 
-en.ro.HelpBrowserMenu5:\Raccess NetSurf's built in utilities.|MUtilities are tools such as the hotlist, history tree and various setup options.
+en.ro.HelpBrowserMenu5:\Raccess NeoSurf's built in utilities.|MUtilities are tools such as the hotlist, history tree and various setup options.
 de.ro.HelpBrowserMenu5:Untermenü Werkzeuge.|MEnthält verschiedene nützliche Zusatz- und Sonderfunktionen.
-fr.ro.HelpBrowserMenu5:\Raccéder aux utilitaires intégrés à NetSurf.|MLes utilitaires sont des outils comme les favoris, l'historique arborescent et diverses options de configuration.
-it.ro.HelpBrowserMenu5:\Raccedi a NetSurf attraverso le utilità.|MLe utilità sono strumenti simili ai segnalibri, gli alberi della cronologia e le altre opzioni di configurazione.
-nl.ro.HelpBrowserMenu5:Verplaats de muispijl naar rechts om toegang te krijgen tot NetSurf's ingebouwde mogelijkheden.|MMogelijkheden zijn bijvoorbeeld gereedschappen zoals de favorietenlijst, de browsergeschiedenis en verschillende instelmogelijkheden.
-zh_CN.ro.HelpBrowserMenu5:\R访问 NetSurf 的内置实用程序。|M实用程序是诸如常用列表，历史记录树和各种设置选项之类的工具。
+fr.ro.HelpBrowserMenu5:\Raccéder aux utilitaires intégrés à NeoSurf.|MLes utilitaires sont des outils comme les favoris, l'historique arborescent et diverses options de configuration.
+it.ro.HelpBrowserMenu5:\Raccedi a NeoSurf attraverso le utilità.|MLe utilità sono strumenti simili ai segnalibri, gli alberi della cronologia e le altre opzioni di configurazione.
+nl.ro.HelpBrowserMenu5:Verplaats de muispijl naar rechts om toegang te krijgen tot NeoSurf's ingebouwde mogelijkheden.|MMogelijkheden zijn bijvoorbeeld gereedschappen zoals de favorietenlijst, de browsergeschiedenis en verschillende instelmogelijkheden.
+zh_CN.ro.HelpBrowserMenu5:\R访问 NeoSurf 的内置实用程序。|M实用程序是诸如常用列表，历史记录树和各种设置选项之类的工具。
 
 en.ro.HelpBrowserMenu5-0:\Rmanage the hotlist.
 de.ro.HelpBrowserMenu5-0:Verwaltung der Hotlist.
@@ -6315,7 +6315,7 @@ nl.ro.HelpBrowserMenu5-1-0:Klik met KIES om de venstergeschiedenis te openen.
 zh_CN.ro.HelpBrowserMenu5-1-0:\S打开本地历史记录 \w。
 
 en.ro.HelpBrowserMenu5-1-1:\Sopen the global history \w.
-de.ro.HelpBrowserMenu5-1-1:Anklicken mit AUSWAHL öffnet das Fenster mit der globalen History.|MIn der globalen History werden alle mit NetSurf besuchten Webseiten notiert.
+de.ro.HelpBrowserMenu5-1-1:Anklicken mit AUSWAHL öffnet das Fenster mit der globalen History.|MIn der globalen History werden alle mit NeoSurf besuchten Webseiten notiert.
 fr.ro.HelpBrowserMenu5-1-1:\Souvrir la fenêtre d'historique global.
 it.ro.HelpBrowserMenu5-1-1:\Sapri la cronologia globale
 nl.ro.HelpBrowserMenu5-1-1:Klik met KIES om de browsergeschiedenis te openen.
@@ -6343,28 +6343,28 @@ nl.ro.HelpBrowserMenu5-2-1:Klik met KIES om alle opgeslagen cookies te verwijder
 zh_CN.ro.HelpBrowserMenu5-2-1:\S删除所有保存的 Cookies。
 
 en.ro.HelpBrowserMenu6:\Rsee the help resources available.
-de.ro.HelpBrowserMenu6:Untermenü Hilfe.|MZeigt Informationen zu und über NetSurf.
+de.ro.HelpBrowserMenu6:Untermenü Hilfe.|MZeigt Informationen zu und über NeoSurf.
 fr.ro.HelpBrowserMenu6:\Rvoir l'aide disponible.
 it.ro.HelpBrowserMenu6:\Rmostra la documentazione disponibile
 nl.ro.HelpBrowserMenu6:Verplaats de muispijl naar rechts om extra hulp en informatie te raadplegen, indien deze beschikbaar is.
 zh_CN.ro.HelpBrowserMenu6:\R查看可用的帮助资源。
 
 en.ro.HelpBrowserMenu6-0:\Sopen the documentation contents page in a new \w.
-de.ro.HelpBrowserMenu6-0:Öffnet die NetSurf Dokumentation in einem neuen Browserfenster.
+de.ro.HelpBrowserMenu6-0:Öffnet die NeoSurf Dokumentation in einem neuen Browserfenster.
 fr.ro.HelpBrowserMenu6-0:\Souvrir la page de documentation dans une nouvelle fenêtre.
 it.ro.HelpBrowserMenu6-0:\Sapri i contenuti della documentazione in una nuova finestra
 nl.ro.HelpBrowserMenu6-0:Klik met KIES om de inhoudsopgave van de documentatie in een nieuw browservenster te openen.
 zh_CN.ro.HelpBrowserMenu6-0:\S在新的 \w 中打开文档内容页面。
 
 en.ro.HelpBrowserMenu6-1:\Sopen the user guide in a new \w.
-de.ro.HelpBrowserMenu6-1:Öffnet das NetSurf Handbuch in einem neuen Browserfenster.
+de.ro.HelpBrowserMenu6-1:Öffnet das NeoSurf Handbuch in einem neuen Browserfenster.
 fr.ro.HelpBrowserMenu6-1:\Souvrir le guide de l'utilisateur dans une nouvelle fenêtre.
 it.ro.HelpBrowserMenu6-1:\Sapri la guida in linea in una nuova finestra
 nl.ro.HelpBrowserMenu6-1:Klik met KIES om de gebruikershandleiding in een nieuw browservenster te openen.
 zh_CN.ro.HelpBrowserMenu6-1:\S在新的 \w 中打开用户指南。
 
 en.ro.HelpBrowserMenu6-2:\Sopen the user information page in a new \w.
-de.ro.HelpBrowserMenu6-2:Öffnet eine Seite mit allgemeinen Informationen zu NetSurf in einem neuen Browserfenster.
+de.ro.HelpBrowserMenu6-2:Öffnet eine Seite mit allgemeinen Informationen zu NeoSurf in einem neuen Browserfenster.
 fr.ro.HelpBrowserMenu6-2:\Souvrir la page d'information de l'utilisateur dans une nouvelle fenêtre.
 it.ro.HelpBrowserMenu6-2:\Sapri la pagina delle informazioni utente in una nuova finestra
 nl.ro.HelpBrowserMenu6-2:Klik met KIES om de gebruikersinformatie in een nieuw browservenster te openen.
@@ -6377,12 +6377,12 @@ it.ro.HelpBrowserMenu6-3:\Sapri la pagina informazioni:ringraziamenti in una nuo
 nl.ro.HelpBrowserMenu6-3:Klik met KIES om de bijdragenpagina "about:credits" in een nieuw browservenster te openen.
 zh_CN.ro.HelpBrowserMenu6-3:\S在新的 \w 中打开 about：credits 页面。
 
-en.ro.HelpBrowserMenu6-4:\Sopen the about:licence page in a new \w.
-de.ro.HelpBrowserMenu6-4:\Sopen the about:licence page in a new \w.
-fr.ro.HelpBrowserMenu6-4:\Sopen the about:licence page in a new \w.
+en.ro.HelpBrowserMenu6-4:\Sopen the about:license page in a new \w.
+de.ro.HelpBrowserMenu6-4:\Sopen the about:license page in a new \w.
+fr.ro.HelpBrowserMenu6-4:\Sopen the about:license page in a new \w.
 it.ro.HelpBrowserMenu6-4:\Sapri la pagina informazioni:licenza in una nuova finestra
-nl.ro.HelpBrowserMenu6-4:Klik met KIES om de licentiepagina "about:licence" in een nieuw browservenster te openen.
-zh_CN.ro.HelpBrowserMenu6-4:\S在新的 \w 中打开 about：licence 页面。
+nl.ro.HelpBrowserMenu6-4:Klik met KIES om de licentiepagina "about:license" in een nieuw browservenster te openen.
+zh_CN.ro.HelpBrowserMenu6-4:\S在新的 \w 中打开 about：license 页面。
 
 en.ro.HelpBrowserMenu6-5:\Srun Help.
 de.ro.HelpBrowserMenu6-5:Lädt die interaktive Hilfe.
@@ -6398,12 +6398,12 @@ it.ro.HelpBrowser-1:Clicca \s sul link per procedere.|MClicca \a in un link per 
 nl.ro.HelpBrowser-1:Klik met KIES op een koppeling om deze te volgen.|MKlik met PASAAN om de koppeling in een nieuw venster te openen.|MKlik met SHIFT+KIES om de inhoud op te halen voor opslag.|MKlik met SHIFT+PASAAN om het koppelingsadres te bewaren.
 zh_CN.ro.HelpBrowser-1:单击链接上的 \s 以跟随它。|M单击链接上的 \a 以在新的 \w 中打开。|MShift+\s 单击链接以下载链接目标内容。|MShift+\a 单击以保存链接目标网址。
 
-en.ro.HelpIconbar:\TNetSurf icon.|M\Sopen a new browser \w.|M\Aopen the hotlist management \w.
-de.ro.HelpIconbar:Das ist das NetSurf Icon.|MKlicken mit AUSWAHL öffnet ein neues Browserfenster.|MKlicken mit SPEZIAL öffnet die Hotlist.
-fr.ro.HelpIconbar:\Tl'icône de NetSurf.|M\Souvrir une nouvelle \w de navigateur.|M\Aouvrir la fenêtre de gestion des favoris.
-it.ro.HelpIconbar:\TIcona di NetSurf.|M\Sapri una nuova finestra|M\Aapri la finestra del gestore dei segnalibri
-nl.ro.HelpIconbar:Dit is het symbool van het programma NetSurf.|MKlik met KIES om een nieuw browservenster te openen.|MKlik met PASAAN om de favorietenlijst te openen.
-zh_CN.ro.HelpIconbar:\T NetSurf 图标。|M\S打开新的浏览器 \w。|M\A打开常用项列表管理\w。
+en.ro.HelpIconbar:\TNeoSurf icon.|M\Sopen a new browser \w.|M\Aopen the hotlist management \w.
+de.ro.HelpIconbar:Das ist das NeoSurf Icon.|MKlicken mit AUSWAHL öffnet ein neues Browserfenster.|MKlicken mit SPEZIAL öffnet die Hotlist.
+fr.ro.HelpIconbar:\Tl'icône de NeoSurf.|M\Souvrir une nouvelle \w de navigateur.|M\Aouvrir la fenêtre de gestion des favoris.
+it.ro.HelpIconbar:\TIcona di NeoSurf.|M\Sapri una nuova finestra|M\Aapri la finestra del gestore dei segnalibri
+nl.ro.HelpIconbar:Dit is het symbool van het programma NeoSurf.|MKlik met KIES om een nieuw browservenster te openen.|MKlik met PASAAN om de favorietenlijst te openen.
+zh_CN.ro.HelpIconbar:\T NeoSurf 图标。|M\S打开新的浏览器 \w。|M\A打开常用项列表管理\w。
 
 en.ro.HelpHistory:Use this \w to navigate around the local history tree.|M\Son a thumbnail to return to that page.
 de.ro.HelpHistory:Die History zeigt alle in dieser Sitzung besuchten Seiten.|MKlicken mit AUSWAHL auf eine Symbolgrafik kehrt zurück zur jeweiligen Seite.
@@ -6741,12 +6741,12 @@ it.ro.HelpHotlistMenu0-3-2:\Snascondi tutti i dettagli dell'elemento.
 nl.ro.HelpHotlistMenu0-3-2:Klik met KIES om alle details in de favorietenlijst te verbergen.
 zh_CN.ro.HelpHotlistMenu0-3-2:\S隐藏所有条目详细信息。
 
-en.ro.HelpHotlistMenu0-4:\Rcontrol the display of NetSurf's toolbars.
+en.ro.HelpHotlistMenu0-4:\Rcontrol the display of NeoSurf's toolbars.
 de.ro.HelpHotlistMenu0-4:Knopfleisteneinstellungen vornehmen.
-fr.ro.HelpHotlistMenu0-4:\Rcontroler l'affichage des barres d'outils de Netsurf.
-it.ro.HelpHotlistMenu0-4:\Rcontrolla la visualizzazione delle barre strumenti di NetSurf.
+fr.ro.HelpHotlistMenu0-4:\Rcontroler l'affichage des barres d'outils de NeoSurf.
+it.ro.HelpHotlistMenu0-4:\Rcontrolla la visualizzazione delle barre strumenti di NeoSurf.
 nl.ro.HelpHotlistMenu0-4:Verplaats de muispijl naar rechts om de gereedschapbalken aan te passen.
-zh_CN.ro.HelpHotlistMenu0-4:\R控制显示 NetSurf 工具栏。
+zh_CN.ro.HelpHotlistMenu0-4:\R控制显示 NeoSurf 工具栏。
 
 en.ro.HelpHotlistMenu0-4-0:\Stoggle the display of the toolbar buttons.
 de.ro.HelpHotlistMenu0-4-0:Anklicken um die Knopfleiste ein- bzw. auszuschalten.
@@ -6916,12 +6916,12 @@ it.ro.HelpGHistoryMenu0-2-2:\Snascondi tutti i dettagli dell'immissione.
 nl.ro.HelpGHistoryMenu0-2-2:Klik met KIES om alle itemdetails te verbergen.
 zh_CN.ro.HelpGHistoryMenu0-2-2:\S隐藏所有条目详细信息。
 
-en.ro.HelpGHistoryMenu0-3:\Rcontrol the display of NetSurf's toolbars.
+en.ro.HelpGHistoryMenu0-3:\Rcontrol the display of NeoSurf's toolbars.
 de.ro.HelpGHistoryMenu0-3:Die Iconleiste der globalen History verändern.
-fr.ro.HelpGHistoryMenu0-3:\Rcontroler l'affichage des barre d'outils de NetSurf.
-it.ro.HelpGHistoryMenu0-3:\Rcontrolla la visualizzazione delle barre strumenti di NetSurf.
+fr.ro.HelpGHistoryMenu0-3:\Rcontroler l'affichage des barre d'outils de NeoSurf.
+it.ro.HelpGHistoryMenu0-3:\Rcontrolla la visualizzazione delle barre strumenti di NeoSurf.
 nl.ro.HelpGHistoryMenu0-3:Verplaats de muispijl naar rechts om de gereedschapbalken aan te passen.
-zh_CN.ro.HelpGHistoryMenu0-3:\R控制显示 NetSurf 工具栏。
+zh_CN.ro.HelpGHistoryMenu0-3:\R控制显示 NeoSurf 工具栏。
 
 en.ro.HelpGHistoryMenu0-3-0:\Stoggle the display of the toolbar buttons.
 de.ro.HelpGHistoryMenu0-3-0:Iconleiste an- oder abschalten.
@@ -7070,12 +7070,12 @@ it.ro.HelpCookiesMenu0-1-2:\Snascondi i dettagli dei cookie.
 nl.ro.HelpCookiesMenu0-1-2:Klik met KIES om alle cookiedetails te verbergen.
 zh_CN.ro.HelpCookiesMenu0-1-2:\S隐藏所有 Cookie 详细信息。
 
-en.ro.HelpCookiesMenu0-2:\Rcontrol the display of NetSurf's toolbars.
+en.ro.HelpCookiesMenu0-2:\Rcontrol the display of NeoSurf's toolbars.
 de.ro.HelpCookiesMenu0-2:Die Iconleiste verändern.
-fr.ro.HelpCookiesMenu0-2:\Rcontroler l'affichage des barres d'outils de Netsurf.
-it.ro.HelpCookiesMenu0-2:\Rcontrolla la visualizzazione delle barre strumenti di NetSurf.
+fr.ro.HelpCookiesMenu0-2:\Rcontroler l'affichage des barres d'outils de NeoSurf.
+it.ro.HelpCookiesMenu0-2:\Rcontrolla la visualizzazione delle barre strumenti di NeoSurf.
 nl.ro.HelpCookiesMenu0-2:Verplaats de muispijl naar rechts om de gereedschapbalken aan te passen.
-zh_CN.ro.HelpCookiesMenu0-2:\R控制显示 NetSurf 工具栏。
+zh_CN.ro.HelpCookiesMenu0-2:\R控制显示 NeoSurf 工具栏。
 
 en.ro.HelpCookiesMenu0-2-0:\Stoggle the display of the toolbar buttons.
 de.ro.HelpCookiesMenu0-2-0:Klicken mit AUSWAHL um die Iconleiste an- oder abzuschalten.
@@ -7119,20 +7119,20 @@ it.ro.HelpCookiesMenu3:\Sdeseleziona tutti gli oggetti selezionati.
 nl.ro.HelpCookiesMenu3:Klik met KIES om alle geselecteerde items te deselecteren.
 zh_CN.ro.HelpCookiesMenu3:\S取消选择所有选定项。
 
-en.ro.HelpAppInfo:\TNetSurf information \w.|MSee the about page for the contributor list and credits.
-de.ro.HelpAppInfo:Das ist das Info-Fenster zu NetSurf.|MGenauere Angaben zu den Autoren, Grafikern, Übersetzern, genutzten Libraries etc. gibt es bei "Über NetSurf" im Untermenü Hilfe eines Browserfensters.
-fr.ro.HelpAppInfo:\Tla \w d'information de NetSurf.|MVoir la page "À propos de" pour une liste des contributeurs et les remerciements.
-it.ro.HelpAppInfo:\TInformazioni su NetSurf \w.|MMostra la pagina delle informazioni e la lista dei ringraziamenti.
-nl.ro.HelpAppInfo:Dit is het NetSurf-informatievenster.|MOpen de Bijdragen-pagina voor de lijst met degenen die bijdroegen aan het NetSurf-project.
-zh_CN.ro.HelpAppInfo:\TNetSurf 信息 \w。|M相关贡献者列表和制作人员名单，请参阅关于页面。
+en.ro.HelpAppInfo:\TNeoSurf information \w.|MSee the about page for the contributor list and credits.
+de.ro.HelpAppInfo:Das ist das Info-Fenster zu NeoSurf.|MGenauere Angaben zu den Autoren, Grafikern, Übersetzern, genutzten Libraries etc. gibt es bei "Über NeoSurf" im Untermenü Hilfe eines Browserfensters.
+fr.ro.HelpAppInfo:\Tla \w d'information de NeoSurf.|MVoir la page "À propos de" pour une liste des contributeurs et les remerciements.
+it.ro.HelpAppInfo:\TInformazioni su NeoSurf \w.|MMostra la pagina delle informazioni e la lista dei ringraziamenti.
+nl.ro.HelpAppInfo:Dit is het NeoSurf-informatievenster.|MOpen de Bijdragen-pagina voor de lijst met degenen die bijdroegen aan het NeoSurf-project.
+zh_CN.ro.HelpAppInfo:\TNeoSurf 信息 \w。|M相关贡献者列表和制作人员名单，请参阅关于页面。
 
 
-en.ro.HelpConfigure:\Tconfiguration \w for NetSurf
-de.ro.HelpConfigure:Dies ist das Konfigurationsfenster von NetSurf.
-fr.ro.HelpConfigure:\Tla fenêtre de configuration pour Netsurf
-it.ro.HelpConfigure:\Tconfigurazione \w per NetSurf
-nl.ro.HelpConfigure:Dit is het NetSurf-instellingenvenster.
-zh_CN.ro.HelpConfigure:\T NetSurf 的配置 \w
+en.ro.HelpConfigure:\Tconfiguration \w for NeoSurf
+de.ro.HelpConfigure:Dies ist das Konfigurationsfenster von NeoSurf.
+fr.ro.HelpConfigure:\Tla fenêtre de configuration pour NeoSurf
+it.ro.HelpConfigure:\Tconfigurazione \w per NeoSurf
+nl.ro.HelpConfigure:Dit is het NeoSurf-instellingenvenster.
+zh_CN.ro.HelpConfigure:\T NeoSurf 的配置 \w
 
 en.ro.HelpConfigure0:Cache configuration tool
 de.ro.HelpConfigure0:Cachespeicher konfigurieren
@@ -7344,12 +7344,12 @@ it.ro.HelpConnectConfig12:Inserisci una password per i proxy che richiedono aute
 nl.ro.HelpConnectConfig12:Voer hier een wachtwoord in voor proxies die authenticifering vereisen.
 zh_CN.ro.HelpConnectConfig12:您可以在此处输入需要身份验证的代理服务器密码。
 
-en.ro.HelpConnectConfig16:\Tmaximum number of simultaneous fetches that NetSurf will perform.
-de.ro.HelpConnectConfig16:Das ist die Maximalzahl simultaner Fetches, die NetSurf verwenden soll.
-fr.ro.HelpConnectConfig16:\Tle nombre maximum de télechargements simultanés que NetSurf peut effectuer.
-it.ro.HelpConnectConfig16:\Tnumero massimo di tentativi simultanei che NetSurf dovrà eseguire.
+en.ro.HelpConnectConfig16:\Tmaximum number of simultaneous fetches that NeoSurf will perform.
+de.ro.HelpConnectConfig16:Das ist die Maximalzahl simultaner Fetches, die NeoSurf verwenden soll.
+fr.ro.HelpConnectConfig16:\Tle nombre maximum de télechargements simultanés que NeoSurf peut effectuer.
+it.ro.HelpConnectConfig16:\Tnumero massimo di tentativi simultanei che NeoSurf dovrà eseguire.
 nl.ro.HelpConnectConfig16:Dit is het maximaal aantal simultaan uit te voeren ophaalopdrachten.
-zh_CN.ro.HelpConnectConfig16:\T NetSurf 将执行的同时获取最大数量。
+zh_CN.ro.HelpConnectConfig16:\T NeoSurf 将执行的同时获取最大数量。
 
 en.ro.HelpConnectConfig17:\Sreduce the maximum number of simultaneous fetches.
 de.ro.HelpConnectConfig17:Klicken mit AUSWAHL verringert die Maximalzahl simultaner Fetches. 
@@ -7365,12 +7365,12 @@ it.ro.HelpConnectConfig18:\Saumenta il numero massimo di tentativi simultanei.
 nl.ro.HelpConnectConfig18:Klik met KIES om het maximaal aantal simultaan uit te voeren ophaaldopdrachten te verhogen.
 zh_CN.ro.HelpConnectConfig18:\S增加同时获取的最大数量。
 
-en.ro.HelpConnectConfig20:\Tmaximum number of simultaneous fetches that NetSurf will perform per host.
-de.ro.HelpConnectConfig20:Das ist die Maximalzahl simultaner Fetches, die je Host von NetSurf verwendet werden.
-fr.ro.HelpConnectConfig20:\Tle nombre maximum de téléchargements simultanés que Netsurf peut effectuer par hôte.
-it.ro.HelpConnectConfig20:\Tnumero massimo di tentativi simultanei che NetSurf dovrà eseguire per host.
+en.ro.HelpConnectConfig20:\Tmaximum number of simultaneous fetches that NeoSurf will perform per host.
+de.ro.HelpConnectConfig20:Das ist die Maximalzahl simultaner Fetches, die je Host von NeoSurf verwendet werden.
+fr.ro.HelpConnectConfig20:\Tle nombre maximum de téléchargements simultanés que NeoSurf peut effectuer par hôte.
+it.ro.HelpConnectConfig20:\Tnumero massimo di tentativi simultanei che NeoSurf dovrà eseguire per host.
 nl.ro.HelpConnectConfig20:Dit is het maximaal aantal simultaan uit te voeren ophaalopdrachten per host.
-zh_CN.ro.HelpConnectConfig20:\T NetSurf 将在每台主机上的最大同时获取数。
+zh_CN.ro.HelpConnectConfig20:\T NeoSurf 将在每台主机上的最大同时获取数。
 
 en.ro.HelpConnectConfig21:\Sreduce the maximum number of simultaneous fetches per host.
 de.ro.HelpConnectConfig21:Klicken mit AUSWAHL verringert die Maximalzahl simultaner Fetches je Host.
@@ -7435,33 +7435,33 @@ it.ro.HelpContentConfig:\Tconfigurazione del contenuto \w
 nl.ro.HelpContentConfig:Het gedrag van de browser kan in dit venster gewijzigd worden.
 zh_CN.ro.HelpContentConfig:\T文本配置 \w
 
-en.ro.HelpContentConfig2:This indicates whether NetSurf will attempt to block advertisements on web pages|MIn rare circumstances, this option may cause valid content to be blocked too.
-de.ro.HelpContentConfig2:Stellt ein, ob NetSurf versuchen soll, die auf Webseiten eingeblendete Werbung automatisch zu unterdrücken.|MIn seltenen Fällen wird dadurch jedoch auch 'echter' Seiteninhalt geblockt.
-fr.ro.HelpContentConfig2:Ceci indique si Netsurf doit essayer de bloquer les pubs sur les pages web.|MEn de rares circonstances, cette option peut également bloquer du contenu valide.
-it.ro.HelpContentConfig2:Indica se NetSurf tenterà di bloccare gli annunci pubblicitari sulle pagine Web|MNota che in rare circostanze questa opzione potrebbe causare il blocco anche di contenuti validi.
-nl.ro.HelpContentConfig2:Deze optie geeft aan of NetSurf advertenties op webpagina's probeert te blokkeren.|MIn zeldzame situaties, kan deze optie ook zinvolle informatie blokkeren.
-zh_CN.ro.HelpContentConfig2:这表示 NetSurf 是否会尝试屏蔽网页上的广告|M在极少数情况下，此选项可能会导致屏蔽有效内容。
+en.ro.HelpContentConfig2:This indicates whether NeoSurf will attempt to block advertisements on web pages|MIn rare circumstances, this option may cause valid content to be blocked too.
+de.ro.HelpContentConfig2:Stellt ein, ob NeoSurf versuchen soll, die auf Webseiten eingeblendete Werbung automatisch zu unterdrücken.|MIn seltenen Fällen wird dadurch jedoch auch 'echter' Seiteninhalt geblockt.
+fr.ro.HelpContentConfig2:Ceci indique si NeoSurf doit essayer de bloquer les pubs sur les pages web.|MEn de rares circonstances, cette option peut également bloquer du contenu valide.
+it.ro.HelpContentConfig2:Indica se NeoSurf tenterà di bloccare gli annunci pubblicitari sulle pagine Web|MNota che in rare circostanze questa opzione potrebbe causare il blocco anche di contenuti validi.
+nl.ro.HelpContentConfig2:Deze optie geeft aan of NeoSurf advertenties op webpagina's probeert te blokkeren.|MIn zeldzame situaties, kan deze optie ook zinvolle informatie blokkeren.
+zh_CN.ro.HelpContentConfig2:这表示 NeoSurf 是否会尝试屏蔽网页上的广告|M在极少数情况下，此选项可能会导致屏蔽有效内容。
 
-en.ro.HelpContentConfig3:This indicates whether NetSurf will stop web sites from automatically opening new windows on your desktop.
-de.ro.HelpContentConfig3:Stellt ein, ob NetSurf das automatische Öffnen neuer Fenster auf dem Desktop unterbinden soll.
-fr.ro.HelpContentConfig3:Ceci indique si Netsurf doit empêcher les sites web d'ouvrir automatiquement de nouvelles fenêtres sur votre Bureau.
-it.ro.HelpContentConfig3:Indica se NetSurf impedirà ai siti Web di aprire automaticamente nuove finestre sul desktop.
-nl.ro.HelpContentConfig3:Deze optie geeft aan of NetSurf websites, die automatisch nieuwe pagina's proberen te openen blokkeerd.
-zh_CN.ro.HelpContentConfig3:这表示NetSurf是否会阻止网站在您的桌面上自动打开新窗口。
+en.ro.HelpContentConfig3:This indicates whether NeoSurf will stop web sites from automatically opening new windows on your desktop.
+de.ro.HelpContentConfig3:Stellt ein, ob NeoSurf das automatische Öffnen neuer Fenster auf dem Desktop unterbinden soll.
+fr.ro.HelpContentConfig3:Ceci indique si NeoSurf doit empêcher les sites web d'ouvrir automatiquement de nouvelles fenêtres sur votre Bureau.
+it.ro.HelpContentConfig3:Indica se NeoSurf impedirà ai siti Web di aprire automaticamente nuove finestre sul desktop.
+nl.ro.HelpContentConfig3:Deze optie geeft aan of NeoSurf websites, die automatisch nieuwe pagina's proberen te openen blokkeerd.
+zh_CN.ro.HelpContentConfig3:这表示NeoSurf是否会阻止网站在您的桌面上自动打开新窗口。
 
-en.ro.HelpContentConfig4:This indicates whether NetSurf will allow external plug-ins to handle additional types of content, such as Flash.
+en.ro.HelpContentConfig4:This indicates whether NeoSurf will allow external plug-ins to handle additional types of content, such as Flash.
 de.ro.HelpContentConfig4:Stellt ein, ob externe Pluginroutinen genutzt werden dürfen, um Zusatzinhalte darzustellen (z.B. Flash).
-fr.ro.HelpContentConfig4:Ceci indique si Netsurf doit autoriser les plug-ins externes à manipuler des types de contenu supplémentaires, comme le Flash.
-it.ro.HelpContentConfig4:Indica se NetSurf consentirà ai plug-in esterni di gestire tipi di contenuto aggiuntivi come il Flash.
-nl.ro.HelpContentConfig4:Deze optie geeft aan of NetSurf externe plug-ins, voor aanvullende soorten inhoud zoals Flash toestaat.
-zh_CN.ro.HelpContentConfig4:这表示 NetSurf 是否允许外部插件来处理其他类型的内容，如 Flash 插件。
+fr.ro.HelpContentConfig4:Ceci indique si NeoSurf doit autoriser les plug-ins externes à manipuler des types de contenu supplémentaires, comme le Flash.
+it.ro.HelpContentConfig4:Indica se NeoSurf consentirà ai plug-in esterni di gestire tipi di contenuto aggiuntivi come il Flash.
+nl.ro.HelpContentConfig4:Deze optie geeft aan of NeoSurf externe plug-ins, voor aanvullende soorten inhoud zoals Flash toestaat.
+zh_CN.ro.HelpContentConfig4:这表示 NeoSurf 是否允许外部插件来处理其他类型的内容，如 Flash 插件。
 
-en.ro.HelpContentConfig7:This indicates whether NetSurf will allow links to open in new windows.
-de.ro.HelpContentConfig7:Stellt ein, ob NetSurf erlaubt, daß Links beim Aufruf neue Browserfenster öffnen dürfen.
-fr.ro.HelpContentConfig7:This indicates whether NetSurf will allow links to open in new windows.
-it.ro.HelpContentConfig7:Indica se NetSurf consentirà l'apertura dei link in nuove finestre.
-nl.ro.HelpContentConfig7:Deze optie geeft aan of NetSurf toestaat, dat koppelingen in een nieuwe venster geopend mogen worden.
-zh_CN.ro.HelpContentConfig7:这表示 NetSurf 是否允许在新窗口中打开链接。
+en.ro.HelpContentConfig7:This indicates whether NeoSurf will allow links to open in new windows.
+de.ro.HelpContentConfig7:Stellt ein, ob NeoSurf erlaubt, daß Links beim Aufruf neue Browserfenster öffnen dürfen.
+fr.ro.HelpContentConfig7:This indicates whether NeoSurf will allow links to open in new windows.
+it.ro.HelpContentConfig7:Indica se NeoSurf consentirà l'apertura dei link in nuove finestre.
+nl.ro.HelpContentConfig7:Deze optie geeft aan of NeoSurf toestaat, dat koppelingen in een nieuwe venster geopend mogen worden.
+zh_CN.ro.HelpContentConfig7:这表示 NeoSurf 是否允许在新窗口中打开链接。
 
 en.ro.HelpContentConfig8:\Sreset the Content options back to their default values.
 de.ro.HelpContentConfig8:Stellt die Standardeinstellungen wieder her.
@@ -7484,12 +7484,12 @@ it.ro.HelpContentConfig10:\Ssalva queste impostazioni e chiudi la finestra.|M\As
 nl.ro.HelpContentConfig10:Klik met KIES om de gemaakte wijzigingen te bewaren en dit venster te sluiten.|MKlikken met PASAAN heeft hetzelfde effect, alleen wordt het huidige venster dan niet gesloten.
 zh_CN.ro.HelpContentConfig10:\S保存这些设置并关闭 \w。|M\A在不关闭 \w 的情况下保存这些设置。
 
-en.ro.HelpContentConfig11:This indicates whether NetSurf will disable executing JavaScript.
-de.ro.HelpContentConfig11:This indicates whether NetSurf will disable executing JavaScript.
-fr.ro.HelpContentConfig11:This indicates whether NetSurf will disable executing JavaScript.
-it.ro.HelpContentConfig11:Indica se NetSurf disabiliterà l'esecuzione di JavaScript.
+en.ro.HelpContentConfig11:This indicates whether NeoSurf will disable executing JavaScript.
+de.ro.HelpContentConfig11:This indicates whether NeoSurf will disable executing JavaScript.
+fr.ro.HelpContentConfig11:This indicates whether NeoSurf will disable executing JavaScript.
+it.ro.HelpContentConfig11:Indica se NeoSurf disabiliterà l'esecuzione di JavaScript.
 nl.ro.HelpContentConfig11:Deze optie geeft aan of het uitvoeren van JavaScript-scripts is uitgeschakeld.
-zh_CN.ro.HelpContentConfig11:这表示 NetSurf 是否禁用 JavaScript。
+zh_CN.ro.HelpContentConfig11:这表示 NeoSurf 是否禁用 JavaScript。
 
 en.ro.HelpFontConfig:\Tfont configuration \w
 de.ro.HelpFontConfig:Konfigurationsfenster zur Einstellung der verwendeten Schriftarten
@@ -7498,12 +7498,12 @@ it.ro.HelpFontConfig:\Tconfigurazione dei font \w
 nl.ro.HelpFontConfig:De instellingen voor de verschillende tekststijlen kunnen in dit venster gewijzigd worden.
 zh_CN.ro.HelpFontConfig:\T字体配置 \w
 
-en.ro.HelpFontConfig3:\Tcurrently selected sans-serif font.|MNetSurf will use this font wherever a web page specifies a sans-serif typeface.
-de.ro.HelpFontConfig3:Das ist die aktuell gewählte Schriftart für Sans-serif.|MNetSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Sans-serif vorgegeben wird.
-fr.ro.HelpFontConfig3:\Tla fonte sans-sérif actuellement sélectionnée.|MNetsurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police sans-sérif.
-it.ro.HelpFontConfig3:\Tfont sans-serif correntemente selezionato.|MNetSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo sans-serif.
-nl.ro.HelpFontConfig3:Dit is momenteel het geselecteerde schreefloos lettertype.|MNetSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
-zh_CN.ro.HelpFontConfig3:\T当前选定的无衬线字体。|M NetSurf 将在网页指定 无衬线字体的任何地方使用此字体。
+en.ro.HelpFontConfig3:\Tcurrently selected sans-serif font.|MNeoSurf will use this font wherever a web page specifies a sans-serif typeface.
+de.ro.HelpFontConfig3:Das ist die aktuell gewählte Schriftart für Sans-serif.|MNeoSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Sans-serif vorgegeben wird.
+fr.ro.HelpFontConfig3:\Tla fonte sans-sérif actuellement sélectionnée.|MNeoSurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police sans-sérif.
+it.ro.HelpFontConfig3:\Tfont sans-serif correntemente selezionato.|MNeoSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo sans-serif.
+nl.ro.HelpFontConfig3:Dit is momenteel het geselecteerde schreefloos lettertype.|MNeoSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
+zh_CN.ro.HelpFontConfig3:\T当前选定的无衬线字体。|M NeoSurf 将在网页指定 无衬线字体的任何地方使用此字体。
 
 en.ro.HelpFontConfig4:\Sselect a sans-serif font.
 de.ro.HelpFontConfig4:Klicken mit AUSWAHL, um eine Schriftart auszuwählen.
@@ -7512,12 +7512,12 @@ it.ro.HelpFontConfig4:\Sseleziona un font sans-serif
 nl.ro.HelpFontConfig4:Klik met KIES om een schreefloos lettertype te selecteren.
 zh_CN.ro.HelpFontConfig4:\S选择一个无衬线字体。
 
-en.ro.HelpFontConfig6:\Tcurrently selected serif font.|MNetSurf will use this font wherever a web page specifies a serif typeface.
-de.ro.HelpFontConfig6:Das ist die aktuell gewählte Schriftart für Serif.|MNetSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Serif vorgegeben wird.
-fr.ro.HelpFontConfig6:\Tla fonte sérif actuellement sélectionnée.|MNetsurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police sérif.
-it.ro.HelpFontConfig6:\Tfont serif correntemente selezionato.|MNetSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo serif.
-nl.ro.HelpFontConfig6:Dit is momenteel het geselecteerde lettertype met schreef.|MNetSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
-zh_CN.ro.HelpFontConfig6:\T当前选定的衬线字体。|M NetSurf 将在网页指定衬线字体的任何地方使用此字体。
+en.ro.HelpFontConfig6:\Tcurrently selected serif font.|MNeoSurf will use this font wherever a web page specifies a serif typeface.
+de.ro.HelpFontConfig6:Das ist die aktuell gewählte Schriftart für Serif.|MNeoSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Serif vorgegeben wird.
+fr.ro.HelpFontConfig6:\Tla fonte sérif actuellement sélectionnée.|MNeoSurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police sérif.
+it.ro.HelpFontConfig6:\Tfont serif correntemente selezionato.|MNeoSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo serif.
+nl.ro.HelpFontConfig6:Dit is momenteel het geselecteerde lettertype met schreef.|MNeoSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
+zh_CN.ro.HelpFontConfig6:\T当前选定的衬线字体。|M NeoSurf 将在网页指定衬线字体的任何地方使用此字体。
 
 en.ro.HelpFontConfig7:\Sselect a sans-serif font.
 de.ro.HelpFontConfig7:Klicken mit AUSWAHL, um eine Schriftart auszuwählen.
@@ -7526,12 +7526,12 @@ it.ro.HelpFontConfig7:\Sseleziona un font sans-serif
 nl.ro.HelpFontConfig7:Klik met KIES om een lettertype met schreef te selecteren.
 zh_CN.ro.HelpFontConfig7:\S选择一个无衬线字体。
 
-en.ro.HelpFontConfig9:\Tcurrently selected monospace font.|MNetSurf will use this font wherever a web page specifies a monospace typeface.
-de.ro.HelpFontConfig9:Das ist die aktuell gewählte Schriftart für Monospace.|MNetSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Monospace vorgegeben wird.
-fr.ro.HelpFontConfig9:\Tla fonte sérif actuellement sélectionnée.|MNetsurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police monospace.
-it.ro.HelpFontConfig9:\Tfont monospaziato correntemente selezionato.|MNetSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo monospaziato.
-nl.ro.HelpFontConfig9:Dit is momenteel het geselecteerde monospace-lettertype.|MNetSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
-zh_CN.ro.HelpFontConfig9:\T当前选定的等宽字体。|M NetSurf 将在网页指定等宽字体的任何地方使用此字体。
+en.ro.HelpFontConfig9:\Tcurrently selected monospace font.|MNeoSurf will use this font wherever a web page specifies a monospace typeface.
+de.ro.HelpFontConfig9:Das ist die aktuell gewählte Schriftart für Monospace.|MNeoSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Monospace vorgegeben wird.
+fr.ro.HelpFontConfig9:\Tla fonte sérif actuellement sélectionnée.|MNeoSurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police monospace.
+it.ro.HelpFontConfig9:\Tfont monospaziato correntemente selezionato.|MNeoSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo monospaziato.
+nl.ro.HelpFontConfig9:Dit is momenteel het geselecteerde monospace-lettertype.|MNeoSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
+zh_CN.ro.HelpFontConfig9:\T当前选定的等宽字体。|M NeoSurf 将在网页指定等宽字体的任何地方使用此字体。
 
 en.ro.HelpFontConfig10:\Sselect a monospace font.
 de.ro.HelpFontConfig10:Klicken mit AUSWAHL, um eine Schriftart auszuwählen.
@@ -7540,12 +7540,12 @@ it.ro.HelpFontConfig10:\Sseleziona un font monospaziato
 nl.ro.HelpFontConfig10:Klik met KIES om een monospace-lettertype te selecteren.
 zh_CN.ro.HelpFontConfig10:\S选择一个等宽字体。
 
-en.ro.HelpFontConfig12:\Tcurrently selected cursive font.|MNetSurf will use this font wherever a web page specifies a cursive typeface.
-de.ro.HelpFontConfig12:Das ist die aktuell gewählte Schriftart für Kursiv.|MNetSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Kursiv vorgegeben wird.
-fr.ro.HelpFontConfig12:\Tla fonte cursive actuellement sélectionnée.|MNetsurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police cursive.
-it.ro.HelpFontConfig12:\Tfont corsivo correntemente selezionato.|MNetSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo corsivo.
-nl.ro.HelpFontConfig12:Dit is momenteel het geselecteerde cursieve lettertype.|MNetSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
-zh_CN.ro.HelpFontConfig12:\T当前选定的手写字体。|M NetSurf 将在网页指定手写字体的任何地方使用此字体。
+en.ro.HelpFontConfig12:\Tcurrently selected cursive font.|MNeoSurf will use this font wherever a web page specifies a cursive typeface.
+de.ro.HelpFontConfig12:Das ist die aktuell gewählte Schriftart für Kursiv.|MNeoSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Kursiv vorgegeben wird.
+fr.ro.HelpFontConfig12:\Tla fonte cursive actuellement sélectionnée.|MNeoSurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police cursive.
+it.ro.HelpFontConfig12:\Tfont corsivo correntemente selezionato.|MNeoSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo corsivo.
+nl.ro.HelpFontConfig12:Dit is momenteel het geselecteerde cursieve lettertype.|MNeoSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
+zh_CN.ro.HelpFontConfig12:\T当前选定的手写字体。|M NeoSurf 将在网页指定手写字体的任何地方使用此字体。
 
 en.ro.HelpFontConfig13:\Sselect a cursive font.
 de.ro.HelpFontConfig13:Klicken mit AUSWAHL, um eine Schriftart auszuwählen.
@@ -7554,12 +7554,12 @@ it.ro.HelpFontConfig13:\Sseleziona un font corsivo
 nl.ro.HelpFontConfig13:Klik met KIES om een cursieve lettertype te selecteren.
 zh_CN.ro.HelpFontConfig13:\S选择一个手写字体。
 
-en.ro.HelpFontConfig15:\Tcurrently selected fantasy font.|MNetSurf will use this font wherever a web page specifies a fantasy typeface.
-de.ro.HelpFontConfig15:Das ist die aktuell gewählte Schriftart für Fantasy.|MNetSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Fantasy vorgegeben wird.
-fr.ro.HelpFontConfig15:\Tla fonte fantaisie actuellement sélectionnée.|MNetsurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police fantaisie.
-it.ro.HelpFontConfig15:\Tfont fantasia correntemente selezionato.|MNetSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo fantasia.
-nl.ro.HelpFontConfig15:Dit is momenteel het geselecteerde fantasie-lettertype.|MNetSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
-zh_CN.ro.HelpFontConfig15:\T当前选定的 Fantasy 字体。|M NetSurf 将在网页指定 Fantasy 字体的任何地方使用此字体。
+en.ro.HelpFontConfig15:\Tcurrently selected fantasy font.|MNeoSurf will use this font wherever a web page specifies a fantasy typeface.
+de.ro.HelpFontConfig15:Das ist die aktuell gewählte Schriftart für Fantasy.|MNeoSurf wird diese Schriftart überall dort verwenden, wo von der Webseite ein Schriftbild in Fantasy vorgegeben wird.
+fr.ro.HelpFontConfig15:\Tla fonte fantaisie actuellement sélectionnée.|MNeoSurf utilisera cette fonte à chaque fois qu'une page web spécifiera une police fantaisie.
+it.ro.HelpFontConfig15:\Tfont fantasia correntemente selezionato.|MNeoSurf utilizzerà questo font ovunque una pagina Web specifichi un carattere tipografico di tipo fantasia.
+nl.ro.HelpFontConfig15:Dit is momenteel het geselecteerde fantasie-lettertype.|MNeoSurf gebruikt dit lettertype wanneer een webpagina om deze tekststijl vraagt.
+zh_CN.ro.HelpFontConfig15:\T当前选定的 Fantasy 字体。|M NeoSurf 将在网页指定 Fantasy 字体的任何地方使用此字体。
 
 en.ro.HelpFontConfig16:\Sselect a fantasy font.
 de.ro.HelpFontConfig16:Klicken mit AUSWAHL, um eine Schriftart auszuwählen.
@@ -7568,12 +7568,12 @@ it.ro.HelpFontConfig16:\Sseleziona un font fantasia
 nl.ro.HelpFontConfig16:Klik met KIES om een fantasie-lettertype te selecteren.
 zh_CN.ro.HelpFontConfig16:\S选择一个 Fantasy 字体。
 
-en.ro.HelpFontConfig18:\Tcurrently selected font family.|MNetSurf will use this wherever a web page does not specify a typeface.
-de.ro.HelpFontConfig18:Das ist die aktuell gewählte Schriftart für die Standardtextanzeige.|MNetSurf wird diese Schriftart überall dort verwenden, wo von der Webseite KEIN bestimmtes Schriftbild vorgegeben wird.
-fr.ro.HelpFontConfig18:\Tla famille de fontes actuellement sélectionnée.|MNetsurf utilisera cette fonte à chaque fois qu'une page web ne spécifiera aucune police.
-it.ro.HelpFontConfig18:\Tfamiglia font correntemente selezionata.|MNetSurf lo utilizzerà laddove una pagina Web non specifichi un carattere tipografico.
-nl.ro.HelpFontConfig18:Dit is momenteel het geselecteerde lettertypesoort.|MNetSurf gebruikt dit lettertype als een webpagina geen lettertypesoort specificeerd.
-zh_CN.ro.HelpFontConfig18:\T当前选定的字体家族。|M NetSurf 将在网页未指定字体的地方使用此字体。
+en.ro.HelpFontConfig18:\Tcurrently selected font family.|MNeoSurf will use this wherever a web page does not specify a typeface.
+de.ro.HelpFontConfig18:Das ist die aktuell gewählte Schriftart für die Standardtextanzeige.|MNeoSurf wird diese Schriftart überall dort verwenden, wo von der Webseite KEIN bestimmtes Schriftbild vorgegeben wird.
+fr.ro.HelpFontConfig18:\Tla famille de fontes actuellement sélectionnée.|MNeoSurf utilisera cette fonte à chaque fois qu'une page web ne spécifiera aucune police.
+it.ro.HelpFontConfig18:\Tfamiglia font correntemente selezionata.|MNeoSurf lo utilizzerà laddove una pagina Web non specifichi un carattere tipografico.
+nl.ro.HelpFontConfig18:Dit is momenteel het geselecteerde lettertypesoort.|MNeoSurf gebruikt dit lettertype als een webpagina geen lettertypesoort specificeerd.
+zh_CN.ro.HelpFontConfig18:\T当前选定的字体家族。|M NeoSurf 将在网页未指定字体的地方使用此字体。
 
 en.ro.HelpFontConfig19:\Sselect a default font family.
 de.ro.HelpFontConfig19:Klicken mit AUSWAHL, um eine Schriftart auszuwählen.
@@ -7582,12 +7582,12 @@ it.ro.HelpFontConfig19:\Sseleziona una famiglia font predefinita
 nl.ro.HelpFontConfig19:Klik met KIES om een standaardlettertypesoort te selecteren.
 zh_CN.ro.HelpFontConfig19:\S选择默认字体家族。
 
-en.ro.HelpFontConfig23:You can enter a default font size here.|MNetSurf will use this wherever a web page does not specify a font size of its own.
-de.ro.HelpFontConfig23:Hier kann eine Standarfontgröße gewählt werden.|MNetSurf wird diese Größe immer dann verwenden, wenn von der Webseite keine eigene Schriftgröße eingestellt wird.
-fr.ro.HelpFontConfig23:Vous pouvez entrer ici une taille par défaut.|MNetsurf l'utilisera chaque fois qu'une page web ne spécifiera pas de taille de fonte.
-it.ro.HelpFontConfig23:Puoi inserire qui la dimensione predefinita del carattere.|MNetSurf lo utilizzerà laddove una pagina Web non specifichi una propria dimensione del carattere.
-nl.ro.HelpFontConfig23:In dit veld kan een standaardlettergrootte ingevoerd worden.|MNetSurf gebruikt deze lettergrootte waar een webpagina niet van zichzelf de grootte specificeerd.
-zh_CN.ro.HelpFontConfig23:您可以在此输入默认字体大小。|MNetSurf 将在网页未指定自己的字体大小时使用此大小。
+en.ro.HelpFontConfig23:You can enter a default font size here.|MNeoSurf will use this wherever a web page does not specify a font size of its own.
+de.ro.HelpFontConfig23:Hier kann eine Standarfontgröße gewählt werden.|MNeoSurf wird diese Größe immer dann verwenden, wenn von der Webseite keine eigene Schriftgröße eingestellt wird.
+fr.ro.HelpFontConfig23:Vous pouvez entrer ici une taille par défaut.|MNeoSurf l'utilisera chaque fois qu'une page web ne spécifiera pas de taille de fonte.
+it.ro.HelpFontConfig23:Puoi inserire qui la dimensione predefinita del carattere.|MNeoSurf lo utilizzerà laddove una pagina Web non specifichi una propria dimensione del carattere.
+nl.ro.HelpFontConfig23:In dit veld kan een standaardlettergrootte ingevoerd worden.|MNeoSurf gebruikt deze lettergrootte waar een webpagina niet van zichzelf de grootte specificeerd.
+zh_CN.ro.HelpFontConfig23:您可以在此输入默认字体大小。|MNeoSurf 将在网页未指定自己的字体大小时使用此大小。
 
 en.ro.HelpFontConfig24:\Sreduce the default font size.
 de.ro.HelpFontConfig24:Klicken mit AUSWAHL verkleinert die Standardfontgröße.
@@ -7603,12 +7603,12 @@ it.ro.HelpFontConfig25:\Saumenta la dimensione del font predefinito.
 nl.ro.HelpFontConfig25:Klik met KIES om de standaardlettergrootte te vergroten.
 zh_CN.ro.HelpFontConfig25:\S提高默认字体大小。
 
-en.ro.HelpFontConfig28:You can enter a minimum font size here.|MNetSurf will not allow web pages to display smaller text than this.
-de.ro.HelpFontConfig28:Hier kann eine minimale Schriftgröße eingestellt werden.|MNetSurf wird keine Darstellung von noch kleineren Schriften zulassen.
-fr.ro.HelpFontConfig28:Vous pouvez entrer ici une taille de fonte minimum.|MNetsurf ne permettra pas aux pages web d'afficher un texte ayant une taille plus petite.
-it.ro.HelpFontConfig28:Puoi inserire qui la dimensione minima del carattere.|MNetSurf non consentirà alle pagine Web di visualizzare un testo più piccolo di questo.
-nl.ro.HelpFontConfig28:In dit veld kan een minimum lettertypegrootte ingevoerd worden.|MNetSurf staat webpagina's dan niet toe om kleinere lettertypes te tonen.
-zh_CN.ro.HelpFontConfig28:您可以在此处输入最小字体大小。|MNetSurf 不允许网页显示小于此大小的文本。
+en.ro.HelpFontConfig28:You can enter a minimum font size here.|MNeoSurf will not allow web pages to display smaller text than this.
+de.ro.HelpFontConfig28:Hier kann eine minimale Schriftgröße eingestellt werden.|MNeoSurf wird keine Darstellung von noch kleineren Schriften zulassen.
+fr.ro.HelpFontConfig28:Vous pouvez entrer ici une taille de fonte minimum.|MNeoSurf ne permettra pas aux pages web d'afficher un texte ayant une taille plus petite.
+it.ro.HelpFontConfig28:Puoi inserire qui la dimensione minima del carattere.|MNeoSurf non consentirà alle pagine Web di visualizzare un testo più piccolo di questo.
+nl.ro.HelpFontConfig28:In dit veld kan een minimum lettertypegrootte ingevoerd worden.|MNeoSurf staat webpagina's dan niet toe om kleinere lettertypes te tonen.
+zh_CN.ro.HelpFontConfig28:您可以在此处输入最小字体大小。|MNeoSurf 不允许网页显示小于此大小的文本。
 
 en.ro.HelpFontConfig29:\Sreduce the minimum font size.
 de.ro.HelpFontConfig29:Klicken mit AUSWAHL verkleinert die minimal zugelassene Schriftgröße.
@@ -7659,19 +7659,19 @@ it.ro.HelpHomeConfig3:Puoi inserire qui l'indirizzo della pagina iniziale.
 nl.ro.HelpHomeConfig3:Voer hier een standaard begin-/startpagina-adres in.
 zh_CN.ro.HelpHomeConfig3:您可以在此处输入默认主页网址。
 
-en.ro.HelpHomeConfig4:\Sselect a recently typed URL.|MThese addresses have recently been typed into a NetSurf browser \w's URL bar.
+en.ro.HelpHomeConfig4:\Sselect a recently typed URL.|MThese addresses have recently been typed into a NeoSurf browser \w's URL bar.
 de.ro.HelpHomeConfig4:Klicken mit AUSWAHL zur schnellen Auswahl einer Adresse.|MDie angezeigten Adressen wurden in letzter Zeit in die Adressleiste eines Browserfensters eingegeben.
-fr.ro.HelpHomeConfig4:\Ssélectionner une URL récemment tapée.|MCes adresses ont été récemment tapées dans la barre d'URL du navigateur Netsurf.
-it.ro.HelpHomeConfig4:\Sseleziona un URL digitato di recente.|MQuesti indirizzi sono stati digitati recentemente nella barra indirizzi del browser NetSurf.
+fr.ro.HelpHomeConfig4:\Ssélectionner une URL récemment tapée.|MCes adresses ont été récemment tapées dans la barre d'URL du navigateur NeoSurf.
+it.ro.HelpHomeConfig4:\Sseleziona un URL digitato di recente.|MQuesti indirizzi sono stati digitati recentemente nella barra indirizzi del browser NeoSurf.
 nl.ro.HelpHomeConfig4:Klik met KIES om een recent bezochte pagina te selecteren als startpagina.
-zh_CN.ro.HelpHomeConfig4:\S选择最近键入的地址。|M这些地址最近已键入 NetSurf 浏览器 \w 的地址栏。
+zh_CN.ro.HelpHomeConfig4:\S选择最近键入的地址。|M这些地址最近已键入 NeoSurf 浏览器 \w 的地址栏。
 
-en.ro.HelpHomeConfig5:This indicates whether NetSurf will open a browser \w on start-up.
-de.ro.HelpHomeConfig5:Stellt ein, ob NetSurf beim Starten automatisch ein Browserfenster öffnet.
-fr.ro.HelpHomeConfig5:Ceci indique si Netsurf doit ouvrir une fenêtre de navigation au démarrage.
-it.ro.HelpHomeConfig5:Indica se NetSurf aprirà  una finestra del browser all'avvio.
-nl.ro.HelpHomeConfig5:Deze optie geeft aan of NetSurf automatisch een browservenster opent nadat het programma is opgestart.
-zh_CN.ro.HelpHomeConfig5:这表示 NetSurf 是否在启动时打开浏览器 \w。
+en.ro.HelpHomeConfig5:This indicates whether NeoSurf will open a browser \w on start-up.
+de.ro.HelpHomeConfig5:Stellt ein, ob NeoSurf beim Starten automatisch ein Browserfenster öffnet.
+fr.ro.HelpHomeConfig5:Ceci indique si NeoSurf doit ouvrir une fenêtre de navigation au démarrage.
+it.ro.HelpHomeConfig5:Indica se NeoSurf aprirà  una finestra del browser all'avvio.
+nl.ro.HelpHomeConfig5:Deze optie geeft aan of NeoSurf automatisch een browservenster opent nadat het programma is opgestart.
+zh_CN.ro.HelpHomeConfig5:这表示 NeoSurf 是否在启动时打开浏览器 \w。
 
 en.ro.HelpHomeConfig6:\Sreset the Home page options back to their default values.
 de.ro.HelpHomeConfig6:Stellt die Standardeinstellungen wieder her.
@@ -7757,12 +7757,12 @@ it.ro.HelpImageConfig14:\Saumenta il tempo di intervallo minimo tra i frame di a
 nl.ro.HelpImageConfig14:Klik met KIES om de minimumtijd tussen animatie-afbeeldingen te vergroten.
 zh_CN.ro.HelpImageConfig14:\S增加画帧之间的最短时间。
 
-en.ro.HelpImageConfig16:This indicates whether NetSurf will disable animations on web pages.|MWhen animations are disabled, NetSurf will show the first frame as a static image.
-de.ro.HelpImageConfig16:Erlaubt das Abschalten der Animationsdarstellung auf Webseiten.|MSind die Animationen abgeschaltet, wird von NetSurf lediglich das erste Einzelbild der Animationsfolge als einfaches Bild angezeigt.
-fr.ro.HelpImageConfig16:Ceci indique si Netsurf doit annuler les animations des pages web.|MLorsque les animations sont désactivées, Netsurf utilisera la première image comme image statique.
-it.ro.HelpImageConfig16:Indica se NetSurf disabiliterà le animazioni sulle pagine Web.|MQuando le animazioni sono disabilitate NetSurf mostrerà il primo fotogramma come immagine statica.
+en.ro.HelpImageConfig16:This indicates whether NeoSurf will disable animations on web pages.|MWhen animations are disabled, NeoSurf will show the first frame as a static image.
+de.ro.HelpImageConfig16:Erlaubt das Abschalten der Animationsdarstellung auf Webseiten.|MSind die Animationen abgeschaltet, wird von NeoSurf lediglich das erste Einzelbild der Animationsfolge als einfaches Bild angezeigt.
+fr.ro.HelpImageConfig16:Ceci indique si NeoSurf doit annuler les animations des pages web.|MLorsque les animations sont désactivées, NeoSurf utilisera la première image comme image statique.
+it.ro.HelpImageConfig16:Indica se NeoSurf disabiliterà le animazioni sulle pagine Web.|MQuando le animazioni sono disabilitate NeoSurf mostrerà il primo fotogramma come immagine statica.
 nl.ro.HelpImageConfig16:Deze optie geeft aan of animaties getoond worden.|MWanneer animaties niet worden getoond, dan wordt de eerste beeld van de animatie als een statische afbeelding getoond.
-zh_CN.ro.HelpImageConfig16:这表示 NetSurf 是否禁用网页上的动画。|M禁用动画时，NetSurf 会将第一帧动画显示为静态图像。
+zh_CN.ro.HelpImageConfig16:这表示 NeoSurf 是否禁用网页上的动画。|M禁用动画时，NeoSurf 会将第一帧动画显示为静态图像。
 
 en.ro.HelpImageConfig17:\Sreset the Image options back to their default values.
 de.ro.HelpImageConfig17:Stellt die Bildoptionen zurück auf die Standardwerte.
@@ -7792,40 +7792,40 @@ it.ro.HelpInterfaceConfig:\Tconfigurazione dell'interfaccia \w
 nl.ro.HelpInterfaceConfig:De interface-instellingen kunnen in dit venster gewijzigd worden.
 zh_CN.ro.HelpInterfaceConfig:\T界面配置 \w
 
-en.ro.HelpInterfaceConfig2:This indicates whether NetSurf will strip file extensions when saving files to disc.
+en.ro.HelpInterfaceConfig2:This indicates whether NeoSurf will strip file extensions when saving files to disc.
 de.ro.HelpInterfaceConfig2:Beim Abspeichern von Dateien auf einen Datenträger werden die Dateinamenserweiterungen (Extensions) aus dem Dateinamen entfernt.
-fr.ro.HelpInterfaceConfig2:Ceci indique si Netsurf supprime les extensions de fichiers lors d'une sauvegarde sur disque.
-it.ro.HelpInterfaceConfig2:Indica se NetSurf rimuoverà le estensioni dei file durante il salvataggio dei file su disco.
+fr.ro.HelpInterfaceConfig2:Ceci indique si NeoSurf supprime les extensions de fichiers lors d'une sauvegarde sur disque.
+it.ro.HelpInterfaceConfig2:Indica se NeoSurf rimuoverà le estensioni dei file durante il salvataggio dei file su disco.
 nl.ro.HelpInterfaceConfig2:Deze optie geeft aan of bestandsextensies verwijderd zullen worden bij het bewaren.
-zh_CN.ro.HelpInterfaceConfig2:这表示 NetSurf 是否在将文件保存到磁盘时省去文件扩展名。
+zh_CN.ro.HelpInterfaceConfig2:这表示 NeoSurf 是否在将文件保存到磁盘时省去文件扩展名。
 
-en.ro.HelpInterfaceConfig3:This indicates whether NetSurf will ask for confirmation before overwriting files of the same name.
-de.ro.HelpInterfaceConfig3:Beim Abspeichern wird vor dem Überschreiben namensgleicher Dateien von NetSurf nachgefragt, ob dies so erfolgen soll.
-fr.ro.HelpInterfaceConfig3:Ceci indique si Netsurf doit demander confirmation avant d'écraser des fichiers portant le même nom.
-it.ro.HelpInterfaceConfig3:Indica se NetSurf chiederà conferma prima di sovrascrivere i file con lo stesso nome.
+en.ro.HelpInterfaceConfig3:This indicates whether NeoSurf will ask for confirmation before overwriting files of the same name.
+de.ro.HelpInterfaceConfig3:Beim Abspeichern wird vor dem Überschreiben namensgleicher Dateien von NeoSurf nachgefragt, ob dies so erfolgen soll.
+fr.ro.HelpInterfaceConfig3:Ceci indique si NeoSurf doit demander confirmation avant d'écraser des fichiers portant le même nom.
+it.ro.HelpInterfaceConfig3:Indica se NeoSurf chiederà conferma prima di sovrascrivere i file con lo stesso nome.
 nl.ro.HelpInterfaceConfig3:Deze optie geeft aan of er toestemming wordt gevraagd voor het overschrijven van bestanden met dezelfde naam.
-zh_CN.ro.HelpInterfaceConfig3:这表示 NetSurf 是否在覆盖同名文件之前需要确认。
+zh_CN.ro.HelpInterfaceConfig3:这表示 NeoSurf 是否在覆盖同名文件之前需要确认。
 
-en.ro.HelpInterfaceConfig6:This indicates whether NetSurf's URL suggestion feature is enabled.|MURL suggestion shows options for completing URLs as you type into NetSurf's URL bar.
+en.ro.HelpInterfaceConfig6:This indicates whether NeoSurf's URL suggestion feature is enabled.|MURL suggestion shows options for completing URLs as you type into NeoSurf's URL bar.
 de.ro.HelpInterfaceConfig6:Fantastisches Feature zum automatischen Vorschlagen von URL Adressen bei deren Eingabe.|MDiese Funktion zeigt bei der Eingabe von Webadressen in die Adressleiste mögliche sinnvolle Adressvorschläge während des Eintippens an.
-fr.ro.HelpInterfaceConfig6:Ceci indique si la fontion de suggestion d'URL de Netsurf est activée.|MLa suggestion d'URL montre les possibilités de complétion d'URL au fur et à mesure où elles sont tapées dans la barre.
-it.ro.HelpInterfaceConfig6:Indica se la funzione di suggerimento URL di NetSurf sarà abilitata.|MIl suggerimento URL mostra le opzioni per il completamento degli URL durante la digitazione nella barra indirizzi di NetSurf.
+fr.ro.HelpInterfaceConfig6:Ceci indique si la fontion de suggestion d'URL de NeoSurf est activée.|MLa suggestion d'URL montre les possibilités de complétion d'URL au fur et à mesure où elles sont tapées dans la barre.
+it.ro.HelpInterfaceConfig6:Indica se la funzione di suggerimento URL di NeoSurf sarà abilitata.|MIl suggerimento URL mostra le opzioni per il completamento degli URL durante la digitazione nella barra indirizzi di NeoSurf.
 nl.ro.HelpInterfaceConfig6:Deze optie geeft aan of het geven van adressuggesties is ingesteld.|MAdressuggestie geeft tijdens het typen van een adres een suggestie van het complete webadres.
-zh_CN.ro.HelpInterfaceConfig6:这表示是否启用 NetSurf 的地址建议功能。|M当您在 NetSurf 的地址栏中键入时，地址建议会显示用于填写地址的选项。
+zh_CN.ro.HelpInterfaceConfig6:这表示是否启用 NeoSurf 的地址建议功能。|M当您在 NeoSurf 的地址栏中键入时，地址建议会显示用于填写地址的选项。
 
-en.ro.HelpInterfaceConfig7:This indicates whether the URL for the item under the pointer in NetSurf's local history \w will be displayed.
+en.ro.HelpInterfaceConfig7:This indicates whether the URL for the item under the pointer in NeoSurf's local history \w will be displayed.
 de.ro.HelpInterfaceConfig7:In der lokalen History werden die Adressen der besuchten Webseiten schwebend über den zugehörigen Bildern eingeblendet.
 fr.ro.HelpInterfaceConfig7:Ceci indique si l'URL de l'item sous le pointeur dans la fenêtre d'historique local doit être affiché.
-it.ro.HelpInterfaceConfig7:Indica se verrà visualizzato l'URL dell'elemento sotto il puntatore del mouse nella finestra della cronologia locale di NetSurf.
+it.ro.HelpInterfaceConfig7:Indica se verrà visualizzato l'URL dell'elemento sotto il puntatore del mouse nella finestra della cronologia locale di NeoSurf.
 nl.ro.HelpInterfaceConfig7:Deze optie geeft aan of het adres van een item onder de muisaanwijzer in de venstergeschiedenis zal worden getoond.
-zh_CN.ro.HelpInterfaceConfig7:这表示是否在 NetSurf 本地历史 \w 中显示鼠标指针下的项地址。
+zh_CN.ro.HelpInterfaceConfig7:这表示是否在 NeoSurf 本地历史 \w 中显示鼠标指针下的项地址。
 
-en.ro.HelpInterfaceConfig10:This indicates whether NetSurf will use a thumbnail when iconising windows to the Pinboard.
-de.ro.HelpInterfaceConfig10:Beim verkleinernden Ablegen eines Browserfensters auf dem Desktophintergrund (Iconisieren) wird von NetSurf ein fensterspezifisches Icon erzeugt, welches den aktuellen Seiteninhalt wiedergibt.
-fr.ro.HelpInterfaceConfig10:Ceci indique si Netsurf doit utiliser une miniature lors de l'iconisation vers le Punaiseur (Pinboard).
-it.ro.HelpInterfaceConfig10:Indica se NetSurf utilizzerà una miniatura quando si iconificano le finestre nella Pinboard.
+en.ro.HelpInterfaceConfig10:This indicates whether NeoSurf will use a thumbnail when iconising windows to the Pinboard.
+de.ro.HelpInterfaceConfig10:Beim verkleinernden Ablegen eines Browserfensters auf dem Desktophintergrund (Iconisieren) wird von NeoSurf ein fensterspezifisches Icon erzeugt, welches den aktuellen Seiteninhalt wiedergibt.
+fr.ro.HelpInterfaceConfig10:Ceci indique si NeoSurf doit utiliser une miniature lors de l'iconisation vers le Punaiseur (Pinboard).
+it.ro.HelpInterfaceConfig10:Indica se NeoSurf utilizzerà una miniatura quando si iconificano le finestre nella Pinboard.
 nl.ro.HelpInterfaceConfig10:Deze optie geeft aan of er een miniatuur van de pagina wordt getoond bij het symboliseren van vensters naar het prikbord.
-zh_CN.ro.HelpInterfaceConfig10:这表示 NetSurf 是否在将窗口图标化到插接板时使用缩略图。
+zh_CN.ro.HelpInterfaceConfig10:这表示 NeoSurf 是否在将窗口图标化到插接板时使用缩略图。
 
 en.ro.HelpInterfaceConfig11:\Sreset the Interface options back to their default values.
 de.ro.HelpInterfaceConfig11:Stellt die Standardeinstellungen wieder her.
@@ -7848,12 +7848,12 @@ it.ro.HelpInterfaceConfig13:\Ssalva queste impostazioni e chiudi la finestra.|M\
 nl.ro.HelpInterfaceConfig13:Klik met KIES om de gemaakte wijzigingen te bewaren en dit venster te sluiten.|MKlikken met PASAAN heeft hetzelfde effect, alleen wordt het huidige venster dan niet gesloten.
 zh_CN.ro.HelpInterfaceConfig13:\S保存这些设置并关闭 \w。|M\A在不关闭 \w 的情况下保存这些设置。
 
-en.ro.HelpInterfaceConfig16:This indicates whether NetSurf will use an external hotlist client if available, in preference to the internal hotlist.
+en.ro.HelpInterfaceConfig16:This indicates whether NeoSurf will use an external hotlist client if available, in preference to the internal hotlist.
 de.ro.HelpInterfaceConfig16:Erlaubt das Benutzen eines externen Programmes zur Verwaltung der Hotlist.
-fr.ro.HelpInterfaceConfig16:This indicates whether NetSurf will use an external hotlist client if available, in preference to the internal hotlist.
-it.ro.HelpInterfaceConfig16:Indica se NetSurf tenterà di utilizzare un client segnalibri esterno se disponibile, al posto di quello interno.
+fr.ro.HelpInterfaceConfig16:This indicates whether NeoSurf will use an external hotlist client if available, in preference to the internal hotlist.
+it.ro.HelpInterfaceConfig16:Indica se NeoSurf tenterà di utilizzare un client segnalibri esterno se disponibile, al posto di quello interno.
 nl.ro.HelpInterfaceConfig16:Deze optie geeft aan of de favorietenlijst via een extern programma (indien beschikbaar) beheerd mogen worden.
-zh_CN.ro.HelpInterfaceConfig16:这表示 NetSurf 是否优先使用外部常用列表客户端(如果可用)，而不是内部常用列表。
+zh_CN.ro.HelpInterfaceConfig16:这表示 NeoSurf 是否优先使用外部常用列表客户端(如果可用)，而不是内部常用列表。
 
 en.ro.HelpInterfaceConfig18:\Tthe path to a hotlist application which will be used to display the hotlist.
 de.ro.HelpInterfaceConfig18:\Tder Pfad zu einer Anwendung, die die Hotlist verwalten kann.
@@ -7869,12 +7869,12 @@ it.ro.HelpLanguageConfig:\Tconfigurazione della lingua \w
 nl.ro.HelpLanguageConfig:Diverse taalinstellingen kunnen in dit venster gewijzigd worden.
 zh_CN.ro.HelpLanguageConfig:\T语言配置 \w
 
-en.ro.HelpLanguageConfig3:\Tcurrently selected interface language.|MThe interface language is the language used for NetSurf's messages and dialogue boxes.
-de.ro.HelpLanguageConfig3:Das ist die aktuell eingestellte Sprache für die Bedienoberfläche.|MDiese Sprache wird genutzt, um NetSurf's Meldungen, Texte der Dialogboxen, Menüs darzustellen.
-fr.ro.HelpLanguageConfig3:\Tla langue d'interface sélectionnée actuellement.|MLa langue d'interface est la langue utilisée pour les messages et les boîtes de dialogue de Netsurf.
-it.ro.HelpLanguageConfig3:\Tla lingua dell'interfaccia correntemente selezionata.|MLa lingua dell'interfaccia � la lingua utilizzata per i messaggi e le finestre di dialogo di NetSurf.
+en.ro.HelpLanguageConfig3:\Tcurrently selected interface language.|MThe interface language is the language used for NeoSurf's messages and dialogue boxes.
+de.ro.HelpLanguageConfig3:Das ist die aktuell eingestellte Sprache für die Bedienoberfläche.|MDiese Sprache wird genutzt, um NeoSurf's Meldungen, Texte der Dialogboxen, Menüs darzustellen.
+fr.ro.HelpLanguageConfig3:\Tla langue d'interface sélectionnée actuellement.|MLa langue d'interface est la langue utilisée pour les messages et les boîtes de dialogue de NeoSurf.
+it.ro.HelpLanguageConfig3:\Tla lingua dell'interfaccia correntemente selezionata.|MLa lingua dell'interfaccia � la lingua utilizzata per i messaggi e le finestre di dialogo di NeoSurf.
 nl.ro.HelpLanguageConfig3:Dit is momenteel de geselecteerde gebruikersinterfacetaal.|MDe interfacetaal is de taal voor de melding- en dialoogvensters.
-zh_CN.ro.HelpLanguageConfig3:\T当前选择的界面语言。|M界面语言是 NetSurf 浏览器消息和对话框使用的语言。
+zh_CN.ro.HelpLanguageConfig3:\T当前选择的界面语言。|M界面语言是 NeoSurf 浏览器消息和对话框使用的语言。
 
 en.ro.HelpLanguageConfig4:\Sselect an interface language.
 de.ro.HelpLanguageConfig4:Klicken mit AUSWAHL zum Auswählen einer Oberflächensprache.
@@ -7883,12 +7883,12 @@ it.ro.HelpLanguageConfig4:\Sseleziona una lingua per l'interfaccia.
 nl.ro.HelpLanguageConfig4:Klik met KIES om de gebruikersinterfacetaal te kiezen.
 zh_CN.ro.HelpLanguageConfig4:\S选择界面语言。
 
-en.ro.HelpLanguageConfig6:\Tcurrently selected web page language.|MIf a web site provides a choice of languages, NetSurf will request the page in your preferred language.
-de.ro.HelpLanguageConfig6:Das ist die aktuelle Sprache zur Anzeige auf Webseiten.|MWenn eine Webseite die Darstellung in verschiedenen Sprachen anbietet, wird NetSurf die Webseite in der hier eingestellten bevorzugten Sprache abrufen.
-fr.ro.HelpLanguageConfig6:\Tla langue de page web sélectionnée actuellement.|MSi un site web fournit un choix de langues, Netsurf demandera la page dans votre langue favorite.
-it.ro.HelpLanguageConfig6:\Tla lingua della pagina web correntemente selezionata.|MSe un sito Web offre una scelta di lingue, NetSurf richiederà la pagina nella tua lingua preferita.
-nl.ro.HelpLanguageConfig6:Dit is momenteel de geselecteerde webpaginataal.|MWanneer een pagina meerdere taalmogelijkheden biedt, zal de NetSurf de pagina in de gewenste taal proberen op te vragen.
-zh_CN.ro.HelpLanguageConfig6:\T当前选择的网页语言。|M如果网站提供语言选择，NetSurf 将以您的首选语言请求网页。
+en.ro.HelpLanguageConfig6:\Tcurrently selected web page language.|MIf a web site provides a choice of languages, NeoSurf will request the page in your preferred language.
+de.ro.HelpLanguageConfig6:Das ist die aktuelle Sprache zur Anzeige auf Webseiten.|MWenn eine Webseite die Darstellung in verschiedenen Sprachen anbietet, wird NeoSurf die Webseite in der hier eingestellten bevorzugten Sprache abrufen.
+fr.ro.HelpLanguageConfig6:\Tla langue de page web sélectionnée actuellement.|MSi un site web fournit un choix de langues, NeoSurf demandera la page dans votre langue favorite.
+it.ro.HelpLanguageConfig6:\Tla lingua della pagina web correntemente selezionata.|MSe un sito Web offre una scelta di lingue, NeoSurf richiederà la pagina nella tua lingua preferita.
+nl.ro.HelpLanguageConfig6:Dit is momenteel de geselecteerde webpaginataal.|MWanneer een pagina meerdere taalmogelijkheden biedt, zal de NeoSurf de pagina in de gewenste taal proberen op te vragen.
+zh_CN.ro.HelpLanguageConfig6:\T当前选择的网页语言。|M如果网站提供语言选择，NeoSurf 将以您的首选语言请求网页。
 
 en.ro.HelpLanguageConfig7:\Sselect a preferred web page language.
 de.ro.HelpLanguageConfig7:Klicken mit AUSWAHL zum Auswählen einer Webseitensprache.
@@ -7925,12 +7925,12 @@ it.ro.HelpSecurityConfig:\Tconfigurazione di sicurezza \w
 nl.ro.HelpSecurityConfig:De privacy- en veiligheidsinstellingen kunnen in dit venster gewijzigd worden.
 zh_CN.ro.HelpSecurityConfig:\T安全配置 \w
 
-en.ro.HelpSecurityConfig2:This indicates whether NetSurf will send site referral information to web servers.|MWhen this is enabled NetSurf will tell the web server of a new page the address of the site you came from, after following a link.
-de.ro.HelpSecurityConfig2:NetSurf sendet Seitenreferenzinformationen an Webserver.|MIst diese Option gewählt, schickt NetSurf an den Server einer neuen Webseite die Adresse der Seite von der aus die aktuelle über einen Link aufgerufen wurde.
-fr.ro.HelpSecurityConfig2:Ceci indique si Netsurf doit envoyer l'information de renvoi de site aux serveurs web.|MLorsque ceci est activé Netsurf signalera au serveur web d'une nouvelle page l'adresse du site d'où vous venez, après avoir suivi un lien.
-it.ro.HelpSecurityConfig2:Indica se NetSurf invierà  le informazioni di riferimento del sito ai server Web.|MQuando questo � abilitato, NetSurf comunicherà  al server Web di una nuova pagina l'indirizzo del sito dal quale proveniva, dopo aver seguito un link.
+en.ro.HelpSecurityConfig2:This indicates whether NeoSurf will send site referral information to web servers.|MWhen this is enabled NeoSurf will tell the web server of a new page the address of the site you came from, after following a link.
+de.ro.HelpSecurityConfig2:NeoSurf sendet Seitenreferenzinformationen an Webserver.|MIst diese Option gewählt, schickt NeoSurf an den Server einer neuen Webseite die Adresse der Seite von der aus die aktuelle über einen Link aufgerufen wurde.
+fr.ro.HelpSecurityConfig2:Ceci indique si NeoSurf doit envoyer l'information de renvoi de site aux serveurs web.|MLorsque ceci est activé NeoSurf signalera au serveur web d'une nouvelle page l'adresse du site d'où vous venez, après avoir suivi un lien.
+it.ro.HelpSecurityConfig2:Indica se NeoSurf invierà  le informazioni di riferimento del sito ai server Web.|MQuando questo � abilitato, NeoSurf comunicherà  al server Web di una nuova pagina l'indirizzo del sito dal quale proveniva, dopo aver seguito un link.
 nl.ro.HelpSecurityConfig2:Deze optie geeft aan of site-gerelateerde informatie naar webservers wordt meegezonden.|MIndien toegestaan, ontvangt de webserver informatie over de vorige pagina waar, via een koppeling, vandaan is gekomen.
-zh_CN.ro.HelpSecurityConfig2:这表示 NetSurf 是否将站点推荐信息发送到网络服务器。|M启用此选项后，NetSurf 将在跟踪链接后将您的站点网址告知新网页的网络服务器。
+zh_CN.ro.HelpSecurityConfig2:这表示 NeoSurf 是否将站点推荐信息发送到网络服务器。|M启用此选项后，NeoSurf 将在跟踪链接后将您的站点网址告知新网页的网络服务器。
 
 en.ro.HelpSecurityConfig6:You can enter the length of time that items are stored in global history here.
 de.ro.HelpSecurityConfig6:Hier kann die Zeitdauer in Tagen angegeben werden, bis zu deren Ablauf Objekte in der globalen History gespeichert bleiben.
@@ -8002,12 +8002,12 @@ it.ro.HelpThemeConfig4:\Ssalva queste impostazioni e chiudi la finestra.|M\Asalv
 nl.ro.HelpThemeConfig4:Klik met KIES om de gemaakte wijzigingen te bewaren en dit venster te sluiten.|MKlikken met PASAAN heeft hetzelfde effect, alleen wordt het huidige venster dan niet gesloten.
 zh_CN.ro.HelpThemeConfig4:\S保存这些设置并关闭 \w。|M\A在不关闭 \w 的情况下保存这些设置。
 
-en.ro.HelpThemePConfig:This pane shows the available themes.|MThe selected icon theme is used for NetSurf browser \ws, the hotlist, global history and cookie management.
+en.ro.HelpThemePConfig:This pane shows the available themes.|MThe selected icon theme is used for NeoSurf browser \ws, the hotlist, global history and cookie management.
 de.ro.HelpThemePConfig:Dieser Dialog zeigt die verfügbaren Themen.|MDas ausgewählte Thema wird bei der Anzeige von Browserfenster, Cookieverwaltung, Hotlist und History eingesetzt.
-fr.ro.HelpThemePConfig:Cette fenêtre indique les thèmes disponibles.|MLe thème de l'icône sélectionnée est utilisée pour les fenêtres de navigation de Netsurf, la liste des favoris et l'historique global.
-it.ro.HelpThemePConfig:Questo pannello mostra i temi disponibili.|MIl tema delle icone selezionato verrà  usato dal browser NetSurf \ws, dai segnalibri, dalla cronologia globale e dal gestore dei cookie.
-nl.ro.HelpThemePConfig:Dit deelvenster toont de beschikbare thema's.|MHet geselecteerde thema wordt gebruikt in de NetSurf-browservensters, de favorietenlijst en de browsergeschiedenis.
-zh_CN.ro.HelpThemePConfig:此窗格显示可用的主题。|M选定的图标主题用于 NetSurf 浏览器 \ws、常用列表、全局历史记录和 Cookie 管理。
+fr.ro.HelpThemePConfig:Cette fenêtre indique les thèmes disponibles.|MLe thème de l'icône sélectionnée est utilisée pour les fenêtres de navigation de NeoSurf, la liste des favoris et l'historique global.
+it.ro.HelpThemePConfig:Questo pannello mostra i temi disponibili.|MIl tema delle icone selezionato verrà  usato dal browser NeoSurf \ws, dai segnalibri, dalla cronologia globale e dal gestore dei cookie.
+nl.ro.HelpThemePConfig:Dit deelvenster toont de beschikbare thema's.|MHet geselecteerde thema wordt gebruikt in de NeoSurf-browservensters, de favorietenlijst en de browsergeschiedenis.
+zh_CN.ro.HelpThemePConfig:此窗格显示可用的主题。|M选定的图标主题用于 NeoSurf 浏览器 \ws、常用列表、全局历史记录和 Cookie 管理。
 
 # Amiga HelpHint (tooltip) text
 #
@@ -8200,7 +8200,7 @@ zh_CN.all.con_advanced:高级
 en.all.Preferences:Preferences
 de.all.Preferences:Einstellungen
 fr.all.Preferences:Préférences
-it.all.Preferences:Preferenze di NetSurf
+it.all.Preferences:Preferenze di NeoSurf
 nl.all.Preferences:Voorkeuren
 zh_CN.all.Preferences:首选项
 
@@ -8396,12 +8396,12 @@ it.all.OSPointers:Se possibile usa i puntatori del mouse di sistema
 nl.all.OSPointers:Gebruik bij voorkeur besturingssysteem-muisaanwijzers
 zh_CN.all.OSPointers:尽可能使用操作系统的鼠标指针
 
-en.all.NeedRestart:These options will not take effect until the next time NetSurf is started
-de.all.NeedRestart:Diese Optionen werden erst nach einem Neustart von NetSurf aktiviert.
-fr.all.NeedRestart:Ces options ne prendront effet qu'au prochain démarrage de NetSurf
-it.all.NeedRestart:Queste modifiche avranno effetto al prossimo riavvio di NetSurf
-nl.all.NeedRestart:Deze opties worden pas actief nadat NetSurf opieuw is gestart
-zh_CN.all.NeedRestart:这些选项在下次启动 NetSurf 之前不会生效
+en.all.NeedRestart:These options will not take effect until the next time NeoSurf is started
+de.all.NeedRestart:Diese Optionen werden erst nach einem Neustart von NeoSurf aktiviert.
+fr.all.NeedRestart:Ces options ne prendront effet qu'au prochain démarrage de NeoSurf
+it.all.NeedRestart:Queste modifiche avranno effetto al prossimo riavvio di NeoSurf
+nl.all.NeedRestart:Deze opties worden pas actief nadat NeoSurf opieuw is gestart
+zh_CN.all.NeedRestart:这些选项在下次启动 NeoSurf 之前不会生效
 
 # Connection tab
 #
@@ -8807,7 +8807,7 @@ zh_CN.all.SearchProvider:搜索提供者
 en.ami.OptionDocky:Show in AmiDock
 de.ami.OptionDocky:In AmiDock zeigen
 fr.ami.OptionDocky:Afficher dans AmiDock
-it.ami.OptionDocky:Mostra icona di NetSurf su AmiDock
+it.ami.OptionDocky:Mostra icona di NeoSurf su AmiDock
 nl.ami.OptionDocky:Toon in AmiDock
 zh_CN.ami.OptionDocky:在 AmiDock 中显示
 
@@ -8870,7 +8870,7 @@ zh_CN.all.OptionNoWindow:启动时不打开窗口
 en.all.OptionNoQuit:Do not quit when last window closed
 de.all.OptionNoQuit:Nicht Beenden beim Schließen des letzten Fensters
 fr.all.OptionNoQuit:Ne pas quitter lorsque la dernière fenêtre se trouve fermée
-it.all.OptionNoQuit:Iconifica su AmiDock alla chiusura di NetSurf
+it.all.OptionNoQuit:Iconifica su AmiDock alla chiusura di NeoSurf
 nl.all.OptionNoQuit:Stop programma niet als laatste venster worden gesloten
 zh_CN.all.OptionNoQuit:在最后一个窗口关闭时不退出
 
@@ -8981,11 +8981,11 @@ nl.all.SetPassword:Stel wachtwoord in
 # These tokens appear to be unused at the current time.
 #
 
-#en.all.TreeHistory:NetSurf history
-#de.all.TreeHistory:NetSurf Verlauf
-#fr.all.TreeHistory:Historique de NetSurf
-#it.all.TreeHistory:Cronologia NetSurf
-#nl.all.TreeHistory:NetSurf-geschiedenis
+#en.all.TreeHistory:NeoSurf history
+#de.all.TreeHistory:NeoSurf Verlauf
+#fr.all.TreeHistory:Historique de NeoSurf
+#it.all.TreeHistory:Cronologia NeoSurf
+#nl.all.TreeHistory:NeoSurf-geschiedenis
 #en.all.SaveSelect:Save
 #de.all.SaveSelect:Sichern
 #fr.all.SaveSelect:Sauver

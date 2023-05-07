@@ -24,9 +24,9 @@
  */
 
 #include "utils/errors.h"
-#include "netsurf/browser.h"
-#include "netsurf/core_window.h"
-#include "netsurf/types.h"
+#include "neosurf/browser.h"
+#include "neosurf/core_window.h"
+#include "neosurf/types.h"
 #include "css/utils.h"
 #include "desktop/cw_helper.h"
 

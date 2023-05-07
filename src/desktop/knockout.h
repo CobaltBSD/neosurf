@@ -23,7 +23,7 @@
 #ifndef _NETSURF_DESKTOP_KNOCKOUT_H_
 #define _NETSURF_DESKTOP_KNOCKOUT_H_
 
-#include "netsurf/plotters.h"
+#include "neosurf/plotters.h"
 
 
 /**

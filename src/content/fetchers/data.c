@@ -28,7 +28,7 @@
 #include <libwapcaplet/libwapcaplet.h>
 #include <nsutils/base64.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/url.h"
 #include "utils/nsurl.h"
 #include "utils/corestrings.h"
@@ -58,7 +58,7 @@ static struct fetch_data_context *ring = NULL;
 
 static bool fetch_data_initialise(lwc_string *scheme)
 {
-	NSLOG(netsurf, INFO, "fetch_data_initialise called for %s",
+	NSLOG(neosurf, INFO, "fetch_data_initialise called for %s",
 	      lwc_string_data(scheme));
 
 	return true;
@@ -66,7 +66,7 @@ static bool fetch_data_initialise(lwc_string *scheme)
 
 static void fetch_data_finalise(lwc_string *scheme)
 {
-	NSLOG(netsurf, INFO, "fetch_data_finalise called for %s",
+	NSLOG(neosurf, INFO, "fetch_data_finalise called for %s",
 	      lwc_string_data(scheme));
 }
 
@@ -164,7 +164,7 @@ static bool fetch_data_process(struct fetch_data_context *c)
 	 * data must still be there.
 	 */
 	
-	NSLOG(netsurf, DEEPDEBUG, "url: %.140s", nsurl_access(c->url));
+	NSLOG(neosurf, DEEPDEBUG, "url: %.140s", nsurl_access(c->url));
 	
 	if (nsurl_length(c->url) < 6) {
 		/* 6 is the minimum possible length (data:,) */
@@ -266,7 +266,7 @@ static void fetch_data_poll(lwc_string *scheme)
 		/* Only process non-aborted fetches */
 		if (c->aborted == false && fetch_data_process(c) == true) {
 			fetch_set_http_code(c->parent_fetch, 200);
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "setting data: MIME type to %s, length to %"PRIsizet,
 			      c->mimetype,
 			      c->datalen);
@@ -301,7 +301,7 @@ static void fetch_data_poll(lwc_string *scheme)
 				fetch_data_send_callback(&msg, c);
 			}
 		} else {
-			NSLOG(netsurf, INFO, "Processing of %.140s failed!",
+			NSLOG(neosurf, INFO, "Processing of %.140s failed!",
 			      nsurl_access(c->url));
 
 			/* Ensure that we're unlocked here. If we aren't, 

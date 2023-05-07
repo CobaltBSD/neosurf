@@ -26,7 +26,7 @@
 #include "utils/file.h"
 #include "utils/log.h"
 #include "utils/nsurl.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 #include "desktop/searchweb.h"
 
 #include "gtk/compat.h"
@@ -613,7 +613,7 @@ comboboxLanguage_add_from_file(GtkListStore *liststore,
 
 	gtk_list_store_clear(liststore);
 
-	NSLOG(netsurf, INFO, "Used %s for languages", file_location);
+	NSLOG(neosurf, INFO, "Used %s for languages", file_location);
 	while (fgets(buf, sizeof(buf), fp)) {
 		/* Ignore blank lines */
 		if (buf[0] == '\0')
@@ -660,7 +660,7 @@ nsgtk_preferences_comboboxLanguage_realize(GtkWidget *widget,
 	const char *accept_language;
 
 	if (priv->content_language == NULL) {
-		NSLOG(netsurf, INFO, "content language list store unavailable");
+		NSLOG(neosurf, INFO, "content language list store unavailable");
 		return;
 	}
 
@@ -689,7 +689,7 @@ nsgtk_preferences_comboboxLanguage_realize(GtkWidget *widget,
 		}
 	}
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "error populatiung languages combo");
+		NSLOG(neosurf, INFO, "error populatiung languages combo");
 	}
 }
 
@@ -813,7 +813,7 @@ nsgtk_preferences_setCurrentPage_clicked(GtkButton *button, struct ppref *priv)
 G_MODULE_EXPORT void
 nsgtk_preferences_setDefaultPage_clicked(GtkButton *button, struct ppref *priv)
 {
-	const gchar *url = NETSURF_HOMEPAGE;
+	const gchar *url = NEOSURF_HOMEPAGE;
 
 	if (priv->entryHomePageURL != NULL) {
 		gtk_entry_set_text(GTK_ENTRY(priv->entryHomePageURL), url);
@@ -905,7 +905,7 @@ nsgtk_preferences_dialogPreferences_response(GtkDialog *dlg, gint resid)
 	char *choices = NULL;
 
 	if (resid == GTK_RESPONSE_CLOSE) {
-		netsurf_mkpath(&choices, NULL, 2, nsgtk_config_home, "Choices");
+		neosurf_mkpath(&choices, NULL, 2, nsgtk_config_home, "Choices");
 		if (choices != NULL) {
 			nsoption_write(choices, NULL, NULL);
 			free(choices);
@@ -920,7 +920,7 @@ nsgtk_preferences_dialogPreferences_deleteevent(GtkDialog *dlg,
 {
 	char *choices = NULL;
 
-	netsurf_mkpath(&choices, NULL, 2, nsgtk_config_home, "Choices");
+	neosurf_mkpath(&choices, NULL, 2, nsgtk_config_home, "Choices");
 	if (choices != NULL) {
 		nsoption_write(choices, NULL, NULL);
 		free(choices);
@@ -939,7 +939,7 @@ nsgtk_preferences_dialogPreferences_destroy(GtkDialog *dlg, struct ppref *priv)
 {
 	char *choices = NULL;
 
-	netsurf_mkpath(&choices, NULL, 2, nsgtk_config_home, "Choices");
+	neosurf_mkpath(&choices, NULL, 2, nsgtk_config_home, "Choices");
 	if (choices != NULL) {
 		nsoption_write(choices, NULL, NULL);
 		free(choices);
@@ -964,14 +964,14 @@ GtkWidget* nsgtk_preferences(struct browser_window *bw, GtkWindow *parent)
 
 	res = nsgtk_builder_new_from_resname("options", &preferences_builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Preferences UI builder init failed");
+		NSLOG(neosurf, INFO, "Preferences UI builder init failed");
 		return NULL;
 	}
 
 	priv->dialog = gtk_builder_get_object(preferences_builder,
 					       "dialogPreferences");
 	if (priv->dialog == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Unable to get object for preferences dialog");
 		/* release builder as were done with it */
 		g_object_unref(G_OBJECT(preferences_builder));

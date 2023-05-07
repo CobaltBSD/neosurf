@@ -28,7 +28,7 @@
 #include "utils/config.h"
 #include "utils/nsurl.h"
 #include "utils/inet.h"
-#include "netsurf/ssl_certs.h"
+#include "neosurf/ssl_certs.h"
 
 struct content;
 struct fetch;

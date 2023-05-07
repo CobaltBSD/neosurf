@@ -41,7 +41,7 @@
 #include "utils/file.h"
 #include "utils/filepath.h"
 #include "utils/nsurl.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 
 #include "gtk/warn.h"
 #include "gtk/about.h"
@@ -371,7 +371,7 @@ window_init(const char *title,
 
 	res = nsgtk_builder_new_from_resname("viewdata", &newctx->builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Viewdata UI builder init failed");
+		NSLOG(neosurf, INFO, "Viewdata UI builder init failed");
 		free(newctx);
 		return res;
 	}
@@ -381,7 +381,7 @@ window_init(const char *title,
 	window = GTK_WINDOW(gtk_builder_get_object(newctx->builder,
 						   "ViewDataWindow"));
 	if (window == NULL) {
-		NSLOG(netsurf, INFO, "Unable to find window in builder ");
+		NSLOG(neosurf, INFO, "Unable to find window in builder ");
 
 		/* free the builder */
 		g_object_unref(G_OBJECT(newctx->builder));
@@ -505,7 +505,7 @@ tab_init_fname(const char *title,
 	nserror ret;
 
 	/* Open tab on temporary file */
-	ret = netsurf_path_to_nsurl(fname, &url);
+	ret = neosurf_path_to_nsurl(fname, &url);
 	if (ret != NSERROR_OK) {
 		return ret;
 	}
@@ -616,7 +616,7 @@ static char** xdg_data_strvec(void)
 			 xdg_data_home, xdg_data_dirs);
 	}
 
-	NSLOG(netsurf, INFO, "%s", xdg_data_path);
+	NSLOG(neosurf, INFO, "%s", xdg_data_path);
 
 	svec = filepath_path_to_strvec(xdg_data_path);
 	free(xdg_data_path);
@@ -651,7 +651,7 @@ static char *xdg_get_default_app(const char *path, const char *mimetype)
 	fname = malloc(fname_len);
 	snprintf(fname, fname_len, "%s/applications/defaults.list", path);
 
-	NSLOG(netsurf, INFO, "Checking %s", fname);
+	NSLOG(neosurf, INFO, "Checking %s", fname);
 
 	fp = fopen(fname, "r");
 	free(fname);
@@ -674,11 +674,11 @@ static char *xdg_get_default_app(const char *path, const char *mimetype)
 
 			ret = strdup(line + mimetype_len + 1);
 
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Found line match for %s length %zu\n",
 			      mimetype,
 			      rd);
-			NSLOG(netsurf, INFO, "Result %s", ret);
+			NSLOG(neosurf, INFO, "Result %s", ret);
 
 			break;
 		}
@@ -717,7 +717,7 @@ static char *xdg_get_exec_cmd(const char *path, const char *desktop)
 	fname = malloc(fname_len);
 	snprintf(fname, fname_len, "%s/applications/%s", path, desktop);
 
-	NSLOG(netsurf, INFO, "Checking %s", fname);
+	NSLOG(neosurf, INFO, "Checking %s", fname);
 
 	fp = fopen(fname, "r");
 	free(fname);
@@ -738,8 +738,8 @@ static char *xdg_get_exec_cmd(const char *path, const char *desktop)
 
 			ret = strdup(line + SLEN("Exec="));
 
-			NSLOG(netsurf, INFO, "Found Exec length %zu", rd);
-			NSLOG(netsurf, INFO, "Result %s", ret);
+			NSLOG(neosurf, INFO, "Found Exec length %zu", rd);
+			NSLOG(neosurf, INFO, "Result %s", ret);
 
 			break;
 		}
@@ -804,7 +804,7 @@ static char **build_exec_argv(const char *fname, const char *exec_cmd)
 
 		argv[aidx] = exec_arg(start, cur - start, fname);
 		if (argv[aidx] != NULL) {
-			NSLOG(netsurf, INFO, "adding \"%s\"", argv[aidx]);
+			NSLOG(neosurf, INFO, "adding \"%s\"", argv[aidx]);
 			aidx++;
 		}
 	}

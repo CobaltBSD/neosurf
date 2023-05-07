@@ -25,7 +25,7 @@
 #include <stddef.h>
 #include <stdio.h>
 
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 #include "utils/errors.h"
 #include "utils/nsoption.h"
 

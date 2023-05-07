@@ -29,7 +29,7 @@
 #include <gtk/gtk.h>
 
 #include "utils/nsoption.h"
-#include "netsurf/search.h"
+#include "neosurf/search.h"
 #include "desktop/search.h"
 
 #include "gtk/compat.h"

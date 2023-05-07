@@ -27,8 +27,8 @@
 
 #include "utils/errors.h"
 #include "content/textsearch.h"
-#include "netsurf/types.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/types.h"
+#include "neosurf/browser_window.h"
 
 #include "desktop/browser_private.h"
 #include "desktop/search.h"

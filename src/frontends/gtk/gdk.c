@@ -87,7 +87,7 @@ nsgdk_pixbuf_get_from_surface(cairo_surface_t *surface, int scwidth, int scheigh
 	if (cairo_surface_status(scsurface) != CAIRO_STATUS_SUCCESS) {
 		cairo_surface_destroy(scsurface);
 		g_object_unref(pixbuf);
-		NSLOG(netsurf, INFO, "Surface creation failed");
+		NSLOG(neosurf, INFO, "Surface creation failed");
 		return NULL;
 	}
 

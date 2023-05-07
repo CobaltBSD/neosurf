@@ -28,16 +28,16 @@
 /**
  * User friendly version string.
  */
-extern const char * const netsurf_version;
+extern const char * const neosurf_version;
 
 /**
  * NetSuf browser major version number.
  */
-extern const int netsurf_version_major;
+extern const int neosurf_version_major;
 
 /**
  * NetSuf browser minor version number.
  */
-extern const int netsurf_version_minor;
+extern const int neosurf_version_minor;
 
 #endif

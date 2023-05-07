@@ -27,7 +27,7 @@
 #include <stdint.h>
 #include <nsutils/time.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/utils.h"
 #include "utils/nsoption.h"
 #include "utils/log.h"
@@ -739,11 +739,11 @@ nserror js_newthread(jsheap *heap, void *win_priv, void *doc_priv, jsthread **th
 	/* ... */
 	duk_push_global_object(CTX);
 	/* ..., Win */
-	duk_get_prop_string(CTX, -1, "NetSurf");
+	duk_get_prop_string(CTX, -1, "NeoSurf");
 	/* ..., Win, NetSurf */
 	duk_put_global_string(CTX, GENERICS_MAGIC);
 	/* ..., Win */
-	duk_del_prop_string(CTX, -1, "NetSurf");
+	duk_del_prop_string(CTX, -1, "NeoSurf");
 	duk_pop(CTX);
 	/* ... */
 

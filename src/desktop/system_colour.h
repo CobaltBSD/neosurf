@@ -32,7 +32,7 @@
 #include <libcss/libcss.h>
 
 #include "utils/errors.h"
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 
 /**
  * css callback to obtain named system colour.

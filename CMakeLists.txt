@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(neosurf)
 
+#TODO need to install in $HOME/.config/neosurf: src/resources/icons, src/frontends/gtk/res/throbber, src/resources/en/*, src/resources/{default,adblock,internal,quirks}.css, src/resources/neosurf.png, src/frontends/gtk/res/default.ico, src/frontends/gtk/res/languages, src/frontends/gtk/res/accelerators
+
 add_subdirectory(contrib)
 add_subdirectory(src)
 

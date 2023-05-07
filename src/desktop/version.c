@@ -18,7 +18,7 @@
 
 #include "desktop/version.h"
 
-const char * const netsurf_version = "3.11 (Dev)"
+const char * const neosurf_version = "0.5 (Dev)"
 	;
-const int netsurf_version_major = 3;
-const int netsurf_version_minor = 11;
+const int neosurf_version_major = 0;
+const int neosurf_version_minor = 5;

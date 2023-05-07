@@ -27,9 +27,9 @@
 
 #include "utils/nsurl.h"
 #include "utils/errors.h"
-#include "netsurf/types.h"
-#include "netsurf/content.h"
-#include "netsurf/mouse.h"
+#include "neosurf/types.h"
+#include "neosurf/content.h"
+#include "neosurf/mouse.h"
 #include "css/utils.h"
 #include "css/dump.h"
 #include "desktop/scrollbar.h"

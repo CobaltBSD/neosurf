@@ -138,7 +138,7 @@ extern struct gui_file_table *default_file_table;
  * @return NSERROR_OK and the complete path is written to str
  *         or error code on faliure.
  */
-nserror netsurf_mkpath(char **str, size_t *size, size_t nelm, ...);
+nserror neosurf_mkpath(char **str, size_t *size, size_t nelm, ...);
 
 /**
  * Create a path from a nsurl.
@@ -149,7 +149,7 @@ nserror netsurf_mkpath(char **str, size_t *size, size_t nelm, ...);
  * @return NSERROR_OK and the path is written to \a path_out or error code on
  *         faliure.
  */
-nserror netsurf_nsurl_to_path(struct nsurl *url, char **path_out);
+nserror neosurf_nsurl_to_path(struct nsurl *url, char **path_out);
 
 /**
  * Create a nsurl from a path.
@@ -162,7 +162,7 @@ nserror netsurf_nsurl_to_path(struct nsurl *url, char **path_out);
  * @return NSERROR_OK and the url is placed in \a url or error
  *         code on faliure.
  */
-nserror netsurf_path_to_nsurl(const char *path, struct nsurl **url);
+nserror neosurf_path_to_nsurl(const char *path, struct nsurl **url);
 
 /**
  * Ensure that all directory elements needed to store a filename exist.
@@ -170,7 +170,7 @@ nserror netsurf_path_to_nsurl(const char *path, struct nsurl **url);
  * @param fname The filename to ensure the path to exists.
  * @return NSERROR_OK on success or error code on failure.
  */
-nserror netsurf_mkdir_all(const char *fname);
+nserror neosurf_mkdir_all(const char *fname);
 
 /**
  * Recursively remove a directory
@@ -181,6 +181,6 @@ nserror netsurf_mkdir_all(const char *fname);
  * @param path The path to recursively remove
  * @return NSERROR_OK on success, or an error code on failure.
  */
-nserror netsurf_recursive_rm(const char *path);
+nserror neosurf_recursive_rm(const char *path);
 
 #endif

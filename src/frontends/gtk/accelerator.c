@@ -48,7 +48,7 @@ nserror nsgtk_accelerator_init(char **respaths)
 		accelerators_hash = hash_create(HASH_SIZE);
 	}
 	if (accelerators_hash == NULL) {
-		NSLOG(netsurf, INFO, "Unable to create hash table");
+		NSLOG(neosurf, INFO, "Unable to create hash table");
 		return NSERROR_NOMEM;
 	}
 

@@ -27,12 +27,12 @@
 #include "utils/nsurl.h"
 #include "utils/errors.h"
 
-#include "netsurf/types.h"
-#include "netsurf/layout.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/core_window.h"
-#include "netsurf/plotters.h"
-#include "netsurf/keypress.h"
+#include "neosurf/types.h"
+#include "neosurf/layout.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/core_window.h"
+#include "neosurf/plotters.h"
+#include "neosurf/keypress.h"
 
 #include "utils/nscolour.h"
 

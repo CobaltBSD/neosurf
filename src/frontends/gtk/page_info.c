@@ -27,10 +27,10 @@
 
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/keypress.h"
-#include "netsurf/plotters.h"
-#include "netsurf/misc.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/keypress.h"
+#include "neosurf/plotters.h"
+#include "neosurf/misc.h"
+#include "neosurf/browser_window.h"
 #include "desktop/page-info.h"
 #include "desktop/gui_internal.h"
 
@@ -173,7 +173,7 @@ nserror nsgtk_page_info(struct browser_window *bw)
 
 	res = nsgtk_builder_new_from_resname("pageinfo", &ncwin->builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, CRITICAL, "Page Info UI builder init failed %s", messages_get_errorcode(res));
+		NSLOG(neosurf, CRITICAL, "Page Info UI builder init failed %s", messages_get_errorcode(res));
 		free(ncwin);
 		return res;
 	}
@@ -252,7 +252,7 @@ nserror nsgtk_page_info(struct browser_window *bw)
 void
 nsgtk_page_info_set_position(struct nsgtk_pi_window *win, int x, int y)
 {
-	NSLOG(netsurf, INFO, "win=%p x=%d y=%d", win, x, y);
+	NSLOG(neosurf, INFO, "win=%p x=%d y=%d", win, x, y);
 
 	gtk_window_move(GTK_WINDOW(win->dlg), x, y);
 }

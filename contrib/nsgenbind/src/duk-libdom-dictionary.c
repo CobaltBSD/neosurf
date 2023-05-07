@@ -26,7 +26,7 @@
 /** prefix for all generated functions */
 #define DLPFX "dukky"
 
-#define MAGICPFX "\\xFF\\xFFNETSURF_DUKTAPE_"
+#define MAGICPFX "\\xFF\\xFFNEOSURF_DUKTAPE_"
 
 
 /**

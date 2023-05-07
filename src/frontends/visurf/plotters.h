@@ -23,7 +23,7 @@
 
 #ifndef NETSURF_VI_PLOTTERS_H
 #define NETSURF_VI_PLOTTERS_H 1
-#include "netsurf/types.h"
+#include "neosurf/types.h"
 
 struct plotter_table;
 

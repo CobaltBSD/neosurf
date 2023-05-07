@@ -27,7 +27,7 @@
 #include <stdint.h>
 
 #include "utils/errors.h"
-#include "netsurf/mouse.h"
+#include "neosurf/mouse.h"
 
 struct redraw_context;
 struct cookie_data;

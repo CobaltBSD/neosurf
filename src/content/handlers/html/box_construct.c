@@ -35,7 +35,7 @@
 #include "utils/string.h"
 #include "utils/ascii.h"
 #include "utils/nsurl.h"
-#include "netsurf/misc.h"
+#include "neosurf/misc.h"
 #include "css/select.h"
 #include "desktop/gui_internal.h"
 
@@ -1251,7 +1251,6 @@ static void convert_xml_to_box(struct box_construct_ctx *ctx)
 			root.children = root.last = ctx->root_box;
 			root.children->parent = &root;
 
-			/** \todo Remove box_normalise_block */
 			if (box_normalise_block(&root, ctx->root_box,
 					ctx->content) == false) {
 				ctx->cb(ctx->content, false);

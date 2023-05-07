@@ -25,9 +25,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "netsurf/clipboard.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/window.h"
+#include "neosurf/clipboard.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/window.h"
 #include "utils/utils.h"
 #include "content/content_protected.h"
 

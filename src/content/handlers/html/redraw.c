@@ -41,11 +41,11 @@
 #include "utils/utils.h"
 #include "utils/nsoption.h"
 #include "utils/corestrings.h"
-#include "netsurf/content.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/plotters.h"
-#include "netsurf/bitmap.h"
-#include "netsurf/layout.h"
+#include "neosurf/content.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/plotters.h"
+#include "neosurf/bitmap.h"
+#include "neosurf/layout.h"
 #include "content/content.h"
 #include "content/content_protected.h"
 #include "content/textsearch.h"
@@ -1902,7 +1902,7 @@ bool html_redraw_box(const html_content *html, struct box *box,
 		res = box_handle_scrollbars((struct content *)html,
 					    box, has_x_scroll, has_y_scroll);
 		if (res != NSERROR_OK) {
-			NSLOG(netsurf, INFO, "%s", messages_get_errorcode(res));
+			NSLOG(neosurf, INFO, "%s", messages_get_errorcode(res));
 			return false;
 		}
 

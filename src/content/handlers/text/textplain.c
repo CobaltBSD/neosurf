@@ -34,11 +34,11 @@
 #include "utils/utils.h"
 #include "utils/utf8.h"
 #include "utils/nsoption.h"
-#include "netsurf/content.h"
-#include "netsurf/keypress.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/plotters.h"
-#include "netsurf/layout.h"
+#include "neosurf/content.h"
+#include "neosurf/keypress.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/plotters.h"
+#include "neosurf/layout.h"
 #include "content/content_protected.h"
 #include "content/content_factory.h"
 #include "content/hlcache.h"
@@ -413,7 +413,7 @@ static void textplain_reformat(struct content *c, int width, int height)
 	size_t line_start;
 	nserror res;
 
-	NSLOG(netsurf, INFO, "content %p w:%d h:%d", c, width, height);
+	NSLOG(neosurf, INFO, "content %p w:%d h:%d", c, width, height);
 
 	/* compute available columns (assuming monospaced font) - use 8
 	 * characters for better accuracy
@@ -512,7 +512,7 @@ static void textplain_reformat(struct content *c, int width, int height)
 	return;
 
 no_memory:
-	NSLOG(netsurf, INFO, "out of memory (line_count %lu)", line_count);
+	NSLOG(neosurf, INFO, "out of memory (line_count %lu)", line_count);
 	return;
 }
 

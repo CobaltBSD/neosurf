@@ -46,7 +46,7 @@
 #include "utils/file.h"
 #include "utils/nsurl.h"
 #include "utils/ascii.h"
-#include "netsurf/fetch.h"
+#include "neosurf/fetch.h"
 
 #include "gtk/gui.h"
 #include "gtk/resources.h"
@@ -91,7 +91,7 @@ void gtk_fetch_filetype_init(const char *mimefile)
 
 	fh = fopen(mimefile, "r");
 	if (fh == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Unable to open a mime.types file, so using a minimal one for you.");
 		return;
 	}
@@ -194,7 +194,7 @@ const char *fetch_filetype(const char *unix_path)
 		/* stat suceeded so can check for directory */
 
 		if (S_ISDIR(statbuf.st_mode)) {
-			return "application/x-netsurf-directory";
+			return "application/x-neosurf-directory";
 		}
 	}
 
@@ -256,7 +256,7 @@ static nsurl *nsgtk_get_resource_url(const char *path)
 	if (strcmp(path, "favicon.ico") == 0) {
 		nsurl_create("resource:favicon.png", &url);
 	} else {
-		netsurf_path_to_nsurl(filepath_sfind(respaths, buf, path), &url);
+		neosurf_path_to_nsurl(filepath_sfind(respaths, buf, path), &url);
 	}
 
 	return url;

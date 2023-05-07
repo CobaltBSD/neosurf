@@ -226,7 +226,7 @@ the attribute example used `Window.bnd`
             duk_pop(ctx);
             
             if (priv_win == NULL || priv_win->win == NULL) {
-                    NSLOG(netsurf, INFO, "failed to get browser context");
+                    NSLOG(neosurf, INFO, "failed to get browser context");
                     return 0;
             }
             
@@ -287,7 +287,7 @@ The method binding will be added to `Window.bnd` as the attribute example
     %{
             duk_idx_t dukky_argc = duk_get_top(ctx);
             if (dukky_argc == 0) {
-                    NSLOG(netsurf, INFO, "JS ALERT");
+                    NSLOG(neosurf, INFO, "JS ALERT");
             } else {
                     duk_size_t msg_len;
                     const char *msg;
@@ -296,7 +296,7 @@ The method binding will be added to `Window.bnd` as the attribute example
                             duk_to_string(ctx, 0);
                     }
                     msg = duk_safe_to_lstring(ctx, 0, &msg_len);
-                    NSLOG(netsurf, INFO, "JS ALERT: %*s", (int)msg_len, msg);
+                    NSLOG(neosurf, INFO, "JS ALERT: %*s", (int)msg_len, msg);
 	    }
             return 0;
     %}

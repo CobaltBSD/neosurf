@@ -14,7 +14,7 @@
 #include "utils/hashtable.h"
 #include "utils/log.h"
 #include "utils/nsurl.h"
-#include "netsurf/fetch.h"
+#include "neosurf/fetch.h"
 #include "visurf/fetch.h"
 
 extern char **respaths;
@@ -59,7 +59,7 @@ nsvi_fetch_filetype_init(const char *mimefile)
 
 	fh = fopen(mimefile, "r");
 	if (fh == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Unable to open a mime.types file, so using a minimal one for you.");
 		return;
 	}
@@ -164,7 +164,7 @@ nsvi_fetch_filetype(const char *unix_path)
 		/* stat suceeded so can check for directory */
 
 		if (S_ISDIR(statbuf.st_mode)) {
-			return "application/x-netsurf-directory";
+			return "application/x-neosurf-directory";
 		}
 	}
 
@@ -221,7 +221,7 @@ nsvi_fetch_get_resource_url(const char *path)
 {
 	char buf[PATH_MAX];
 	nsurl *url = NULL;
-	netsurf_path_to_nsurl(filepath_sfind(respaths, buf, path), &url);
+	neosurf_path_to_nsurl(filepath_sfind(respaths, buf, path), &url);
 	return url;
 }
 

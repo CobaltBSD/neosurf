@@ -36,13 +36,13 @@
 #include "utils/corestrings.h"
 #include "utils/messages.h"
 #include "utils/nsoption.h"
-#include "netsurf/types.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/window.h"
-#include "netsurf/misc.h"
-#include "netsurf/content.h"
-#include "netsurf/search.h"
-#include "netsurf/plotters.h"
+#include "neosurf/types.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/window.h"
+#include "neosurf/misc.h"
+#include "neosurf/content.h"
+#include "neosurf/search.h"
+#include "neosurf/plotters.h"
 #include "content/content.h"
 #include "content/hlcache.h"
 #include "content/urldb.h"
@@ -337,11 +337,11 @@ browser_window_download(struct browser_window *bw,
 		/* no internal handler for this type, call out to frontend */
 		error = guit->misc->launch_url(url);
 	} else if (error != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Failed to fetch download: %d", error);
+		NSLOG(neosurf, INFO, "Failed to fetch download: %d", error);
 	} else {
 		error = download_context_create(l, root->window);
 		if (error != NSERROR_OK) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed creating download context: %d", error);
 			llcache_handle_abort(l);
 			llcache_handle_release(l);
@@ -472,7 +472,7 @@ browser_window_favicon_callback(hlcache_handle *c,
 
 			error = nsurl_create("resource:favicon.ico", &nsurl);
 			if (error != NSERROR_OK) {
-				NSLOG(netsurf, INFO,
+				NSLOG(neosurf, INFO,
 				      "Unable to create default location url");
 			} else {
 				hlcache_handle_retrieve(nsurl,
@@ -569,7 +569,7 @@ browser_window_update_favicon(hlcache_handle *c,
 			res = nsurl_create("resource:favicon.ico", &nsurl);
 		}
 		if (res != NSERROR_OK) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Unable to create default location url");
 			return res;
 		}
@@ -578,11 +578,11 @@ browser_window_update_favicon(hlcache_handle *c,
 	}
 
 	if (link == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "fetching general favicon from '%s'",
 		      nsurl_access(nsurl));
 	} else {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "fetching favicon rel:%s '%s'",
 		      lwc_string_data(link->rel),
 		      nsurl_access(nsurl));
@@ -945,7 +945,7 @@ browser_window_content_done(struct browser_window *bw)
 		rect.x0 = rect.x1 = scrollx;
 		rect.y0 = rect.y1 = scrolly;
 		if (browser_window_set_scroll(bw, &rect) != NSERROR_OK) {
-			NSLOG(netsurf, WARNING,
+			NSLOG(neosurf, WARNING,
 			      "Unable to set browser scroll offsets to %d by %d",
 			      scrollx, scrolly);
 		}
@@ -1842,7 +1842,7 @@ nserror browser_window_destroy_internal(struct browser_window *bw)
 
 	/* clear any pending callbacks */
 	guit->misc->schedule(-1, browser_window_refresh, bw);
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Clearing reformat schedule for browser window %p", bw);
 	guit->misc->schedule(-1, scheduled_reformat, bw);
 
@@ -1916,7 +1916,7 @@ nserror browser_window_destroy_internal(struct browser_window *bw)
 	bw->status.text = NULL;
 	browser_window__free_fetch_parameters(&bw->current_parameters);
 	browser_window__free_fetch_parameters(&bw->loading_parameters);
-	NSLOG(netsurf, INFO, "Status text cache match:miss %d:%d",
+	NSLOG(neosurf, INFO, "Status text cache match:miss %d:%d",
 	      bw->status.match, bw->status.miss);
 
 	return NSERROR_OK;
@@ -2546,7 +2546,7 @@ is_internal_navigate_url(nsurl *url)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror
 browser_window_get_name(struct browser_window *bw, const char **out_name)
 {
@@ -2558,7 +2558,7 @@ browser_window_get_name(struct browser_window *bw, const char **out_name)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror
 browser_window_set_name(struct browser_window *bw, const char *name)
 {
@@ -2583,7 +2583,7 @@ browser_window_set_name(struct browser_window *bw, const char *name)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool
 browser_window_redraw(struct browser_window *bw,
 		      int x, int y,
@@ -2600,7 +2600,7 @@ browser_window_redraw(struct browser_window *bw,
 	nserror res;
 
 	if (bw == NULL) {
-		NSLOG(netsurf, INFO, "NULL browser window");
+		NSLOG(neosurf, INFO, "NULL browser window");
 		return false;
 	}
 
@@ -2766,11 +2766,11 @@ browser_window_redraw(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool browser_window_redraw_ready(struct browser_window *bw)
 {
 	if (bw == NULL) {
-		NSLOG(netsurf, INFO, "NULL browser window");
+		NSLOG(neosurf, INFO, "NULL browser window");
 		return false;
 	} else if (bw->current_content != NULL) {
 		/* Can't render locked contents */
@@ -2794,7 +2794,7 @@ void browser_window_update_extent(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 void
 browser_window_get_position(struct browser_window *bw,
 			    bool root,
@@ -2840,7 +2840,7 @@ browser_window_get_position(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 void browser_window_set_position(struct browser_window *bw, int x, int y)
 {
 	assert(bw != NULL);
@@ -2850,14 +2850,14 @@ void browser_window_set_position(struct browser_window *bw, int x, int y)
 		bw->x = x;
 		bw->y = y;
 	} else {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Asked to set position of front end window.");
 		assert(0);
 	}
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 void
 browser_window_set_drag_type(struct browser_window *bw,
 			     browser_drag_type type,
@@ -2892,14 +2892,14 @@ browser_window_set_drag_type(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 browser_drag_type browser_window_get_drag_type(struct browser_window *bw)
 {
 	return bw->drag.type;
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 struct browser_window * browser_window_get_root(struct browser_window *bw)
 {
 	while (bw && bw->parent) {
@@ -2909,7 +2909,7 @@ struct browser_window * browser_window_get_root(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 browser_editor_flags browser_window_get_editor_flags(struct browser_window *bw)
 {
 	browser_editor_flags ed_flags = BW_EDITOR_NONE;
@@ -2930,7 +2930,7 @@ browser_editor_flags browser_window_get_editor_flags(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool browser_window_can_select(struct browser_window *bw)
 {
 	if (bw == NULL || bw->current_content == NULL)
@@ -2947,7 +2947,7 @@ bool browser_window_can_select(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 char * browser_window_get_selection(struct browser_window *bw)
 {
 	assert(bw->window);
@@ -2961,7 +2961,7 @@ char * browser_window_get_selection(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool browser_window_can_search(struct browser_window *bw)
 {
 	if (bw == NULL || bw->current_content == NULL)
@@ -2979,14 +2979,14 @@ bool browser_window_can_search(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool browser_window_is_frameset(struct browser_window *bw)
 {
 	return (bw->children != NULL);
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror
 browser_window_get_scrollbar_type(struct browser_window *bw,
 				  browser_scrolling *h,
@@ -2999,7 +2999,7 @@ browser_window_get_scrollbar_type(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror
 browser_window_get_features(struct browser_window *bw,
 			    int x, int y,
@@ -3018,7 +3018,7 @@ browser_window_get_features(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool
 browser_window_scroll_at_point(struct browser_window *bw,
 			       int x, int y,
@@ -3032,7 +3032,7 @@ browser_window_scroll_at_point(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 bool
 browser_window_drop_file_at_point(struct browser_window *bw,
 				  int x, int y,
@@ -3045,7 +3045,7 @@ browser_window_drop_file_at_point(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 void
 browser_window_set_gadget_filename(struct browser_window *bw,
 				   struct form_control *gadget,
@@ -3055,7 +3055,7 @@ browser_window_set_gadget_filename(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror
 browser_window_debug_dump(struct browser_window *bw,
 			  FILE *f,
@@ -3068,7 +3068,7 @@ browser_window_debug_dump(struct browser_window *bw,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror browser_window_debug(struct browser_window *bw, enum content_debug op)
 {
 	if (bw->current_content != NULL) {
@@ -3078,7 +3078,7 @@ nserror browser_window_debug(struct browser_window *bw, enum content_debug op)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror
 browser_window_create(enum browser_window_create_flags flags,
 		      nsurl *url,
@@ -3229,7 +3229,7 @@ browser_window_initialise_common(enum browser_window_create_flags flags,
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 void browser_window_destroy(struct browser_window *bw)
 {
 	/* can't destoy child windows on their own */
@@ -3241,7 +3241,7 @@ void browser_window_destroy(struct browser_window *bw)
 }
 
 
-/* exported interface, documented in netsurf/browser_window.h */
+/* exported interface, documented in neosurf/browser_window.h */
 nserror browser_window_refresh_url_bar(struct browser_window *bw)
 {
 	nserror ret;
@@ -3290,7 +3290,7 @@ nserror browser_window_refresh_url_bar(struct browser_window *bw)
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 nserror
 browser_window_navigate(struct browser_window *bw,
 			nsurl *url,
@@ -3317,7 +3317,7 @@ browser_window_navigate(struct browser_window *bw,
 			guit->window->url_filter) {
 		url = guit->window->url_filter(bw->window, url);
 	}
-	NSLOG(netsurf, INFO, "bw %p, url %s", bw, nsurl_access(url));
+	NSLOG(neosurf, INFO, "bw %p, url %s", bw, nsurl_access(url));
 
 	/*
 	 * determine if navigation is internal url, if so, we do not
@@ -3361,7 +3361,7 @@ browser_window_navigate(struct browser_window *bw,
 		depth++;
 	}
 	if (depth > FRAME_DEPTH) {
-		NSLOG(netsurf, INFO, "frame depth too high.");
+		NSLOG(neosurf, INFO, "frame depth too high.");
 		return NSERROR_FRAME_DEPTH;
 	}
 
@@ -3523,7 +3523,7 @@ navigate_internal_real(struct browser_window *bw,
 	nserror res;
 	hlcache_handle *c;
 
-	NSLOG(netsurf, INFO, "Loading '%s'", nsurl_access(params->url));
+	NSLOG(neosurf, INFO, "Loading '%s'", nsurl_access(params->url));
 
 	fetch_is_post = (params->post_urlenc != NULL || params->post_multipart != NULL);
 
@@ -3703,7 +3703,7 @@ navigate_internal_query_ssl(struct browser_window *bw,
 	}
 
 	if (nsurl_create(siteurl, &siteurl_ns) != NSERROR_OK) {
-		NSLOG(netsurf, ERROR, "Unable to reset ssl loading parameters");
+		NSLOG(neosurf, ERROR, "Unable to reset ssl loading parameters");
 	} else {
 		/* In order that we may proceed, replace the loading parameters */
 		nsurl_unref(bw->loading_parameters.url);
@@ -3726,7 +3726,7 @@ navigate_internal_query_timeout(struct browser_window *bw,
 {
 	bool is_retry = false, is_back = false;
 
-	NSLOG(netsurf, INFO, "bw:%p params:%p", bw, params);
+	NSLOG(neosurf, INFO, "bw:%p params:%p", bw, params);
 
 	assert(params->post_multipart != NULL);
 
@@ -3762,7 +3762,7 @@ navigate_internal_query_fetcherror(struct browser_window *bw,
 {
 	bool is_retry = false, is_back = false;
 
-	NSLOG(netsurf, INFO, "bw:%p params:%p", bw, params);
+	NSLOG(neosurf, INFO, "bw:%p params:%p", bw, params);
 
 	assert(params->post_multipart != NULL);
 
@@ -3839,7 +3839,7 @@ browser_window__navigate_internal(struct browser_window *bw,
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 bool browser_window_up_available(struct browser_window *bw)
 {
 	bool result = false;
@@ -3862,7 +3862,7 @@ bool browser_window_up_available(struct browser_window *bw)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 nserror browser_window_navigate_up(struct browser_window *bw, bool new_window)
 {
 	nsurl *current, *parent;
@@ -3898,7 +3898,7 @@ nserror browser_window_navigate_up(struct browser_window *bw, bool new_window)
 }
 
 
-/* Exported interface, documented in include/netsurf/browser_window.h */
+/* Exported interface, documented in include/neosurf/browser_window.h */
 nsurl* browser_window_access_url(const struct browser_window *bw)
 {
 	assert(bw != NULL);
@@ -3915,7 +3915,7 @@ nsurl* browser_window_access_url(const struct browser_window *bw)
 }
 
 
-/* Exported interface, documented in include/netsurf/browser_window.h */
+/* Exported interface, documented in include/neosurf/browser_window.h */
 nserror
 browser_window_get_url(struct browser_window *bw, bool fragment,nsurl** url_out)
 {
@@ -3944,7 +3944,7 @@ browser_window_get_url(struct browser_window *bw, bool fragment,nsurl** url_out)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 const char* browser_window_get_title(struct browser_window *bw)
 {
 	assert(bw != NULL);
@@ -3958,7 +3958,7 @@ const char* browser_window_get_title(struct browser_window *bw)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 struct history * browser_window_get_history(struct browser_window *bw)
 {
 	assert(bw != NULL);
@@ -3967,7 +3967,7 @@ struct history * browser_window_get_history(struct browser_window *bw)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 bool browser_window_has_content(struct browser_window *bw)
 {
 	assert(bw != NULL);
@@ -3980,14 +3980,14 @@ bool browser_window_has_content(struct browser_window *bw)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 struct hlcache_handle *browser_window_get_content(struct browser_window *bw)
 {
 	return bw->current_content;
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 nserror browser_window_get_extents(struct browser_window *bw, bool scaled,
 				   int *width, int *height)
 {
@@ -4033,7 +4033,7 @@ browser_window_get_dimensions(struct browser_window *bw,
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 void
 browser_window_set_dimensions(struct browser_window *bw, int width, int height)
 {
@@ -4044,7 +4044,7 @@ browser_window_set_dimensions(struct browser_window *bw, int width, int height)
 		bw->width = width;
 		bw->height = height;
 	} else {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Asked to set dimensions of front end window.");
 		assert(0);
 	}
@@ -4082,7 +4082,7 @@ browser_window_invalidate_rect(struct browser_window *bw, struct rect *rect)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 void browser_window_stop(struct browser_window *bw)
 {
 	int children, index;
@@ -4123,7 +4123,7 @@ void browser_window_stop(struct browser_window *bw)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 nserror browser_window_reload(struct browser_window *bw, bool all)
 {
 	hlcache_handle *c;
@@ -4174,7 +4174,7 @@ nserror browser_window_reload(struct browser_window *bw, bool all)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 void browser_window_set_status(struct browser_window *bw, const char *text)
 {
 	int text_len;
@@ -4208,7 +4208,7 @@ void browser_window_set_status(struct browser_window *bw, const char *text)
 }
 
 
-/* Exported interface, documented in netsurf/browser_window.h */
+/* Exported interface, documented in neosurf/browser_window.h */
 void browser_window_set_pointer(struct browser_window *bw,
 				browser_pointer_shape shape)
 {
@@ -4248,7 +4248,7 @@ void browser_window_set_pointer(struct browser_window *bw,
 }
 
 
-/* exported function documented in netsurf/browser_window.h */
+/* exported function documented in neosurf/browser_window.h */
 nserror browser_window_schedule_reformat(struct browser_window *bw)
 {
 	if (bw->window == NULL) {
@@ -4259,7 +4259,7 @@ nserror browser_window_schedule_reformat(struct browser_window *bw)
 }
 
 
-/* exported function documented in netsurf/browser_window.h */
+/* exported function documented in neosurf/browser_window.h */
 void
 browser_window_reformat(struct browser_window *bw,
 			bool background,
@@ -4290,7 +4290,7 @@ browser_window_reformat(struct browser_window *bw,
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 nserror
 browser_window_set_scale(struct browser_window *bw, float scale, bool absolute)
 {
@@ -4327,7 +4327,7 @@ browser_window_set_scale(struct browser_window *bw, float scale, bool absolute)
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 float browser_window_get_scale(struct browser_window *bw)
 {
 	if (bw == NULL) {
@@ -4338,7 +4338,7 @@ float browser_window_get_scale(struct browser_window *bw)
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 struct browser_window *
 browser_window_find_target(struct browser_window *bw,
 			   const char *target,
@@ -4479,7 +4479,7 @@ browser_window_find_target(struct browser_window *bw,
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 void
 browser_window_mouse_track(struct browser_window *bw,
 			   browser_mouse_state mouse,
@@ -4491,7 +4491,7 @@ browser_window_mouse_track(struct browser_window *bw,
 					    y / bw->scale);
 }
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 void
 browser_window_mouse_click(struct browser_window *bw,
 			   browser_mouse_state mouse,
@@ -4504,7 +4504,7 @@ browser_window_mouse_click(struct browser_window *bw,
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 void browser_window_page_drag_start(struct browser_window *bw, int x, int y)
 {
 	assert(bw != NULL);
@@ -4529,7 +4529,7 @@ void browser_window_page_drag_start(struct browser_window *bw, int x, int y)
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 bool browser_window_back_available(struct browser_window *bw)
 {
 	if (bw != NULL && bw->internal_nav) {
@@ -4540,20 +4540,20 @@ bool browser_window_back_available(struct browser_window *bw)
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 bool browser_window_forward_available(struct browser_window *bw)
 {
 	return (bw && bw->history && browser_window_history_forward_available(bw));
 }
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 bool browser_window_reload_available(struct browser_window *bw)
 {
 	return (bw && bw->current_content && !bw->loading_content);
 }
 
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 bool browser_window_stop_available(struct browser_window *bw)
 {
 	return (bw && (bw->loading_content ||
@@ -4562,19 +4562,19 @@ bool browser_window_stop_available(struct browser_window *bw)
 			 CONTENT_STATUS_DONE))));
 }
 
-/* exported interface documented in netsurf/browser_window.h */
+/* exported interface documented in neosurf/browser_window.h */
 bool
 browser_window_exec(struct browser_window *bw, const char *src, size_t srclen)
 {
 	assert(bw != NULL);
 
 	if (!bw->current_content) {
-		NSLOG(netsurf, DEEPDEBUG, "Unable to exec, no content");
+		NSLOG(neosurf, DEEPDEBUG, "Unable to exec, no content");
 		return false;
 	}
 
 	if (content_get_status(bw->current_content) != CONTENT_STATUS_DONE) {
-		NSLOG(netsurf, DEEPDEBUG, "Unable to exec, content not done");
+		NSLOG(neosurf, DEEPDEBUG, "Unable to exec, content not done");
 		return false;
 	}
 
@@ -4604,8 +4604,8 @@ browser_window_console_log(struct browser_window *bw,
 
 	/* bw is the target of the log, but root is where we log it */
 
-	NSLOG(netsurf, DEEPDEBUG, "Logging message in %p targetted at %p", root, bw);
-	NSLOG(netsurf, DEEPDEBUG, "Log came from %s",
+	NSLOG(neosurf, DEEPDEBUG, "Logging message in %p targetted at %p", root, bw);
+	NSLOG(neosurf, DEEPDEBUG, "Log came from %s",
 	      ((src == BW_CS_INPUT) ? "user input" :
 	       (src == BW_CS_SCRIPT_ERROR) ? "script error" :
 	       (src == BW_CS_SCRIPT_CONSOLE) ? "script console" :
@@ -4613,19 +4613,19 @@ browser_window_console_log(struct browser_window *bw,
 
 	switch (log_level) {
 	case BW_CS_FLAG_LEVEL_DEBUG:
-		NSLOG(netsurf, DEBUG, "%.*s", (int)msglen, msg);
+		NSLOG(neosurf, DEBUG, "%.*s", (int)msglen, msg);
 		break;
 	case BW_CS_FLAG_LEVEL_LOG:
-		NSLOG(netsurf, VERBOSE, "%.*s", (int)msglen, msg);
+		NSLOG(neosurf, VERBOSE, "%.*s", (int)msglen, msg);
 		break;
 	case BW_CS_FLAG_LEVEL_INFO:
-		NSLOG(netsurf, INFO, "%.*s", (int)msglen, msg);
+		NSLOG(neosurf, INFO, "%.*s", (int)msglen, msg);
 		break;
 	case BW_CS_FLAG_LEVEL_WARN:
-		NSLOG(netsurf, WARNING, "%.*s", (int)msglen, msg);
+		NSLOG(neosurf, WARNING, "%.*s", (int)msglen, msg);
 		break;
 	case BW_CS_FLAG_LEVEL_ERROR:
-		NSLOG(netsurf, ERROR, "%.*s", (int)msglen, msg);
+		NSLOG(neosurf, ERROR, "%.*s", (int)msglen, msg);
 		break;
 	default:
 		/* Unreachable */

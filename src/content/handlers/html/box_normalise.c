@@ -164,7 +164,7 @@ box_normalise_table_row(struct box *row,
 	ctx.root_style = root->style;
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "row %p", row);
+	NSLOG(neosurf, INFO, "row %p", row);
 #endif
 
 	for (child = row->children; child != NULL; child = next_child) {
@@ -274,7 +274,7 @@ box_normalise_table_row(struct box *row,
 	col_info->num_rows++;
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "row %p done", row);
+	NSLOG(neosurf, INFO, "row %p done", row);
 #endif
 
 	return true;
@@ -300,7 +300,7 @@ box_normalise_table_row_group(struct box *row_group,
 	ctx.root_style = root->style;
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "row_group %p", row_group);
+	NSLOG(neosurf, INFO, "row_group %p", row_group);
 #endif
 
 	for (child = row_group->children; child != NULL; child = next_child) {
@@ -393,7 +393,7 @@ box_normalise_table_row_group(struct box *row_group,
 
 	if (row_group->children == NULL) {
 #ifdef BOX_NORMALISE_DEBUG
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "row_group->children == 0, inserting implied row");
 #endif
 
@@ -430,7 +430,7 @@ box_normalise_table_row_group(struct box *row_group,
 	row_group->rows = group_row_count;
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "row_group %p done", row_group);
+	NSLOG(neosurf, INFO, "row_group %p done", row_group);
 #endif
 
 	return true;
@@ -623,7 +623,7 @@ box_normalise_table(struct box *table, const struct box *root, html_content * c)
 	ctx.root_style = root->style;
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "table %p", table);
+	NSLOG(neosurf, INFO, "table %p", table);
 #endif
 
 	col_info.num_columns = 1;
@@ -738,7 +738,7 @@ box_normalise_table(struct box *table, const struct box *root, html_content * c)
 		struct box *row;
 
 #ifdef BOX_NORMALISE_DEBUG
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "table->children == 0, creating implied row");
 #endif
 
@@ -800,7 +800,7 @@ box_normalise_table(struct box *table, const struct box *root, html_content * c)
 	free(col_info.spans);
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "table %p done", table);
+	NSLOG(neosurf, INFO, "table %p done", table);
 #endif
 
 	return true;
@@ -819,7 +819,7 @@ box_normalise_inline_container(struct box *cont,
 	assert(cont->type == BOX_INLINE_CONTAINER);
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "cont %p", cont);
+	NSLOG(neosurf, INFO, "cont %p", cont);
 #endif
 
 	for (child = cont->children; child != NULL; child = next_child) {
@@ -882,12 +882,11 @@ box_normalise_inline_container(struct box *cont,
 	}
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "cont %p done", cont);
+	NSLOG(neosurf, INFO, "cont %p done", cont);
 #endif
 
 	return true;
 }
-
 
 /* Exported function documented in html/box_normalise.h */
 bool
@@ -905,15 +904,16 @@ box_normalise_block(struct box *block, const struct box *root, html_content *c)
 	ctx.root_style = root->style;
 
 #ifdef BOX_NORMALISE_DEBUG
-	NSLOG(netsurf, INFO, "block %p, block->type %u", block, block->type);
+	NSLOG(neosurf, INFO, "block %p, block->type %u", block, block->type);
 #endif
+	
 
 	assert(block->type == BOX_BLOCK || block->type == BOX_INLINE_BLOCK ||
 			block->type == BOX_TABLE_CELL);
 
 	for (child = block->children; child != NULL; child = next_child) {
 #ifdef BOX_NORMALISE_DEBUG
-		NSLOG(netsurf, INFO, "child %p, child->type = %d", child,
+		NSLOG(neosurf, INFO, "child %p, child->type = %d", child,
 		      child->type);
 #endif
 
@@ -998,6 +998,7 @@ box_normalise_block(struct box *block, const struct box *root, html_content *c)
 				return false;
 			break;
 		default:
+			// FIXME: breaks here on some sites
 			assert(0);
 		}
 	}

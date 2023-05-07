@@ -33,7 +33,7 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 #include "content/llcache.h"
 #include "content/content_protected.h"
 #include "content/content_factory.h"
@@ -168,7 +168,7 @@ static bool webp_convert(struct content *c)
 
 	res = WebPGetInfo(data, data_size, &width, &height);
 	if (res == 0) {
-		NSLOG(netsurf, INFO, "WebPGetInfo failed:%p", c);
+		NSLOG(neosurf, INFO, "WebPGetInfo failed:%p", c);
 		return false;
 	}
 

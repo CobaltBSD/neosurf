@@ -38,7 +38,7 @@
 #include <nsutils/time.h>
 #include <nsutils/base64.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/config.h"
 #include "utils/corestrings.h"
 #include "utils/log.h"
@@ -48,7 +48,7 @@
 #include "utils/time.h"
 #include "utils/http.h"
 #include "utils/nsoption.h"
-#include "netsurf/misc.h"
+#include "neosurf/misc.h"
 #include "desktop/gui_internal.h"
 
 #include "content/fetch.h"

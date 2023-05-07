@@ -28,8 +28,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "netsurf/plot_style.h"
-#include "netsurf/mouse.h"
+#include "neosurf/plot_style.h"
+#include "neosurf/mouse.h"
 
 struct textarea;
 struct redraw_context;

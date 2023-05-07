@@ -34,11 +34,11 @@
 #include "utils/nsurl.h"
 #include "content/urldb.h"
 
-#include "netsurf/misc.h"
+#include "neosurf/misc.h"
 #include "desktop/gui_internal.h"
 #include "desktop/hotlist.h"
 #include "desktop/treeview.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 
 #define N_DAYS 28
 #define N_SEC_PER_DAY (60 * 60 * 24)
@@ -138,7 +138,7 @@ static nserror hotlist_save(const char *path)
 	/* Replace any old hotlist file with the one we just saved */
 	if (rename(temp_path, path) != 0) {
 		res = NSERROR_SAVE_FAILED;
-		NSLOG(netsurf, INFO, "Error renaming hotlist: %s.",
+		NSLOG(neosurf, INFO, "Error renaming hotlist: %s.",
 		      strerror(errno));
 		goto cleanup;
 	}
@@ -653,20 +653,20 @@ static nserror hotlist_load_entry(dom_node *li, hotlist_load_ctx *ctx)
 	/* The li must contain an "a" element */
 	a = libdom_find_first_element(li, corestring_lwc_a);
 	if (a == NULL) {
-		NSLOG(netsurf, INFO, "Missing <a> in <li>");
+		NSLOG(neosurf, INFO, "Missing <a> in <li>");
 		return NSERROR_INVALID;
 	}
 
 	derror = dom_node_get_text_content(a, &title1);
 	if (derror != DOM_NO_ERR) {
-		NSLOG(netsurf, INFO, "No title");
+		NSLOG(neosurf, INFO, "No title");
 		dom_node_unref(a);
 		return NSERROR_INVALID;
 	}
 
 	derror = dom_element_get_attribute(a, corestring_dom_href, &url1);
 	if (derror != DOM_NO_ERR || url1 == NULL) {
-		NSLOG(netsurf, INFO, "No URL");
+		NSLOG(neosurf, INFO, "No URL");
 		dom_string_unref(title1);
 		dom_node_unref(a);
 		return NSERROR_INVALID;
@@ -684,7 +684,7 @@ static nserror hotlist_load_entry(dom_node *li, hotlist_load_ctx *ctx)
 	dom_string_unref(url1);
 
 	if (err != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Failed normalising '%s'",
+		NSLOG(neosurf, INFO, "Failed normalising '%s'",
 		      dom_string_data(url1));
 
 		if (title1 != NULL) {
@@ -713,7 +713,7 @@ static nserror hotlist_load_entry(dom_node *li, hotlist_load_ctx *ctx)
 
 /*
  * Callback for libdom_iterate_child_elements, which despite the namespace is
- * a NetSurf function.
+ * a NeoSurf function.
  *
  * \param node		Node that is a child of the directory UL node
  * \param ctx		Our hotlist loading context.
@@ -765,7 +765,7 @@ nserror hotlist_load_directory_cb(dom_node *node, void *ctx)
 
 		error = dom_node_get_text_content(node, &title);
 		if (error != DOM_NO_ERR || title == NULL) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Empty <h4> or memory exhausted.");
 			dom_string_unref(name);
 			return NSERROR_DOM;
@@ -864,7 +864,7 @@ static nserror hotlist_load(const char *path, bool *loaded)
 
 	/* Handle no path */
 	if (path == NULL) {
-		NSLOG(netsurf, INFO, "No hotlist file path provided.");
+		NSLOG(neosurf, INFO, "No hotlist file path provided.");
 		return NSERROR_OK;
 	}
 
@@ -890,7 +890,7 @@ static nserror hotlist_load(const char *path, bool *loaded)
 			corestring_lwc_html);
 	if (html == NULL) {
 		dom_node_unref(document);
-		NSLOG(netsurf, WARNING,
+		NSLOG(neosurf, WARNING,
 		      "%s (<html> not found)",
 		      messages_get("TreeLoadError"));
 		return NSERROR_OK;
@@ -901,7 +901,7 @@ static nserror hotlist_load(const char *path, bool *loaded)
 	if (body == NULL) {
 		dom_node_unref(html);
 		dom_node_unref(document);
-		NSLOG(netsurf, WARNING,
+		NSLOG(neosurf, WARNING,
 		      "%s (<html>...<body> not found)",
 		      messages_get("TreeLoadError"));
 		return NSERROR_OK;
@@ -913,7 +913,7 @@ static nserror hotlist_load(const char *path, bool *loaded)
 		dom_node_unref(body);
 		dom_node_unref(html);
 		dom_node_unref(document);
-		NSLOG(netsurf, WARNING,
+		NSLOG(neosurf, WARNING,
 		      "%s (<html>...<body>...<ul> not found.)",
 		      messages_get("TreeLoadError"));
 		return NSERROR_OK;
@@ -939,7 +939,7 @@ static nserror hotlist_load(const char *path, bool *loaded)
 	dom_node_unref(document);
 
 	if (err != NSERROR_OK) {
-		NSLOG(netsurf, WARNING,
+		NSLOG(neosurf, WARNING,
 		      "%s (Failed building tree.)",
 		      messages_get("TreeLoadError"));
 		return NSERROR_OK;
@@ -980,8 +980,8 @@ static nserror hotlist_generate(void)
 	const int n_entries = sizeof(default_entries) /
 			sizeof(default_entries[0]);
 
-	/* First make "NetSurf" folder for defualt entries */
-	title = "NetSurf";
+	/* First make "NeoSurf" folder for defualt entries */
+	title = "NeoSurf";
 	err = hotlist_add_folder_internal(title, NULL,
 			TREE_REL_FIRST_CHILD, &f, false);
 	if (err != NSERROR_OK) {
@@ -1091,7 +1091,7 @@ nserror hotlist_export(const char *path, const char *title)
 		return NSERROR_SAVE_FAILED;
 
 	if (title == NULL)
-		title = "NetSurf hotlist";
+		title = "NeoSurf hotlist";
 
 	/* The Acorn Browse Hotlist format, which we mimic[*], is invalid HTML
 	 * claming to be valid.
@@ -1295,7 +1295,7 @@ nserror hotlist_init(
 		return err;
 	}
 
-	NSLOG(netsurf, INFO, "Loading hotlist");
+	NSLOG(neosurf, INFO, "Loading hotlist");
 
 	hl_ctx.tree = NULL;
 	hl_ctx.built = false;
@@ -1341,7 +1341,7 @@ nserror hotlist_init(
 	 * the treeview is built. */
 	hl_ctx.built = true;
 
-	NSLOG(netsurf, INFO, "Loaded hotlist");
+	NSLOG(neosurf, INFO, "Loaded hotlist");
 
 	return NSERROR_OK;
 }
@@ -1387,7 +1387,7 @@ nserror hotlist_fini(void)
 	int i;
 	nserror err;
 
-	NSLOG(netsurf, INFO, "Finalising hotlist");
+	NSLOG(neosurf, INFO, "Finalising hotlist");
 
 	/* Remove any existing scheduled save callback */
 	guit->misc->schedule(-1, hotlist_schedule_save_cb, NULL);
@@ -1396,7 +1396,7 @@ nserror hotlist_fini(void)
 	/* Save the hotlist */
 	err = hotlist_save(hl_ctx.save_path);
 	if (err != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Problem saving the hotlist.");
+		NSLOG(neosurf, INFO, "Problem saving the hotlist.");
 	}
 
 	free(hl_ctx.save_path);
@@ -1404,7 +1404,7 @@ nserror hotlist_fini(void)
 	/* Destroy the hotlist treeview */
 	err = treeview_destroy(hl_ctx.tree);
 	if (err != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Problem destroying the hotlist treeview.");
+		NSLOG(neosurf, INFO, "Problem destroying the hotlist treeview.");
 	}
 	hl_ctx.built = false;
 
@@ -1418,7 +1418,7 @@ nserror hotlist_fini(void)
 		return err;
 	}
 
-	NSLOG(netsurf, INFO, "Finalised hotlist");
+	NSLOG(neosurf, INFO, "Finalised hotlist");
 
 	return err;
 }

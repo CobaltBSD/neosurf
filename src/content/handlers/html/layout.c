@@ -49,10 +49,10 @@
 #include "utils/nsoption.h"
 #include "utils/corestrings.h"
 #include "utils/nsurl.h"
-#include "netsurf/inttypes.h"
-#include "netsurf/content.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/layout.h"
+#include "neosurf/inttypes.h"
+#include "neosurf/content.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/layout.h"
 #include "content/content.h"
 #include "content/content_protected.h"
 #include "css/utils.h"
@@ -360,7 +360,7 @@ static void layout_minmax_table(struct box *table,
 		return;
 
 	if (table_calculate_column_types(&content->unit_len_ctx, table) == false) {
-		NSLOG(netsurf, WARNING,
+		NSLOG(neosurf, WARNING,
 				"Could not establish table column types.");
 		return;
 	}

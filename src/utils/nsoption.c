@@ -32,7 +32,7 @@
 #include <string.h>
 #include <strings.h>
 
-#include "netsurf/plot_style.h"
+#include "neosurf/plot_style.h"
 #include "utils/errors.h"
 #include "utils/log.h"
 #include "utils/utils.h"
@@ -741,11 +741,11 @@ nsoption_read(const char *path, struct nsoption_s *opts)
 
 	fp = fopen(path, "r");
 	if (!fp) {
-		NSLOG(netsurf, INFO, "Failed to open file '%s'", path);
+		NSLOG(neosurf, INFO, "Failed to open file '%s'", path);
 		return NSERROR_NOT_FOUND;
 	}
 
-	NSLOG(netsurf, INFO, "Successfully opened '%s' for Options file", path);
+	NSLOG(neosurf, INFO, "Successfully opened '%s' for Options file", path);
 
 	while (fgets(s, NSOPTION_MAX_LINE_LEN, fp)) {
 		optionline(opts, s, strlen(s));
@@ -788,7 +788,7 @@ nsoption_write(const char *path,
 
 	fp = fopen(path, "w");
 	if (!fp) {
-		NSLOG(netsurf, INFO, "failed to open file '%s' for writing",
+		NSLOG(neosurf, INFO, "failed to open file '%s' for writing",
 		      path);
 		return NSERROR_NOT_FOUND;
 	}
@@ -869,7 +869,7 @@ nsoption_commandline(int *pargc, char **argv, struct nsoption_s *opts)
 
 		/* arg+arglen is the option to set, val is the value */
 
-		NSLOG(netsurf, INFO, "%.*s = %s", arglen, arg, val);
+		NSLOG(neosurf, INFO, "%.*s = %s", arglen, arg, val);
 
 		for (entry_loop = 0;
 		     entry_loop < NSOPTION_LISTEND;

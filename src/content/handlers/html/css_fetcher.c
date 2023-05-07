@@ -29,7 +29,7 @@
 #include <dom/dom.h>
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/config.h"
 #include "utils/corestrings.h"
 #include "utils/log.h"
@@ -67,14 +67,14 @@ static html_css_fetcher_context *ring = NULL;
 
 static bool html_css_fetcher_initialise(lwc_string *scheme)
 {
-	NSLOG(netsurf, INFO, "html_css_fetcher_initialise called for %s",
+	NSLOG(neosurf, INFO, "html_css_fetcher_initialise called for %s",
 	      lwc_string_data(scheme));
 	return true;
 }
 
 static void html_css_fetcher_finalise(lwc_string *scheme)
 {
-	NSLOG(netsurf, INFO, "html_css_fetcher_finalise called for %s",
+	NSLOG(neosurf, INFO, "html_css_fetcher_finalise called for %s",
 	      lwc_string_data(scheme));
 }
 
@@ -259,7 +259,7 @@ static void html_css_fetcher_poll(lwc_string *scheme)
 				html_css_fetcher_send_callback(&msg, c);
 			}
 		} else {
-			NSLOG(netsurf, INFO, "Processing of %s failed!",
+			NSLOG(neosurf, INFO, "Processing of %s failed!",
 			      nsurl_access(c->url));
 
 			/* Ensure that we're unlocked here. If we aren't,

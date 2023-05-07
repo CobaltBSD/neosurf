@@ -16,14 +16,14 @@ class Window {
 	prologue %{
 #include "utils/corestrings.h"
 #include "utils/nsurl.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 #include "content/hlcache.h"
 #include "html/html.h"
 #include "html/private.h"
 #include "desktop/gui_internal.h"
-#include "netsurf/misc.h"
+#include "neosurf/misc.h"
 #include "utils/ring.h"
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 
 #define WINDOW_CALLBACKS MAGIC(WindowCallbacks)
 #define HANDLER_MAGIC MAGIC(HANDLER_MAP)
@@ -285,9 +285,9 @@ init Window(struct browser_window *win, struct html_content *htmlc)
 	priv->htmlc = htmlc;
 	priv->schedule_ring = NULL;
 	priv->closed_down = false;
-	NSLOG(netsurf, DEEPDEBUG, "win=%p htmlc=%p", priv->win, priv->htmlc);
+	NSLOG(neosurf, DEEPDEBUG, "win=%p htmlc=%p", priv->win, priv->htmlc);
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "URL is %s", nsurl_access(browser_window_access_url(priv->win)));
 	duk_push_object(ctx);
 	duk_put_prop_string(ctx, 0, WINDOW_CALLBACKS);
@@ -412,7 +412,7 @@ prototype Window()
 
 getter Window::document()
 %{
-	NSLOG(netsurf, DEBUG, "priv=%p", priv);
+	NSLOG(neosurf, DEBUG, "priv=%p", priv);
 	dom_document *doc = priv->htmlc->document;
 	dukky_push_node(ctx, (struct dom_node *)doc);
 	return 1;
@@ -499,7 +499,7 @@ method Window::alert()
 %{
 	duk_idx_t dukky_argc = duk_get_top(ctx);
 	if (dukky_argc == 0) {
-		NSLOG(netsurf, INFO, "JS ALERT");
+		NSLOG(neosurf, INFO, "JS ALERT");
 	} else {
 		duk_size_t msg_len;
 		const char *msg;
@@ -508,7 +508,7 @@ method Window::alert()
 			duk_to_string(ctx, 0);
 		}
 		msg = duk_safe_to_lstring(ctx, 0, &msg_len);
-		NSLOG(netsurf, INFO, "JS ALERT: %*s", (int)msg_len, msg);
+		NSLOG(neosurf, INFO, "JS ALERT: %*s", (int)msg_len, msg);
 	}
 	return 0;
 %}

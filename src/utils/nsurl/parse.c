@@ -37,7 +37,7 @@
 #include <string.h>
 #include <strings.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 
 #include "utils/ascii.h"
 #include "utils/corestrings.h"
@@ -462,28 +462,28 @@ static void nsurl__get_string_markers(const char * const url_s,
 			marker.fragment = marker.end;
 	}
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.start: %"PRIsizet, marker.start);
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.scheme_end: %"PRIsizet, marker.scheme_end);
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.authority: %"PRIsizet, marker.authority);
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.colon_first: %"PRIsizet, marker.colon_first);
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.at: %"PRIsizet, marker.at);
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.colon_last: %"PRIsizet, marker.colon_last);
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.path: %"PRIsizet, marker.path);
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.query: %"PRIsizet, marker.query);
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.fragment: %"PRIsizet, marker.fragment);
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "marker.end: %"PRIsizet, marker.end);
 
 	/* Got all the URL components pegged out now */
@@ -504,8 +504,8 @@ static size_t nsurl__remove_dot_segments(char *path, char *output)
 	char *output_pos = output;
 
 	while (*path_pos != '\0') {
-		NSLOG(netsurf, DEEPDEBUG, " in:%s", path_pos);
-		NSLOG(netsurf, DEEPDEBUG, "out:%.*s",
+		NSLOG(neosurf, DEEPDEBUG, " in:%s", path_pos);
+		NSLOG(neosurf, DEEPDEBUG, "out:%.*s",
 				(int)(output_pos - output), output);
 
 		if (*path_pos == '.') {
@@ -1356,7 +1356,7 @@ nserror nsurl_join(const nsurl *base, const char *rel, nsurl **joined)
 	assert(base != NULL);
 	assert(rel != NULL);
 
-	NSLOG(netsurf, DEEPDEBUG, "base: \"%s\", rel: \"%s\"",
+	NSLOG(neosurf, DEEPDEBUG, "base: \"%s\", rel: \"%s\"",
 			nsurl_access(base), rel);
 
 	/* Peg out the URL sections */

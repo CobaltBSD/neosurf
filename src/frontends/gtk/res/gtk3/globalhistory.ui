@@ -3,7 +3,7 @@
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkWindow" id="wndHistory">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">NetSurf Global History</property>
+    <property name="title" translatable="yes">NeoSurf Global History</property>
     <property name="window_position">center</property>
     <property name="default_width">600</property>
     <property name="default_height">500</property>

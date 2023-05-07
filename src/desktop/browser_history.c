@@ -30,13 +30,13 @@
 
 #include "utils/log.h"
 #include "utils/utils.h"
-#include "netsurf/layout.h"
-#include "netsurf/content.h"
-#include "netsurf/window.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/layout.h"
+#include "neosurf/content.h"
+#include "neosurf/window.h"
+#include "neosurf/browser_window.h"
 #include "content/hlcache.h"
 #include "content/urldb.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 #include "utils/corestrings.h"
 
 #include "desktop/gui_internal.h"
@@ -337,7 +337,7 @@ nserror browser_window_history_clone(const struct browser_window *existing,
 	new_history->start = browser_window_history__clone_entry(new_history,
 			new_history->start);
 	if (!new_history->start) {
-		NSLOG(netsurf, INFO, "Insufficient memory to clone history");
+		NSLOG(neosurf, INFO, "Insufficient memory to clone history");
 		browser_window_history_destroy(clone);
 		clone->history = NULL;
 		return NSERROR_NOMEM;
@@ -383,7 +383,7 @@ browser_window_history_add(struct browser_window *bw,
 	entry->page.scroll_y = 0.0f;
 
 	/* create thumbnail for localhistory view */
-	NSLOG(netsurf, DEBUG,
+	NSLOG(neosurf, DEBUG,
 	      "Creating thumbnail for %s", nsurl_access(entry->page.url));
 
 	entry->page.bitmap = guit->bitmap->create(
@@ -393,7 +393,7 @@ browser_window_history_add(struct browser_window *bw,
 		ret = guit->bitmap->render(entry->page.bitmap, content);
 		if (ret != NSERROR_OK) {
 			/* Thumbnail render failed */
-			NSLOG(netsurf, WARNING, "Thumbnail render failed");
+			NSLOG(neosurf, WARNING, "Thumbnail render failed");
 		}
 	}
 
@@ -446,7 +446,7 @@ nserror browser_window_history_update(struct browser_window *bw,
 	if (title == NULL) {
 		return NSERROR_NOMEM;
 	}
-	NSLOG(netsurf, INFO, "Updating history entry for %s", title);
+	NSLOG(neosurf, INFO, "Updating history entry for %s", title);
 	free(history->current->page.title);
 	history->current->page.title = title;
 
@@ -470,7 +470,7 @@ nserror browser_window_history_update(struct browser_window *bw,
 			(float)sx / (float)content_width;
 		history->current->page.scroll_y = \
 			(float)sy / (float)content_height;
-		NSLOG(netsurf, INFO, "Updated scroll offsets to %g by %g",
+		NSLOG(neosurf, INFO, "Updated scroll offsets to %g by %g",
 		      history->current->page.scroll_x,
 		      history->current->page.scroll_y);
 	}

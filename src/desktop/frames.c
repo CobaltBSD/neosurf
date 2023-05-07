@@ -31,7 +31,7 @@
 
 #include "utils/log.h"
 #include "utils/utils.h"
-#include "netsurf/content.h"
+#include "neosurf/content.h"
 #include "content/hlcache.h"
 #include "html/html.h"
 #include "html/box.h"
@@ -630,10 +630,10 @@ browser_window_create_frameset_internal(struct browser_window *bw,
 			window->parent = bw;
 
 			if (window->name)
-				NSLOG(netsurf, INFO, "Created frame '%s'",
+				NSLOG(neosurf, INFO, "Created frame '%s'",
 				      window->name);
 			else
-				NSLOG(netsurf, INFO,
+				NSLOG(neosurf, INFO,
 				      "Created frame (unnamed)");
 		}
 	}

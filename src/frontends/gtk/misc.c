@@ -28,7 +28,7 @@
 #include "utils/log.h"
 #include "utils/messages.h"
 #include "utils/nsurl.h"
-#include "netsurf/misc.h"
+#include "neosurf/misc.h"
 #include "desktop/save_pdf.h"
 
 #include "gtk/compat.h"
@@ -145,7 +145,7 @@ static void nsgtk_pdf_password(char **owner_pass, char **user_pass, char *path)
 
 	res = nsgtk_builder_new_from_resname("password", &password_builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Password UI builder init failed");
+		NSLOG(neosurf, INFO, "Password UI builder init failed");
 		return;
 	}
 

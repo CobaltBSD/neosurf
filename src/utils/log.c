@@ -92,7 +92,7 @@ static const char *nslog_gettime(void)
 
 #ifdef WITH_NSLOG
 
-NSLOG_DEFINE_CATEGORY(netsurf, "NetSurf default logging");
+NSLOG_DEFINE_CATEGORY(noosurf, "NeoSurf default logging");
 NSLOG_DEFINE_CATEGORY(llcache, "Low level cache");
 NSLOG_DEFINE_CATEGORY(fetch, "Object fetching");
 NSLOG_DEFINE_CATEGORY(plot, "Rendering system");
@@ -103,7 +103,7 @@ NSLOG_DEFINE_CATEGORY(dukky, "Duktape JavaScript Binding");
 NSLOG_DEFINE_CATEGORY(jserrors, "JavaScript error messages");
 
 static void
-netsurf_render_log(void *_ctx,
+neosurf_render_log(void *_ctx,
 		   nslog_entry_context_t *ctx,
 		   const char *fmt,
 		   va_list args)
@@ -249,11 +249,11 @@ nserror nslog_init(nslog_ensure_t *ensure, int *pargc, char **argv)
 #ifdef WITH_NSLOG
 
 	if (nslog_set_filter(verbose_log ?
-			     NETSURF_BUILTIN_VERBOSE_FILTER :
-			     NETSURF_BUILTIN_LOG_FILTER) != NSERROR_OK) {
+			     NEOSURF_BUILTIN_VERBOSE_FILTER :
+			     NEOSURF_BUILTIN_LOG_FILTER) != NSERROR_OK) {
 		ret = NSERROR_INIT_FAILED;
 		verbose_log = false;
-	} else if (nslog_set_render_callback(netsurf_render_log, NULL) != NSLOG_NO_ERROR) {
+	} else if (nslog_set_render_callback(neosurf_render_log, NULL) != NSLOG_NO_ERROR) {
 		ret = NSERROR_INIT_FAILED;
 		verbose_log = false;
 	} else if (nslog_uncork() != NSLOG_NO_ERROR) {
@@ -265,13 +265,13 @@ nserror nslog_init(nslog_ensure_t *ensure, int *pargc, char **argv)
 
 	/* sucessfull logging initialisation so log system info */
 	if (ret == NSERROR_OK) {
-		NSLOG(netsurf, INFO, "NetSurf version '%s'", netsurf_version);
+		NSLOG(neosurf, INFO, "NeoSurf version '%s'", neosurf_version);
 		if (uname(&utsname) < 0) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed to extract machine information");
 		} else {
-			NSLOG(netsurf, INFO,
-			      "NetSurf on <%s>, node <%s>, release <%s>, version <%s>, machine <%s>",
+			NSLOG(neosurf, INFO,
+			      "NeoSurf on <%s>, node <%s>, release <%s>, version <%s>, machine <%s>",
 			      utsname.sysname,
 			      utsname.nodename,
 			      utsname.release,
@@ -298,7 +298,7 @@ nslog_set_filter_by_options()
 void
 nslog_finalise()
 {
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Finalising logging, please report any further messages");
 	verbose_log = true;
 	if (logfile != stderr) {

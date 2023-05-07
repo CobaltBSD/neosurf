@@ -27,7 +27,7 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/nsoption.h"
-#include "netsurf/css.h"
+#include "neosurf/css.h"
 
 #include "desktop/system_colour.h"
 

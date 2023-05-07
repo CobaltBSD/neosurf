@@ -3,7 +3,7 @@
  * Copyright 2008 Sean Fox <dyntryx@gmail.com>
  *
  * This file is part of NetSurf's libnsbmp, http://www.netsurf-browser.org/
- * Licenced under the MIT License,
+ * Licensed under the MIT License,
  *                http://www.opensource.org/licenses/mit-license.php
  */
 

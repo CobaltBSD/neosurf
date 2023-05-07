@@ -184,7 +184,7 @@ getter Element::childElementCount()
 			element = NULL;
 		}
 	}
-	NSLOG(netsurf, INFO, "I found %u of them", jsret);
+	NSLOG(neosurf, INFO, "I found %u of them", jsret);
 	duk_push_uint(ctx, jsret);
 	return 1;
 %}
@@ -427,18 +427,18 @@ setter Element::innerHTML()
 						  &parser,
 						  &fragment);
 	if (error != DOM_HUBBUB_OK) {
-		NSLOG(netsurf, ERROR, "Unable to create fragment parser!");
+		NSLOG(neosurf, ERROR, "Unable to create fragment parser!");
 		goto out;
 	}
 
 	error = dom_hubbub_parser_parse_chunk(parser, (const uint8_t*)s, size);
 	if (error != DOM_HUBBUB_OK) {
-		NSLOG(netsurf, ERROR, "Unable to parse HTML chunk");
+		NSLOG(neosurf, ERROR, "Unable to parse HTML chunk");
 		goto out;
 	}
 	error = dom_hubbub_parser_completed(parser);
 	if (error != DOM_HUBBUB_OK) {
-		NSLOG(netsurf, ERROR, "Unable to complete parser");
+		NSLOG(neosurf, ERROR, "Unable to complete parser");
 		goto out;
 	}
 

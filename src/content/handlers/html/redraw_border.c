@@ -26,8 +26,8 @@
 #include <stdlib.h>
 
 #include "utils/log.h"
-#include "netsurf/plotters.h"
-#include "netsurf/css.h"
+#include "neosurf/plotters.h"
+#include "neosurf/css.h"
 
 #include "html/box.h"
 #include "html/private.h"

@@ -41,9 +41,9 @@
 #include "utils/log.h"
 #include "utils/messages.h"
 #include "utils/utf8.h"
-#include "netsurf/types.h"
-#include "netsurf/keypress.h"
-#include "netsurf/mouse.h"
+#include "neosurf/types.h"
+#include "neosurf/keypress.h"
+#include "neosurf/mouse.h"
 
 #include "gtk/compat.h"
 #include "gtk/gui.h" /* just for gtk_gui_gdkkey_to_nskey */
@@ -422,14 +422,14 @@ nsgtk_cw_keypress_event(GtkWidget *widget, GdkEventKey *event, gpointer g)
 	if (res == NSERROR_OK) {
 		return TRUE;
 	} else if (res != NSERROR_NOT_IMPLEMENTED) {
-		NSLOG(netsurf, INFO, "%s", messages_get_errorcode(res));
+		NSLOG(neosurf, INFO, "%s", messages_get_errorcode(res));
 		return FALSE;
 	}
 
 	/* deal with unprocessed keypress */
 	res = nsgtk_cw_key(nsgtk_cw, nskey);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "%s", messages_get_errorcode(res));
+		NSLOG(neosurf, INFO, "%s", messages_get_errorcode(res));
 		return FALSE;
 	}
 	return TRUE;

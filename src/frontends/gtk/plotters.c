@@ -31,7 +31,7 @@
 #include <gtk/gtk.h>
 
 #include "utils/log.h"
-#include "netsurf/plotters.h"
+#include "neosurf/plotters.h"
 #include "utils/nsoption.h"
 
 #include "gtk/layout_pango.h"
@@ -416,7 +416,7 @@ nsgtk_plot_path(const struct redraw_context *ctx,
 		return NSERROR_OK;
 
 	if (p[0] != PLOTTER_PATH_MOVE) {
-		NSLOG(netsurf, INFO, "Path does not start with move");
+		NSLOG(neosurf, INFO, "Path does not start with move");
 		return NSERROR_INVALID;
 	}
 
@@ -454,7 +454,7 @@ nsgtk_plot_path(const struct redraw_context *ctx,
 				       p[i+5], p[i+6]);
 			i += 7;
 		} else {
-			NSLOG(netsurf, INFO, "bad path command %f", p[i]);
+			NSLOG(neosurf, INFO, "bad path command %f", p[i]);
 			/* Reset matrix for safety */
 			cairo_set_matrix(current_cr, &old_ctm);
 			return NSERROR_INVALID;

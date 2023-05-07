@@ -31,7 +31,7 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "desktop/download.h"
-#include "netsurf/download.h"
+#include "neosurf/download.h"
 #include "desktop/gui_internal.h"
 
 /**

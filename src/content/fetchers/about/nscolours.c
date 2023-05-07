@@ -28,7 +28,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "netsurf/plot_style.h"
+#include "neosurf/plot_style.h"
 
 #include "utils/errors.h"
 #include "utils/nscolour.h"

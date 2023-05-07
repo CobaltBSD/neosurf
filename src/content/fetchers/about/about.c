@@ -33,7 +33,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 
 #include "utils/errors.h"
 #include "utils/nsurl.h"
@@ -276,12 +276,12 @@ static bool fetch_about_credits_handler(struct fetch_about_context *ctx)
 
 
 /**
- * Handler to generate about scheme licence page.
+ * Handler to generate about scheme license page.
  *
  * \param ctx The fetcher context.
  * \return true if handled false if aborted.
  */
-static bool fetch_about_licence_handler(struct fetch_about_context *ctx)
+static bool fetch_about_license_handler(struct fetch_about_context *ctx)
 {
 	fetch_msg msg;
 
@@ -289,7 +289,7 @@ static bool fetch_about_licence_handler(struct fetch_about_context *ctx)
 	fetch_set_http_code(ctx->fetchh, 302);
 
 	msg.type = FETCH_REDIRECT;
-	msg.data.redirect = "resource:licence.html";
+	msg.data.redirect = "resource:license.html";
 
 	fetch_about_send_callback(&msg, ctx);
 
@@ -311,7 +311,7 @@ static bool fetch_about_logo_handler(struct fetch_about_context *ctx)
 	fetch_set_http_code(ctx->fetchh, 302);
 
 	msg.type = FETCH_REDIRECT;
-	msg.data.redirect = "resource:netsurf.png";
+	msg.data.redirect = "resource:neosurf.png";
 
 	fetch_about_send_callback(&msg, ctx);
 
@@ -356,17 +356,17 @@ struct about_handlers about_handler_list[] = {
 		false
 	},
 	{
-		"licence",
-		SLEN("licence"),
+		"license",
+		SLEN("license"),
 		NULL,
-		fetch_about_licence_handler,
+		fetch_about_license_handler,
 		false
 	},
 	{
 		"license",
 		SLEN("license"),
 		NULL,
-		fetch_about_licence_handler,
+		fetch_about_license_handler,
 		true
 	},
 	{
@@ -503,12 +503,12 @@ static bool fetch_about_about_handler(struct fetch_about_context *ctx)
 
 	res = fetch_about_ssenddataf(ctx,
 			"<html>\n<head>\n"
-			"<title>List of NetSurf pages</title>\n"
+			"<title>List of NeoSurf pages</title>\n"
 			"<link rel=\"stylesheet\" type=\"text/css\" "
 			"href=\"resource:internal.css\">\n"
 			"</head>\n"
 			"<body class=\"ns-even-bg ns-even-fg ns-border\">\n"
-			"<h1 class =\"ns-border\">List of NetSurf pages</h1>\n"
+			"<h1 class =\"ns-border\">List of NeoSurf pages</h1>\n"
 			"<ul>\n");
 	if (res != NSERROR_OK) {
 		goto fetch_about_config_handler_aborted;

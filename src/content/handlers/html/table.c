@@ -965,7 +965,7 @@ table_calculate_column_types(const css_unit_ctx *unit_len_ctx, struct box *table
 
 #ifdef TABLE_DEBUG
 	for (i = 0; i != table->columns; i++)
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "table %p, column %u: type %s, width %i",
 		      table,
 		      i,

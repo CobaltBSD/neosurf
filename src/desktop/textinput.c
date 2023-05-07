@@ -33,12 +33,12 @@
 #include "utils/talloc.h"
 #include "utils/utf8.h"
 #include "utils/utils.h"
-#include "netsurf/types.h"
-#include "netsurf/mouse.h"
-#include "netsurf/form.h"
-#include "netsurf/window.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/keypress.h"
+#include "neosurf/types.h"
+#include "neosurf/mouse.h"
+#include "neosurf/form.h"
+#include "neosurf/window.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/keypress.h"
 #include "content/content.h"
 
 #include "desktop/browser_private.h"
@@ -103,7 +103,7 @@ void browser_window_remove_caret(struct browser_window *bw, bool only_hide)
 	}
 }
 
-/* exported interface documented in netsurf/keypress.h */
+/* exported interface documented in neosurf/keypress.h */
 bool browser_window_key_press(struct browser_window *bw, uint32_t key)
 {
 	struct browser_window *focus = bw->focus;

@@ -26,8 +26,8 @@
 #include <gtk/gtk.h>
 
 #include "utils/log.h"
-#include "netsurf/keypress.h"
-#include "netsurf/plotters.h"
+#include "neosurf/keypress.h"
+#include "neosurf/plotters.h"
 #include "desktop/cookie_manager.h"
 
 #include "gtk/cookies.h"
@@ -168,7 +168,7 @@ static void nsgtk_cookies_init_menu(struct nsgtk_cookie_window *ncwin)
 		w = GTK_WIDGET(gtk_builder_get_object(ncwin->builder,
 						      event->widget));
 		if (w == NULL) {
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Unable to connect menu widget ""%s""",
 			      event->widget);
 		} else {
@@ -258,7 +258,7 @@ static nserror nsgtk_cookies_init(void)
 
 	res = nsgtk_builder_new_from_resname("cookies", &ncwin->builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Cookie UI builder init failed");
+		NSLOG(neosurf, INFO, "Cookie UI builder init failed");
 		free(ncwin);
 		return res;
 	}

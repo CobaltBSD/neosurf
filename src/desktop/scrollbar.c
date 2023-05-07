@@ -31,9 +31,9 @@
 #include "utils/utils.h"
 #include "utils/nscolour.h"
 #include "utils/nsoption.h"
-#include "netsurf/browser_window.h"
-#include "netsurf/mouse.h"
-#include "netsurf/plotters.h"
+#include "neosurf/browser_window.h"
+#include "neosurf/mouse.h"
+#include "neosurf/plotters.h"
 
 #include "desktop/system_colour.h"
 #include "desktop/scrollbar.h"

@@ -86,7 +86,7 @@ Adding messages
 Messages can be easily added by including the utils/log.h header and
 he NSLOG() macro. for example
 
-    NSLOG(netsurf, INFO, "An example message %d", example_func());
+    NSLOG(neosurf, INFO, "An example message %d", example_func());
 
 nslog
 -----

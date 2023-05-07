@@ -29,7 +29,7 @@
 #include <stdarg.h>
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/nsurl.h"
 #include "utils/corestrings.h"
 #include "utils/log.h"
@@ -37,7 +37,7 @@
 #include "utils/messages.h"
 #include "utils/utils.h"
 #include "utils/ring.h"
-#include "netsurf/fetch.h"
+#include "neosurf/fetch.h"
 #include "desktop/gui_internal.h"
 
 #include "content/fetch.h"
@@ -54,11 +54,11 @@ static const char *fetch_resource_paths[] = {
 	"quirks.css",
 	"user.css",
 	"credits.html",
-	"licence.html",
+	"license.html",
 	"welcome.html",
 	"favicon.ico",
 	"default.ico",
-	"netsurf.png",
+	"neosurf.png",
 	"icons/arrow-l.png",
 	"icons/content.png",
 	"icons/directory.png",
@@ -283,7 +283,7 @@ static bool fetch_resource_initialise(lwc_string *scheme)
 						     &e->data,
 						     &e->data_len);
 		if (res == NSERROR_OK) {
-			NSLOG(netsurf, INFO, "direct data for %s",
+			NSLOG(neosurf, INFO, "direct data for %s",
 			      fetch_resource_paths[i]);
 			fetch_resource_path_count++;
 		} else {
@@ -291,7 +291,7 @@ static bool fetch_resource_initialise(lwc_string *scheme)
 			if (e->redirect_url == NULL) {
 				lwc_string_unref(e->path);
 			} else {
-				NSLOG(netsurf, INFO, "redirect url for %s",
+				NSLOG(neosurf, INFO, "redirect url for %s",
 				      fetch_resource_paths[i]);
 				fetch_resource_path_count++;
 			}

@@ -26,8 +26,8 @@
 #include <gtk/gtk.h>
 
 #include "utils/log.h"
-#include "netsurf/keypress.h"
-#include "netsurf/plotters.h"
+#include "neosurf/keypress.h"
+#include "neosurf/plotters.h"
 #include "desktop/local_history.h"
 
 #include "gtk/compat.h"
@@ -149,7 +149,7 @@ nsgtk_local_history_init(struct browser_window *bw,
 
 	res = nsgtk_builder_new_from_resname("localhistory", &ncwin->builder);
 	if (res != NSERROR_OK) {
-		NSLOG(netsurf, INFO, "Local history UI builder init failed");
+		NSLOG(neosurf, INFO, "Local history UI builder init failed");
 		free(ncwin);
 		return res;
 	}
@@ -298,7 +298,7 @@ nserror nsgtk_local_history_destroy(void)
 /* exported function documented gtk/history.h */
 void nsgtk_local_history_set_position(int x, int y)
 {
-	NSLOG(netsurf, INFO, "x=%d y=%d", x, y);
+	NSLOG(neosurf, INFO, "x=%d y=%d", x, y);
 
 	gtk_window_move(local_history_window->wnd, x, y);
 }

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=NeoSurf
+Comment=Browse the Internet
+GenericName=Web Browser
+Exec=neosurf-gtk %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=neosurf.png
+Categories=Network;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https
+StartupWMClass=NeoSurf-bin
+StartupNotify=true

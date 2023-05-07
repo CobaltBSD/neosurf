@@ -191,8 +191,8 @@ add_library(css SHARED
 	src/utils/utils.c
 )
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libcss/include/ -I${CMAKE_SOURCE_DIR}/contrib/libcss/src -std=c99 -I${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Werror -Wno-unused-variable -I${CMAKE_BINARY_DIR}/contrib/libcss/properties -I${CMAKE_BINARY_DIR}/contrib/libcss")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libcss/include/ -I${CMAKE_SOURCE_DIR}/contrib/libcss/src -std=c99 -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Werror -Wno-unused-variable -I${CMAKE_BINARY_DIR}/contrib/libcss/properties -I${CMAKE_BINARY_DIR}/contrib/libcss")
 
-target_link_libraries(css wapcaplet parserutils)
+target_link_libraries(css nsutils parserutils)
 
 install(TARGETS css DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

@@ -27,8 +27,8 @@
 #include "utils/config.h"
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/keypress.h"
-#include "netsurf/misc.h"
+#include "neosurf/keypress.h"
+#include "neosurf/misc.h"
 #include "desktop/textarea.h"
 
 #include "html/private.h"
@@ -171,7 +171,7 @@ static void box_textarea_callback(void *data, struct textarea_msg *msg)
 				break;
 
 			default:
-				NSLOG(netsurf, INFO,
+				NSLOG(neosurf, INFO,
 				      "Drag type %d not handled.",
 				      msg->data.drag);
 				/* This is a logic faliure in the

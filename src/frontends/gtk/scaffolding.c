@@ -25,7 +25,7 @@
 #include "utils/messages.h"
 #include "utils/nsurl.h"
 #include "utils/nsoption.h"
-#include "netsurf/browser_window.h"
+#include "neosurf/browser_window.h"
 #include "desktop/browser_history.h"
 #include "desktop/hotlist.h"
 
@@ -188,7 +188,7 @@ static void scaffolding_window_destroy(GtkWidget *widget, gpointer data)
 {
 	struct nsgtk_scaffolding *gs = data;
 
-	NSLOG(netsurf, INFO, "scaffold:%p", gs);
+	NSLOG(neosurf, INFO, "scaffold:%p", gs);
 
 	nsgtk_local_history_hide();
 
@@ -201,7 +201,7 @@ static void scaffolding_window_destroy(GtkWidget *widget, gpointer data)
 		gs->next->prev = gs->prev;
 	}
 
-	NSLOG(netsurf, INFO, "scaffold list head: %p", scaf_list);
+	NSLOG(neosurf, INFO, "scaffold list head: %p", scaf_list);
 
 	/* ensure menu resources are freed */
 	nsgtk_menu_bar_destroy(gs->menu_bar);
@@ -1235,17 +1235,17 @@ void nsgtk_scaffolding_set_title(struct gui_window *gw, const char *title)
 	}
 
 	if (title == NULL || title[0] == '\0') {
-		gtk_window_set_title(gs->window, "NetSurf");
+		gtk_window_set_title(gs->window, "NeoSurf");
 		return;
 	}
 
-	title_len = strlen(title) + SLEN(" - NetSurf") + 1;
+	title_len = strlen(title) + SLEN(" - NeoSurf") + 1;
 	newtitle = malloc(title_len);
 	if (newtitle == NULL) {
 		return;
 	}
 
-	snprintf(newtitle, title_len, "%s - NetSurf", title);
+	snprintf(newtitle, title_len, "%s - NeoSurf", title);
 
 	gtk_window_set_title(gs->window, newtitle);
 
@@ -1490,13 +1490,13 @@ struct nsgtk_scaffolding *nsgtk_new_scaffolding(struct gui_window *toplevel)
 		return NULL;
 	}
 
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Constructing a scaffold of %p for gui_window %p", gs, toplevel);
 
 	gs->top_level = toplevel;
 
 	/* Construct UI widgets */
-	if (nsgtk_builder_new_from_resname("netsurf", &gs->builder) != NSERROR_OK) {
+	if (nsgtk_builder_new_from_resname("neosurf", &gs->builder) != NSERROR_OK) {
 		free(gs);
 		return NULL;
 	}
@@ -1571,7 +1571,7 @@ struct nsgtk_scaffolding *nsgtk_new_scaffolding(struct gui_window *toplevel)
 	/* finally, show the window. */
 	gtk_widget_show(GTK_WIDGET(gs->window));
 
-	NSLOG(netsurf, INFO, "creation complete");
+	NSLOG(neosurf, INFO, "creation complete");
 
 	return gs;
 }

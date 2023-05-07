@@ -30,9 +30,9 @@
 
 #include "utils/log.h"
 #include "utils/nsoption.h"
-#include "netsurf/inttypes.h"
-#include "netsurf/layout.h"
-#include "netsurf/plot_style.h"
+#include "neosurf/inttypes.h"
+#include "neosurf/layout.h"
+#include "neosurf/plot_style.h"
 
 #include "gtk/layout_pango.h"
 #include "gtk/plotters.h"
@@ -43,12 +43,12 @@ static PangoLayout *nsfont_pango_layout = NULL;
 static inline void nsfont_pango_check(void)
 {
 	if (nsfont_pango_context == NULL) {
-		NSLOG(netsurf, INFO, "Creating nsfont_pango_context.");
+		NSLOG(neosurf, INFO, "Creating nsfont_pango_context.");
 		nsfont_pango_context = gdk_pango_context_get();
 	}
 	
 	if (nsfont_pango_layout == NULL) {
-		NSLOG(netsurf, INFO, "Creating nsfont_pango_layout.");
+		NSLOG(neosurf, INFO, "Creating nsfont_pango_layout.");
 		nsfont_pango_layout = pango_layout_new(nsfont_pango_context);
 	}
 }
@@ -85,7 +85,7 @@ nsfont_width(const plot_font_style_t *fstyle,
 
 	pango_layout_get_pixel_size(nsfont_pango_layout, width, 0);
 
-	NSLOG(netsurf, DEEPDEBUG,
+	NSLOG(neosurf, DEEPDEBUG,
 	      "fstyle: %p string:\"%.*s\", length: %" PRIsizet ", width: %dpx",
 	      fstyle, (int)length, string, length, *width);
 	 

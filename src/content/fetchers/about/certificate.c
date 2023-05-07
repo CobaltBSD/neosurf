@@ -29,8 +29,8 @@
 #include "utils/errors.h"
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/inttypes.h"
-#include "netsurf/ssl_certs.h"
+#include "neosurf/inttypes.h"
+#include "neosurf/ssl_certs.h"
 
 #include "private.h"
 #include "certificate.h"
@@ -271,10 +271,10 @@ xname_to_info(X509_NAME *xname, struct ns_cert_name *iname)
 		}
 		if (field != NULL) {
 			*field = strdup((const char *)value_str);
-			NSLOG(netsurf, DEEPDEBUG,
+			NSLOG(neosurf, DEEPDEBUG,
 			      "NID:%d value: %s", name_nid, *field);
 		} else {
-			NSLOG(netsurf, DEEPDEBUG, "NID:%d", name_nid);
+			NSLOG(neosurf, DEEPDEBUG, "NID:%d", name_nid);
 		}
 	}
 
@@ -1106,7 +1106,7 @@ bool fetch_about_certificate_handler(struct fetch_about_context *ctx)
 	/* page head */
 	res = fetch_about_ssenddataf(ctx,
 			"<html>\n<head>\n"
-			"<title>NetSurf Browser Certificate Viewer</title>\n"
+			"<title>NeoSurf Browser Certificate Viewer</title>\n"
 			"<link rel=\"stylesheet\" type=\"text/css\" "
 					"href=\"resource:internal.css\">\n"
 			"</head>\n"

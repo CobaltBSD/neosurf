@@ -23,9 +23,9 @@
 #include <cairo.h>
 #include "utils/utils.h"
 #include "utils/errors.h"
-#include "netsurf/content.h"
-#include "netsurf/bitmap.h"
-#include "netsurf/plotters.h"
+#include "neosurf/content.h"
+#include "neosurf/bitmap.h"
+#include "neosurf/plotters.h"
 #include "visurf/bitmap.h"
 #include "visurf/plotters.h"
 #include "visurf/pool-buffer.h"

@@ -24,8 +24,8 @@
 #include "utils/corestrings.h"
 #include "utils/log.h"
 #include "utils/nsurl.h"
-#include "netsurf/plot_style.h"
-#include "netsurf/url_db.h"
+#include "neosurf/plot_style.h"
+#include "neosurf/url_db.h"
 #include "desktop/system_colour.h"
 
 #include "css/internal.h"
@@ -170,20 +170,20 @@ css_stylesheet *nscss_create_inline_style(const uint8_t *data, size_t len,
 
 	error = css_stylesheet_create(&params, &sheet);
 	if (error != CSS_OK) {
-		NSLOG(netsurf, INFO, "Failed creating sheet: %d", error);
+		NSLOG(neosurf, INFO, "Failed creating sheet: %d", error);
 		return NULL;
 	}
 
 	error = css_stylesheet_append_data(sheet, data, len);
 	if (error != CSS_OK && error != CSS_NEEDDATA) {
-		NSLOG(netsurf, INFO, "failed appending data: %d", error);
+		NSLOG(neosurf, INFO, "failed appending data: %d", error);
 		css_stylesheet_destroy(sheet);
 		return NULL;
 	}
 
 	error = css_stylesheet_data_done(sheet);
 	if (error != CSS_OK) {
-		NSLOG(netsurf, INFO, "failed completing parse: %d", error);
+		NSLOG(neosurf, INFO, "failed completing parse: %d", error);
 		css_stylesheet_destroy(sheet);
 		return NULL;
 	}
@@ -209,7 +209,7 @@ static void nscss_dom_user_data_handler(dom_node_operation operation,
 				CSS_NODE_CLONED,
 				NULL, src, dst, data);
 		if (error != CSS_OK)
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed to clone libcss_node_data.");
 		break;
 
@@ -218,7 +218,7 @@ static void nscss_dom_user_data_handler(dom_node_operation operation,
 				CSS_NODE_MODIFIED,
 				NULL, src, NULL, data);
 		if (error != CSS_OK)
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed to update libcss_node_data.");
 		break;
 
@@ -229,12 +229,12 @@ static void nscss_dom_user_data_handler(dom_node_operation operation,
 				CSS_NODE_DELETED,
 				NULL, src, NULL, data);
 		if (error != CSS_OK)
-			NSLOG(netsurf, INFO,
+			NSLOG(neosurf, INFO,
 			      "Failed to delete libcss_node_data.");
 		break;
 
 	default:
-		NSLOG(netsurf, INFO, "User data operation not handled.");
+		NSLOG(neosurf, INFO, "User data operation not handled.");
 		assert(0);
 	}
 }

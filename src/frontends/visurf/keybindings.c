@@ -200,7 +200,7 @@ nsvi_bindings_handle(struct nsvi_bindings *state,
 {
 	xkb_keysym_t sym = xkb_state_key_get_one_sym(state->xkb_state, keycode);
 	if (state->nbuf >= NSVI_KEYBUF_SIZE) {
-		NSLOG(netsurf, ERROR, "Keyboard buffer overflowed");
+		NSLOG(neosurf, ERROR, "Keyboard buffer overflowed");
 		state->nbuf = 0;
 		return;
 	}
@@ -226,7 +226,7 @@ nsvi_bindings_handle(struct nsvi_bindings *state,
 		enum binding_state bstate = get_binding_state(state, cand);
 		switch (bstate) {
 		case STATE_COMPLETE:
-			NSLOG(netsurf, INFO, "Executing binding '%s'", cmd);
+			NSLOG(neosurf, INFO, "Executing binding '%s'", cmd);
 			state->nbuf = 0;
 			state->exec(state->user, cmd);
 			return;
@@ -239,10 +239,10 @@ nsvi_bindings_handle(struct nsvi_bindings *state,
 	}
 
 	if (pending == 0) {
-		NSLOG(netsurf, INFO, "No bindings for this key sequence, discarding");
+		NSLOG(neosurf, INFO, "No bindings for this key sequence, discarding");
 		state->nbuf = 0;
 	} else {
-		NSLOG(netsurf, INFO, "No candidate bindings (yet)");
+		NSLOG(neosurf, INFO, "No candidate bindings (yet)");
 	}
 }
 

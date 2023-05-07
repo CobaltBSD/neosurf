@@ -27,11 +27,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "netsurf/inttypes.h"
+#include "neosurf/inttypes.h"
 #include "utils/utils.h"
 #include "utils/log.h"
-#include "netsurf/misc.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/misc.h"
+#include "neosurf/bitmap.h"
 #include "content/llcache.h"
 #include "content/content_protected.h"
 #include "desktop/gui_internal.h"
@@ -256,7 +256,7 @@ static void image_cache__free_bitmap(struct image_cache_entry_s *centry)
 {
 	if (centry->bitmap != NULL) {
 #ifdef IMAGE_CACHE_VERBOSE
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Freeing bitmap %p size %d age %d redraw count %d",
 		      centry->bitmap,
 		      centry->bitmap_size,
@@ -282,7 +282,7 @@ static void image_cache__free_bitmap(struct image_cache_entry_s *centry)
 static void image_cache__free_entry(struct image_cache_entry_s *centry)
 {
 #ifdef IMAGE_CACHE_VERBOSE
-	NSLOG(netsurf, INFO, "freeing %p ", centry);
+	NSLOG(neosurf, INFO, "freeing %p ", centry);
 #endif
 
 	if (centry->redraw_count == 0) {
@@ -332,7 +332,7 @@ static void image_cache__background_update(void *p)
 	icache->current_age += icache->params.bg_clean_time;
 
 #ifdef IMAGE_CACHE_VERBOSE
-	NSLOG(netsurf, INFO, "Cache age %ds", icache->current_age / 1000);
+	NSLOG(neosurf, INFO, "Cache age %ds", icache->current_age / 1000);
 #endif
 
 	image_cache__clean(icache);
@@ -384,7 +384,7 @@ bool image_cache_speculate(struct content *c)
 	if ((image_cache->total_bitmap_size < image_cache->params.limit) &&
 	    (c->size <= image_cache->params.speculative_small)) {
 #ifdef IMAGE_CACHE_VERBOSE
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "content size (%d) is smaller than minimum (%d)",
 		      c->size,
 		      SPECULATE_SMALL);
@@ -393,7 +393,7 @@ bool image_cache_speculate(struct content *c)
 	}
 
 #ifdef IMAGE_CACHE_VERBOSE
-	NSLOG(netsurf, INFO, "returning %d", decision);
+	NSLOG(neosurf, INFO, "returning %d", decision);
 #endif
 	return decision;
 }
@@ -426,7 +426,7 @@ image_cache_init(const struct image_cache_parameters *image_cache_parameters)
 				image_cache__background_update,
 				image_cache);
 
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Image cache initialised with a limit of %"PRIsizet" hysteresis of %"PRIsizet,
 	      image_cache->params.limit,
 	      image_cache->params.hysteresis);
@@ -441,7 +441,7 @@ nserror image_cache_fini(void)
 
 	guit->misc->schedule(-1, image_cache__background_update, image_cache);
 
-	NSLOG(netsurf, INFO, "Size at finish %"PRIsizet" (in %d)",
+	NSLOG(neosurf, INFO, "Size at finish %"PRIsizet" (in %d)",
 	      image_cache->total_bitmap_size, image_cache->bitmap_count);
 
 	while (image_cache->entries != NULL) {
@@ -452,11 +452,11 @@ nserror image_cache_fini(void)
 		image_cache->miss_count +
 		image_cache->fail_count;
 
-	NSLOG(netsurf, INFO, "Age %ds", image_cache->current_age / 1000);
-	NSLOG(netsurf, INFO, "Peak size %"PRIsizet" (in %d)",
+	NSLOG(neosurf, INFO, "Age %ds", image_cache->current_age / 1000);
+	NSLOG(neosurf, INFO, "Peak size %"PRIsizet" (in %d)",
 	      image_cache->max_bitmap_size,
 	      image_cache->max_bitmap_size_count);
-	NSLOG(netsurf, INFO, "Peak image count %d (size %"PRIsizet")",
+	NSLOG(neosurf, INFO, "Peak image count %d (size %"PRIsizet")",
 	      image_cache->max_bitmap_count,
 	      image_cache->max_bitmap_count_size);
 
@@ -467,7 +467,7 @@ nserror image_cache_fini(void)
 			image_cache->miss_size +
 			image_cache->fail_size;
 
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Cache total/hit/miss/fail (counts) %d/%d/%d/%d (100%%/%d%%/%d%%/%d%%)",
 		      op_count,
 		      image_cache->hit_count,
@@ -476,7 +476,7 @@ nserror image_cache_fini(void)
 		      (image_cache->hit_count * 100) / op_count,
 		      (image_cache->miss_count * 100) / op_count,
 		      (image_cache->fail_count * 100) / op_count);
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Cache total/hit/miss/fail (size) %"PRIu64"/%"PRIu64"/%"PRIu64"/%"PRIu64" (100%%/%"PRId64"%%/%"PRId64"%%/%"PRId64"%%)",
 		      op_size,
 		      image_cache->hit_size,
@@ -487,17 +487,17 @@ nserror image_cache_fini(void)
 		      (image_cache->fail_size * 100) / op_size);
 	}
 
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Total images never rendered: %d (includes %d that were converted)",
 	      image_cache->total_unrendered,
 	      image_cache->specultive_miss_count);
 
-	NSLOG(netsurf, INFO,
+	NSLOG(neosurf, INFO,
 	      "Total number of excessive conversions: %d (from %d images converted more than once)",
 	      image_cache->total_extra_conversions,
 	      image_cache->total_extra_conversions_count);
 
-	NSLOG(netsurf, INFO, "Bitmap of size %d had most (%d) conversions",
+	NSLOG(neosurf, INFO, "Bitmap of size %d had most (%d) conversions",
 	      image_cache->peak_conversions_size,
 	      image_cache->peak_conversions);
 
@@ -531,7 +531,7 @@ nserror image_cache_add(struct content *content,
 		centry->bitmap_size = content->width * content->height * 4;
 	}
 
-	NSLOG(netsurf, INFO, "centry %p, content %p, bitmap %p", centry,
+	NSLOG(neosurf, INFO, "centry %p, content %p, bitmap %p", centry,
 	      content, bitmap);
 
 	centry->convert = convert;
@@ -571,7 +571,7 @@ nserror image_cache_remove(struct content *content)
 	/* get the cache entry */
 	centry = image_cache__find(content);
 	if (centry == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Could not find cache entry for content (%p)", content);
 		return NSERROR_NOT_FOUND;
 	}
@@ -805,7 +805,7 @@ bool image_cache_redraw(struct content *c,
 	/* get the cache entry */
 	centry = image_cache__find(c);
 	if (centry == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Could not find cache entry for content (%p)", c);
 		return false;
 	}
@@ -845,7 +845,7 @@ void image_cache_destroy(struct content *content)
 	/* get the cache entry */
 	centry = image_cache__find(content);
 	if (centry == NULL) {
-		NSLOG(netsurf, INFO,
+		NSLOG(neosurf, INFO,
 		      "Could not find cache entry for content (%p)", content);
 	} else {
 		image_cache__free_entry(centry);

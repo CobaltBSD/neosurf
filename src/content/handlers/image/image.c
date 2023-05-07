@@ -22,9 +22,9 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/messages.h"
-#include "netsurf/plotters.h"
-#include "netsurf/bitmap.h"
-#include "netsurf/content.h"
+#include "neosurf/plotters.h"
+#include "neosurf/bitmap.h"
+#include "neosurf/content.h"
 #include "desktop/gui_internal.h"
 
 #include "image/bmp.h"

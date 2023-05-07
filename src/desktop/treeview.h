@@ -28,7 +28,7 @@
 #include <stdint.h>
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "netsurf/mouse.h"
+#include "neosurf/mouse.h"
 
 struct redraw_context;
 struct core_window;

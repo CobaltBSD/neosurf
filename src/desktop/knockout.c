@@ -70,9 +70,9 @@
 #include "utils/utils.h"
 #include "utils/log.h"
 #include "utils/errors.h"
-#include "netsurf/bitmap.h"
+#include "neosurf/bitmap.h"
 #include "content/content.h"
-#include "netsurf/plotters.h"
+#include "neosurf/plotters.h"
 
 #include "desktop/gui_internal.h"
 #include "desktop/knockout.h"
@@ -267,7 +267,7 @@ static nserror knockout_plot_flush(const struct redraw_context *ctx)
 
 	/* debugging information */
 #ifdef KNOCKOUT_DEBUG
-	NSLOG(netsurf, INFO, "Entries are %i/%i, %i/%i, %i/%i",
+	NSLOG(neosurf, INFO, "Entries are %i/%i, %i/%i, %i/%i",
 	      knockout_entry_cur, KNOCKOUT_ENTRIES, knockout_box_cur,
 	      KNOCKOUT_BOXES, knockout_polygon_cur, KNOCKOUT_POLYGONS);
 #endif
@@ -702,7 +702,7 @@ knockout_plot_clip(const struct redraw_context *ctx, const struct rect *clip)
 
 	if (clip->x1 < clip->x0 || clip->y0 > clip->y1) {
 #ifdef KNOCKOUT_DEBUG
-		NSLOG(netsurf, INFO, "bad clip rectangle %i %i %i %i",
+		NSLOG(neosurf, INFO, "bad clip rectangle %i %i %i %i",
 		      clip->x0, clip->y0, clip->x1, clip->y1);
 #endif
 		return NSERROR_BAD_SIZE;

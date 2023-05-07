@@ -1,3 +1,15 @@
+0.5 - May 7 2023
+- Began bulk rebranding to NeoSurf
+- Removed support for languages besides for English (these may be
+re-introduced later)
+- Reworked welcome.html, license.html, and credits.html
+- Removed some obsolete documentation
+- Removed libnslog
+- Merged libwapcaplet into libnsutils
+- Enabled JavaScript by default
+- Further miscellaneous code reductions
+- Replaced libnspsl in favor of a system-installed libpsl
+
 0.4 - May 3 2023
 - Switched default browser to DuckDuckGo
 - duktape bindings are now generated automatically

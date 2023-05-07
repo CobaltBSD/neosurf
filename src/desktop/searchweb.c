@@ -28,7 +28,7 @@
 #include "utils/log.h"
 #include "utils/url.h"
 #include "utils/nsoption.h"
-#include "netsurf/content.h"
+#include "neosurf/content.h"
 #include "content/hlcache.h"
 
 #include "desktop/searchweb.h"
@@ -290,14 +290,14 @@ search_web_ico_callback(hlcache_handle *ico,
 	switch (event->type) {
 
 	case CONTENT_MSG_DONE:
-		NSLOG(netsurf, INFO, "icon '%s' retrieved",
+		NSLOG(neosurf, INFO, "icon '%s' retrieved",
 		      nsurl_access(hlcache_handle_get_url(ico)));
 		guit->search_web->provider_update(provider->name,
 						  content_get_bitmap(ico));
 		break;
 
 	case CONTENT_MSG_ERROR:
-		NSLOG(netsurf, INFO, "icon %s error: %s",
+		NSLOG(neosurf, INFO, "icon %s error: %s",
 		      nsurl_access(hlcache_handle_get_url(ico)),
 		      event->data.errordata.errormsg);
 
@@ -470,7 +470,7 @@ default_ico_callback(hlcache_handle *ico,
 	switch (event->type) {
 
 	case CONTENT_MSG_DONE:
-		NSLOG(netsurf, INFO, "default icon '%s' retrieved",
+		NSLOG(neosurf, INFO, "default icon '%s' retrieved",
 		      nsurl_access(hlcache_handle_get_url(ico)));
 
 		/* only set to default icon if providers icon has no handle */
@@ -482,7 +482,7 @@ default_ico_callback(hlcache_handle *ico,
 		break;
 
 	case CONTENT_MSG_ERROR:
-		NSLOG(netsurf, INFO, "icon %s error: %s",
+		NSLOG(neosurf, INFO, "icon %s error: %s",
 		      nsurl_access(hlcache_handle_get_url(ico)),
 		      event->data.errordata.errormsg);
 
