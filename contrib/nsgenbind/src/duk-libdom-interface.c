@@ -1230,9 +1230,13 @@ output_operation_argument_type_check(
 
         case WEBIDL_TYPE_BOOL:
                 outputf(outc,
-                        "\t\tif (!duk_is_boolean(ctx, %d)) {\n"
-                        "\t\t\treturn duk_error(ctx, DUK_ERR_ERROR, %s_error_fmt_bool_type, %d, \"%s\");\n"
-                        "\t\t}\n", argidx, DLPFX, argidx, argumente->name);
+			"\t\tif (!duk_is_boolean(ctx, %d)) {\n"
+			"\t\t\tif (duk_is_number(ctx, %d)) {\n"
+			"\t\t\t\tduk_to_boolean(ctx, %d);\n"
+			"\t\t\t} else {\n"
+			"\t\t\t\treturn duk_error(ctx, DUK_ERR_ERROR, %s_error_fmt_bool_type, %d, \"%s\");\n"
+			"\t\t\t}\n"
+			"\t\t}\n", argidx, argidx, argidx, DLPFX, argidx, argumente->name);
                 break;
 
         case WEBIDL_TYPE_FLOAT:

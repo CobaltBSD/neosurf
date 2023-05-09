@@ -817,7 +817,6 @@ class CSSGroup:
             raise ValueError()
 
 css_groups = [ CSSGroup(g) for g in groups ]
-#dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path = os.getcwd() + "/contrib/libcss"
 
 for k, v in assets.items():

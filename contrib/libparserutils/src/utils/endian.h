@@ -10,9 +10,9 @@
 
 static inline bool endian_host_is_le(void)
 {
-	static uint32_t magic = 0x10000002;
+	const uint16_t test = 1;
 
-	return (((uint8_t *) &magic)[0] == 0x02);
+	return ((const uint8_t *) &test)[0];
 }
 
 static inline uint32_t endian_swap(uint32_t val)

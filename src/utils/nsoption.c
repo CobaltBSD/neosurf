@@ -67,16 +67,6 @@ static struct nsoption_s defaults[] = {
 #include "riscos/options.h"
 #elif defined(nsgtk)
 #include "gtk/options.h"
-#elif defined(nsbeos)
-#include "beos/options.h"
-#elif defined(nsamiga)
-#include "amiga/options.h"
-#elif defined(nsframebuffer)
-#include "framebuffer/options.h"
-#elif defined(nsatari)
-#include "atari/options.h"
-#elif defined(nsmonkey)
-#include "monkey/options.h"
 #elif defined(nswin32)
 #include "windows/options.h"
 #elif defined(nsvi)

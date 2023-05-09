@@ -14,23 +14,11 @@
     <file preprocess="to-pixdata">throbber/throbber7.png</file>
     <file preprocess="to-pixdata">throbber/throbber8.png</file>
     <file>credits.html</file>
-    <file>it/credits.html</file>
-    <file>nl/credits.html</file>
-    <file>zh_CN/credits.html</file>
     <file>license.html</file>
-    <file>it/license.html</file>
-    <file>nl/license.html</file>
-    <file>zh_CN/license.html</file>
     <file>welcome.html</file>
-    <file>de/welcome.html</file>
-    <file>it/welcome.html</file>
-    <file>ja/welcome.html</file>
-    <file>nl/welcome.html</file>
-    <file>zh_CN/welcome.html</file>
     <file>adblock.css</file>
     <file>default.css</file>
     <file>internal.css</file>
-    <file>quirks.css</file>
     <file>netsurf.png</file>
     <file>default.ico</file>
     <file>icons/show-cookie.png</file>

@@ -106,7 +106,7 @@ NSOPTION_BOOL(block_advertisements, false)
 
 /** Disable website tracking, see	                
  * http://www.w3.org/Submission/2011/SUBM-web-tracking-protection-20110224/#dnt-uas */
-NSOPTION_BOOL(do_not_track, false)
+NSOPTION_BOOL(do_not_track, true)
 
 /** Whether to send the referer HTTP header */
 NSOPTION_BOOL(send_referer, true)
@@ -254,6 +254,9 @@ NSOPTION_BOOL(enable_PDF_compression, true)
 
 /** setting a password and encoding PDF documents */
 NSOPTION_BOOL(enable_PDF_password, false)
+
+/** whether to prefer dark mode (light on dark) */
+NSOPTION_BOOL(prefer_dark_mode, false)
 
 /******** System colours ********/
 NSOPTION_COLOUR(sys_colour_ActiveBorder, 0x00d3d3d3)

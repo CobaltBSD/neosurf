@@ -44,7 +44,7 @@ uint32_t utf8_to_ucs4(const char *s_in, size_t l)
 	parserutils_error perror;
 
 	perror = parserutils_charset_utf8_to_ucs4((const uint8_t *) s_in, l,
-			&ucs4, &len);
+						  &ucs4, &len);
 	if (perror != PARSERUTILS_OK)
 		ucs4 = 0xfffd;
 
@@ -106,7 +106,7 @@ size_t utf8_char_byte_length(const char *s)
 	parserutils_error perror;
 
 	perror = parserutils_charset_utf8_char_byte_length((const uint8_t *) s,
-			&len);
+							   &len);
 	assert(perror == PARSERUTILS_OK);
 
 	return len;
@@ -131,7 +131,7 @@ size_t utf8_next(const char *s, size_t l, size_t o)
 	parserutils_error perror;
 
 	perror = parserutils_charset_utf8_next((const uint8_t *) s, l, o,
-			&next);
+					       &next);
 	assert(perror == PARSERUTILS_OK);
 
 	return next;
@@ -151,6 +151,47 @@ static inline void utf8_clear_cd_cache(void)
 	last_cd.cd = 0;
 }
 
+/**
+ * obtain a cached conversion descriptor
+ *
+ * either return the cached conversion descriptor or create one if required
+ */
+static nserror
+get_cached_cd(const char *enc_from, const char *enc_to, iconv_t *cd_out)
+{
+	iconv_t cd;
+	/* we cache the last used conversion descriptor,
+	 * so check if we're trying to use it here */
+	if (strncasecmp(last_cd.from, enc_from, sizeof(last_cd.from)) == 0 &&
+	    strncasecmp(last_cd.to, enc_to, sizeof(last_cd.to)) == 0 &&
+	    last_cd.cd != 0) {
+		*cd_out = last_cd.cd;
+		return NSERROR_OK;
+	}
+
+	/* no match, so create a new cd */
+	cd = iconv_open(enc_to, enc_from);
+	if (cd == (iconv_t) -1) {
+		if (errno == EINVAL) {
+			return NSERROR_BAD_ENCODING;
+		}
+		/* default to no memory */
+		return NSERROR_NOMEM;
+	}
+
+	/* close the last cd - we don't care if this fails */
+	if (last_cd.cd) {
+		iconv_close(last_cd.cd);
+	}
+
+	/* and safely copy the to/from/cd data into last_cd */
+	snprintf(last_cd.from, sizeof(last_cd.from), "%s", enc_from);
+	snprintf(last_cd.to, sizeof(last_cd.to), "%s", enc_to);
+	*cd_out = last_cd.cd = cd;
+
+	return NSERROR_OK;
+}
+
 /* exported interface documented in utils/utf8.h */
 nserror utf8_finalise(void)
 {
@@ -168,48 +209,47 @@ nserror utf8_finalise(void)
  * Convert a string from one encoding to another
  *
  * \param string  The NULL-terminated string to convert
- * \param len     Length of input string to consider (in bytes), or 0
+ * \param slen    Length of input string to consider (in bytes), or 0
  * \param from    The encoding name to convert from
  * \param to      The encoding name to convert to
- * \param result  Pointer to location in which to store result.
- * \param result_len Pointer to location in which to store result length.
+ * \param result_out  Pointer to location in which to store result.
+ * \param result_len_out Pointer to location in which to store result length.
  * \return NSERROR_OK for no error, NSERROR_NOMEM on allocation error,
  *         NSERROR_BAD_ENCODING for a bad character encoding
  */
 static nserror
 utf8_convert(const char *string,
-	     size_t len,
+	     size_t slen,
 	     const char *from,
 	     const char *to,
-	     char **result,
-	     size_t *result_len)
+	     char **result_out,
+	     size_t *result_len_out)
 {
 	iconv_t cd;
-	char *temp, *out, *in;
-	size_t slen, rlen;
+	char *temp, *out, *in, *result;
+	size_t result_len;
+	nserror res;
 
-	assert(string && from && to && result);
+	assert(string && from && to && result_out);
 
-	if (string[0] == '\0') {
-		/* On AmigaOS, iconv() returns an error if we pass an
-		 * empty string.  This prevents iconv() being called as
-		 * there is no conversion necessary anyway. */
-		*result = strdup("");
-		if (!(*result)) {
-			*result = NULL;
-			return NSERROR_NOMEM;
-		}
-
-		return NSERROR_OK;
+	/* calculate the source length if not given */
+	if (slen==0) {
+		slen = strlen(string);
 	}
 
-	if (strcasecmp(from, to) == 0) {
-		/* conversion from an encoding to itself == strdup */
-		slen = len ? len : strlen(string);
-		*(result) = strndup(string, slen);
-		if (!(*result)) {
-			*(result) = NULL;
+	/* process the empty string separately avoiding any conversion
+	 * check for the source and destination encoding being the same
+	 *
+	 * This optimisation is necessary on AmigaOS as iconv()
+	 * returns an error if an empty string is passed.
+	 */
+	if ((slen == 0) || (strcasecmp(from, to) == 0)) {
+		*result_out = strndup(string, slen);
+		if (*result_out == NULL) {
 			return NSERROR_NOMEM;
+		}
+		if (result_len_out != NULL) {
+			*result_len_out = slen;
 		}
 
 		return NSERROR_OK;
@@ -217,46 +257,24 @@ utf8_convert(const char *string,
 
 	in = (char *)string;
 
-	/* we cache the last used conversion descriptor,
-	 * so check if we're trying to use it here */
-	if (strncasecmp(last_cd.from, from, sizeof(last_cd.from)) == 0 &&
-			strncasecmp(last_cd.to, to, sizeof(last_cd.to)) == 0) {
-		cd = last_cd.cd;
-	}
-	else {
-		/* no match, so create a new cd */
-		cd = iconv_open(to, from);
-		if (cd == (iconv_t)-1) {
-			if (errno == EINVAL)
-				return NSERROR_BAD_ENCODING;
-			/* default to no memory */
-			return NSERROR_NOMEM;
-		}
-
-		/* close the last cd - we don't care if this fails */
-		if (last_cd.cd)
-			iconv_close(last_cd.cd);
-
-		/* and copy the to/from/cd data into last_cd */
-		snprintf(last_cd.from, sizeof(last_cd.from), "%s", from);
-		snprintf(last_cd.to, sizeof(last_cd.to), "%s", to);
-		last_cd.cd = cd;
+	res = get_cached_cd(from, to, &cd);
+	if (res != NSERROR_OK) {
+		return res;
 	}
 
-	slen = len ? len : strlen(string);
 	/* Worst case = ASCII -> UCS4, so allocate an output buffer
 	 * 4 times larger than the input buffer, and add 4 bytes at
 	 * the end for the NULL terminator
 	 */
-	rlen = slen * 4 + 4;
+	result_len = slen * 4 + 4;
 
-	temp = out = malloc(rlen);
+	temp = out = malloc(result_len);
 	if (!out) {
 		return NSERROR_NOMEM;
 	}
 
 	/* perform conversion */
-	if (iconv(cd, (void *) &in, &slen, &out, &rlen) == (size_t)-1) {
+	if (iconv(cd, (void *) &in, &slen, &out, &result_len) == (size_t)-1) {
 		free(temp);
 		/* clear the cached conversion descriptor as it's invalid */
 		if (last_cd.cd)
@@ -270,19 +288,22 @@ utf8_convert(const char *string,
 		return NSERROR_NOMEM;
 	}
 
-	*(result) = realloc(temp, out - temp + 4);
-	if (!(*result)) {
+	result_len = out - temp;
+
+	/* resize buffer allowing for null termination */
+	result = realloc(temp, result_len + 4);
+	if (result == NULL) {
 		free(temp);
-		*(result) = NULL; /* for sanity's sake */
 		return NSERROR_NOMEM;
 	}
 
 	/* NULL terminate - needs 4 characters as we may have
 	 * converted to UTF-32 */
-	memset((*result) + (out - temp), 0, 4);
+	memset(result + result_len, 0, 4);
 
-	if (result_len != NULL) {
-		*result_len = (out - temp);
+	*result_out = result;
+	if (result_len_out != NULL) {
+		*result_len_out = result_len;
 	}
 
 	return NSERROR_OK;
@@ -290,14 +311,14 @@ utf8_convert(const char *string,
 
 /* exported interface documented in utils/utf8.h */
 nserror utf8_to_enc(const char *string, const char *encname,
-		size_t len, char **result)
+		    size_t len, char **result)
 {
 	return utf8_convert(string, len, "UTF-8", encname, result, NULL);
 }
 
 /* exported interface documented in utils/utf8.h */
 nserror utf8_from_enc(const char *string, const char *encname,
-		size_t len, char **result, size_t *result_len)
+		      size_t len, char **result, size_t *result_len)
 {
 	return utf8_convert(string, len, encname, "UTF-8", result, result_len);
 }
@@ -328,7 +349,7 @@ utf8_convert_html_chunk(iconv_t cd,
 		esclen = snprintf(escape, sizeof(escape), "&#x%06x;", ucs4);
 		pescape = escape;
 		ret = iconv(cd, (void *) &pescape, &esclen,
-				(void *) out, outlen);
+			    (void *) out, outlen);
 		if (ret == (size_t) -1)
 			return NSERROR_NOMEM;
 
@@ -340,45 +361,26 @@ utf8_convert_html_chunk(iconv_t cd,
 	return NSERROR_OK;
 }
 
+
+
 /* exported interface documented in utils/utf8.h */
 nserror
-utf8_to_html(const char *string, const char *encname, size_t len, char **result)
+utf8_to_html(const char *string, const char *encname, size_t len, char **result_out)
 {
 	iconv_t cd;
 	const char *in;
-	char *out, *origout;
+	char *out, *origout, *result;
 	size_t off, prev_off, inlen, outlen, origoutlen, esclen;
 	nserror ret;
 	char *pescape, escape[11];
+	nserror res;
 
 	if (len == 0)
 		len = strlen(string);
 
-	/* we cache the last used conversion descriptor,
-	 * so check if we're trying to use it here */
-	if (strncasecmp(last_cd.from, "UTF-8", sizeof(last_cd.from)) == 0 &&
-			strncasecmp(last_cd.to, encname,
-					sizeof(last_cd.to)) == 0 &&
-			last_cd.cd != 0) {
-		cd = last_cd.cd;
-	} else {
-		/* no match, so create a new cd */
-		cd = iconv_open(encname, "UTF-8");
-		if (cd == (iconv_t) -1) {
-			if (errno == EINVAL)
-				return NSERROR_BAD_ENCODING;
-			/* default to no memory */
-			return NSERROR_NOMEM;
-		}
-
-		/* close the last cd - we don't care if this fails */
-		if (last_cd.cd)
-			iconv_close(last_cd.cd);
-
-		/* and safely copy the to/from/cd data into last_cd */
-		snprintf(last_cd.from, sizeof(last_cd.from), "UTF-8");
-		snprintf(last_cd.to, sizeof(last_cd.to), "%s", encname);
-		last_cd.cd = cd;
+	res = get_cached_cd("UTF-8", encname, &cd);
+	if (res != NSERROR_OK) {
+		return res;
 	}
 
 	/* Worst case is ASCII -> UCS4, with all characters escaped:
@@ -398,13 +400,13 @@ utf8_to_html(const char *string, const char *encname, size_t len, char **result)
 	while (off < len) {
 		/* Must escape '&', '<', and '>' */
 		if (string[off] == '&' || string[off] == '<' ||
-				string[off] == '>') {
+		    string[off] == '>') {
 			if (off - prev_off > 0) {
 				/* Emit chunk */
 				in = string + prev_off;
 				inlen = off - prev_off;
 				ret = utf8_convert_html_chunk(cd, in, inlen,
-						&out, &outlen);
+							      &out, &outlen);
 				if (ret != NSERROR_OK) {
 					free(origout);
 					iconv_close(cd);
@@ -415,10 +417,10 @@ utf8_to_html(const char *string, const char *encname, size_t len, char **result)
 
 			/* Emit mandatory escape */
 			esclen = snprintf(escape, sizeof(escape),
-					"&#x%06x;", string[off]);
+					  "&#x%06x;", string[off]);
 			pescape = escape;
 			ret = utf8_convert_html_chunk(cd, pescape, esclen,
-					&out, &outlen);
+						      &out, &outlen);
 			if (ret != NSERROR_OK) {
 				free(origout);
 				iconv_close(cd);
@@ -450,11 +452,12 @@ utf8_to_html(const char *string, const char *encname, size_t len, char **result)
 	outlen -= 4;
 
 	/* Shrink-wrap */
-	*result = realloc(origout, origoutlen - outlen);
-	if (*result == NULL) {
+	result = realloc(origout, origoutlen - outlen);
+	if (result == NULL) {
 		free(origout);
 		return NSERROR_NOMEM;
 	}
+	*result_out = result;
 
 	return NSERROR_OK;
 }

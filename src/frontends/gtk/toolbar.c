@@ -673,15 +673,22 @@ nsgtk_toolbar_customisation_save(struct nsgtk_toolbar *tb)
 	for (location = BACK_BUTTON;
 	     location < PLACEHOLDER_BUTTON;
 	     location++) {
+		int written;
 		itemid = itemid_from_location(tb, location);
 		if (itemid == PLACEHOLDER_BUTTON) {
 			/* no more filled locations */
 			break;
 		}
-		start += snprintf(start,
+		written = snprintf(start,
 				orderlen - (start - order),
 				"%s/",
 				tb->items[itemid].name);
+		if ((written < 0) ||
+		    (written >= orderlen - (start - order))) {
+			free(order);
+			return NSERROR_UNKNOWN;
+		}
+		start += written;
 
 		if ((start - order) >= orderlen) {
 			break;
@@ -3066,7 +3073,7 @@ contents_button_clicked_cb(GtkWidget *widget, gpointer data)
 	struct nsgtk_toolbar *tb = (struct nsgtk_toolbar *)data;
 	nserror res;
 
-	res = toolbar_navigate_to_url(tb, "http://www.netsurf-browser.org/documentation/");
+	res = toolbar_navigate_to_url(tb, "https://www.netsurf-browser.org/documentation/");
 	if (res != NSERROR_OK) {
 		nsgtk_warning(messages_get_errorcode(res), 0);
 	}
@@ -3087,7 +3094,7 @@ guide_button_clicked_cb(GtkWidget *widget, gpointer data)
 	struct nsgtk_toolbar *tb = (struct nsgtk_toolbar *)data;
 	nserror res;
 
-	res = toolbar_navigate_to_url(tb, "http://www.netsurf-browser.org/documentation/guide");
+	res = toolbar_navigate_to_url(tb, "https://www.netsurf-browser.org/documentation/guide");
 	if (res != NSERROR_OK) {
 		nsgtk_warning(messages_get_errorcode(res), 0);
 	}
@@ -3109,7 +3116,7 @@ info_button_clicked_cb(GtkWidget *widget, gpointer data)
 	struct nsgtk_toolbar *tb = (struct nsgtk_toolbar *)data;
 	nserror res;
 
-	res = toolbar_navigate_to_url(tb, "http://www.netsurf-browser.org/documentation/info");
+	res = toolbar_navigate_to_url(tb, "https://www.netsurf-browser.org/documentation/info");
 	if (res != NSERROR_OK) {
 		nsgtk_warning(messages_get_errorcode(res), 0);
 	}

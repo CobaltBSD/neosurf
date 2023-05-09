@@ -28,12 +28,6 @@
 #include "utils/parserutilserror.h"
 #include "utils/utils.h"
 
-/* Define this to enable verbose messages when matching selector chains */
-#undef DEBUG_CHAIN_MATCHING
-
-/* Define this to enable verbose messages when attempting to share styles */
-#undef DEBUG_STYLE_SHARING
-
 /**
  * Container for stylesheet selection info
  */
@@ -128,11 +122,6 @@ static css_error select_font_faces_from_sheet(
 		css_origin origin,
 		css_select_font_faces_state *state,
 		const css_select_strings *str);
-
-#ifdef DEBUG_CHAIN_MATCHING
-static void dump_chain(const css_selector *selector);
-#endif
-
 
 static css_error css__create_node_data(struct css_node_data **node_data)
 {
@@ -745,20 +734,12 @@ static css_error css_select_style__get_sharable_node_data_for_candidate(
 	error = state->handler->get_libcss_node_data(state->pw,
 			share_candidate_node, (void **) (void *) &node_data);
 	if (error != CSS_OK || node_data == NULL) {
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: no candidate node data\n",
-				lwc_string_data(state->element.name));
-#endif
 		return error;
 	}
 
 	/* If one node has hints and other doesn't then can't share */
 	if ((node_data->flags & CSS_NODE_FLAGS_HAS_HINTS) !=
 			(state->node_data->flags & CSS_NODE_FLAGS_HAS_HINTS)) {
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: have hints mismatch\n",
-				lwc_string_data(state->element.name));
-#endif
 		return CSS_OK;
 	}
 
@@ -767,10 +748,6 @@ static css_error css_select_style__get_sharable_node_data_for_candidate(
 	if ((node_data->flags & CSS_NODE_FLAGS__PSEUDO_CLASSES_MASK) !=
 			(state->node_data->flags &
 					CSS_NODE_FLAGS__PSEUDO_CLASSES_MASK)) {
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: different pseudo classes\n",
-				lwc_string_data(state->element.name));
-#endif
 		return CSS_OK;
 
 	}
@@ -782,22 +759,6 @@ static css_error css_select_style__get_sharable_node_data_for_candidate(
 			CSS_NODE_FLAGS_TAINT_ATTRIBUTE |
 			CSS_NODE_FLAGS_TAINT_SIBLING |
 			CSS_NODE_FLAGS_HAS_INLINE_STYLE)) {
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: candidate flags: %s%s%s%s\n",
-				lwc_string_data(state->element.name),
-				(node_data->flags &
-					CSS_NODE_FLAGS_TAINT_PSEUDO_CLASS) ?
-						"PSEUDOCLASS" : "",
-				(node_data->flags &
-					CSS_NODE_FLAGS_TAINT_ATTRIBUTE) ?
-						" ATTRIBUTE" : "",
-				(node_data->flags &
-					CSS_NODE_FLAGS_TAINT_SIBLING) ?
-						" SIBLING" : "",
-				(node_data->flags &
-					CSS_NODE_FLAGS_HAS_INLINE_STYLE) ?
-						" INLINE_STYLE" : "");
-#endif
 		return CSS_OK;
 	}
 
@@ -810,10 +771,6 @@ static css_error css_select_style__get_sharable_node_data_for_candidate(
 
 	} else if (share_candidate_id != NULL) {
 		lwc_string_unref(share_candidate_id);
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: candidate id\n",
-				lwc_string_data(state->element.name));
-#endif
 		return CSS_OK;
 	}
 
@@ -827,10 +784,6 @@ static css_error css_select_style__get_sharable_node_data_for_candidate(
 	}
 
 	if (state->n_classes != share_candidate_n_classes) {
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: class count mismatch\n",
-				lwc_string_data(state->element.name));
-#endif
 		goto cleanup;
 	}
 
@@ -844,20 +797,12 @@ static css_error css_select_style__get_sharable_node_data_for_candidate(
 				share_candidate_classes[i],
 				&match) == lwc_error_ok &&
 				match == false) {
-#ifdef DEBUG_STYLE_SHARING
-			printf("      \t%s\tno share: class mismatch\n",
-					lwc_string_data(state->element.name));
-#endif
 			goto cleanup;
 		}
 	}
 
 	if (node_data->flags & CSS_NODE_FLAGS_HAS_HINTS) {
 		/* TODO: check hints match.  For now, just prevent sharing */
-#ifdef DEBUG_STYLE_SHARING
-		printf("      \t%s\tno share: hints\n",
-				lwc_string_data(state->element.name));
-#endif
 		goto cleanup;
 	}
 
@@ -930,15 +875,9 @@ static css_error css_select_style__get_sharable_node_data(
 		 *       and if we get a non-NULL "matched" then return.
 		 *
 		 *       Check overhead is worth cost. */
-#ifdef DEBUG_STYLE_SHARING
-printf("      \t%s\tno share: node id (%s)\n", lwc_string_data(state->element.name), lwc_string_data(state->id));
-#endif
 		return CSS_OK;
 	}
 	if (state->node_data->flags & CSS_NODE_FLAGS_HAS_INLINE_STYLE) {
-#ifdef DEBUG_STYLE_SHARING
-printf("      \t%s\tno share: inline style\n");
-#endif
 		return CSS_OK;
 	}
 
@@ -1290,15 +1229,8 @@ css_error css_select_style(css_select_ctx *ctx, void *node,
 			state.results->styles[i] =
 					css__computed_style_ref(styles[i]);
 		}
-#ifdef DEBUG_STYLE_SHARING
-		printf("style:\t%s\tSHARED!\n",
-				lwc_string_data(state.element.name));
-#endif
 		goto complete;
 	}
-#ifdef DEBUG_STYLE_SHARING
-	printf("style:\t%s\tSELECTED\n", lwc_string_data(state.element.name));
-#endif
 
 	/* Not sharing; need to select. */
 	if (ctx->uses_revert ||
@@ -2148,12 +2080,6 @@ css_error match_selector_chain(css_select_ctx *ctx,
 	css_pseudo_element pseudo;
 	css_error error;
 
-#ifdef DEBUG_CHAIN_MATCHING
-	fprintf(stderr, "matching: ");
-	dump_chain(selector);
-	fprintf(stderr, "\n");
-#endif
-
 	/* Match the details of the first selector in the chain.
 	 *
 	 * Note that pseudo elements will only appear as details of
@@ -2849,113 +2775,3 @@ bool css__outranks_existing(uint16_t op, bool important, css_select_state *state
 
 	return outranks;
 }
-
-/******************************************************************************
- * Debug helpers                                                              *
- ******************************************************************************/
-#ifdef DEBUG_CHAIN_MATCHING
-void dump_chain(const css_selector *selector)
-{
-	const css_selector_detail *detail = &selector->data;
-
-	if (selector->data.comb != CSS_COMBINATOR_NONE)
-		dump_chain(selector->combinator);
-
-	if (selector->data.comb == CSS_COMBINATOR_ANCESTOR)
-		fprintf(stderr, " ");
-	else if (selector->data.comb == CSS_COMBINATOR_SIBLING)
-		fprintf(stderr, " + ");
-	else if (selector->data.comb == CSS_COMBINATOR_PARENT)
-		fprintf(stderr, " > ");
-
-	do {
-		switch (detail->type) {
-		case CSS_SELECTOR_ELEMENT:
-			if (lwc_string_length(detail->name) == 1 &&
-				lwc_string_data(detail->name)[0] == '*' &&
-					detail->next == 1) {
-				break;
-			}
-			fprintf(stderr, "%.*s",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name));
-			break;
-		case CSS_SELECTOR_CLASS:
-			fprintf(stderr, ".%.*s",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name));
-			break;
-		case CSS_SELECTOR_ID:
-			fprintf(stderr, "#%.*s",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name));
-			break;
-		case CSS_SELECTOR_PSEUDO_CLASS:
-		case CSS_SELECTOR_PSEUDO_ELEMENT:
-			fprintf(stderr, ":%.*s",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name));
-
-			if (detail->value != NULL) {
-				fprintf(stderr, "(%.*s)",
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			}
-			break;
-		case CSS_SELECTOR_ATTRIBUTE:
-			fprintf(stderr, "[%.*s]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name));
-			break;
-		case CSS_SELECTOR_ATTRIBUTE_EQUAL:
-			fprintf(stderr, "[%.*s=\"%.*s\"]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name),
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			break;
-		case CSS_SELECTOR_ATTRIBUTE_DASHMATCH:
-			fprintf(stderr, "[%.*s|=\"%.*s\"]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name),
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			break;
-		case CSS_SELECTOR_ATTRIBUTE_INCLUDES:
-			fprintf(stderr, "[%.*s~=\"%.*s\"]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name),
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			break;
-		case CSS_SELECTOR_ATTRIBUTE_PREFIX:
-			fprintf(stderr, "[%.*s^=\"%.*s\"]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name),
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			break;
-		case CSS_SELECTOR_ATTRIBUTE_SUFFIX:
-			fprintf(stderr, "[%.*s$=\"%.*s\"]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name),
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			break;
-		case CSS_SELECTOR_ATTRIBUTE_SUBSTRING:
-			fprintf(stderr, "[%.*s*=\"%.*s\"]",
-					(int) lwc_string_length(detail->name),
-					lwc_string_data(detail->name),
-					(int) lwc_string_length(detail->value),
-					lwc_string_data(detail->value));
-			break;
-		}
-
-		if (detail->next)
-			detail++;
-		else
-			detail = NULL;
-	} while (detail);
-}
-#endif
-

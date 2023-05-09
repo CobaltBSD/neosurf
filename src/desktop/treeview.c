@@ -41,6 +41,7 @@
 #include "content/hlcache.h"
 #include "css/utils.h"
 
+#include "desktop/bitmap.h"
 #include "desktop/knockout.h"
 #include "desktop/textarea.h"
 #include "desktop/treeview.h"
@@ -5077,7 +5078,7 @@ treeview_generate_triangle_bitmap(colour bg, colour fg, int size)
 	colour colour4 = fg;
 
 	/* Create the bitmap */
-	b = guit->bitmap->create(size, size, BITMAP_NEW | BITMAP_OPAQUE);
+	b = guit->bitmap->create(size, size, BITMAP_OPAQUE);
 	if (b == NULL)
 		return NULL;
 
@@ -5091,58 +5092,68 @@ treeview_generate_triangle_bitmap(colour bg, colour fg, int size)
 		if (y < size / 2) {
 			/* Top half */
 			for (x = 0; x < y * 2; x++) {
-				*(pos++) = red_from_colour(colour4);
-				*(pos++) = green_from_colour(colour4);
-				*(pos++) = blue_from_colour(colour4);
-				*(pos++) = 0xff;
+				pos[bitmap_layout.r] = red_from_colour(colour4);
+				pos[bitmap_layout.g] = green_from_colour(colour4);
+				pos[bitmap_layout.b] = blue_from_colour(colour4);
+				pos[bitmap_layout.a] = 0xff;
+				pos += 4;
 			}
-			*(pos++) = red_from_colour(colour3);
-			*(pos++) = green_from_colour(colour3);
-			*(pos++) = blue_from_colour(colour3);
-			*(pos++) = 0xff;
-			*(pos++) = red_from_colour(colour1);
-			*(pos++) = green_from_colour(colour1);
-			*(pos++) = blue_from_colour(colour1);
-			*(pos++) = 0xff;
+			pos[bitmap_layout.r] = red_from_colour(colour3);
+			pos[bitmap_layout.g] = green_from_colour(colour3);
+			pos[bitmap_layout.b] = blue_from_colour(colour3);
+			pos[bitmap_layout.a] = 0xff;
+			pos += 4;
+			pos[bitmap_layout.r] = red_from_colour(colour1);
+			pos[bitmap_layout.g] = green_from_colour(colour1);
+			pos[bitmap_layout.b] = blue_from_colour(colour1);
+			pos[bitmap_layout.a] = 0xff;
+			pos += 4;
 			for (x = y * 2 + 2; x < size ; x++) {
-				*(pos++) = red_from_colour(colour0);
-				*(pos++) = green_from_colour(colour0);
-				*(pos++) = blue_from_colour(colour0);
-				*(pos++) = 0xff;
+				pos[bitmap_layout.r] = red_from_colour(colour0);
+				pos[bitmap_layout.g] = green_from_colour(colour0);
+				pos[bitmap_layout.b] = blue_from_colour(colour0);
+				pos[bitmap_layout.a] = 0xff;
+				pos += 4;
 			}
 		} else if ((y == size / 2) && (size & 0x1)) {
 			/* Middle row */
 			for (x = 0; x < size - 1; x++) {
-				*(pos++) = red_from_colour(colour4);
-				*(pos++) = green_from_colour(colour4);
-				*(pos++) = blue_from_colour(colour4);
-				*(pos++) = 0xff;
+				pos[bitmap_layout.r] = red_from_colour(colour4);
+				pos[bitmap_layout.g] = green_from_colour(colour4);
+				pos[bitmap_layout.b] = blue_from_colour(colour4);
+				pos[bitmap_layout.a] = 0xff;
+				pos += 4;
 			}
-			*(pos++) = red_from_colour(colour2);
-			*(pos++) = green_from_colour(colour2);
-			*(pos++) = blue_from_colour(colour2);
-			*(pos++) = 0xff;
+			pos[bitmap_layout.r] = red_from_colour(colour2);
+			pos[bitmap_layout.g] = green_from_colour(colour2);
+			pos[bitmap_layout.b] = blue_from_colour(colour2);
+			pos[bitmap_layout.a] = 0xff;
+			pos += 4;
 		} else {
 			/* Bottom half */
 			for (x = 0; x < (size - y - 1) * 2; x++) {
-				*(pos++) = red_from_colour(colour4);
-				*(pos++) = green_from_colour(colour4);
-				*(pos++) = blue_from_colour(colour4);
-				*(pos++) = 0xff;
+				pos[bitmap_layout.r] = red_from_colour(colour4);
+				pos[bitmap_layout.g] = green_from_colour(colour4);
+				pos[bitmap_layout.b] = blue_from_colour(colour4);
+				pos[bitmap_layout.a] = 0xff;
+				pos += 4;
 			}
-			*(pos++) = red_from_colour(colour3);
-			*(pos++) = green_from_colour(colour3);
-			*(pos++) = blue_from_colour(colour3);
-			*(pos++) = 0xff;
-			*(pos++) = red_from_colour(colour1);
-			*(pos++) = green_from_colour(colour1);
-			*(pos++) = blue_from_colour(colour1);
-			*(pos++) = 0xff;
+			pos[bitmap_layout.r] = red_from_colour(colour3);
+			pos[bitmap_layout.g] = green_from_colour(colour3);
+			pos[bitmap_layout.b] = blue_from_colour(colour3);
+			pos[bitmap_layout.a] = 0xff;
+			pos += 4;
+			pos[bitmap_layout.r] = red_from_colour(colour1);
+			pos[bitmap_layout.g] = green_from_colour(colour1);
+			pos[bitmap_layout.b] = blue_from_colour(colour1);
+			pos[bitmap_layout.a] = 0xff;
+			pos += 4;
 			for (x = (size - y) * 2; x < size ; x++) {
-				*(pos++) = red_from_colour(colour0);
-				*(pos++) = green_from_colour(colour0);
-				*(pos++) = blue_from_colour(colour0);
-				*(pos++) = 0xff;
+				pos[bitmap_layout.r] = red_from_colour(colour0);
+				pos[bitmap_layout.g] = green_from_colour(colour0);
+				pos[bitmap_layout.b] = blue_from_colour(colour0);
+				pos[bitmap_layout.a] = 0xff;
+				pos += 4;
 			}
 		}
 
@@ -5176,7 +5187,7 @@ treeview_generate_copy_bitmap(struct bitmap *orig, int size)
 	assert(size == guit->bitmap->get_height(orig));
 
 	/* Create the bitmap */
-	b = guit->bitmap->create(size, size, BITMAP_NEW | BITMAP_OPAQUE);
+	b = guit->bitmap->create(size, size, BITMAP_OPAQUE);
 	if (b == NULL)
 		return NULL;
 
@@ -5224,7 +5235,7 @@ treeview_generate_rotate_bitmap(struct bitmap *orig, int size)
 	assert(size == guit->bitmap->get_height(orig));
 
 	/* Create the bitmap */
-	b = guit->bitmap->create(size, size, BITMAP_NEW | BITMAP_OPAQUE);
+	b = guit->bitmap->create(size, size, BITMAP_OPAQUE);
 	if (b == NULL)
 		return NULL;
 

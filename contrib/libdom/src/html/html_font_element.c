@@ -17,7 +17,7 @@
 #include "core/attr.h"
 #include "utils/utils.h"
 
-static struct dom_element_protected_vtable _protect_vtable = {
+static const struct dom_element_protected_vtable _protect_vtable = {
 	{
 		DOM_NODE_PROTECT_VTABLE_HTML_FONT_ELEMENT
 	},
@@ -188,4 +188,3 @@ dom_exception dom_html_font_element_set_##attr(			\
 SIMPLE_GET_SET(color);
 SIMPLE_GET_SET(face);
 SIMPLE_GET_SET(size);
-

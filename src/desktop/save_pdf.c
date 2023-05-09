@@ -91,10 +91,6 @@ static HPDF_Image pdf_extract_image(struct bitmap *bitmap);
 static void error_handler(HPDF_STATUS error_no, HPDF_STATUS detail_no,
 		void *user_data);
 
-#ifdef PDF_DEBUG_DUMPGRID
-static void pdf_plot_grid(int x_dist,int y_dist,unsigned int colour);
-#endif
-
 typedef enum {
 	DashPattern_eNone,
 	DashPattern_eDash,
@@ -170,10 +166,6 @@ static char *user_pass;
 bool pdf_plot_rectangle(int x0, int y0, int x1, int y1, const plot_style_t *pstyle)
 {
 	DashPattern_e dash;
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "%d %d %d %d %f %X", x0, y0, x1, y1,
-	      page_height - y0, pstyle->fill_colour);
-#endif
 
 	if (pstyle->fill_type != PLOT_OP_TYPE_NONE) {
 
@@ -260,11 +252,6 @@ bool pdf_plot_line(int x0, int y0, int x1, int y1, const plot_style_t *pstyle)
 bool pdf_plot_polygon(const int *p, unsigned int n, const plot_style_t *style)
 {
 	unsigned int i;
-#ifdef PDF_DEBUG
-	int pmaxx = p[0], pmaxy = p[1];
-	int pminx = p[0], pminy = p[1];
-	NSLOG(neosurf, INFO, ".");
-#endif
 	if (n == 0)
 		return true;
 
@@ -273,18 +260,7 @@ bool pdf_plot_polygon(const int *p, unsigned int n, const plot_style_t *style)
 	HPDF_Page_MoveTo(pdf_page, p[0], page_height - p[1]);
 	for (i = 1 ; i<n ; i++) {
 		HPDF_Page_LineTo(pdf_page, p[i*2], page_height - p[i*2+1]);
-#ifdef PDF_DEBUG
-		pmaxx = max(pmaxx, p[i*2]);
-		pmaxy = max(pmaxy, p[i*2+1]);
-		pminx = min(pminx, p[i*2]);
-		pminy = min(pminy, p[i*2+1]);
-#endif
 	}
-
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "%d %d %d %d %f", pminx, pminy, pmaxx, pmaxy,
-	      page_height - pminy);
-#endif
 
 	HPDF_Page_Fill(pdf_page);
 
@@ -295,11 +271,6 @@ bool pdf_plot_polygon(const int *p, unsigned int n, const plot_style_t *style)
 /**here the clip is only queried */
 bool pdf_plot_clip(const struct rect *clip)
 {
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "%d %d %d %d", clip->x0, clip->y0, clip->x1,
-	      clip->y1);
-#endif
-
 	/*Normalize cllipping area - to prevent overflows.
 	  See comment in pdf_plot_fill.
 	*/
@@ -316,9 +287,6 @@ bool pdf_plot_clip(const struct rect *clip)
 bool pdf_plot_text(int x, int y, const char *text, size_t length,
 		const plot_font_style_t *fstyle)
 {
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, ". %d %d %.*s", x, y, (int)length, text);
-#endif
 	char *word;
 	HPDF_Font pdf_font;
 	HPDF_REAL size;
@@ -349,9 +317,6 @@ bool pdf_plot_text(int x, int y, const char *text, size_t length,
 
 bool pdf_plot_disc(int x, int y, int radius, const plot_style_t *style)
 {
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, ".");
-#endif
 	if (style->fill_type != PLOT_OP_TYPE_NONE) {
 		apply_clip_and_mode(false,
 				    style->fill_colour,
@@ -380,11 +345,6 @@ bool pdf_plot_disc(int x, int y, int radius, const plot_style_t *style)
 
 bool pdf_plot_arc(int x, int y, int radius, int angle1, int angle2, const plot_style_t *style)
 {
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "%d %d %d %d %d %X", x, y, radius, angle1,
-	      angle2, style->stroke_colour);
-#endif
-
 	/* FIXME: line width 1 is ok ? */
 	apply_clip_and_mode(false, NS_TRANSPARENT, style->fill_colour, 1., DashPattern_eNone);
 
@@ -409,10 +369,6 @@ bool pdf_plot_bitmap_tile(int x, int y, int width, int height,
 	HPDF_REAL current_x, current_y ;
 	HPDF_REAL max_width, max_height;
 
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "%d %d %d %d %p 0x%x", x, y, width, height,
-	      bitmap, bg);
-#endif
  	if (width == 0 || height == 0)
  		return true;
 
@@ -612,10 +568,6 @@ bool pdf_plot_path(const float *p, unsigned int n, colour fill, float width,
 	unsigned int i;
 	bool empty_path;
 
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, ".");
-#endif
-
 	if (n == 0)
 		return true;
 
@@ -705,26 +657,16 @@ bool pdf_begin(struct print_settings *print_settings)
 			FIXTOFLT(settings->margins[MARGINTOP]);
 
 
-#ifndef PDF_DEBUG
-	if (option_enable_PDF_compression)
-		HPDF_SetCompressionMode(pdf_doc, HPDF_COMP_ALL); /*Compression on*/
-#endif
 	HPDF_SetInfoAttr(pdf_doc, HPDF_INFO_CREATOR, user_agent_string());
 
 	pdf_page = NULL;
 
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "pdf_begin finishes");
-#endif
 	return true;
 }
 
 
 bool pdf_next_page(void)
 {
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "pdf_next_page begins");
-#endif
 	clip_update_needed = false;
 	if (pdf_page != NULL) {
 		apply_clip_and_mode(false, NS_TRANSPARENT, NS_TRANSPARENT, 0.,
@@ -732,12 +674,6 @@ bool pdf_next_page(void)
 		pdfw_gs_restore(pdf_page);
 	}
 
-#ifdef PDF_DEBUG_DUMPGRID
-	if (pdf_page != NULL) {
-		pdf_plot_grid(10, 10, 0xCCCCCC);
-		pdf_plot_grid(100, 100, 0xCCCCFF);
-	}
-#endif
 	pdf_page = HPDF_AddPage(pdf_doc);
 	if (pdf_page == NULL)
 		return false;
@@ -750,32 +686,18 @@ bool pdf_next_page(void)
 
 	pdfw_gs_save(pdf_page);
 
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "%f %f", page_width, page_height);
-#endif
-
 	return true;
 }
 
 
 void pdf_end(void)
 {
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "pdf_end begins");
-#endif
 	clip_update_needed = false;
 	if (pdf_page != NULL) {
 		apply_clip_and_mode(false, NS_TRANSPARENT, NS_TRANSPARENT, 0.,
 				DashPattern_eNone);
 		pdfw_gs_restore(pdf_page);
 	}
-
-#ifdef PDF_DEBUG_DUMPGRID
-	if (pdf_page != NULL) {
-		pdf_plot_grid(10, 10, 0xCCCCCC);
-		pdf_plot_grid(100, 100, 0xCCCCFF);
-	}
-#endif
 
 	assert(settings->output != NULL);
 
@@ -785,9 +707,6 @@ void pdf_end(void)
 				(void *)settings->output);
 	else
 		save_pdf(settings->output);
-#ifdef PDF_DEBUG
-	NSLOG(neosurf, INFO, "pdf_end finishes");
-#endif
 }
 
 /** saves the pdf with optional encryption */
@@ -827,25 +746,7 @@ static void error_handler(HPDF_STATUS error_no, HPDF_STATUS detail_no,
 {
 	NSLOG(neosurf, INFO, "ERROR:\n\terror_no=%x\n\tdetail_no=%d\n",
 	      (HPDF_UINT)error_no, (HPDF_UINT)detail_no);
-#ifdef PDF_DEBUG
-	exit(1);
-#endif
 }
-
-/**
- * This function plots a grid - used for debug purposes to check if all
- * elements' final coordinates are correct.
-*/
-#ifdef PDF_DEBUG_DUMPGRID
-void pdf_plot_grid(int x_dist, int y_dist, unsigned int colour)
-{
-	for (int i = x_dist ; i < page_width ; i += x_dist)
-		pdf_plot_line(i, 0, i, page_height, 1, colour, false, false);
-
-	for (int i = y_dist ; i < page_height ; i += x_dist)
-		pdf_plot_line(0, i, page_width, i, 1, colour, false, false);
-}
-#endif
 
 /**
  * Initialize the gstate wrapper code.

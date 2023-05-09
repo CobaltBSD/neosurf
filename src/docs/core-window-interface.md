@@ -1,5 +1,4 @@
-Core Window Interface
-=====================
+# Core Window Interface
 
 The NetSurf core provides an optional API to frontend implementations
 which allows a number of "standard" window content interfaces to be

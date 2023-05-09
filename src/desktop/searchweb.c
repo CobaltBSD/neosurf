@@ -333,11 +333,11 @@ search_web_omni(const char *term,
 		}
 
 		/* try with adding default scheme */
-		eterm = malloc(strlen(term) + SLEN("http://") + 1);
+		eterm = malloc(strlen(term) + SLEN("https://") + 1);
 		if (eterm == NULL) {
 			return NSERROR_NOMEM;
 		}
-		sprintf(eterm, "http://%s", term);
+		sprintf(eterm, "https://%s", term);
 		ret = nsurl_create(eterm, &url);
 		free(eterm);
 		if (ret == NSERROR_OK) {

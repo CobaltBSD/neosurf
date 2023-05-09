@@ -32,6 +32,7 @@
 #include "content/content_protected.h"
 #include "content/content_factory.h"
 #include "desktop/gui_internal.h"
+#include "desktop/bitmap.h"
 
 #include "image/image_cache.h"
 #include "image/png.h"
@@ -118,8 +119,37 @@ static void nspng_setup_transforms(png_structp png_ptr, png_infop info_ptr)
 		png_set_gray_to_rgb(png_ptr);
 	}
 
+	switch (bitmap_fmt.layout) {
+	case BITMAP_LAYOUT_B8G8R8A8: /* Fall through. */
+	case BITMAP_LAYOUT_A8B8G8R8:
+		png_set_bgr(png_ptr);
+		break;
+	default:
+		/* RGB is the default. */
+		break;
+	}
+
 	if (!(color_type & PNG_COLOR_MASK_ALPHA)) {
-		png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
+		switch (bitmap_fmt.layout) {
+		case BITMAP_LAYOUT_A8R8G8B8: /* Fall through. */
+		case BITMAP_LAYOUT_A8B8G8R8:
+			png_set_filler(png_ptr, 0xff, PNG_FILLER_BEFORE);
+			break;
+
+		default:
+			png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
+			break;
+		}
+	} else {
+		switch (bitmap_fmt.layout) {
+		case BITMAP_LAYOUT_A8R8G8B8: /* Fall through. */
+		case BITMAP_LAYOUT_A8B8G8R8:
+			png_set_swap_alpha(png_ptr);
+			break;
+		default:
+			/* Alpha as final component is the default. */
+			break;
+		}
 	}
 
 	/* gamma correction - we use 2.2 as our screen gamma
@@ -163,14 +193,14 @@ static void info_callback(png_structp png_s, png_infop info)
 	}
 
 	/* Claim the required memory for the converted PNG */
-	png_c->bitmap = guit->bitmap->create(width, height, BITMAP_NEW);
+	png_c->bitmap = guit->bitmap->create(width, height, BITMAP_NONE);
 	if (png_c->bitmap == NULL) {
 		/* Failed to create bitmap skip pre-conversion */
 		longjmp(png_jmpbuf(png_s), CBERR_NOPRE);
 	}
 
 	png_c->rowstride = guit->bitmap->get_rowstride(png_c->bitmap);
-	png_c->bpp = guit->bitmap->get_bpp(png_c->bitmap);
+	png_c->bpp = sizeof(uint32_t);
 
 	nspng_setup_transforms(png_s, info);
 
@@ -483,7 +513,7 @@ png_cache_convert(struct content *c)
 	height = png_get_image_height(png_ptr, info_ptr);
 
 	/* Claim the required memory for the converted PNG */
-	bitmap = guit->bitmap->create(width, height, BITMAP_NEW);
+	bitmap = guit->bitmap->create(width, height, BITMAP_NONE);
 	if (bitmap == NULL) {
 		/* cleanup and bail */
 		goto png_cache_convert_error;
@@ -508,7 +538,13 @@ png_cache_convert_error:
 	}
 
 	if (bitmap != NULL) {
-		guit->bitmap->modified((struct bitmap *)bitmap);
+		bool opaque = bitmap_test_opaque((void *)bitmap);
+		guit->bitmap->set_opaque((void *)bitmap, opaque);
+		bitmap_format_to_client((void *)bitmap, &(bitmap_fmt_t) {
+			.layout = bitmap_fmt.layout,
+			.pma = opaque ? bitmap_fmt.pma : false,
+		});
+		guit->bitmap->modified((void *)bitmap);
 	}
 
 	return (struct bitmap *)bitmap;
@@ -535,7 +571,12 @@ static bool nspng_convert(struct content *c)
 	}
 
 	if (png_c->bitmap != NULL) {
-		guit->bitmap->set_opaque(png_c->bitmap, guit->bitmap->test_opaque(png_c->bitmap));
+		bool opaque = bitmap_test_opaque(png_c->bitmap);
+		guit->bitmap->set_opaque(png_c->bitmap, opaque);
+		bitmap_format_to_client(png_c->bitmap, &(bitmap_fmt_t) {
+			.layout = bitmap_fmt.layout,
+			.pma = opaque ? bitmap_fmt.pma : false,
+		});
 		guit->bitmap->modified(png_c->bitmap);
 	}
 

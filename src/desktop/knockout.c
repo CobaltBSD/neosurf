@@ -77,9 +77,6 @@
 #include "desktop/gui_internal.h"
 #include "desktop/knockout.h"
 
-/* Define to enable knockout debug */
-#undef KNOCKOUT_DEBUG
-
 #define KNOCKOUT_ENTRIES 3072	/* 40 bytes each */
 #define KNOCKOUT_BOXES 768	/* 28 bytes each */
 #define KNOCKOUT_POLYGONS 3072	/* 4 bytes each */
@@ -264,13 +261,6 @@ static nserror knockout_plot_flush(const struct redraw_context *ctx)
 	struct knockout_box *box;
 	nserror res = NSERROR_OK; /* operation result */
 	nserror ffres = NSERROR_OK; /* first failing result */
-
-	/* debugging information */
-#ifdef KNOCKOUT_DEBUG
-	NSLOG(neosurf, INFO, "Entries are %i/%i, %i/%i, %i/%i",
-	      knockout_entry_cur, KNOCKOUT_ENTRIES, knockout_box_cur,
-	      KNOCKOUT_BOXES, knockout_polygon_cur, KNOCKOUT_POLYGONS);
-#endif
 
 	for (i = 0; i < knockout_entry_cur; i++) {
 		switch (knockout_entries[i].type) {
@@ -701,10 +691,6 @@ knockout_plot_clip(const struct redraw_context *ctx, const struct rect *clip)
 	nserror res = NSERROR_OK;
 
 	if (clip->x1 < clip->x0 || clip->y0 > clip->y1) {
-#ifdef KNOCKOUT_DEBUG
-		NSLOG(neosurf, INFO, "bad clip rectangle %i %i %i %i",
-		      clip->x0, clip->y0, clip->x1, clip->y1);
-#endif
 		return NSERROR_BAD_SIZE;
 	}
 

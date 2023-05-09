@@ -15,8 +15,6 @@
 #include "select/mq.h"
 #include "utils/utils.h"
 
-#undef PRINT_CHAIN_BLOOM_DETAILS
-
 typedef struct hash_entry {
 	const css_selector *sel;
 	css_bloom sel_chain_bloom[CSS_BLOOM_SIZE];
@@ -749,37 +747,6 @@ static void _chain_bloom_generate(const css_selector *s,
 	} while (s != NULL);
 }
 
-#ifdef PRINT_CHAIN_BLOOM_DETAILS
-/* Count bits set in uint32_t */
-static int bits_set(uint32_t n) {
-	n = n - ((n >> 1) & 0x55555555);
-	n = (n & 0x33333333) + ((n >> 2) & 0x33333333);
-	n = (n + (n >> 4)) & 0x0f0f0f0f;
-	n = n + (n >> 8);
-	n = n + (n >> 16);
-	return n & 0x0000003f;
-}
-
-/* Selector chain bloom instrumentation ouput display. */
-static void print_chain_bloom_details(css_bloom bloom[CSS_BLOOM_SIZE])
-{
-	printf("Chain bloom:\t");
-	int total = 0, i;
-	int set[CSS_BLOOM_SIZE];
-	for (i = 0; i < CSS_BLOOM_SIZE; i++) {
-		set[i] = bits_set(bloom[i]);
-		total += set[i];
-	}
-	printf("bits set:");
-	for (i = 0; i < CSS_BLOOM_SIZE; i++) {
-		printf(" %2i", set[i]);
-	}
-	printf(" (total:%4i of %i)   saturation: %3i%%\n", total,
-			(32 * CSS_BLOOM_SIZE),
-			(100 * total) / (32 * CSS_BLOOM_SIZE));
-}
-#endif
-
 /**
  * Insert a selector into a hash chain
  *
@@ -796,10 +763,6 @@ css_error _insert_into_chain(css_selector_hash *ctx, hash_entry *head,
 		head->sel = selector;
 		head->next = NULL;
 		_chain_bloom_generate(selector, head->sel_chain_bloom);
-
-#ifdef PRINT_CHAIN_BLOOM_DETAILS
-		print_chain_bloom_details(head->sel_chain_bloom);
-#endif
 	} else {
 		hash_entry *search = head;
 		hash_entry *prev = NULL;
@@ -835,10 +798,6 @@ css_error _insert_into_chain(css_selector_hash *ctx, hash_entry *head,
 
 		entry->sel = selector;
 		_chain_bloom_generate(selector, entry->sel_chain_bloom);
-
-#ifdef PRINT_CHAIN_BLOOM_DETAILS
-		print_chain_bloom_details(entry->sel_chain_bloom);
-#endif
 
 		ctx->hash_size += sizeof(hash_entry);
 	}

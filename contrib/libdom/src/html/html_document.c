@@ -72,7 +72,7 @@
 #include "utils/namespace.h"
 #include "utils/utils.h"
 
-static struct dom_html_document_vtable html_document_vtable = {
+static const struct dom_html_document_vtable html_document_vtable = {
 	{
 		{
 			{
@@ -85,7 +85,7 @@ static struct dom_html_document_vtable html_document_vtable = {
 	DOM_HTML_DOCUMENT_VTABLE
 };
 
-static struct dom_node_protect_vtable html_document_protect_vtable = {
+static const struct dom_node_protect_vtable html_document_protect_vtable = {
 	DOM_HTML_DOCUMENT_PROTECT_VTABLE
 };
 
@@ -535,6 +535,10 @@ _dom_html_document_create_element_internal(
 {
 	dom_exception exc;
 	struct dom_html_element_create_params params;
+
+	/* If the input tag name is empty, this is an 'invalid character' error */
+	if (dom_string_length(in_tag_name) == 0)
+		return DOM_INVALID_CHARACTER_ERR;
 
 	exc = dom_string_toupper(in_tag_name, true, &params.name);
 	if (exc != DOM_NO_ERR)

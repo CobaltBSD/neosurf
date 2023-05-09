@@ -18,7 +18,7 @@
 #include "core/document.h"
 #include "utils/utils.h"
 
-struct dom_html_element_vtable _dom_html_element_vtable = {
+const struct dom_html_element_vtable _dom_html_element_vtable = {
 	{
 		{
 			{
@@ -31,7 +31,7 @@ struct dom_html_element_vtable _dom_html_element_vtable = {
 	DOM_HTML_ELEMENT_VTABLE
 };
 
-static struct dom_element_protected_vtable _dom_html_element_protect_vtable = {
+static const struct dom_element_protected_vtable _dom_html_element_protect_vtable = {
 	{
 		DOM_HTML_ELEMENT_PROTECT_VTABLE
 	},
@@ -477,7 +477,7 @@ dom_exception dom_html_element_get_int32_t_property(dom_html_element *ele,
 			char *s3 = _strndup(dom_string_data(s2),
 					    dom_string_byte_length(s2));
 			if (s3 != NULL) {
-				*value = strtoul(s3, NULL, 0);
+				*value = strtol(s3, NULL, 0);
 				free(s3);
 			} else {
 				err = DOM_NO_MEM_ERR;

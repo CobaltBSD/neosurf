@@ -44,6 +44,7 @@
 #include "neosurf/browser.h"
 #include "neosurf/browser_window.h"
 #include "neosurf/neosurf.h"
+#include "neosurf/bitmap.h"
 #include "content/fetch.h"
 #include "content/backing_store.h"
 #include "desktop/save_complete.h"
@@ -131,12 +132,16 @@ uint32_t gtk_gui_gdkkey_to_nskey(GdkEventKey *key)
 	case GDK_KEY(BackSpace):
 		if (key->state & GDK_SHIFT_MASK)
 			return NS_KEY_DELETE_LINE_START;
+		else if (key->state & GDK_CONTROL_MASK)
+			return NS_KEY_DELETE_WORD_LEFT;
 		else
 			return NS_KEY_DELETE_LEFT;
 
 	case GDK_KEY(Delete):
 		if (key->state & GDK_SHIFT_MASK)
 			return NS_KEY_DELETE_LINE_END;
+		else if (key->state & GDK_CONTROL_MASK)
+			return NS_KEY_DELETE_WORD_RIGHT;
 		else
 			return NS_KEY_DELETE_RIGHT;
 
@@ -148,10 +153,14 @@ uint32_t gtk_gui_gdkkey_to_nskey(GdkEventKey *key)
 
 	case GDK_KEY(Left):
 	case GDK_KEY(KP_Left):
+		if (key->state & GDK_CONTROL_MASK)
+			return NS_KEY_WORD_LEFT;
 		return NS_KEY_LEFT;
 
 	case GDK_KEY(Right):
 	case GDK_KEY(KP_Right):
+		if (key->state & GDK_CONTROL_MASK)
+			return NS_KEY_WORD_RIGHT;
 		return NS_KEY_RIGHT;
 
 	case GDK_KEY(Up):
@@ -822,8 +831,6 @@ static nserror nsgtk_init(int *pargc, char ***pargv, char **cache_home)
 }
 
 
-#if GTK_CHECK_VERSION(3,14,0)
-
 /**
  * adds named icons into gtk theme
  */
@@ -833,62 +840,6 @@ static nserror nsgtk_add_named_icons_to_theme(void)
 					 "/org/neosurf/icons");
 	return NSERROR_OK;
 }
-
-#else
-
-static nserror
-add_builtin_icon(const char *prefix, const char *name, int x, int y)
-{
-	GdkPixbuf *pixbuf;
-	nserror res;
-	char *resname;
-	int resnamelen;
-
-	/* resource name string length allowing for / .png and termination */
-	resnamelen = strlen(prefix) + strlen(name) + 5 + 1 + 4 + 1;
-	resname = malloc(resnamelen);
-	if (resname == NULL) {
-		return NSERROR_NOMEM;
-	}
-	snprintf(resname, resnamelen, "icons%s/%s.png", prefix, name);
-
-	res = nsgdk_pixbuf_new_from_resname(resname, &pixbuf);
-	NSLOG(neosurf, DEEPDEBUG, "%d %s", res, resname);
-	free(resname);
-	if (res != NSERROR_OK) {
-		pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, false, 8, x, y);
-	}
-	gtk_icon_theme_add_builtin_icon(name, y, pixbuf);
-
-	return NSERROR_OK;
-}
-
-
-/**
- * adds named icons into gtk theme
- */
-static nserror nsgtk_add_named_icons_to_theme(void)
-{
-	/* these must also be in gtk/resources.c pixbuf_resource *and*
-	 * gtk/res/neosurf.gresource.xml
-	 */
-	add_builtin_icon("", "local-history", 8, 32);
-	add_builtin_icon("", "show-cookie", 24, 24);
-	add_builtin_icon("/24x24/actions", "page-info-insecure", 24, 24);
-	add_builtin_icon("/24x24/actions", "page-info-internal", 24, 24);
-	add_builtin_icon("/24x24/actions", "page-info-local", 24, 24);
-	add_builtin_icon("/24x24/actions", "page-info-secure", 24, 24);
-	add_builtin_icon("/24x24/actions", "page-info-warning", 24, 24);
-	add_builtin_icon("/48x48/actions", "page-info-insecure", 48, 48);
-	add_builtin_icon("/48x48/actions", "page-info-internal", 48, 48);
-	add_builtin_icon("/48x48/actions", "page-info-local", 48, 48);
-	add_builtin_icon("/48x48/actions", "page-info-secure", 48, 48);
-	add_builtin_icon("/48x48/actions", "page-info-warning", 48, 48);
-
-	return NSERROR_OK;
-}
-
-#endif
 
 
 /**
@@ -971,6 +922,11 @@ static nserror nsgtk_setup(int argc, char** argv, char **respath)
 	 */
 	browser_set_dpi(gdk_screen_get_resolution(gdk_screen_get_default()));
 	NSLOG(neosurf, INFO, "Set CSS DPI to %d", browser_get_dpi());
+
+	bitmap_set_format(&(bitmap_fmt_t) {
+		.layout = BITMAP_LAYOUT_ARGB8888,
+		.pma = true,
+	});
 
 	filepath_sfinddef(respath, buf, "mime.types", "/etc/");
 	gtk_fetch_filetype_init(buf);

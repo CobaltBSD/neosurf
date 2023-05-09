@@ -35,6 +35,7 @@
 #include "content/content_protected.h"
 #include "content/content_factory.h"
 #include "desktop/gui_internal.h"
+#include "desktop/bitmap.h"
 
 #include "image/bmp.h"
 
@@ -57,12 +58,12 @@ typedef struct nsbmp_content {
  */
 static void *nsbmp_bitmap_create(int width, int height, unsigned int bmp_state)
 {
-	unsigned int bitmap_state = BITMAP_NEW;
+	unsigned int bitmap_state = BITMAP_NONE;
 
 	/* set bitmap state based on bmp state */
 	bitmap_state |= (bmp_state & BMP_OPAQUE) ? BITMAP_OPAQUE : 0;
 	bitmap_state |= (bmp_state & BMP_CLEAR_MEMORY) ?
-			BITMAP_CLEAR_MEMORY : 0;
+			BITMAP_CLEAR : 0;
 
 	/* return the created bitmap */
 	return guit->bitmap->create(width, height, bitmap_state);
@@ -74,7 +75,6 @@ static nserror nsbmp_create_bmp_data(nsbmp_content *bmp)
 		.bitmap_create = nsbmp_bitmap_create,
 		.bitmap_destroy = guit->bitmap->destroy,
 		.bitmap_get_buffer = guit->bitmap->get_buffer,
-		.bitmap_get_bpp = guit->bitmap->get_bpp
 	};
 
 	bmp->bmp = calloc(sizeof(struct bmp_image), 1);
@@ -151,8 +151,7 @@ static bool nsbmp_convert(struct content *c)
 	/* Store our content width and description */
 	c->width = bmp->bmp->width;
 	c->height = bmp->bmp->height;
-	swidth = bmp->bmp->bitmap_callbacks.bitmap_get_bpp(bmp->bmp->bitmap) * 
-			bmp->bmp->width;
+	swidth = sizeof(uint32_t) * bmp->bmp->width;
 	c->size += (swidth * bmp->bmp->height) + 16 + 44;
 
 	/* set title text */
@@ -191,6 +190,9 @@ static bool nsbmp_redraw(struct content *c, struct content_redraw_data *data,
 			return false;
 		}
 
+		bitmap_format_to_client(bmp->bitmap, &(bitmap_fmt_t) {
+			.layout = BITMAP_LAYOUT_R8G8B8A8,
+		});
 		guit->bitmap->modified(bmp->bitmap);
 	}
 

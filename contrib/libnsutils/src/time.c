@@ -20,7 +20,7 @@
 #include <time.h>
 #elif defined(__riscos)
 #include <oslib/os.h>
-#elif defined(__MACH__)
+#elif defined(__MACH__) && defined(__APPLE__)
 #include <mach/mach.h>
 #include <mach/clock.h>
 #include <mach/mach_time.h>
@@ -51,7 +51,7 @@ nsuerror nsu_getmonotonic_ms(uint64_t *current_out)
 
     time = os_read_monotonic_time();
     current = time * 10;
-#elif defined(__MACH__)
+#elif defined(__MACH__) && defined(__APPLE__)
     clock_serv_t cclock;
     mach_timespec_t mts;
 

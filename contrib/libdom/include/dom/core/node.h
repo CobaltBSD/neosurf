@@ -77,7 +77,7 @@ typedef struct dom_node_internal dom_node_internal;
  * DOM node type
  */
 typedef struct dom_node {
-	void *vtable;
+	const void *vtable;
 	uint32_t refcnt;
 } dom_node;
 
@@ -169,8 +169,8 @@ typedef struct dom_node_vtable {
 	dom_exception (*dom_node_set_user_data)(dom_node_internal *node,
 			dom_string *key, void *data,
 			dom_user_data_handler handler, void **result);
-	dom_exception (*dom_node_get_user_data)(dom_node_internal *node,
-			dom_string *key, void **result);
+	dom_exception (*dom_node_get_user_data)(const dom_node_internal *node,
+			const dom_string *key, void **result);
 } dom_node_vtable;
 
 /* The ref/unref methods define */
@@ -567,8 +567,8 @@ static inline dom_exception dom_node_set_user_data(struct dom_node *node,
 		(dom_node *) (n), (k), (void *) (d), \
 		(dom_user_data_handler) h, (void **) (r))
 
-static inline dom_exception dom_node_get_user_data(struct dom_node *node,
-		dom_string *key, void **result)
+static inline dom_exception dom_node_get_user_data(const struct dom_node *node,
+		const dom_string *key, void **result)
 {
 	return ((dom_node_vtable *) node->vtable)->dom_node_get_user_data(
 			(dom_node_internal *) node, key, result);

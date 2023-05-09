@@ -347,7 +347,7 @@ The binding file consists of three types of element:
 Generated source
 ----------------
 
-duk_libdom
+duk\_libdom
 
   This binding type generates several files as output:
     - binding.c

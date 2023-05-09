@@ -438,6 +438,7 @@ image_cache_init(const struct image_cache_parameters *image_cache_parameters)
 nserror image_cache_fini(void)
 {
 	unsigned int op_count;
+	uint64_t op_size;
 
 	guit->misc->schedule(-1, image_cache__background_update, image_cache);
 
@@ -452,6 +453,10 @@ nserror image_cache_fini(void)
 		image_cache->miss_count +
 		image_cache->fail_count;
 
+	op_size = image_cache->hit_size +
+		image_cache->miss_size +
+		image_cache->fail_size;
+
 	NSLOG(neosurf, INFO, "Age %ds", image_cache->current_age / 1000);
 	NSLOG(neosurf, INFO, "Peak size %"PRIsizet" (in %d)",
 	      image_cache->max_bitmap_size,
@@ -460,12 +465,7 @@ nserror image_cache_fini(void)
 	      image_cache->max_bitmap_count,
 	      image_cache->max_bitmap_count_size);
 
-	if (op_count > 0) {
-		uint64_t op_size;
-
-		op_size = image_cache->hit_size +
-			image_cache->miss_size +
-			image_cache->fail_size;
+	if ((op_count > 0) && (op_size >0)) {
 
 		NSLOG(neosurf, INFO,
 		      "Cache total/hit/miss/fail (counts) %d/%d/%d/%d (100%%/%d%%/%d%%/%d%%)",
@@ -528,7 +528,7 @@ nserror image_cache_add(struct content *content,
 		image_cache__link(centry);
 		centry->content = content;
 
-		centry->bitmap_size = content->width * content->height * 4;
+		centry->bitmap_size = content->width * content->height * 4llu;
 	}
 
 	NSLOG(neosurf, INFO, "centry %p, content %p, bitmap %p", centry,
@@ -632,15 +632,15 @@ case chr :					\
 				slen++;
 				break;
 
-			FMTCHR('a', PRIssizet, params.limit);
-			FMTCHR('b', PRIssizet, params.hysteresis);
-			FMTCHR('c', PRIssizet, total_bitmap_size);
+			FMTCHR('a', PRIsizet, params.limit);
+			FMTCHR('b', PRIsizet, params.hysteresis);
+			FMTCHR('c', PRIsizet, total_bitmap_size);
 			FMTCHR('d', "d", bitmap_count);
 			FMTCHR('e', "u", current_age / 1000);
-			FMTCHR('f', PRIssizet, max_bitmap_size);
+			FMTCHR('f', PRIsizet, max_bitmap_size);
 			FMTCHR('g', "d", max_bitmap_size_count);
 			FMTCHR('h', "d", max_bitmap_count);
-			FMTCHR('i', PRIssizet, max_bitmap_count_size);
+			FMTCHR('i', PRIsizet, max_bitmap_count_size);
 
 
 			case 'j':
@@ -770,7 +770,7 @@ image_cache_snentryf(char *string,
 				if (centry->bitmap != NULL) {
 					slen += snprintf(string + slen,
 							 size - slen,
-							 "%" PRIssizet,
+							 "%" PRIsizet,
 							 centry->bitmap_size);
 				} else {
 					slen += snprintf(string + slen,

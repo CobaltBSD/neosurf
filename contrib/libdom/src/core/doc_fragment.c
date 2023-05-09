@@ -22,14 +22,14 @@ struct dom_document_fragment {
 	dom_node_internal base;		/**< Base node */
 };
 
-static struct dom_node_vtable df_vtable = {
+static const struct dom_node_vtable df_vtable = {
 	{
 		DOM_NODE_EVENT_TARGET_VTABLE
 	},
 	DOM_NODE_VTABLE
 };
 
-static struct dom_node_protect_vtable df_protect_vtable = {
+static const struct dom_node_protect_vtable df_protect_vtable = {
 	DOM_DF_PROTECT_VTABLE
 };
 

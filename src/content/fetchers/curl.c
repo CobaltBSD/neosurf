@@ -67,7 +67,15 @@
 #define UPDATES_PER_SECOND 2
 
 /**
- * The ciphersuites the browser is prepared to use
+ * The ciphersuites the browser is prepared to use for TLS1.3
+ */
+#define CIPHER_SUITES						\
+	"TLS_AES_256_GCM_SHA384:"				\
+	"TLS_CHACHA20_POLY1305_SHA256:"				\
+	"TLS_AES_128_GCM_SHA256"
+
+/**
+ * The ciphersuites the browser is prepared to use for TLS<1.3
  */
 #define CIPHER_LIST						\
 	/* disable everything */				\
@@ -78,8 +86,6 @@
 	"EECDH+AESGCM:EDH+AESGCM:"				\
 	/* Enable PFS AES CBC suites */				\
 	"EECDH+AES:EDH+AES:"					\
-	/* Enable non-PFS fallback suite */			\
-	"AES128-SHA:"						\
 	/* Remove any PFS suites using weak DSA key exchange */	\
 	"-DSS"
 
@@ -89,32 +95,8 @@
 #include <openssl/ssl.h>
 #include <openssl/x509v3.h>
 
-/* OpenSSL 1.0.x to 1.1.0 certificate reference counting changed
- * LibreSSL declares its OpenSSL version as 2.1 but only supports the old way
- */
-/*#if (defined(LIBRESSL_VERSION_NUMBER) || (OPENSSL_VERSION_NUMBER < 0x1010000fL))
-static int ns_X509_up_ref(X509 *cert)
-{
-	return X509_up_ref(cert);
-}
-
-static void ns_X509_free(X509 *cert)
-{
-	X509_free(cert);
-}*/
-//#else
 #define ns_X509_up_ref X509_up_ref
 #define ns_X509_free X509_free
-//#endif
-
-//#else /* WITH_OPENSSL
-
-//typedef char X509;
-
-//static void ns_X509_free(X509 *cert)
-//{
-//	free(cert);
-//}
 
 #endif /* WITH_OPENSSL */
 
@@ -221,7 +203,7 @@ struct curl_fetch_info {
 	bool abort;		/**< Abort requested. */
 	bool stopped;		/**< Download stopped on purpose. */
 	bool only_2xx;		/**< Only HTTP 2xx responses acceptable. */
-	bool downgrade_tls;	/**< Downgrade to TLS <= 1.0 */
+	bool downgrade_tls;	/**< Downgrade to TLS 1.2 */
 	nsurl *url;		/**< URL of this fetch. */
 	lwc_string *host;	/**< The hostname of this fetch. */
 	struct curl_slist *headers;	/**< List of request headers. */
@@ -801,7 +783,8 @@ fetch_curl_sslctxfun(CURL *curl_handle, void *_sslctx, void *parm)
 {
 	struct curl_fetch_info *f = (struct curl_fetch_info *) parm;
 	SSL_CTX *sslctx = _sslctx;
-	long options = SSL_OP_ALL | SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3;
+	long options = SSL_OP_ALL | SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3 |
+			SSL_OP_NO_TLSv1 | SSL_OP_NO_TLSv1_1;
 
 	/* set verify callback for each certificate in chain */
 	SSL_CTX_set_verify(sslctx, SSL_VERIFY_PEER, fetch_curl_verify_callback);
@@ -812,19 +795,14 @@ fetch_curl_sslctxfun(CURL *curl_handle, void *_sslctx, void *parm)
 					 parm);
 
 	if (f->downgrade_tls) {
-		/* Disable TLS 1.1/1.2 if the server can't cope with them */
-#ifdef SSL_OP_NO_TLSv1_1
-		options |= SSL_OP_NO_TLSv1_1;
-#endif
-#ifdef SSL_OP_NO_TLSv1_2
-		options |= SSL_OP_NO_TLSv1_2;
+		/* Disable TLS 1.3 if the server can't cope with it */
+#ifdef SSL_OP_NO_TLSv1_3
+		options |= SSL_OP_NO_TLSv1_3;
 #endif
 #ifdef SSL_MODE_SEND_FALLBACK_SCSV
 		/* Ensure server rejects the connection if downgraded too far */
 		SSL_CTX_set_mode(sslctx, SSL_MODE_SEND_FALLBACK_SCSV);
 #endif
-		/* Disable TLS1.2 ciphersuites */
-		SSL_CTX_set_cipher_list(sslctx, CIPHER_LIST ":-TLSv1.2");
 	}
 
 	SSL_CTX_set_options(sslctx, options);
@@ -1707,8 +1685,10 @@ nserror fetch_curl_register(void)
 #undef SETOPT
 #define SETOPT(option, value) \
 	mcode = curl_multi_setopt(fetch_curl_multi, option, value);	\
-	if (mcode != CURLM_OK)						\
-		goto curl_multi_setopt_failed;
+	if (mcode != CURLM_OK) {					\
+		NSLOG(netsurf, ERROR, "attempting curl_multi_setopt(%s, ...)", #option); \
+		goto curl_multi_setopt_failed;				\
+	}
 
 		SETOPT(CURLMOPT_MAXCONNECTS, maxconnects);
 		SETOPT(CURLMOPT_MAX_TOTAL_CONNECTIONS, maxconnects);
@@ -1728,8 +1708,10 @@ nserror fetch_curl_register(void)
 #undef SETOPT
 #define SETOPT(option, value) \
 	code = curl_easy_setopt(fetch_blank_curl, option, value);	\
-	if (code != CURLE_OK)						\
-		goto curl_easy_setopt_failed;
+	if (code != CURLE_OK) {						\
+		NSLOG(netsurf, ERROR, "attempting curl_easy_setopt(%s, ...)", #option); \
+		goto curl_easy_setopt_failed;				\
+	}
 
 	SETOPT(CURLOPT_ERRORBUFFER, fetch_error_buffer);
 	SETOPT(CURLOPT_DEBUGFUNCTION, fetch_curl_debug);
@@ -1781,6 +1763,14 @@ nserror fetch_curl_register(void)
 		/* only set the cipher list with openssl otherwise the
 		 *  fetch fails with "Unknown cipher in list"
 		 */
+#if LIBCURL_VERSION_NUM >= 0x073d00
+		/* Need libcurl 7.61.0 or later built against OpenSSL with
+		 * TLS1.3 support */
+		code = curl_easy_setopt(fetch_blank_curl,
+				CURLOPT_TLS13_CIPHERS, CIPHER_SUITES);
+		if (code != CURLE_OK && code != CURLE_NOT_BUILT_IN)
+			goto curl_easy_setopt_failed;
+#endif
 		SETOPT(CURLOPT_SSL_CIPHER_LIST, CIPHER_LIST);
 	}
 

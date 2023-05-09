@@ -162,7 +162,7 @@ dom_exception _dom_html_element_copy_internal(dom_html_element *old,
 #define dom_html_element_copy_internal(o, n) _dom_html_element_copy_internal( \
 		(dom_html_element *) (o), (dom_html_element *) (n))
 
-extern struct dom_html_element_vtable _dom_html_element_vtable;
+extern const struct dom_html_element_vtable _dom_html_element_vtable;
 
 #endif
 

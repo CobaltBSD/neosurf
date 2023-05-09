@@ -20,7 +20,7 @@ struct dom_cdata_section {
 	dom_text base;		/**< Base node */
 };
 
-static struct dom_node_protect_vtable cdata_section_protect_vtable = {
+static const struct dom_node_protect_vtable cdata_section_protect_vtable = {
 	DOM_CDATA_SECTION_PROTECT_VTABLE
 };
 

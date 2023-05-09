@@ -49,7 +49,7 @@ struct dom_attr {
 };
 
 /* The vtable for dom_attr node */
-static struct dom_attr_vtable attr_vtable = {
+static const struct dom_attr_vtable attr_vtable = {
 	{
 		{
 			DOM_NODE_EVENT_TARGET_VTABLE,
@@ -60,7 +60,7 @@ static struct dom_attr_vtable attr_vtable = {
 };
 
 /* The protected vtable for dom_attr */
-static struct dom_node_protect_vtable attr_protect_vtable = {
+static const struct dom_node_protect_vtable attr_protect_vtable = {
 	DOM_ATTR_PROTECT_VTABLE
 };
 

@@ -51,7 +51,6 @@ static const char *fetch_resource_paths[] = {
 	"adblock.css",
 	"default.css",
 	"internal.css",
-	"quirks.css",
 	"user.css",
 	"credits.html",
 	"license.html",

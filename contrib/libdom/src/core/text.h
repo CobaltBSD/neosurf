@@ -66,7 +66,7 @@ dom_exception _dom_text_copy(dom_node_internal *old, dom_node_internal **copy);
 	__dom_text_destroy, \
 	_dom_text_copy
 
-extern struct dom_text_vtable text_vtable;
+extern const struct dom_text_vtable text_vtable;
 
 dom_exception _dom_text_copy_internal(dom_text *old, dom_text *new);
 #define dom_text_copy_internal(o, n) \

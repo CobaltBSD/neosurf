@@ -27,7 +27,7 @@ struct dom_document_type {
 	dom_string *system_id;	/**< Doctype system ID */
 };
 
-static struct dom_document_type_vtable document_type_vtable = {
+static const struct dom_document_type_vtable document_type_vtable = {
 	{
 		{
 			DOM_NODE_EVENT_TARGET_VTABLE
@@ -37,7 +37,7 @@ static struct dom_document_type_vtable document_type_vtable = {
 	DOM_DOCUMENT_TYPE_VTABLE
 };
 
-static struct dom_node_protect_vtable dt_protect_vtable = {
+static const struct dom_node_protect_vtable dt_protect_vtable = {
 	DOM_DT_PROTECT_VTABLE
 };
 

@@ -1092,7 +1092,7 @@ nsvi_init_bindings(struct nsvi_state *state, struct nsvi_bindings *bindings)
 	state->bindings.user = state;
 	nsvi_bindings_new(bindings, "<colon>", "exline");
 	nsvi_bindings_new(bindings, "i", "insert");
-	nsvi_bindings_new(bindings, "q", "close");
+	nsvi_bindings_new(bindings, "<C-q>", "close");
 	nsvi_bindings_new(bindings, "<C-w>", "close");
 	nsvi_bindings_new(bindings, "h", "scroll -h 20+");
 	nsvi_bindings_new(bindings, "j", "scroll 20-");

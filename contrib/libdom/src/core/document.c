@@ -42,7 +42,7 @@ struct dom_doc_nl {
 };
 
 /* The virtual functions of this dom_document */
-static struct dom_document_vtable document_vtable = {
+static const struct dom_document_vtable document_vtable = {
 	{
 		{
 			DOM_NODE_EVENT_TARGET_VTABLE
@@ -52,7 +52,7 @@ static struct dom_document_vtable document_vtable = {
 	DOM_DOCUMENT_VTABLE
 };
 
-static struct dom_node_protect_vtable document_protect_vtable = {
+static const struct dom_node_protect_vtable document_protect_vtable = {
 	DOM_DOCUMENT_PROTECT_VTABLE
 };
 

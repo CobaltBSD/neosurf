@@ -28,7 +28,6 @@
 #include "core/node.h"
 #include "core/nodelist.h"
 
-#include "utils/hashtable.h"
 #include "utils/list.h"
 
 #include "events/document_event.h"

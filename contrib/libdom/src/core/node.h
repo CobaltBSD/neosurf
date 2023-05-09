@@ -53,7 +53,7 @@ typedef struct dom_node_protect_vtable {
  */
 struct dom_node_internal {
 	struct dom_node base;		/**< The vtable base */
-	void *vtable;			/**< The protected vtable */
+	const void *vtable;		/**< The protected vtable */
 
 	dom_string *name;		/**< Node name (this is the local part
 		 			 * of a QName in the cases where a
@@ -182,8 +182,8 @@ dom_exception _dom_node_get_feature(dom_node_internal *node,
 dom_exception _dom_node_set_user_data(dom_node_internal *node,
 		dom_string *key, void *data,
 		dom_user_data_handler handler, void **result);
-dom_exception _dom_node_get_user_data(dom_node_internal *node,
-		dom_string *key, void **result);
+dom_exception _dom_node_get_user_data(const dom_node_internal *node,
+		const dom_string *key, void **result);
 
 #define DOM_NODE_EVENT_TARGET_VTABLE \
 	_dom_node_add_event_listener, \

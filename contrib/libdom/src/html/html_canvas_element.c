@@ -17,7 +17,7 @@
 #include "core/attr.h"
 #include "utils/utils.h"
 
-static struct dom_element_protected_vtable _protect_vtable = {
+static const struct dom_element_protected_vtable _protect_vtable = {
 	{
 		DOM_NODE_PROTECT_VTABLE_HTML_CANVAS_ELEMENT
 	},
@@ -152,10 +152,22 @@ dom_exception
 dom_html_canvas_element_get_width(dom_html_canvas_element *canvas,
 				  dom_ulong *width)
 {
-	return dom_html_element_get_dom_ulong_property(&canvas->base,
+	dom_exception exc;
+
+	exc = dom_html_element_get_dom_ulong_property(&canvas->base,
 						     "width",
 						     SLEN("width"),
 						     width);
+
+	if (exc != DOM_NO_ERR)
+		return exc;
+
+	if (*width == (dom_ulong)-1) {
+		/* width not set on the canvas, default is 300px */
+		*width = 300;
+	}
+
+	return DOM_NO_ERR;
 }
 
 dom_exception
@@ -172,10 +184,22 @@ dom_exception
 dom_html_canvas_element_get_height(dom_html_canvas_element *canvas,
 				  dom_ulong *height)
 {
-	return dom_html_element_get_dom_ulong_property(&canvas->base,
+	dom_exception exc;
+
+	exc = dom_html_element_get_dom_ulong_property(&canvas->base,
 						     "height",
 						     SLEN("height"),
 						     height);
+
+	if (exc != DOM_NO_ERR)
+		return exc;
+
+	if (*height == (dom_ulong)-1) {
+		/* height not set on the canvas, default is 150px */
+		*height = 150;
+	}
+
+	return DOM_NO_ERR;
 }
 
 dom_exception

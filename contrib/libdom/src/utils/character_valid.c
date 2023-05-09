@@ -182,38 +182,3 @@ bool _dom_is_character_in_group(unsigned int ch,
 
 	return binary_search(ch, 0, len - 1, range);
 }
-
-#ifdef CHVALID_DEBUG
-/* The following is the testcases for this file. 
- * Compile this file :
- *
- * gcc -o test -DCHVALID_DEBUG character_valid.c
- *
- */
-#include <stdio.h>
-
-int main(int argc, char **argv)
-{
-	unsigned int ch = 0x666;
-
-	assert(is_digit(ch) == true);
-	assert(is_base_char(ch) == false);
-	assert(is_char(ch) == true);
-	assert(is_extender(ch) == false);
-	assert(is_combining_char(ch) == false);
-	assert(is_ideographic(ch) == false);
-
-	ch = 0xf40;
-
-	assert(is_digit(ch) == false);
-	assert(is_base_char(ch) == true);
-	assert(is_char(ch) == true);
-	assert(is_extender(ch) == false);
-	assert(is_combining_char(ch) == false);
-	assert(is_ideographic(ch) == false);
-
-	printf("The test pass.\n");
-	return 0;
-}
-
-#endif

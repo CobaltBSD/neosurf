@@ -10,9 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef WITHOUT_ICONV_FILTER
 #include <iconv.h>
-#endif
 
 #include <parserutils/charset/mibenum.h>
 #include <parserutils/charset/codec.h>
@@ -22,19 +20,8 @@
 
 /** Input filter */
 struct parserutils_filter {
-#ifndef WITHOUT_ICONV_FILTER
 	iconv_t cd;			/**< Iconv conversion descriptor */
 	uint16_t int_enc;		/**< The internal encoding */
-#else
-	parserutils_charset_codec *read_codec;	/**< Read codec */
-	parserutils_charset_codec *write_codec;	/**< Write codec */
-
-	uint32_t pivot_buf[64];		/**< Conversion pivot buffer */
-
-	bool leftover;			/**< Data remains from last call */
-	uint8_t *pivot_left;		/**< Remaining pivot to write */
-	size_t pivot_len;		/**< Length of pivot remaining */
-#endif
 
 	struct {
 		uint16_t encoding;	/**< Input encoding */
@@ -68,7 +55,6 @@ parserutils_error parserutils__filter_create(const char *int_enc,
 	if (f == NULL)
 		return PARSERUTILS_NOMEM;
 
-#ifndef WITHOUT_ICONV_FILTER
 	f->cd = (iconv_t) -1;
 	f->int_enc = parserutils_charset_mibenum_from_name(
 			int_enc, strlen(int_enc));
@@ -76,29 +62,12 @@ parserutils_error parserutils__filter_create(const char *int_enc,
 		free(f);
 		return PARSERUTILS_BADENCODING;
 	}
-#else
-	f->leftover = false;
-	f->pivot_left = NULL;
-	f->pivot_len = 0;
-#endif
 
 	error = filter_set_defaults(f);
 	if (error != PARSERUTILS_OK) {
 		free(f);
 		return error;
 	}
-
-#ifdef WITHOUT_ICONV_FILTER
-	error = parserutils_charset_codec_create(int_enc, &f->write_codec);
-	if (error != PARSERUTILS_OK) {
-		if (f->read_codec != NULL) {
-			parserutils_charset_codec_destroy(f->read_codec);
-			f->read_codec = NULL;
-		}
-		free(f);
-		return error;
-	}
-#endif
 
 	*filter = f;
 
@@ -116,22 +85,10 @@ parserutils_error parserutils__filter_destroy(parserutils_filter *input)
 	if (input == NULL)
 		return PARSERUTILS_BADPARM;
 
-#ifndef WITHOUT_ICONV_FILTER
 	if (input->cd != (iconv_t) -1) {
 		iconv_close(input->cd);
 		input->cd = (iconv_t) -1;
 	}
-#else
-	if (input->read_codec != NULL) {
-		parserutils_charset_codec_destroy(input->read_codec);
-		input->read_codec = NULL;
-	}
-
-	if (input->write_codec != NULL) {
-		parserutils_charset_codec_destroy(input->write_codec);
-		input->write_codec = NULL;
-	}
-#endif
 
 	free(input);
 
@@ -184,7 +141,6 @@ parserutils_error parserutils__filter_process_chunk(parserutils_filter *input,
 			output == NULL || *output == NULL || outlen == NULL)
 		return PARSERUTILS_BADPARM;
 
-#ifndef WITHOUT_ICONV_FILTER
 	if (iconv(input->cd, (void *) data, len, 
 			(char **) output, outlen) == (size_t) -1) {
 		switch (errno) {
@@ -232,64 +188,6 @@ parserutils_error parserutils__filter_process_chunk(parserutils_filter *input,
 	}
 
 	return PARSERUTILS_OK;
-#else
-	if (input->leftover) {
-		parserutils_error write_error;
-
-		/* Some data left to be written from last call */
-
-		/* Attempt to flush the remaining data. */
-		write_error = parserutils_charset_codec_encode(
-				input->write_codec,
-				(const uint8_t **) &input->pivot_left,
-				&input->pivot_len,
-				output, outlen);
-
-		if (write_error != PARSERUTILS_OK)
-			return write_error;
-
-
-		/* And clear leftover */
-		input->pivot_left = NULL;
-		input->pivot_len = 0;
-		input->leftover = false;
-	}
-
-	while (*len > 0) {
-		parserutils_error read_error, write_error;
-		size_t pivot_len = sizeof(input->pivot_buf);
-		uint8_t *pivot = (uint8_t *) input->pivot_buf;
-
-		read_error = parserutils_charset_codec_decode(input->read_codec,
-				data, len,
-				(uint8_t **) &pivot, &pivot_len);
-
-		pivot = (uint8_t *) input->pivot_buf;
-		pivot_len = sizeof(input->pivot_buf) - pivot_len;
-
-		if (pivot_len > 0) {
-			write_error = parserutils_charset_codec_encode(
-					input->write_codec,
-					(const uint8_t **) &pivot,
-					&pivot_len,
-					output, outlen);
-
-			if (write_error != PARSERUTILS_OK) {
-				input->leftover = true;
-				input->pivot_left = pivot;
-				input->pivot_len = pivot_len;
-
-				return write_error;
-			}
-		}
-
-		if (read_error != PARSERUTILS_OK && 
-				read_error != PARSERUTILS_NOMEM)
-			return read_error;
-	}
-
-	return PARSERUTILS_OK;
-#endif
 }
 
 /**
@@ -305,24 +203,7 @@ parserutils_error parserutils__filter_reset(parserutils_filter *input)
 	if (input == NULL)
 		return PARSERUTILS_BADPARM;
 
-#ifndef WITHOUT_ICONV_FILTER
 	iconv(input->cd, NULL, 0, NULL, 0);
-#else
-	/* Clear pivot buffer leftovers */
-	input->pivot_left = NULL;
-	input->pivot_len = 0;
-	input->leftover = false;
-
-	/* Reset read codec */
-	error = parserutils_charset_codec_reset(input->read_codec);
-	if (error != PARSERUTILS_OK)
-		return error;
-
-	/* Reset write codec */
-	error = parserutils_charset_codec_reset(input->write_codec);
-	if (error != PARSERUTILS_OK)
-		return error;
-#endif
 
 	return error;
 }
@@ -339,11 +220,6 @@ parserutils_error filter_set_defaults(parserutils_filter *input)
 
 	if (input == NULL)
 		return PARSERUTILS_BADPARM;
-
-#ifdef WITHOUT_ICONV_FILTER
-	input->read_codec = NULL;
-	input->write_codec = NULL;
-#endif
 
 	input->settings.encoding = 0;
 	error = filter_set_encoding(input, "UTF-8");
@@ -377,7 +253,6 @@ parserutils_error filter_set_encoding(parserutils_filter *input,
 	if (input->settings.encoding == mibenum)
 		return PARSERUTILS_OK;
 
-#ifndef WITHOUT_ICONV_FILTER
 	if (input->cd != (iconv_t) -1) {
 		iconv_close(input->cd);
 		input->cd = (iconv_t) -1;
@@ -390,16 +265,6 @@ parserutils_error filter_set_encoding(parserutils_filter *input,
 		return (errno == EINVAL) ? PARSERUTILS_BADENCODING
 					 : PARSERUTILS_NOMEM;
 	}
-#else
-	if (input->read_codec != NULL) {
-		parserutils_charset_codec_destroy(input->read_codec);
-		input->read_codec = NULL;
-	}
-
-	error = parserutils_charset_codec_create(enc, &input->read_codec);
-	if (error != PARSERUTILS_OK)
-		return error;
-#endif
 
 	input->settings.encoding = mibenum;
 

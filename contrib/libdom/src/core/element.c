@@ -32,7 +32,7 @@
 #include "utils/list.h"
 #include "events/mutation_event.h"
 
-struct dom_element_vtable _dom_element_vtable = {
+const struct dom_element_vtable _dom_element_vtable = {
 	{
 		{
 			DOM_NODE_EVENT_TARGET_VTABLE
@@ -42,7 +42,7 @@ struct dom_element_vtable _dom_element_vtable = {
 	DOM_ELEMENT_VTABLE
 };
 
-static struct dom_element_protected_vtable element_protect_vtable = {
+static const struct dom_element_protected_vtable element_protect_vtable = {
 	{
 		DOM_NODE_PROTECT_VTABLE_ELEMENT
 	},
@@ -1232,9 +1232,11 @@ dom_exception _dom_element_has_class(struct dom_element *element,
 /**
  * Get a named ancestor node
  *
+ * The caller is responsible for unreffing the returned node.
+ *
  * \param element   Element to consider
  * \param name      Node name to look for
- * \param ancestor  Pointer to location to receive node pointer
+ * \param ancestor  Pointer to location to receive node.
  * \return DOM_NO_ERR.
  */
 dom_exception dom_element_named_ancestor_node(dom_element *element,
@@ -1251,7 +1253,7 @@ dom_exception dom_element_named_ancestor_node(dom_element *element,
 		assert(node->name != NULL);
 
 		if (dom_string_caseless_lwc_isequal(node->name, name)) {
-			*ancestor = (dom_element *)node;
+			*ancestor = (dom_element *)dom_node_ref(node);
 			break;
 		}
 	}
@@ -1261,6 +1263,8 @@ dom_exception dom_element_named_ancestor_node(dom_element *element,
 
 /**
  * Get a named parent node
+ *
+ * The caller is responsible for unreffing the returned node.
  *
  * \param element  Element to consider
  * \param name     Node name to look for
@@ -1281,7 +1285,7 @@ dom_exception dom_element_named_parent_node(dom_element *element,
 		assert(node->name != NULL);
 
 		if (dom_string_caseless_lwc_isequal(node->name, name)) {
-			*parent = (dom_element *)node;
+			*parent = (dom_element *)dom_node_ref(node);
 		}
 		break;
 	}
@@ -1291,6 +1295,8 @@ dom_exception dom_element_named_parent_node(dom_element *element,
 
 /**
  * Get a named parent node
+ *
+ * The caller is responsible for unreffing the returned node.
  *
  * \param element  Element to consider
  * \param name     Node name to look for
@@ -1308,7 +1314,7 @@ dom_exception dom_element_parent_node(dom_element *element,
 		if (node->type != DOM_ELEMENT_NODE)
 			continue;
 
-		*parent = (dom_element *)node;
+		*parent = (dom_element *)dom_node_ref(node);
 		break;
 	}
 
@@ -1414,7 +1420,12 @@ dom_exception _dom_element_is_default_namespace(dom_node_internal *node,
 		return DOM_NO_ERR;
 	}
 
-	return dom_node_is_default_namespace(node->parent, namespace, result);
+	if (node->parent != NULL) {
+		return dom_node_is_default_namespace(node->parent, namespace, result);
+	} else {
+		*result = false;
+	}
+	return DOM_NO_ERR;
 }
 
 /**

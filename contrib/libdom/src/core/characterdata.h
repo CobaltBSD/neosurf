@@ -116,7 +116,7 @@ dom_exception _dom_characterdata_copy(dom_node_internal *old,
 	_dom_characterdata_destroy, \
 	_dom_characterdata_copy
 
-extern struct dom_characterdata_vtable characterdata_vtable;
+extern const struct dom_characterdata_vtable characterdata_vtable;
 
 dom_exception _dom_characterdata_copy_internal(dom_characterdata *old, 
 		dom_characterdata *new);

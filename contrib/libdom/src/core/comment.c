@@ -21,7 +21,7 @@ struct dom_comment {
 	dom_characterdata base;	/**< Base node */
 };
 
-static struct dom_node_protect_vtable comment_protect_vtable = {
+static const struct dom_node_protect_vtable comment_protect_vtable = {
 	DOM_COMMENT_PROTECT_VTABLE
 };
 

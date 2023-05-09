@@ -62,6 +62,7 @@
 #include "desktop/hotlist.h"
 #include "desktop/knockout.h"
 #include "desktop/browser_history.h"
+#include "desktop/theme.h"
 
 /**
  * smallest scale that can be applied to a browser window
@@ -1475,13 +1476,6 @@ browser_window_callback(hlcache_handle *c, const hlcache_event *event, void *pw)
 	case CONTENT_MSG_LOADING:
 		assert(bw->loading_content == c);
 
-#ifdef WITH_THEME_INSTALL
-		if (content_get_type(c) == CONTENT_THEME) {
-			theme_install_start(c);
-			bw->loading_content = NULL;
-			browser_window_stop_throbber(bw);
-		} else
-#endif
 		{
 			bw->refresh_interval = -1;
 			browser_window_set_status(bw,

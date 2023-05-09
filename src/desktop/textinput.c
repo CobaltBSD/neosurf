@@ -45,10 +45,6 @@
 #include "desktop/textinput.h"
 #include "desktop/gui_internal.h"
 
-/* Define to enable textinput debug */
-#undef TEXTINPUT_DEBUG
-
-
 /* exported interface documented in desktop/textinput.h */
 void browser_window_place_caret(struct browser_window *bw, int x, int y,
 		int height, const struct rect *clip)

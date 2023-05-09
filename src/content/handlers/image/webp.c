@@ -38,6 +38,7 @@
 #include "content/content_protected.h"
 #include "content/content_factory.h"
 #include "desktop/gui_internal.h"
+#include "desktop/bitmap.h"
 
 #include "image/image_cache.h"
 
@@ -97,6 +98,9 @@ webp_cache_convert(struct content *c)
 	uint8_t *decoded;
 	size_t rowstride;
 	struct bitmap *bitmap = NULL;
+	bitmap_fmt_t webp_fmt = {
+		.layout = bitmap_fmt.layout,
+	};
 
 	source_data = content__get_source_data(c, &source_size);
 
@@ -107,9 +111,13 @@ webp_cache_convert(struct content *c)
 	}
 
 	if (webpfeatures.has_alpha == 0) {
-		bmap_flags = BITMAP_NEW | BITMAP_OPAQUE;
+		bmap_flags = BITMAP_OPAQUE;
+		/* Image has no alpha. Premultiplied alpha makes no difference.
+		 * Optimisation: Avoid unnecessary conversion by copying format.
+		 */
+		webp_fmt.pma = bitmap_fmt.pma;
 	} else {
-		bmap_flags = BITMAP_NEW;
+		bmap_flags = BITMAP_NONE;
 	}
 
 	/* create bitmap */
@@ -130,17 +138,33 @@ webp_cache_convert(struct content *c)
 
 	rowstride = guit->bitmap->get_rowstride(bitmap);
 
-	decoded = WebPDecodeRGBAInto(source_data,
-				     source_size,
-				     pixels,
-				     webpfeatures.width * webpfeatures.height * 4,
-				     rowstride);
+	switch (webp_fmt.layout) {
+	default:
+		/* WebP has no ABGR function, fall back to default. */
+		webp_fmt.layout = BITMAP_LAYOUT_R8G8B8A8;
+		/* Fall through. */
+	case BITMAP_LAYOUT_R8G8B8A8:
+		decoded = WebPDecodeRGBAInto(source_data, source_size, pixels,
+				rowstride * webpfeatures.height, rowstride);
+		break;
+
+	case BITMAP_LAYOUT_B8G8R8A8:
+		decoded = WebPDecodeBGRAInto(source_data, source_size, pixels,
+				rowstride * webpfeatures.height, rowstride);
+		break;
+
+	case BITMAP_LAYOUT_A8R8G8B8:
+		decoded = WebPDecodeARGBInto(source_data, source_size, pixels,
+				rowstride * webpfeatures.height, rowstride);
+		break;
+	}
 	if (decoded == NULL) {
 		/* decode failed */
 		guit->bitmap->destroy(bitmap);
 		return NULL;
 	}
 
+	bitmap_format_to_client(bitmap, &webp_fmt);
 	guit->bitmap->modified(bitmap);
 
 	return bitmap;

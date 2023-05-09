@@ -15,7 +15,7 @@
 #include "core/node.h"
 #include "utils/utils.h"
 
-static struct dom_element_protected_vtable _protect_vtable = {
+static const struct dom_element_protected_vtable _protect_vtable = {
 	{
 		DOM_NODE_PROTECT_VTABLE_HTML_BODY_ELEMENT
 	},

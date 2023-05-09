@@ -45,12 +45,7 @@ webidl_error(YYLTYPE *locp, struct webidl_node **winbind_ast, const char *str)
 %}
 
 %locations
- /* bison prior to 2.4 cannot cope with %define api.pure so we use the
-  *  deprecated directive 
-  */
-//%pure-parser
 %define api.pure
-//%error-verbose
 %define parse.error verbose
 %parse-param { struct webidl_node **webidl_ast }
 
@@ -520,18 +515,6 @@ DictionaryMember:
             $$ = webidl_node_new(WEBIDL_NODE_TYPE_ARGUMENT, NULL, member);
         }
         ;
-
-/* SE[14] */
-//Required:
-//        {
-//                $$ = false; /* empty */
-//        }
-//        |
-//        TOK_REQUIRED
-//        {
-//                $$ = true;
-//        }
-//        ;
 
  /* [14] */
 PartialDictionary:

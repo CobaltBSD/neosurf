@@ -20,14 +20,14 @@ struct dom_entity_reference {
 	dom_node_internal base;		/**< Base node */
 };
 
-static struct dom_node_vtable er_vtable = {
+static const struct dom_node_vtable er_vtable = {
 	{
 		DOM_NODE_EVENT_TARGET_VTABLE
 	},
 	DOM_NODE_VTABLE
 };
 
-static struct dom_node_protect_vtable er_protect_vtable = {
+static const struct dom_node_protect_vtable er_protect_vtable = {
 	DOM_ER_PROTECT_VTABLE
 };
 

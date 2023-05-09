@@ -15,6 +15,7 @@ add_library(dom SHARED
 	src/core/pi.c
 	src/core/doc_fragment.c
 	src/core/document.c 
+	src/core/tokenlist.c
 	src/events/mouse_multi_wheel_event.c
 	src/events/mouse_event.c
 	src/events/mutation_name_event.c
@@ -89,6 +90,7 @@ add_library(dom SHARED
 	src/utils/namespace.c
 	src/utils/character_valid.c
 	src/utils/validate.c
+	src/utils/walk.c
 	bindings/xml/xmlparser.c
 )
 

@@ -32,6 +32,7 @@
 #include <dom/core/doc_fragment.h>
 #include <dom/core/entity_ref.h>
 #include <dom/core/nodelist.h>
+#include <dom/core/tokenlist.h>
 #include <dom/core/string.h>
 #include <dom/core/text.h>
 #include <dom/core/pi.h>

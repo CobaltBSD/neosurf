@@ -34,6 +34,7 @@
 #include "content/content_protected.h"
 #include "content/content_factory.h"
 #include "desktop/gui_internal.h"
+#include "desktop/bitmap.h"
 
 #include "image/image.h"
 #include "image/ico.h"
@@ -54,12 +55,12 @@ typedef struct nsico_content {
  */
 static void *nsico_bitmap_create(int width, int height, unsigned int bmp_state)
 {
-	unsigned int bitmap_state = BITMAP_NEW;
+	unsigned int bitmap_state = BITMAP_NONE;
 
 	/* set bitmap state based on bmp state */
 	bitmap_state |= (bmp_state & BMP_OPAQUE) ? BITMAP_OPAQUE : 0;
 	bitmap_state |= (bmp_state & BMP_CLEAR_MEMORY) ?
-			BITMAP_CLEAR_MEMORY : 0;
+			BITMAP_CLEAR : 0;
 
 	/* return the created bitmap */
 	return guit->bitmap->create(width, height, bitmap_state);
@@ -71,7 +72,6 @@ static nserror nsico_create_ico_data(nsico_content *c)
 		.bitmap_create = nsico_bitmap_create,
 		.bitmap_destroy = guit->bitmap->destroy,
 		.bitmap_get_buffer = guit->bitmap->get_buffer,
-		.bitmap_get_bpp = guit->bitmap->get_bpp
 	};
 
 	c->ico = calloc(sizeof(ico_collection), 1);
@@ -173,6 +173,23 @@ static bool nsico_convert(struct content *c)
 	return true;
 }
 
+static bool nsico__decode(struct bmp_image *ico)
+{
+	if (ico->decoded == false) {
+		NSLOG(netsurf, DEBUG, "Decoding ICO %p", ico);
+		if (bmp_decode(ico) != BMP_OK) {
+			return false;
+		}
+
+		bitmap_format_to_client(ico->bitmap, &(bitmap_fmt_t) {
+			.layout = BITMAP_LAYOUT_R8G8B8A8,
+		});
+		guit->bitmap->modified(ico->bitmap);
+
+	}
+
+	return true;
+}
 
 static bool nsico_redraw(struct content *c, struct content_redraw_data *data,
 		const struct rect *clip, const struct redraw_context *ctx)
@@ -189,14 +206,8 @@ static bool nsico_redraw(struct content *c, struct content_redraw_data *data,
 	}
 
 	/* ensure its decided */
-	if (bmp->decoded == false) {
-		if (bmp_decode(bmp) != BMP_OK) {
-			return false;
-		} else {
-			NSLOG(neosurf, INFO, "Decoding bitmap");
-			guit->bitmap->modified(bmp->bitmap);
-		}
-
+	if (!nsico__decode(bmp)) {
+		return false;
 	}
 
 	return image_bitmap_plot(bmp->bitmap, data, clip, ctx);
@@ -260,12 +271,8 @@ static void *nsico_get_internal(const struct content *c, void *context)
 		return NULL;
 	}
 
-	if (bmp->decoded == false) {
-		if (bmp_decode(bmp) != BMP_OK) {
-			return NULL;
-		} else {
-			guit->bitmap->modified(bmp->bitmap);
-		}
+	if (!nsico__decode(bmp)) {
+		return NULL;
 	}
 
 	return bmp->bitmap;
@@ -292,12 +299,8 @@ static bool nsico_is_opaque(struct content *c)
 		return false;
 	}
 
-	if (bmp->decoded == false) {
-		if (bmp_decode(bmp) != BMP_OK) {
-			return false;
-		}
-
-		guit->bitmap->modified(bmp->bitmap);
+	if (!nsico__decode(bmp)) {
+		return false;
 	}
 
 	return guit->bitmap->get_opaque(bmp->bitmap);

@@ -154,8 +154,6 @@ nsgtk_select_menu_clicked(GtkCheckMenuItem *checkmenuitem,
 				      (intptr_t)user_data);
 }
 
-#if GTK_CHECK_VERSION(3,0,0)
-
 static gboolean
 nsgtk_window_draw_event(GtkWidget *widget, cairo_t *cr, gpointer data)
 {
@@ -205,48 +203,6 @@ nsgtk_window_draw_event(GtkWidget *widget, cairo_t *cr, gpointer data)
 
 	return FALSE;
 }
-
-#else
-
-static gboolean
-nsgtk_window_draw_event(GtkWidget *widget, GdkEventExpose *event, gpointer data)
-{
-	struct gui_window *gw = data;
-	struct gui_window *z;
-	struct rect clip;
-	struct redraw_context ctx = {
-		.interactive = true,
-		.background_images = true,
-		.plot = &nsgtk_plotters
-	};
-
-	assert(gw);
-	assert(gw->bw);
-
-	for (z = window_list; z && z != gw; z = z->next)
-		continue;
-	assert(z);
-	assert(GTK_WIDGET(gw->layout) == widget);
-
-	current_cr = gdk_cairo_create(nsgtk_layout_get_bin_window(gw->layout));
-
-	clip.x0 = event->area.x;
-	clip.y0 = event->area.y;
-	clip.x1 = event->area.x + event->area.width;
-	clip.y1 = event->area.y + event->area.height;
-
-	browser_window_redraw(gw->bw, 0, 0, &clip, &ctx);
-
-	if (gw->careth != 0) {
-		nsgtk_plot_caret(gw->caretx, gw->carety, gw->careth);
-	}
-
-	cairo_destroy(current_cr);
-
-	return FALSE;
-}
-
-#endif
 
 static gboolean
 nsgtk_window_motion_notify_event(GtkWidget *widget,
@@ -458,11 +414,10 @@ nsgtk_window_scroll_event(GtkWidget *widget,
 		deltay = 1.0;
 		break;
 
-#if GTK_CHECK_VERSION(3,4,0)
 	case GDK_SCROLL_SMOOTH:
 		gdk_event_get_scroll_deltas((GdkEvent *)event, &deltax, &deltay);
 		break;
-#endif
+
 	default:
 		NSLOG(neosurf, INFO, "Unhandled mouse scroll direction");
 		return TRUE;

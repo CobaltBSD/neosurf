@@ -565,13 +565,7 @@ FILE *genbindopen(const char *filename)
                 snprintf(fullname, fulllen, "%s/%s", options->idlpath, filename);
                 genfile = fopen(fullname, "r");
                 if ((genfile != NULL) && options->verbose) {
-                        printf("Opend Genbind file %s\n", fullname);
-#if 0
-                        if (options->depfilehandle != NULL) {
-                                fprintf(options->depfilehandle, " \\\n\t%s",
-                                        fullname);
-                        }
-#endif
+                        printf("Opened Genbind file %s\n", fullname);
                 }
 
                 free(fullname);

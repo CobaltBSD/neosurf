@@ -33,7 +33,9 @@
 #include <math.h>
 #include <stdio.h>
 
+#include "utils/config.h"
 #include "neosurf/inttypes.h"
+#include "utils/config.h"
 #include "utils/utils.h"
 #include "utils/errors.h"
 #include "utils/nsurl.h"

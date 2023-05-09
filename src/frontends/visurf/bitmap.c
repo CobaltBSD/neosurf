@@ -120,7 +120,7 @@ static void bitmap_set_opaque(void *vbitmap, bool opaque)
  * \param  vbitmap  a bitmap, as returned by bitmap_create()
  * \return whether the bitmap is opaque
  */
-static bool bitmap_test_opaque(void *vbitmap)
+/*static bool bitmap_test_opaque(void *vbitmap)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
 	unsigned char *pixels;
@@ -141,7 +141,7 @@ static bool bitmap_test_opaque(void *vbitmap)
 	}
 
 	return true;
-}
+}*/
 
 
 /**
@@ -281,13 +281,13 @@ static size_t bitmap_get_rowstride(void *vbitmap)
  * \param  vbitmap  a bitmap, as returned by bitmap_create()
  * \return bytes per pixel
  */
-static size_t bitmap_get_bpp(void *vbitmap)
+/*static size_t bitmap_get_bpp(void *vbitmap)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
 	assert(gbitmap);
 
 	return 4;
-}
+}*/
 
 
 
@@ -319,13 +319,13 @@ static void bitmap_destroy(void *vbitmap)
  * \param  flags    modify the behaviour of the save
  * \return true on success, false on error and error reported
  */
-static bool bitmap_save(void *vbitmap, const char *path, unsigned flags)
+/*static bool bitmap_save(void *vbitmap, const char *path, unsigned flags)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
 	assert(gbitmap);
 
 	return false;
-}
+}*/
 
 
 /**
@@ -521,13 +521,10 @@ struct gui_bitmap_table vi_bitmap_table = {
 	.destroy = bitmap_destroy,
 	.set_opaque = bitmap_set_opaque,
 	.get_opaque = bitmap_get_opaque,
-	.test_opaque = bitmap_test_opaque,
 	.get_buffer = bitmap_get_buffer,
 	.get_rowstride = bitmap_get_rowstride,
 	.get_width = nsvi_bitmap_get_width,
 	.get_height = nsvi_bitmap_get_height,
-	.get_bpp = bitmap_get_bpp,
-	.save = bitmap_save,
 	.modified = bitmap_modified,
 	.render = bitmap_render,
 };

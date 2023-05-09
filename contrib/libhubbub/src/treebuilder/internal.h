@@ -9,32 +9,7 @@
 #define hubbub_treebuilder_internal_h_
 
 #include "treebuilder/treebuilder.h"
-
-typedef enum
-{
-/* Special */
-	ADDRESS, AREA, ARTICLE, ASIDE, BASE, BASEFONT, BGSOUND, BLOCKQUOTE,
-	BODY, BR, CENTER, COL, COLGROUP, COMMAND, DATAGRID, DD, DETAILS,
-	DIALOG, DIR, DIV, DL, DT, EMBED, FIELDSET, FIGCAPTION, FIGURE, FOOTER,
-	FORM, FRAME, FRAMESET, H1, H2, H3, H4, H5, H6, HEAD, HEADER, HR, IFRAME,
-	IMAGE, IMG, INPUT, ISINDEX, LI, LINK, LISTING, MAIN, MENU, META, NAV,
-	NOEMBED, NOFRAMES, NOSCRIPT, OL, OPTGROUP, OPTION, P, PARAM, PLAINTEXT,
-	PRE, SCRIPT, SECTION, SELECT, SPACER, STYLE, SUMMARY, TBODY, TEXTAREA,
-	TFOOT, THEAD, TITLE, TR, UL, WBR,
-/* Scoping */
-	APPLET, BUTTON, CAPTION, HTML, MARQUEE, OBJECT, TABLE, TD, TH,
-/* Formatting */
-	A, B, BIG, CODE, EM, FONT, I, NOBR, S, SMALL, STRIKE, STRONG, TT, U,
-/* Phrasing */
-	/**< \todo Enumerate phrasing elements */
-	LABEL, OUTPUT, RP, RT, RUBY, SPAN, SUB, SUP, VAR, XMP,
-/* MathML */
-	MATH, MGLYPH, MALIGNMARK, MI, MO, MN, MS, MTEXT, ANNOTATION_XML,
-/* SVG */
-	SVG, FOREIGNOBJECT, /* foreignobject is scoping, but only in SVG ns */
-	DESC,
-	UNKNOWN
-} element_type;
+#include "treebuilder/element-type.h"
 
 /**
  * Item on the element stack
@@ -152,9 +127,6 @@ void reset_insertion_mode(hubbub_treebuilder *treebuilder);
 hubbub_error append_text(hubbub_treebuilder *treebuilder,
 		const hubbub_string *string);
 hubbub_error complete_script(hubbub_treebuilder *treebuilder);
-
-element_type element_type_from_name(hubbub_treebuilder *treebuilder,
-		const hubbub_string *tag_name);
 
 bool is_special_element(element_type type);
 bool is_scoping_element(element_type type);

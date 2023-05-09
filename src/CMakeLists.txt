@@ -58,6 +58,7 @@ add_library(neosurf SHARED
 	content/handlers/html/imagemap.c
 	content/handlers/html/interaction.c
 	content/handlers/html/layout.c
+	content/handlers/html/layout_flex.c
 	content/handlers/html/object.c
 	content/handlers/html/redraw.c
 	content/handlers/html/redraw_border.c
@@ -73,7 +74,7 @@ add_library(neosurf SHARED
 	content/handlers/image/png.c
 	content/handlers/image/svg.c
 	#content/handlers/image/video.c # requires gstreamer
-#	content/handlers/image/webp.c # requires libwebp
+	content/handlers/image/webp.c # requires libwebp
 	content/handlers/javascript/fetcher.c
 	content/handlers/javascript/content.c
 	content/handlers/javascript/duktape/dukky.c
@@ -82,7 +83,6 @@ add_library(neosurf SHARED
 	desktop/cookie_manager.c
 	desktop/knockout.c
 	desktop/hotlist.c
-#	desktop/mouse.c
 	desktop/plot_style.c
 	desktop/print.c
 	desktop/search.c
@@ -108,11 +108,10 @@ add_library(neosurf SHARED
 	desktop/textinput.c
 	desktop/gui_factory.c
 	desktop/save_pdf.c
-#	desktop/font_haru.c
+	desktop/bitmap.c
 	utils/bloom.c
 	utils/corestrings.c
 	utils/file.c
-#	utils/filename.c
 	utils/filepath.c
 	utils/hashmap.c
 	utils/hashtable.c
@@ -130,7 +129,6 @@ add_library(neosurf SHARED
 	utils/useragent.c
 	utils/utf8.c
 	utils/utils.c
-#	utils/http/challenge.c
 	utils/http/generics.c
 	utils/http/primitives.c
 	utils/http/parameter.c
@@ -138,7 +136,6 @@ add_library(neosurf SHARED
 	utils/http/content-disposition.c
 	utils/http/content-type.c
 	utils/http/strict-transport-security.c
-#	utils/http/www-authenticate.c
 	utils/nsurl/nsurl.c
 	utils/nsurl/parse.c
 	${DSRC}
@@ -182,7 +179,6 @@ add_executable(neosurf-gtk3
 	frontends/gtk/search.c
 	frontends/gtk/tabs.c
 	frontends/gtk/toolbar.c
-#	frontends/gtk/gettext.c
 	frontends/gtk/compat.c
 	frontends/gtk/viewdata.c
 	frontends/gtk/viewsource.c
@@ -205,7 +201,7 @@ endif()
 
 #TODO: fix GTK_RESPATH
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/src -std=c99 -Werror -g -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include -Wno-unused-parameter -I${CMAKE_SOURCE_DIR}/src/content/handlers -Wno-unused-but-set-variable -I${CMAKE_SOURCE_DIR}/contrib/libcss/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include -I${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include -I${CMAKE_SOURCE_DIR}/contrib/libnsgif/include -I${CMAKE_SOURCE_DIR}/contrib/librosprite/include -Wno-cast-align -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_BINARY_DIR} -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/visurf/res\\\" -I${CMAKE_SOURCE_DIR}/src/frontends -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_CURL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -DLIBCURL_VERSION_NUM=0x073800 -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGP_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/gtk/res\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/gen -I${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape -I${CMAKE_BINARY_DIR}/duktape")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/include/ -I${CMAKE_SOURCE_DIR}/src -std=c99 -Werror -g -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include -Wno-unused-parameter -I${CMAKE_SOURCE_DIR}/src/content/handlers -Wno-unused-but-set-variable -I${CMAKE_SOURCE_DIR}/contrib/libcss/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include -I${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include -I${CMAKE_SOURCE_DIR}/contrib/libnsgif/include -I${CMAKE_SOURCE_DIR}/contrib/librosprite/include -Wno-cast-align -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_BINARY_DIR} -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/visurf/res\\\" -I${CMAKE_SOURCE_DIR}/src/frontends -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -DLIBCURL_VERSION_NUM=0x073800 -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGP_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/gtk/res\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/gen -I${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape -I${CMAKE_BINARY_DIR}/duktape")
 
 # Note: libpsl used for detecting supercookies
 target_link_libraries(neosurf css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl webp)
@@ -214,6 +210,7 @@ target_link_libraries(neosurf-gtk3 css dom nsbmp nsgif jpeg m png svgtiny z nsut
 
 #TODO: All .ui files in src/frontends/gtk/res/gtk3 need to go into $HOME/.config/neosurf
 
+#TODO: replace lib with CMAKE_INSTALL_LIBDIR - do this in other CMakeLists.txt as well
 install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(TARGETS neosurf-gtk3 DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

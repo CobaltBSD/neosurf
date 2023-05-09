@@ -1,8 +1,8 @@
-Unimplemented javascript bindings {#unimplemented}
-=================================
+# Unimplemented javascript bindings {#unimplemented}
 
 This is a list of all the binding methods, getters and setters without an implementation in a binding.
 
+```
 Type | Unimplemented binding
 ---- | ---------------------
 method | URLSearchParams::append();
@@ -94,8 +94,8 @@ getter | CSSStyleDeclaration::length(unsigned long);
 getter | CSSStyleDeclaration::parentRule(user);
 getter | CSSStyleDeclaration::cssFloat(string);
 setter | CSSStyleDeclaration::cssFloat(string);
-getter | CSSStyleDeclaration::dashed_attribute(string);
-setter | CSSStyleDeclaration::dashed_attribute(string);
+getter | CSSStyleDeclaration::dashed\_attribute(string);
+setter | CSSStyleDeclaration::dashed\_attribute(string);
 getter | CSSRule::type(unsigned short);
 getter | CSSRule::cssText(string);
 setter | CSSRule::cssText(string);
@@ -170,7 +170,6 @@ getter | Element::namespaceURI(string);
 getter | Element::prefix(string);
 getter | Element::localName(string);
 getter | Element::tagName(string);
-getter | Element::classList(user);
 getter | Element::outerHTML(string);
 setter | Element::outerHTML(string);
 getter | Element::children(user);
@@ -597,10 +596,6 @@ method | CanvasRenderingContext2D::arcTo();
 method | CanvasRenderingContext2D::rect();
 method | CanvasRenderingContext2D::arc();
 method | CanvasRenderingContext2D::ellipse();
-getter | CanvasRenderingContext2D::width(unsigned long);
-setter | CanvasRenderingContext2D::width(unsigned long);
-getter | CanvasRenderingContext2D::height(unsigned long);
-setter | CanvasRenderingContext2D::height(unsigned long);
 getter | CanvasRenderingContext2D::currentTransform(user);
 setter | CanvasRenderingContext2D::currentTransform(user);
 getter | CanvasRenderingContext2D::globalAlpha(double);
@@ -647,8 +642,6 @@ method | HTMLCanvasElement::setContext();
 method | HTMLCanvasElement::transferControlToProxy();
 method | HTMLCanvasElement::toDataURL();
 method | HTMLCanvasElement::toBlob();
-setter | HTMLCanvasElement::width(unsigned long);
-setter | HTMLCanvasElement::height(unsigned long);
 getter | HTMLTemplateElement::content(user);
 getter | HTMLScriptElement::async(boolean);
 setter | HTMLScriptElement::async(boolean);
@@ -1344,14 +1337,6 @@ method | HTMLAllCollection::namedItem();
 getter | HTMLAllCollection::length(unsigned long);
 method | XMLSerializer::serializeToString();
 method | DOMParser::parseFromString();
-method | DOMTokenList::item();
-method | DOMTokenList::contains();
-method | DOMTokenList::add();
-method | DOMTokenList::remove();
-method | DOMTokenList::toggle();
-getter | DOMTokenList::length(unsigned long);
-getter | DOMSettableTokenList::value(string);
-setter | DOMSettableTokenList::value(string);
 method | NodeFilter::acceptNode();
 method | TreeWalker::parentNode();
 method | TreeWalker::firstChild();
@@ -1559,6 +1544,6 @@ getter | DocumentFragment::childElementCount(unsigned long);
 method | EventListener::handleEvent();
 method | CustomEvent::initCustomEvent();
 getter | CustomEvent::detail(any);
+```
 
- 1554 unimplemented bindings
-
+1539 unimplemented bindings

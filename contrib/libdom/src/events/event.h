@@ -45,7 +45,7 @@ struct dom_event {
 
 	uint32_t refcnt;	/**< The reference count of this object */
 
-	struct dom_event_private_vtable *vtable;
+	const struct dom_event_private_vtable *vtable;
 			/**< The private virtual function table of Event */
 	bool in_dispatch;	/**< Whether this event is in dispatch */
 	bool is_initialised;	/**< Whether this event is initialised */

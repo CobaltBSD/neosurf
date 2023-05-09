@@ -271,7 +271,7 @@ static inline hubbub_error emit_current_comment(hubbub_tokeniser *tokeniser);
 static inline hubbub_error emit_current_doctype(hubbub_tokeniser *tokeniser,
 		bool force_quirks);
 static hubbub_error hubbub_tokeniser_emit_token(hubbub_tokeniser *tokeniser,
-		hubbub_token *token);
+		const hubbub_token *token);
 
 /**
  * Create a hubbub tokeniser
@@ -461,14 +461,8 @@ hubbub_error hubbub_tokeniser_run(hubbub_tokeniser *tokeniser)
 	if (tokeniser->paused == true)
 		return HUBBUB_PAUSED;
 
-#if 0
-#define state(x) \
-		case x: \
-			printf( #x "\n");
-#else
 #define state(x) \
 		case x:
-#endif
 
 	while (cont == HUBBUB_OK) {
 		switch (tokeniser->state) {
@@ -1998,8 +1992,6 @@ hubbub_error hubbub_tokeniser_handle_comment(hubbub_tokeniser *tokeniser)
 }
 
 
-
-
 #define DOCTYPE		"DOCTYPE"
 #define DOCTYPE_LEN	(SLEN(DOCTYPE) - 1)
 
@@ -2754,7 +2746,6 @@ hubbub_error hubbub_tokeniser_handle_bogus_doctype(hubbub_tokeniser *tokeniser)
 }
 
 
-
 #define CDATA		"[CDATA["
 #define CDATA_LEN	(SLEN(CDATA) - 1)
 
@@ -3365,7 +3356,7 @@ hubbub_error emit_current_doctype(hubbub_tokeniser *tokeniser,
  * \param token      Token to emit
  */
 hubbub_error hubbub_tokeniser_emit_token(hubbub_tokeniser *tokeniser,
-		hubbub_token *token)
+		const hubbub_token *token)
 {
 	hubbub_error err = HUBBUB_OK;
 

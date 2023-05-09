@@ -1,3 +1,15 @@
+0.6 - May 8 2023
+- Incorporated upstream commits to NetSurf and its subprojects
+- Improved LibreSSL support
+- Fixed frequent or constant crashing on certain websites
+- Send DNT (Do Not Track) request by default
+- Updated Visurf for compatibility with latest NetSurf commits
+- Further reductions of unused or obsolete code
+- Fixed search engine being set to Dictionary.com instead of DuckDuckGo
+- Removed redundant resources
+- Changes 'q' binding for closing Visurf to ctrl+q
+- Large number of other fixes and improvements
+
 0.5 - May 7 2023
 - Began bulk rebranding to NeoSurf
 - Removed support for languages besides for English (these may be

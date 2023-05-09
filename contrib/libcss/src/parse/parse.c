@@ -21,21 +21,12 @@
 #include "utils/parserutilserror.h"
 #include "utils/utils.h"
 
-#undef DEBUG_STACK
-#undef DEBUG_EVENTS
-
 #ifndef NDEBUG
 #include <stdio.h>
 extern void parserutils_stack_dump(parserutils_stack *stack, const char *prefix,
 		void (*printer)(void *item));
 extern void parserutils_vector_dump(parserutils_vector *vector,
 		const char *prefix, void (*printer)(void *item));
-#ifdef DEBUG_STACK
-static void printer(void *item);
-#endif
-#ifdef DEBUG_EVENTS
-static void tprinter(void *token);
-#endif
 #endif
 
 /**

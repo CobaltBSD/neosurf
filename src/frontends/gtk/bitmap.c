@@ -45,22 +45,25 @@
  * Create a bitmap.
  *
  * \param  width   width of image in pixels
- * \param  height  width of image in pixels
- * \param  state   a flag word indicating the initial state
+ * \param  height  height of image in pixels
+ * \param  flags   flags for bitmap creation
  * \return an opaque struct bitmap, or NULL on memory exhaustion
  */
-static void *bitmap_create(int width, int height, unsigned int state)
+static void *bitmap_create(int width, int height, enum gui_bitmap_flags flags)
 {
 	struct bitmap *gbitmap;
 
+	if (width == 0 || height == 0) {
+		return NULL;
+	}
+
 	gbitmap = calloc(1, sizeof(struct bitmap));
 	if (gbitmap != NULL) {
-		if ((state & BITMAP_OPAQUE) != 0) {
-			gbitmap->surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
-		} else {
-			gbitmap->surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
+		if (flags & BITMAP_OPAQUE) {
+			gbitmap->opaque = true;
 		}
 
+		gbitmap->surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
 		if (cairo_surface_status(gbitmap->surface) != CAIRO_STATUS_SUCCESS) {
 			cairo_surface_destroy(gbitmap->surface);
 			free(gbitmap);
@@ -81,76 +84,8 @@ static void *bitmap_create(int width, int height, unsigned int state)
 static void bitmap_set_opaque(void *vbitmap, bool opaque)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	cairo_format_t fmt;
-	cairo_surface_t *nsurface = NULL;
 
-	assert(gbitmap);
-
-	fmt = cairo_image_surface_get_format(gbitmap->surface);
-	if (fmt == CAIRO_FORMAT_RGB24) {
-		if (opaque == false) {
-			/* opaque to transparent */
-			nsurface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32,
-					cairo_image_surface_get_width(gbitmap->surface),
-					cairo_image_surface_get_height(gbitmap->surface));
-
-		}
-
-	} else {
-		if (opaque == true) {
-			/* transparent to opaque */
-			nsurface = cairo_image_surface_create(CAIRO_FORMAT_RGB24,
-					cairo_image_surface_get_width(gbitmap->surface),
-					cairo_image_surface_get_height(gbitmap->surface));
-
-		}
-	}
-
-	if (nsurface != NULL) {
-		if (cairo_surface_status(nsurface) != CAIRO_STATUS_SUCCESS) {
-			cairo_surface_destroy(nsurface);
-		} else {
-			memcpy(cairo_image_surface_get_data(nsurface),
-			       cairo_image_surface_get_data(gbitmap->surface),
-			       cairo_image_surface_get_stride(gbitmap->surface) * cairo_image_surface_get_height(gbitmap->surface));
-			cairo_surface_destroy(gbitmap->surface);
-			gbitmap->surface = nsurface;
-
-			cairo_surface_mark_dirty(gbitmap->surface);
-
-		}
-
-	}
-}
-
-
-/**
- * Tests whether a bitmap has an opaque alpha channel
- *
- * \param  vbitmap  a bitmap, as returned by bitmap_create()
- * \return whether the bitmap is opaque
- */
-static bool bitmap_test_opaque(void *vbitmap)
-{
-	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	unsigned char *pixels;
-	int pcount;
-	int ploop;
-
-	assert(gbitmap);
-
-	pixels = cairo_image_surface_get_data(gbitmap->surface);
-
-	pcount = cairo_image_surface_get_stride(gbitmap->surface) *
-		cairo_image_surface_get_height(gbitmap->surface);
-
-	for (ploop = 3; ploop < pcount; ploop += 4) {
-		if (pixels[ploop] != 0xff) {
-			return false;
-		}
-	}
-
-	return true;
+	gbitmap->opaque = opaque;
 }
 
 
@@ -162,16 +97,8 @@ static bool bitmap_test_opaque(void *vbitmap)
 static bool bitmap_get_opaque(void *vbitmap)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	cairo_format_t fmt;
 
-	assert(gbitmap);
-
-	fmt = cairo_image_surface_get_format(gbitmap->surface);
-	if (fmt == CAIRO_FORMAT_RGB24) {
-		return true;
-	}
-
-	return false;
+	return gbitmap->opaque;
 }
 
 
@@ -187,82 +114,12 @@ static bool bitmap_get_opaque(void *vbitmap)
 static unsigned char *bitmap_get_buffer(void *vbitmap)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	int pixel_loop;
-	int pixel_count;
 	uint8_t *pixels;
-	uint32_t t, r, g, b;
-	cairo_format_t fmt;
 
 	assert(gbitmap);
 
 	cairo_surface_flush(gbitmap->surface);
 	pixels = cairo_image_surface_get_data(gbitmap->surface);
-
-	if (!gbitmap->converted)
-		return pixels;
-
-	fmt = cairo_image_surface_get_format(gbitmap->surface);
-	pixel_count = cairo_image_surface_get_width(gbitmap->surface) *
-			cairo_image_surface_get_height(gbitmap->surface);
-
-	if (fmt == CAIRO_FORMAT_RGB24) {
-		/* Opaque image */
-		for (pixel_loop=0; pixel_loop < pixel_count; pixel_loop++) {
-			/* Cairo surface is ARGB, written in native endian */
-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
-			b = pixels[4 * pixel_loop + 0];
-			g = pixels[4 * pixel_loop + 1];
-			r = pixels[4 * pixel_loop + 2];
-			t = pixels[4 * pixel_loop + 3];
-#else
-			t = pixels[4 * pixel_loop + 0];
-			r = pixels[4 * pixel_loop + 1];
-			g = pixels[4 * pixel_loop + 2];
-			b = pixels[4 * pixel_loop + 3];
-#endif
-
-			/* Core bitmaps always have a component order of rgba,
-			 * regardless of system endianness */
-			pixels[4 * pixel_loop + 0] = r;
-			pixels[4 * pixel_loop + 1] = g;
-			pixels[4 * pixel_loop + 2] = b;
-			pixels[4 * pixel_loop + 3] = t;
-		}
-	} else {
-		/* Alpha image: de-multiply alpha */
-		for (pixel_loop=0; pixel_loop < pixel_count; pixel_loop++) {
-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
-			b = pixels[4 * pixel_loop + 0];
-			g = pixels[4 * pixel_loop + 1];
-			r = pixels[4 * pixel_loop + 2];
-			t = pixels[4 * pixel_loop + 3];
-#else
-			t = pixels[4 * pixel_loop + 0];
-			r = pixels[4 * pixel_loop + 1];
-			g = pixels[4 * pixel_loop + 2];
-			b = pixels[4 * pixel_loop + 3];
-#endif
-
-			if (t != 0) {
-				r = (r << 8) / t;
-				g = (g << 8) / t;
-				b = (b << 8) / t;
-
-				r = (r > 255) ? 255 : r;
-				g = (g > 255) ? 255 : g;
-				b = (b > 255) ? 255 : b;
-			} else {
-				r = g = b = 0;
-			}
-
-			pixels[4 * pixel_loop + 0] = r;
-			pixels[4 * pixel_loop + 1] = g;
-			pixels[4 * pixel_loop + 2] = b;
-			pixels[4 * pixel_loop + 3] = t;
-		}
-	}
-
-	gbitmap->converted = false;
 
 	return (unsigned char *) pixels;
 }
@@ -281,22 +138,6 @@ static size_t bitmap_get_rowstride(void *vbitmap)
 
 	return cairo_image_surface_get_stride(gbitmap->surface);
 }
-
-
-/**
- * Find the bytes per pixel of a bitmap
- *
- * \param  vbitmap  a bitmap, as returned by bitmap_create()
- * \return bytes per pixel
- */
-static size_t bitmap_get_bpp(void *vbitmap)
-{
-	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	assert(gbitmap);
-
-	return 4;
-}
-
 
 
 /**
@@ -320,23 +161,6 @@ static void bitmap_destroy(void *vbitmap)
 
 
 /**
- * Save a bitmap in the platform's native format.
- *
- * \param  vbitmap  a bitmap, as returned by bitmap_create()
- * \param  path     pathname for file
- * \param  flags    modify the behaviour of the save
- * \return true on success, false on error and error reported
- */
-static bool bitmap_save(void *vbitmap, const char *path, unsigned flags)
-{
-	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	assert(gbitmap);
-
-	return false;
-}
-
-
-/**
  * The bitmap image has changed, so flush any persistant cache.
  *
  * \param  vbitmap  a bitmap, as returned by bitmap_create()
@@ -344,81 +168,10 @@ static bool bitmap_save(void *vbitmap, const char *path, unsigned flags)
 static void bitmap_modified(void *vbitmap)
 {
 	struct bitmap *gbitmap = (struct bitmap *)vbitmap;
-	int pixel_loop;
-	int pixel_count;
-	uint8_t *pixels;
-	uint32_t t, r, g, b;
-	cairo_format_t fmt;
 
 	assert(gbitmap);
 
-	fmt = cairo_image_surface_get_format(gbitmap->surface);
-
-	pixel_count = cairo_image_surface_get_width(gbitmap->surface) *
-		cairo_image_surface_get_height(gbitmap->surface);
-	pixels = cairo_image_surface_get_data(gbitmap->surface);
-
-	if (gbitmap->converted) {
-		cairo_surface_mark_dirty(gbitmap->surface);
-		return;
-	}
-
-	if (fmt == CAIRO_FORMAT_RGB24) {
-		/* Opaque image */
-		for (pixel_loop=0; pixel_loop < pixel_count; pixel_loop++) {
-			/* Core bitmaps always have a component order of rgba,
-			 * regardless of system endianness */
-			r = pixels[4 * pixel_loop + 0];
-			g = pixels[4 * pixel_loop + 1];
-			b = pixels[4 * pixel_loop + 2];
-			t = pixels[4 * pixel_loop + 3];
-
-			/* Cairo surface is ARGB, written in native endian */
-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
-			pixels[4 * pixel_loop + 0] = b;
-			pixels[4 * pixel_loop + 1] = g;
-			pixels[4 * pixel_loop + 2] = r;
-			pixels[4 * pixel_loop + 3] = t;
-#else
-			pixels[4 * pixel_loop + 0] = t;
-			pixels[4 * pixel_loop + 1] = r;
-			pixels[4 * pixel_loop + 2] = g;
-			pixels[4 * pixel_loop + 3] = b;
-#endif
-		}
-	} else {
-		/* Alpha image: pre-multiply alpha */
-		for (pixel_loop=0; pixel_loop < pixel_count; pixel_loop++) {
-			r = pixels[4 * pixel_loop + 0];
-			g = pixels[4 * pixel_loop + 1];
-			b = pixels[4 * pixel_loop + 2];
-			t = pixels[4 * pixel_loop + 3];
-
-			if (t != 0) {
-				r = ((r * (t + 1)) >> 8) & 0xff;
-				g = ((g * (t + 1)) >> 8) & 0xff;
-				b = ((b * (t + 1)) >> 8) & 0xff;
-			} else {
-				r = g = b = 0;
-			}
-
-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
-			pixels[4 * pixel_loop + 0] = b;
-			pixels[4 * pixel_loop + 1] = g;
-			pixels[4 * pixel_loop + 2] = r;
-			pixels[4 * pixel_loop + 3] = t;
-#else
-			pixels[4 * pixel_loop + 0] = t;
-			pixels[4 * pixel_loop + 1] = r;
-			pixels[4 * pixel_loop + 2] = g;
-			pixels[4 * pixel_loop + 3] = b;
-#endif
-		}
-	}
-
 	cairo_surface_mark_dirty(gbitmap->surface);
-
-	gbitmap->converted = true;
 }
 
 /* exported interface documented in gtk/bitmap.h */
@@ -530,13 +283,10 @@ static struct gui_bitmap_table bitmap_table = {
 	.destroy = bitmap_destroy,
 	.set_opaque = bitmap_set_opaque,
 	.get_opaque = bitmap_get_opaque,
-	.test_opaque = bitmap_test_opaque,
 	.get_buffer = bitmap_get_buffer,
 	.get_rowstride = bitmap_get_rowstride,
 	.get_width = nsgtk_bitmap_get_width,
 	.get_height = nsgtk_bitmap_get_height,
-	.get_bpp = bitmap_get_bpp,
-	.save = bitmap_save,
 	.modified = bitmap_modified,
 	.render = bitmap_render,
 };
