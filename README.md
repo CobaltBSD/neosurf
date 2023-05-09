@@ -6,6 +6,8 @@ In the long term, NeoSurf intends to be a web browser for what the web *should* 
 
 For comparison, the total amount of lines of code and text (as measured by `find -print0 | xargs -0 cat | wc -l`) of Firefox (as of version 102.10.0) contains approximately 48,500,000 lines of code and text; NeoSurf, as of 0.6, contains about 457,000, or just about 0.9% of Firefox's codebase. Vanilla NetSurf (as of 3.10) contains about 1,437,000 lines. Furthermore, the text-only browsers Lynx, Links and ELinks use about 478,000, 344,000 and 527,000 lines respectively.
 
+NeoSurf is still in very early development and has some issues; help would be appreciated.
+
 ![NeoSurf](img/sample.png?raw=true "NeoSurf")
 
 ## Why?
