@@ -34,7 +34,7 @@ Both of these are temporary issues and will be fixed very soon.
 
 At build-time, NeoSurf requires Python3, CMake, GNU make (or another CMake-compatible build utility), and a POSIX-compliant shell.
 
-At runtime and build-time, the following libraries and their development headers are already required:
+At runtime and build-time, the following libraries and their development headers are required:
 * libjpeg-turbo
 * libpng
 * zlib
