@@ -8,4 +8,4 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-alig
 
 target_link_libraries(dom-hubbub-bindings nsutils hubbub dom)
 
-install(TARGETS dom-hubbub-bindings DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(TARGETS dom-hubbub-bindings DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})

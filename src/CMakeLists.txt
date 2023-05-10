@@ -221,7 +221,7 @@ endif()
 #TODO: All .ui files in src/frontends/gtk/res/gtk3 need to go into $HOME/.config/neosurf
 
 #TODO: replace lib with CMAKE_INSTALL_LIBDIR - do this in other CMakeLists.txt as well
-install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf)
 install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
 

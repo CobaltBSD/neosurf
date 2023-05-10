@@ -100,4 +100,4 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-alig
 
 target_link_libraries(dom nsutils parserutils xml2)
 
-install(TARGETS dom DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(TARGETS dom DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})

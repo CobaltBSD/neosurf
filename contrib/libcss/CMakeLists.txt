@@ -197,4 +197,4 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-alig
 
 target_link_libraries(css nsutils parserutils)
 
-install(TARGETS css DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(TARGETS css DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})

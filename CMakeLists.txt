@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(neosurf)
 
+set(CMAKE_INSTALL_LIBDIR lib CACHE STRING "Directory to install to inside of CMAKE_INSTALL_PREFIX")
+
 # Abort if source or build directory has white space
 if(${CMAKE_SOURCE_DIR} MATCHES "^(.* +.*)+$")
 	message(FATAL_ERROR "neosurf's source cannot be in a directory containing white space. Please move to a different location and try again.")
