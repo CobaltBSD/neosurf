@@ -34,18 +34,20 @@ Both of these are temporary issues and will be fixed very soon.
 
 At build-time, NeoSurf requires Python3, CMake, GNU make (or another CMake-compatible build utility), and a POSIX-compliant shell.
 
-At runtime and build-time, the following libraries, which you probably already have, are also required:
-libjpeg-turbo
-libpng
-zlib
-cairo
-pango
-wayland
-xkbcommon
-glib
-libcurl
-OpenSSL (LibreSSL supported)
-libwebp
-gdk-pixbuf
-gtk+3
-libpsl
+At runtime and build-time, the following libraries and their development headers are already required:
+* libjpeg-turbo
+* libpng
+* zlib
+* cairo
+* pango
+* wayland
+* xkbcommon
+* glib
+* libcurl
+* OpenSSL (LibreSSL supported)
+* libwebp
+* gdk-pixbuf
+* gtk+3
+* libpsl
+
+However you obtain these utilities and libraries depends on your distribution.
