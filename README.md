@@ -48,10 +48,6 @@ $ make
 $ sudo make install
 ```
 
-Note: At the moment, the vi frontend is hardcoded to the source directory (meaning it should not be deleted or moved) and the Gtk3 frontend requires manually copying the .ui files in src/frontends/gtk/res/gtk3 to $HOME/.config/neosurf
-
-Both of these are temporary issues and will be resolved very soon.
-
 At build-time, NeoSurf requires Python3, CMake, GNU make (or another CMake-compatible build utility), and a POSIX-compliant shell.
 
 At runtime and build-time, the following libraries and their development headers are required:
