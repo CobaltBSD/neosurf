@@ -8,6 +8,6 @@ add_library(parserutils SHARED
 	src/utils/vector.c
 )
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include/ -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/src -std=c99 -Werror -pedantic -DNDEBUG")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/src -std=c99 -Werror -pedantic -DNDEBUG")
 
 install(TARGETS parserutils DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

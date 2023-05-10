@@ -9,7 +9,7 @@ add_library(svgtiny SHARED
 	src/svgtiny_list.c
 )
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include/ -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/src -std=c99 -Werror -pedantic -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -Wno-unused-function -I${CMAKE_BINARY_DIR}/contrib/libsvgtiny -Wno-missing-prototypes")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/src -std=c99 -Werror -pedantic -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -Wno-unused-function -I${CMAKE_BINARY_DIR}/contrib/libsvgtiny -Wno-missing-prototypes")
 
 target_link_libraries(svgtiny nsutils dom m)
 

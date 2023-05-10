@@ -1,3 +1,9 @@
+0.7 - May 9 2023 (in dev)
+- Added screen of NeoSurf to README.md
+- Added LICENSE file
+- Prevent building if source or build dirs have whitespace
+- Added clear error messages when build-essential utilities are missing
+
 0.6 - May 8 2023
 - Incorporated upstream commits to NetSurf and its subprojects
 - Improved LibreSSL support

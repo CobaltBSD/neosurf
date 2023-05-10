@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(nsgenbind)
 
+#TODO: support byacc
 execute_process(COMMAND flex -P=nsgenbind_ --outfile=${CMAKE_BINARY_DIR}/nsgenbind-lexer.c --header-file=${CMAKE_BINARY_DIR}/nsgenbind-lexer.h ${CMAKE_SOURCE_DIR}/src/nsgenbind-lexer.l)
 execute_process(COMMAND bison --output=${CMAKE_BINARY_DIR}/nsgenbind-parser.c --header=${CMAKE_BINARY_DIR}/nsgenbind-parser.h ${CMAKE_SOURCE_DIR}/src/nsgenbind-parser.y -p nsgenbind_)
 
