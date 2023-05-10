@@ -223,6 +223,7 @@ endif()
 #TODO: replace lib with CMAKE_INSTALL_LIBDIR - do this in other CMakeLists.txt as well
 install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf)
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 if(NEOSURF_BUILD_VI_FRONTEND)
 	install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

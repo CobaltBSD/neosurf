@@ -31,11 +31,11 @@ endif()
 
 #TODO: appimage building support
 
-add_subdirectory(contrib)
-add_subdirectory(src)
-
 option(NEOSURF_BUILD_GTK3_FRONTEND "Build and install the bundled Gtk3 frontend" ON)
 option(NEOSURF_BUILD_VI_FRONTEND "Build and install the bundled Visurf frontend" ON)
 option(NEOSURF_INSTALL_NSGENBIND "Installs the nsgenbind utility with neosurf" OFF)
 option(NEOSURF_INSTALL_GEN_PARSER "Installs the libcss gen_parser utility with neosurf" OFF)
 option(NEOSURF_BUILD_XXD "Build and install a complimentary xxd implementation" OFF)
+
+add_subdirectory(contrib)
+add_subdirectory(src)
