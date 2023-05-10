@@ -27,8 +27,6 @@ if(${BISON} STREQUAL BISON-NOTFOUND)
 	message(FATAL_ERROR "Missing `bison` utility. Please refer to your distribution package manager for obtaining this.")
 endif()
 
-#TODO need to install in $HOME/.config/neosurf: src/resources/icons, src/frontends/gtk/res/throbber, src/resources/en/*, src/resources/{default,adblock,internal,quirks}.css, src/resources/neosurf.png, src/frontends/gtk/res/default.ico, src/frontends/gtk/res/languages, src/frontends/gtk/res/accelerators
-
 #TODO: appimage building support
 
 option(NEOSURF_BUILD_GTK3_FRONTEND "Build and install the bundled Gtk3 frontend" ON)
