@@ -23,8 +23,27 @@ In the root of the source tree:
 ```sh
 $ mkdir -v build
 $ cd build
+```
 
-$ cmake ..
+To build with both Visurf and Gtk3 frontends:
+```sh
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+```
+To build with Visurf only:
+```sh
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_VI_FRONTEND=OFF
+```
+To build with Gtk3 only:
+```sh
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK3_FRONTEND=OFF
+```
+To build libneosurf only (no frontend):
+```sh
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK3_FRONTEND=OFF -DNEOSURF_BUILD_VI_FRONTEND=OFF
+```
+
+Then:
+```sh
 $ make
 $ sudo make install
 ```
@@ -39,16 +58,16 @@ At runtime and build-time, the following libraries and their development headers
 * libjpeg-turbo
 * libpng
 * zlib
-* cairo
-* pango
-* wayland
-* xkbcommon
-* glib
 * libcurl
-* OpenSSL (LibreSSL supported)
+* OpenSSL or LibreSSL
 * libwebp
-* gdk-pixbuf
-* gtk+3
 * libpsl
+* cairo (Visurf and Gtk3 only)
+* pango (Visurf and Gtk3 only)
+* wayland (Visurf only)
+* xkbcommon (Visurf only)
+* glib (Gtk3 only)
+* gdk-pixbuf (Gtk3 only)
+* gtk+3 (Gtk3 only)
 
 However you obtain these utilities and libraries depends on your distribution.

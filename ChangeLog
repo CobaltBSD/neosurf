@@ -1,3 +1,7 @@
+0.8 - in dev
+- Improved clarity of build instructions in README
+- Visurf and Gtk3 frontends now optional
+
 0.7 - May 9 2023
 - Added screen of NeoSurf to README.md
 - Added LICENSE file

@@ -141,57 +141,61 @@ add_library(neosurf SHARED
 	${DSRC}
 )
 
-add_executable(neosurf-vi
-	frontends/visurf/xdg-shell.c
-	frontends/visurf/xdg-decoration.c
-	frontends/visurf/main.c
-	frontends/visurf/bitmap.c
-	frontends/visurf/commands.c
-	frontends/visurf/fetch.c
-	frontends/visurf/getopt.c
-	frontends/visurf/keybindings.c
-	frontends/visurf/layout.c
-	frontends/visurf/pool-buffer.c
-	frontends/visurf/plotters.c
-	frontends/visurf/window.c
-	frontends/visurf/settings.c
-	frontends/visurf/undo.c
-)
+if(NEOSURF_BUILD_VI_FRONTEND)
+	add_executable(neosurf-vi
+		frontends/visurf/xdg-shell.c
+		frontends/visurf/xdg-decoration.c
+		frontends/visurf/main.c
+		frontends/visurf/bitmap.c
+		frontends/visurf/commands.c
+		frontends/visurf/fetch.c
+		frontends/visurf/getopt.c
+		frontends/visurf/keybindings.c
+		frontends/visurf/layout.c
+		frontends/visurf/pool-buffer.c
+		frontends/visurf/plotters.c
+		frontends/visurf/window.c
+		frontends/visurf/settings.c
+		frontends/visurf/undo.c
+	)
+endif()
 
-add_executable(neosurf-gtk3
-	frontends/gtk/gui.c
-	frontends/gtk/misc.c
-	frontends/gtk/schedule.c
-	frontends/gtk/layout_pango.c
-	frontends/gtk/bitmap.c
-	frontends/gtk/plotters.c
-	frontends/gtk/scaffolding.c
-	frontends/gtk/gdk.c
-	frontends/gtk/completion.c
-	frontends/gtk/throbber.c
-	frontends/gtk/accelerator.c
-	frontends/gtk/selection.c
-	frontends/gtk/window.c
-	frontends/gtk/fetch.c
-	frontends/gtk/download.c
-	frontends/gtk/menu.c
-	frontends/gtk/print.c
-	frontends/gtk/search.c
-	frontends/gtk/tabs.c
-	frontends/gtk/toolbar.c
-	frontends/gtk/compat.c
-	frontends/gtk/viewdata.c
-	frontends/gtk/viewsource.c
-	frontends/gtk/preferences.c
-	frontends/gtk/about.c
-	frontends/gtk/resources.c
-	frontends/gtk/corewindow.c
-	frontends/gtk/local_history.c
-	frontends/gtk/global_history.c
-	frontends/gtk/cookies.c
-	frontends/gtk/hotlist.c
-	frontends/gtk/page_info.c
-)
+if(NEOSURF_BUILD_GTK3_FRONTEND)
+	add_executable(neosurf-gtk3
+		frontends/gtk/gui.c
+		frontends/gtk/misc.c
+		frontends/gtk/schedule.c
+		frontends/gtk/layout_pango.c
+		frontends/gtk/bitmap.c
+		frontends/gtk/plotters.c
+		frontends/gtk/scaffolding.c
+		frontends/gtk/gdk.c
+		frontends/gtk/completion.c
+		frontends/gtk/throbber.c
+		frontends/gtk/accelerator.c
+		frontends/gtk/selection.c
+		frontends/gtk/window.c
+		frontends/gtk/fetch.c
+		frontends/gtk/download.c
+		frontends/gtk/menu.c
+		frontends/gtk/print.c
+		frontends/gtk/search.c
+		frontends/gtk/tabs.c
+		frontends/gtk/toolbar.c
+		frontends/gtk/compat.c
+		frontends/gtk/viewdata.c
+		frontends/gtk/viewsource.c
+		frontends/gtk/preferences.c
+		frontends/gtk/about.c
+		frontends/gtk/resources.c
+		frontends/gtk/corewindow.c
+		frontends/gtk/local_history.c
+		frontends/gtk/global_history.c
+		frontends/gtk/cookies.c
+		frontends/gtk/hotlist.c
+		frontends/gtk/page_info.c
+	)
+endif()
 
 if(NEOSURF_BUILD_XXD)
 	add_executable(xxd
@@ -207,15 +211,23 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-alig
 
 # Note: libpsl used for detecting supercookies
 target_link_libraries(neosurf css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl webp)
-target_link_libraries(neosurf-vi css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl neosurf)
-target_link_libraries(neosurf-gtk3 css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl neosurf gtk-3 glib-2.0 gdk-3 gdk_pixbuf-2.0 gio-2.0)
+if(NEOSURF_BUILD_VI_FRONTEND)
+	target_link_libraries(neosurf-vi css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl neosurf)
+endif()
+if(NEOSURF_BUILD_GTK3_FRONTEND)
+	target_link_libraries(neosurf-gtk3 css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl neosurf gtk-3 glib-2.0 gdk-3 gdk_pixbuf-2.0 gio-2.0)
+endif()
 
 #TODO: All .ui files in src/frontends/gtk/res/gtk3 need to go into $HOME/.config/neosurf
 
 #TODO: replace lib with CMAKE_INSTALL_LIBDIR - do this in other CMakeLists.txt as well
 install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(TARGETS neosurf-gtk3 DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+if(NEOSURF_BUILD_VI_FRONTEND)
+	install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
+if(NEOSURF_BUILD_GTK3_FRONTEND)
+	install(TARGETS neosurf-gtk3 DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
 
 if(NEOSURF_INSTALL_NSGENBIND)
 	install(FILES ${CMAKE_BINARY_DIR}/contrib/nsgenbind/nsgenbind DESTINATION ${CMAKE_INSTALL_PREFIX}/bin PERMISSIONS WORLD_EXECUTE)
