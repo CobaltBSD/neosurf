@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.20)
 project(neosurf)
 
 # Abort if source or build directory has white space
-if(${CMAKE_SOURCE_DIR} MATCHES "^(.*\\s+.*)+$")
-	message(FATAL_ERROR "neosurf's source cannot be in a directory containing white space. Please move to a different location and try again.")
-endif()
-if(${CMAKE_BINARY_DIR} MATCHES "^(.*\\s+.*)+$")
-	message(FATAL_ERROR "neosurf cannot be built in a directory containing white space. Please move to a different location and try again.")
-endif()
+#if(${CMAKE_SOURCE_DIR} MATCHES "^(.*\\s+.*)+$")
+#	message(FATAL_ERROR "neosurf's source cannot be in a directory containing white space. Please move to a different location and try again.")
+#endif()
+#if(${CMAKE_BINARY_DIR} MATCHES "^(.*\\s+.*)+$")
+#	message(FATAL_ERROR "neosurf cannot be built in a directory containing white space. Please move to a different location and try again.")
+#endif()
 
 # Check for required programs
 find_program(GPERF gperf)
