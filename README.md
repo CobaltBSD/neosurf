@@ -58,6 +58,7 @@ At runtime and build-time, the following libraries and their development headers
 * OpenSSL or LibreSSL
 * libwebp
 * libpsl
+* gperf
 * cairo (Visurf and Gtk3 only)
 * pango (Visurf and Gtk3 only)
 * wayland (Visurf only)
