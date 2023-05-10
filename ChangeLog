@@ -1,6 +1,8 @@
 0.8 - in dev
 - Improved clarity of build instructions in README
 - Visurf and Gtk3 frontends now optional
+- Resources required for the frontends are now installed properly in
+${CMAKE_INSTALL_PREFIX}/share
 
 0.7 - May 9 2023
 - Added screen of NeoSurf to README.md

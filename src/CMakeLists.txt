@@ -207,7 +207,7 @@ endif()
 
 # lol
 #TODO: use pkg config for most of these
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I\"${CMAKE_SOURCE_DIR}/include\" -I\"${CMAKE_SOURCE_DIR}/src\" -std=c99 -Werror -g -I\"${CMAKE_SOURCE_DIR}/contrib/libnsutils/include\" -I\"${CMAKE_SOURCE_DIR}/src/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include\" -Wno-unused-parameter -I\"${CMAKE_SOURCE_DIR}/src/content/handlers\" -Wno-unused-but-set-variable -I\"${CMAKE_SOURCE_DIR}/contrib/libcss/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libdom/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libhubbub/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libnsgif/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/librosprite/include\" -Wno-cast-align -I\"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include\" -I\"${CMAKE_BINARY_DIR}\" -I\"${CMAKE_SOURCE_DIR}/contrib/libparserutils/include\" -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/visurf/res\\\" -I\"${CMAKE_SOURCE_DIR}/src/frontends\" -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -DLIBCURL_VERSION_NUM=0x073800 -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_SOURCE_DIR}/src/frontends/gtk/res\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I\"${CMAKE_SOURCE_DIR}/gen\" -I\"${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape\" -I\"${CMAKE_BINARY_DIR}/duktape\"")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I\"${CMAKE_SOURCE_DIR}/include\" -I\"${CMAKE_SOURCE_DIR}/src\" -std=c99 -Werror -g -I\"${CMAKE_SOURCE_DIR}/contrib/libnsutils/include\" -I\"${CMAKE_SOURCE_DIR}/src/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include\" -Wno-unused-parameter -I\"${CMAKE_SOURCE_DIR}/src/content/handlers\" -Wno-unused-but-set-variable -I\"${CMAKE_SOURCE_DIR}/contrib/libcss/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libdom/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libhubbub/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libnsgif/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/librosprite/include\" -Wno-cast-align -I\"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include\" -I\"${CMAKE_BINARY_DIR}\" -I\"${CMAKE_SOURCE_DIR}/contrib/libparserutils/include\" -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -I\"${CMAKE_SOURCE_DIR}/src/frontends\" -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I\"${CMAKE_SOURCE_DIR}/gen\" -I\"${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape\" -I\"${CMAKE_BINARY_DIR}/duktape\"")
 
 # Note: libpsl used for detecting supercookies
 target_link_libraries(neosurf css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl webp)
@@ -222,11 +222,17 @@ endif()
 
 #TODO: replace lib with CMAKE_INSTALL_LIBDIR - do this in other CMakeLists.txt as well
 install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf)
+
 if(NEOSURF_BUILD_VI_FRONTEND)
 	install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 endif()
 if(NEOSURF_BUILD_GTK3_FRONTEND)
 	install(TARGETS neosurf-gtk3 DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
+
+if(NEOSURF_BUILD_VI_FRONTEND OR NEOSURF_BUILD_GTK3_FRONTEND) # Visurf uses the same resources as the Gtk3 frontend
+	install(DIRECTORY frontends/gtk/res/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3)
 endif()
 
 if(NEOSURF_INSTALL_NSGENBIND)
