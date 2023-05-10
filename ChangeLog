@@ -2,6 +2,8 @@
 - Reworked README.md
 - Adding some styling guidelines to CONTRIBUTING.md
 - Added new pictures of NeoSurf
+- Improved how cmake handles CFLAGS
+- Fixed dependency searching
 
 0.8 - May 10 2023
 - Improved clarity of build instructions in README

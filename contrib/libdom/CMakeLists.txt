@@ -1,3 +1,7 @@
+find_package(PkgConfig)
+
+pkg_check_modules(LIBXML2 REQUIRED libxml-2.0)
+
 add_library(dom SHARED
 	src/core/string.c
 	src/core/node.c
@@ -96,8 +100,8 @@ add_library(dom SHARED
 
 add_subdirectory(bindings/hubbub)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/src -std=c99 -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -Werror -I${CMAKE_SOURCE_DIR}/contrib/libdom/bindings -I/usr/include/libxml2 -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include")
-
-target_link_libraries(dom nsutils parserutils xml2)
+target_link_libraries(dom nsutils parserutils ${LIBXML2_LIBRARIES})
 
 install(TARGETS dom DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/contrib/libdom/src -I${LIBXML2_INCLUDE_DIRS}")

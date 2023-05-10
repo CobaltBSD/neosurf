@@ -54,12 +54,12 @@ At build-time, NeoSurf requires Python3, CMake, GNU make (or another CMake-compa
 At runtime and build-time, the following libraries and their development headers are required:
 * libjpeg-turbo
 * libpng
-* zlib
 * libcurl
 * OpenSSL or LibreSSL
 * libwebp
 * libpsl
 * gperf
+* libxml2
 * cairo (Visurf and Gtk3 only)
 * pango (Visurf and Gtk3 only)
 * wayland (Visurf only)

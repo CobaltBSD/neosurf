@@ -1,3 +1,48 @@
+find_package(PkgConfig)
+
+pkg_check_modules(LIBJPEG REQUIRED libjpeg)
+include_directories(${LIBJPEG_INCLUDE_DIRS})
+
+pkg_check_modules(LIBPNG REQUIRED libpng)
+include_directories(${LIBPNG_INCLUDE_DIRS})
+
+pkg_check_modules(LIBCURL REQUIRED libcurl)
+include_directories(${LIBCURL_INCLUDE_DIRS})
+
+pkg_check_modules(LIBCRYPTO REQUIRED libcrypto)
+include_directories(${LIBCRYPTO_INCLUDE_DIRS})
+
+pkg_check_modules(LIBPSL REQUIRED libpsl)
+include_directories(${LIBPSL_INCLUDE_DIRS})
+
+pkg_check_modules(LIBWEBP REQUIRED libwebp)
+include_directories(${LIBWEBP_INCLUDE_DIRS})
+
+if(NEOSURF_BUILD_GTK3_FRONTEND)
+	pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+	include_directories(${GTK3_INCLUDE_DIRS})
+endif()
+
+if(NEOSURF_BUILD_VI_FRONTEND)
+	pkg_check_modules(XKBCOMMON REQUIRED xkbcommon)
+	include_directories(${XKBCOMMON_INCLUDE_DIRS})
+
+	pkg_check_modules(CAIRO REQUIRED cairo)
+	include_directories(${CAIRO_INCLUDE_DIRS})
+
+	pkg_check_modules(WAYLAND_CURSOR REQUIRED wayland-cursor)
+	include_directories(${WAYLAND_CURSOR_INCLUDE_DIRS})
+
+	pkg_check_modules(WAYLAND_CLIENT REQUIRED wayland-client)
+	include_directories(${WAYLAND_CLIENT_INCLUDE_DIRS})
+
+	pkg_check_modules(PANGO REQUIRED pango)
+	include_directories(${PANGO_INCLUDE_DIRS})
+
+	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo)
+	include_directories(${PANGOCAIRO_INCLUDE_DIRS})
+endif()
+
 # Build nsgenbind at configure time
 execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ${CMAKE_SOURCE_DIR}/contrib/nsgenbind -G ${CMAKE_GENERATOR})
 execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/nsgenbind)
@@ -203,24 +248,18 @@ if(NEOSURF_BUILD_XXD)
 	)
 endif()
 
-#TODO: fix GTK_RESPATH
-
-# lol
-#TODO: use pkg config for most of these
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -I\"${CMAKE_SOURCE_DIR}/include\" -I\"${CMAKE_SOURCE_DIR}/src\" -std=c99 -Werror -g -I\"${CMAKE_SOURCE_DIR}/contrib/libnsutils/include\" -I\"${CMAKE_SOURCE_DIR}/src/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libwapcaplet/include\" -Wno-unused-parameter -I\"${CMAKE_SOURCE_DIR}/src/content/handlers\" -Wno-unused-but-set-variable -I\"${CMAKE_SOURCE_DIR}/contrib/libcss/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libdom/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libhubbub/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/libnsgif/include\" -I\"${CMAKE_SOURCE_DIR}/contrib/librosprite/include\" -Wno-cast-align -I\"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include\" -I\"${CMAKE_BINARY_DIR}\" -I\"${CMAKE_SOURCE_DIR}/contrib/libparserutils/include\" -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -I\"${CMAKE_SOURCE_DIR}/src/frontends\" -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/lib64/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/harfbuzz -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DDUK_OPT_HAVE_CUSTOM_H -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/atk-1.0 -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I\"${CMAKE_SOURCE_DIR}/gen\" -I\"${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape\" -I\"${CMAKE_BINARY_DIR}/duktape\"")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -std=c99 -Werror -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-cast-align -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/src -I${CMAKE_SOURCE_DIR}/src/content/handlers -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/src/frontends -I${CMAKE_BINARY_DIR}")
 
 # Note: libpsl used for detecting supercookies
-target_link_libraries(neosurf css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl webp)
+set(NEOSURF_COMMON_LIBS css dom nsutils parserutils nsgif nsbmp svgtiny dom-hubbub-bindings ${LIBCRYPTO_LIBRARIES} ${LIBPNG_LIBRARIES} ${LIBCURL_LIBRARIES} ${LIBJPEG_LIBRARIES} ${LIBWEBP_LIBRARIES} ${LIBPSL_LIBRARIES})
+target_link_libraries(neosurf ${NEOSURF_COMMON_LIBS})
 if(NEOSURF_BUILD_VI_FRONTEND)
-	target_link_libraries(neosurf-vi css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl neosurf)
+	target_link_libraries(neosurf-vi neosurf ${NEOSURF_COMMON_LIBS} ${XKBCOMMON_LIBRARIES} ${CAIRO_LIBRARIES} ${WAYLAND_CURSOR_LIBRARIES} ${WAYLAND_CLIENT_LIBRARIES} ${PANGO_LIBRARIES} ${PANGOCAIRO_LIBRARIES})
 endif()
 if(NEOSURF_BUILD_GTK3_FRONTEND)
-	target_link_libraries(neosurf-gtk3 css dom nsbmp nsgif jpeg m png svgtiny z nsutils dom-hubbub-bindings cairo pango-1.0 pangocairo-1.0 wayland-client wayland-cursor xkbcommon gobject-2.0 curl ssl crypto psl neosurf gtk-3 glib-2.0 gdk-3 gdk_pixbuf-2.0 gio-2.0)
+	target_link_libraries(neosurf-gtk3 neosurf m ${NEOSURF_COMMON_LIBS} ${GTK3_LIBRARIES})
 endif()
 
-#TODO: All .ui files in src/frontends/gtk/res/gtk3 need to go into $HOME/.config/neosurf
-
-#TODO: replace lib with CMAKE_INSTALL_LIBDIR - do this in other CMakeLists.txt as well
 install(TARGETS neosurf DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf)
 install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

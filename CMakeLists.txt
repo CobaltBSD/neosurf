@@ -37,5 +37,8 @@ option(NEOSURF_INSTALL_NSGENBIND "Installs the nsgenbind utility with neosurf" O
 option(NEOSURF_INSTALL_GEN_PARSER "Installs the libcss gen_parser utility with neosurf" OFF)
 option(NEOSURF_BUILD_XXD "Build and install a complimentary xxd implementation" OFF)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -std=c99 -Werror -Wno-unused-variable -DNDEBUG -Wno-unused-function -D_POSIX_C_SOURCE=200809L")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/contrib/libnsgif/include -I${CMAKE_BINARY_DIR}/contrib/libsvgtiny -I${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -I${CMAKE_SOURCE_DIR}/contrib/libcss/include -I${CMAKE_BINARY_DIR}/contrib/libcss -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/src -I${CMAKE_BINARY_DIR}/contrib/libhubbub/src")
+
 add_subdirectory(contrib)
 add_subdirectory(src)
