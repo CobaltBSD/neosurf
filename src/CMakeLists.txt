@@ -67,11 +67,9 @@ add_library(neosurf SHARED
 	content/fetchers/resource.c
 	content/fetchers/curl.c
 	content/fetchers/about/about.c
-	content/fetchers/about/bindings.c
 	content/fetchers/about/blank.c
 	content/fetchers/about/certificate.c
 	content/fetchers/about/chart.c
-	content/fetchers/about/choices.c
 	content/fetchers/about/config.c
 	content/fetchers/about/imagecache.c
 	content/fetchers/about/nscolours.c
@@ -248,7 +246,7 @@ if(NEOSURF_BUILD_XXD)
 	)
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -std=c99 -Werror -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-cast-align -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_NS_SVG -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/src -I${CMAKE_SOURCE_DIR}/src/content/handlers -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/src/frontends -I${CMAKE_BINARY_DIR}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -std=c99 -Werror -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-cast-align -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/src -I${CMAKE_SOURCE_DIR}/src/content/handlers -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/src/frontends -I${CMAKE_BINARY_DIR}")
 
 # Note: libpsl used for detecting supercookies
 set(NEOSURF_COMMON_LIBS css dom nsutils parserutils nsgif nsbmp svgtiny dom-hubbub-bindings ${LIBCRYPTO_LIBRARIES} ${LIBPNG_LIBRARIES} ${LIBCURL_LIBRARIES} ${LIBJPEG_LIBRARIES} ${LIBWEBP_LIBRARIES} ${LIBPSL_LIBRARIES})
@@ -286,3 +284,5 @@ endif()
 if(NEOSURF_BUILD_XXD)
 	install(TARGETS xxd DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 endif()
+
+#TODO: support QuickJS as an alternative to Duktape

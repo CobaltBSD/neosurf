@@ -28,9 +28,6 @@
 #include "css/hints.h"
 #include "css/select.h"
 
-#define LOG_STATS
-#undef LOG_STATS
-
 /******************************************************************************
  * Utility functions                                                          *
  ******************************************************************************/
@@ -1727,10 +1724,6 @@ css_error node_presentational_hint(void *pw, void *node,
 		css_hint_bg_color(pw, node);
 		css_hint_bg_image(pw, node);
 	}
-
-#ifdef LOG_STATS
-	NSLOG(neosurf, INFO, "Properties with hints: %i", hint_ctx.len);
-#endif
 
 	css_hint_get_hints(hints, nhints);
 

@@ -37,9 +37,6 @@
 #include "css/hints.h"
 #include "css/internal.h"
 
-/* Define to trace import fetches */
-#undef NSCSS_IMPORT_TRACE
-
 /** Screen DPI in fixed point units: defaults to 90, which RISC OS uses */
 css_fixed nscss_screen_dpi = F_90;
 
@@ -604,12 +601,6 @@ css_error nscss_handle_import(void *pw, css_stylesheet *parent,
 	nsurl_unref(ns_url);
 	nsurl_unref(ns_ref);
 
-#ifdef NSCSS_IMPORT_TRACE
-	NSLOG(neosurf, INFO, "Import %d '%s' -> (handle: %p ctx: %p)",
-	      c->import_count, lwc_string_data(url),
-	      c->imports[c->import_count].c, ctx);
-#endif
-
 	c->import_count++;
 
 	return CSS_OK;
@@ -628,10 +619,6 @@ nserror nscss_import(hlcache_handle *handle,
 {
 	nscss_import_ctx *ctx = pw;
 	css_error error = CSS_OK;
-
-#ifdef NSCSS_IMPORT_TRACE
-	NSLOG(neosurf, INFO, "Event %d for %p (%p)", event->type, handle, ctx);
-#endif
 
 	assert(ctx->css->imports[ctx->index].c == handle);
 
@@ -668,11 +655,6 @@ css_error nscss_import_complete(nscss_import_ctx *ctx)
 	/* If this import is the next to be registered, do so */
 	if (ctx->css->next_to_register == ctx->index)
 		error = nscss_register_imports(ctx->css);
-
-#ifdef NSCSS_IMPORT_TRACE
-	NSLOG(neosurf, INFO, "Destroying import context %p for %d", ctx,
-	      ctx->index);
-#endif
 
 	/* No longer need import context */
 	free(ctx);

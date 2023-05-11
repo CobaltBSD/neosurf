@@ -1020,49 +1020,8 @@ static bool fetch_curl_start(void *vfetch)
  */
 static void fetch_curl_cache_handle(CURL *handle, lwc_string *host)
 {
-#if LIBCURL_VERSION_NUM >= 0x071e00
-	/* 7.30.0 or later has its own connection caching; suppress ours */
 	curl_easy_cleanup(handle);
 	return;
-#else
-	struct cache_handle *h = 0;
-	int c;
-	RING_FINDBYLWCHOST(curl_handle_ring, h, host);
-	if (h) {
-		/* Already have a handle cached for this hostname */
-		curl_easy_cleanup(handle);
-		return;
-	}
-	/* We do not have a handle cached, first up determine if the cache is full */
-	RING_GETSIZE(struct cache_handle, curl_handle_ring, c);
-	if (c >= nsoption_int(max_cached_fetch_handles)) {
-		/* Cache is full, so, we rotate the ring by one and
-		 * replace the oldest handle with this one. We do this
-		 * without freeing/allocating memory (except the
-		 * hostname) and without removing the entry from the
-		 * ring and then re-inserting it, in order to be as
-		 * efficient as we can.
-		 */
-		if (curl_handle_ring != NULL) {
-			h = curl_handle_ring;
-			curl_handle_ring = h->r_next;
-			curl_easy_cleanup(h->handle);
-			h->handle = handle;
-			lwc_string_unref(h->host);
-			h->host = lwc_string_ref(host);
-		} else {
-			/* Actually, we don't want to cache any handles */
-			curl_easy_cleanup(handle);
-		}
-
-		return;
-	}
-	/* The table isn't full yet, so make a shiny new handle to add to the ring */
-	h = (struct cache_handle*)malloc(sizeof(struct cache_handle));
-	h->handle = handle;
-	h->host = lwc_string_ref(host);
-	RING_INSERT(curl_handle_ring, h);
-#endif
 }
 
 
@@ -1402,8 +1361,6 @@ static void fetch_curl_poll(lwc_string *scheme_ignored)
 }
 
 
-
-
 /**
  * Callback function for fetch progress.
  */
@@ -1649,8 +1606,6 @@ nserror fetch_curl_register(void)
 		.finalise = fetch_curl_finalise
 	};
 
-#if LIBCURL_VERSION_NUM >= 0x073800
-	/* version 7.56.0 can select which SSL backend to use */
 	CURLsslset setres;
 
 	setres = curl_global_sslset(CURLSSLBACKEND_OPENSSL, NULL, NULL);
@@ -1659,7 +1614,6 @@ nserror fetch_curl_register(void)
 	} else {
 		curl_with_openssl = false;
 	}
-#endif
 
 	NSLOG(neosurf, INFO, "curl_version %s", curl_version());
 
@@ -1675,8 +1629,6 @@ nserror fetch_curl_register(void)
 		return NSERROR_INIT_FAILED;
 	}
 
-#if LIBCURL_VERSION_NUM >= 0x071e00
-	/* built against 7.30.0 or later: configure caching */
 	{
 		CURLMcode mcode;
 		int maxconnects = nsoption_int(max_fetchers) +
@@ -1694,7 +1646,6 @@ nserror fetch_curl_register(void)
 		SETOPT(CURLMOPT_MAX_TOTAL_CONNECTIONS, maxconnects);
 		SETOPT(CURLMOPT_MAX_HOST_CONNECTIONS, nsoption_int(max_fetchers_per_host));
 	}
-#endif
 
 	/* Create a curl easy handle with the options that are common to all
 	 *  fetches.
@@ -1746,31 +1697,14 @@ nserror fetch_curl_register(void)
 		SETOPT(CURLOPT_CAPATH, nsoption_charp(ca_path));
 	}
 
-#if LIBCURL_VERSION_NUM < 0x073800
-	/*
-	 * before 7.56.0 Detect openssl from whether the SSL CTX
-	 *  function API works
-	 */
-	code = curl_easy_setopt(fetch_blank_curl, CURLOPT_SSL_CTX_FUNCTION, NULL);
-	if (code != CURLE_OK) {
-		curl_with_openssl = false;
-	} else {
-		curl_with_openssl = true;
-	}
-#endif
-
 	if (curl_with_openssl) {
 		/* only set the cipher list with openssl otherwise the
 		 *  fetch fails with "Unknown cipher in list"
 		 */
-#if LIBCURL_VERSION_NUM >= 0x073d00
-		/* Need libcurl 7.61.0 or later built against OpenSSL with
-		 * TLS1.3 support */
 		code = curl_easy_setopt(fetch_blank_curl,
 				CURLOPT_TLS13_CIPHERS, CIPHER_SUITES);
 		if (code != CURLE_OK && code != CURLE_NOT_BUILT_IN)
 			goto curl_easy_setopt_failed;
-#endif
 		SETOPT(CURLOPT_SSL_CIPHER_LIST, CIPHER_LIST);
 	}
 
@@ -1812,9 +1746,7 @@ curl_easy_setopt_failed:
 	NSLOG(neosurf, INFO, "curl_easy_setopt failed.");
 	return NSERROR_INIT_FAILED;
 
-#if LIBCURL_VERSION_NUM >= 0x071e00
 curl_multi_setopt_failed:
 	NSLOG(neosurf, INFO, "curl_multi_setopt failed.");
 	return NSERROR_INIT_FAILED;
-#endif
 }

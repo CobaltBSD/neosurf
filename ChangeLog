@@ -1,9 +1,12 @@
-0.9 - in dev
+0.9 - May 11 2023
 - Reworked README.md
 - Adding some styling guidelines to CONTRIBUTING.md
 - Added new pictures of NeoSurf
 - Improved how cmake handles CFLAGS
 - Fixed dependency searching
+- Visurf now defaults to about:welcome
+- Various minor changes
+- Removed about:bindings and about:Choices (in favor of about:config)
 
 0.8 - May 10 2023
 - Improved clarity of build instructions in README

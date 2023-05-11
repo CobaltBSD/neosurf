@@ -255,14 +255,6 @@ static void image_cache__unlink(struct image_cache_entry_s *centry)
 static void image_cache__free_bitmap(struct image_cache_entry_s *centry)
 {
 	if (centry->bitmap != NULL) {
-#ifdef IMAGE_CACHE_VERBOSE
-		NSLOG(neosurf, INFO,
-		      "Freeing bitmap %p size %d age %d redraw count %d",
-		      centry->bitmap,
-		      centry->bitmap_size,
-		      image_cache->current_age - centry->bitmap_age,
-		      centry->redraw_count);
-#endif
 		guit->bitmap->destroy(centry->bitmap);
 		centry->bitmap = NULL;
 		image_cache->total_bitmap_size -= centry->bitmap_size;
@@ -281,10 +273,6 @@ static void image_cache__free_bitmap(struct image_cache_entry_s *centry)
  */
 static void image_cache__free_entry(struct image_cache_entry_s *centry)
 {
-#ifdef IMAGE_CACHE_VERBOSE
-	NSLOG(neosurf, INFO, "freeing %p ", centry);
-#endif
-
 	if (centry->redraw_count == 0) {
 		image_cache->total_unrendered++;
 	}
@@ -330,10 +318,6 @@ static void image_cache__background_update(void *p)
 
 	/* increment current cache age */
 	icache->current_age += icache->params.bg_clean_time;
-
-#ifdef IMAGE_CACHE_VERBOSE
-	NSLOG(neosurf, INFO, "Cache age %ds", icache->current_age / 1000);
-#endif
 
 	image_cache__clean(icache);
 
@@ -383,18 +367,9 @@ bool image_cache_speculate(struct content *c)
 	 */
 	if ((image_cache->total_bitmap_size < image_cache->params.limit) &&
 	    (c->size <= image_cache->params.speculative_small)) {
-#ifdef IMAGE_CACHE_VERBOSE
-		NSLOG(neosurf, INFO,
-		      "content size (%d) is smaller than minimum (%d)",
-		      c->size,
-		      SPECULATE_SMALL);
-#endif
 		decision = true;
 	}
 
-#ifdef IMAGE_CACHE_VERBOSE
-	NSLOG(neosurf, INFO, "returning %d", decision);
-#endif
 	return decision;
 }
 

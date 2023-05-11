@@ -28,7 +28,7 @@ struct nsvi_config config = {
 		.like = 0x000000FF,
 	},
 
-	.home = (char *)"about:blank",
+	.home = (char *)"about:welcome",
 
 	.margin = 3,
 

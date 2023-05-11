@@ -46,12 +46,10 @@
 
 #include "private.h"
 #include "about.h"
-#include "bindings.h"
 #include "blank.h"
 #include "certificate.h"
 #include "config.h"
 #include "chart.h"
-#include "choices.h"
 #include "imagecache.h"
 #include "nscolours.h"
 #include "query.h"
@@ -384,25 +382,11 @@ struct about_handlers about_handler_list[] = {
 		false
 	},
 	{
-		"Choices",
-		SLEN("Choices"),
-		NULL,
-		fetch_about_choices_handler,
-		false
-	},
-	{
 		"about",
 		SLEN("about"),
 		NULL,
 		fetch_about_about_handler,
 		true
-	},
-	{
-		"bindings",
-		SLEN("bindings"),
-		NULL,
-		fetch_about_bindings_handler,
-		false
 	},
 	{
 		"nscolours.css",
