@@ -32,11 +32,11 @@ $ cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 ```
 To build with Visurf only:
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_VI_FRONTEND=OFF
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK3_FRONTEND=OFF
 ```
 To build with Gtk3 only:
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK3_FRONTEND=OFF
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_VI_FRONTEND=OFF
 ```
 To build libneosurf only (no frontend):
 ```sh
