@@ -269,7 +269,8 @@ config_compar(const void *a, const void *b)
 static bool
 nsvi_set_filter(struct nsvi_filter *filter, const char *command)
 {
-	int stdinpipe[2];
+	return false; // Filters are not currently used. XXX
+	/*int stdinpipe[2];
 	int stdoutpipe[2];
 	int errpipe[2];
 	int r = pipe(stdinpipe);
@@ -312,7 +313,7 @@ nsvi_set_filter(struct nsvi_filter *filter, const char *command)
 	filter->in = fdopen(stdinpipe[1], "w");
 	filter->out = fdopen(stdoutpipe[0], "r");
 	setvbuf(filter->in, NULL, _IOLBF, 0);
-	return true;
+	return true;*/
 }
 
 bool

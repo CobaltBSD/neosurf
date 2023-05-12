@@ -46,6 +46,8 @@
 #include "xdg-shell.h"
 #include "xdg-decoration.h"
 
+#define SLEN(x) (sizeof((x)) - 1)
+
 char **respaths;
 struct nsvi_state *global_state;
 
@@ -1306,7 +1308,23 @@ main(int argc, char *argv[]) {
 			fatal("nsurl_create failed");
 		}
 	} else {
-		error = nsurl_create(argv[1], &url);
+		struct stat fs;
+		char *addr = NULL;
+		if (stat(argv[1], &fs) == 0) {
+			size_t addrlen;
+			char *rp = realpath(argv[1], NULL);
+			assert(rp != NULL);
+
+			// Calculate file length, plus terminator
+			addrlen = SLEN("file://") + strlen(rp) + 1;
+			addr = malloc(addrlen);
+			assert(addr != NULL);
+			(void) snprintf(addr, addrlen, "file://%s", rp);
+			free(rp);
+		} else {
+			addr = strdup(argv[1]);
+		}
+		error = nsurl_create(addr, &url);
 		if (error != NSERROR_OK) {
 			fatal("nsurl_create failed");
 		}
