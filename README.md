@@ -75,64 +75,122 @@ Since proper instructions don't yet exist elsewhere, I am putting this here.
 
 ### Keybindings
 Ctrl+q, Ctrl+w - Close tab
+
 i - Toggle insert mode (for text boxes)
+
 j, Down - Scroll down
+
 k, Up - Scroll up
+
 h, Left - Scroll left
+
 l, Right - Scroll right
+
 H - Previous page
+
 L - Next page
+
 r - Reload
+
 R - Force reload
+
 o - Shorthand for `:open`
+
 O - Same as above, but opens in a new tab
+
 Ctrl+t - New tab
+
 go - Shorthand for `:open`, but automatically adds the current URL
+
 gO - Same as above, but will open in a new tab
+
 Ctrl+d - Scroll down fast
+
 Ctrl+u - Scroll up fast
+
 gg, Home - Jump to top
+
 G, End - Jump to bottom
+
 Space, Next - Scroll down even faster
+
 Prior - Scroll up even faster
+
 \+ - Zoom in
+
 \- - Zoom out
+
 = - Reset zoom
+
 gt, J, Ctrl+Next - Next tab
+
 gT, K, Ctrl+Prior - Previous tab
+
 f, F - Different variants of follow mode
+
 yy, yt, Yy, Yt, Ctrl+c - Different variants of yank
+
 pp, Pp, pP, PP - Different variants of paste
+
 u - Undo
+
 / - Find occurences of some text
+
 n - Next item in search
+
 N - Previous item in search
+
 [[ - Previous page
+
 ]] - Next page
 
 ### Commands
 :back
+
 :bind
+
 :close
+
 :exec
+
 :exline
+
 :follow
+
 :forward
+
 :fullscreen
+
 :insert
+
 :open
+
 :page
+
 :paste
+
 :quit
+
 :reload
+
 :scroll
+
 :search
+
 :set
+
 :source
+
 :stop
+
 :tab
+
 :tabmove
+
 :unbind
+
 :undo
+
 :yank
+
 :zoom
