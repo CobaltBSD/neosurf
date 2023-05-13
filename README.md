@@ -55,11 +55,13 @@ At runtime and build-time, the following libraries and their development headers
 * libjpeg-turbo
 * libpng
 * libcurl
-* OpenSSL or LibreSSL
+* OpenSSL or LibreSSL (libssl)
 * libwebp
 * libpsl
 * gperf
 * libxml2
+* flex
+* bison
 * cairo (Visurf and Gtk3 only)
 * pango (Visurf and Gtk3 only)
 * wayland (Visurf only)
