@@ -45,3 +45,5 @@ add_subdirectory(src)
 
 #TODO: install headers for libcss, libdom, etc
 #TODO: ensure frontends do not use any headers that aren't installed (e.g. they can be built separately)
+
+#TODO: ensure posix compliant shell scripts
