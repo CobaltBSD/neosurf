@@ -1,8 +1,9 @@
-0.10 - in dev
+0.10 - May 14 2023
 - Disabled urlfilter in Visurf
 - Visurf now better handles local file paths
 - Fixed parser_wrapper.sh failing on some systems
 - Added all commands and bindings to README.md
+- Added flex and bison as requirements to README.md
 
 0.9 - May 11 2023
 - Reworked README.md
