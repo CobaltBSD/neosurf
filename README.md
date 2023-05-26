@@ -55,26 +55,22 @@ At runtime and build-time, the following libraries and their development headers
 * libjpeg-turbo
 * libpng
 * libcurl
-* OpenSSL or LibreSSL (libssl)
+* OpenSSL or LibreSSL (libcrypto, libssl)
 * libwebp
 * libpsl
 * gperf
 * libxml2
 * flex
-* bison
+* bison or byacc
 * cairo (Visurf and Gtk3 only)
 * pango (Visurf and Gtk3 only)
 * wayland (Visurf only)
 * xkbcommon (Visurf only)
-* glib (Gtk3 only)
-* gdk-pixbuf (Gtk3 only)
 * gtk+3 (Gtk3 only)
 
 However you obtain these utilities and libraries depends on your distribution.
 
 ## Using neosurf-vi
-Since proper instructions don't yet exist elsewhere, I am putting this here.
-
 ### Keybindings
 Ctrl+q, Ctrl+w - Close tab
 
