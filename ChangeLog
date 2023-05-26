@@ -5,7 +5,7 @@
 - Removed excess warnings
 - Added pkg_config checks for m4, zlib and libssl
 - Various build system improvements
-- Fixed hard-coded pathnames in neosurf-gtk3 and neosurf-vi
+- Fixed hard-coded pathnames in libneosurf, neosurf-gtk3 and neosurf-vi
 
 0.10 - May 14 2023
 - Disabled urlfilter in Visurf
