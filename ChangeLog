@@ -1,10 +1,9 @@
 0.11 - May 26 2023
-- Added package check for m4
 - Added byacc support
 - Removed some previous bison artifacts
 - Fixed building with clang/lld
 - Removed excess warnings
-- Added pkg_config checks for zlib and libssl
+- Added pkg_config checks for m4, zlib and libssl
 - Various build system improvements
 - Fixed hard-coded pathnames in neosurf-gtk3 and neosurf-vi
 
