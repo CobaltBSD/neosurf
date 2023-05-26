@@ -6,11 +6,12 @@
  * Copyright 2012 Vincent Sanders <vince@netsurf-browser.org>
  */
 
-%define api.pure
+//%define api.pure
+%pure-parser
 
 %locations
 
-%define parse.error verbose
+//%define parse.error verbose
  /* would use api.prefix but it needs to be different between bison
   *  2.5 and 2.6
   */

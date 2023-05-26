@@ -104,4 +104,7 @@ target_link_libraries(dom nsutils parserutils ${LIBXML2_LIBRARIES})
 
 install(TARGETS dom DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/contrib/libdom/src -I${LIBXML2_INCLUDE_DIRS}")
+include_directories(
+	${CMAKE_SOURCE_DIR}/contrib/libdom/src
+	${LIBXML2_INCLUDE_DIRS}
+)

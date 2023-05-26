@@ -25,8 +25,19 @@ if(${FLEX} STREQUAL FLEX-NOTFOUND)
 	message(FATAL_ERROR "Missing `flex` utility. Please refer to your distribution package manager for obtaining this.")
 endif()
 find_program(BISON bison)
-if(${BISON} STREQUAL BISON-NOTFOUND)
-	message(FATAL_ERROR "Missing `bison` utility. Please refer to your distribution package manager for obtaining this.")
+find_program(BYACC byacc)
+if(${BISON} STREQUAL BISON-NOTFOUND AND ${BYACC} STREQUAL BYACC-NOTFOUND)
+	message(FATAL_ERROR "Missing `bison` or `byacc` utility. Please refer to your distribution package manager for obtaining this.")
+else()
+	if(${BISON} STREQUAL BISON-NOTFOUND)
+		set(YACC byacc)
+	else()
+		set(YACC bison)
+	endif()
+endif()
+find_program(M4 m4)
+if(${M4} STREQUAL M4-NOTFOUND)
+	message(FATAL_ERROR "Missing `m4` utility. Please refer to your distribution package manager for obtaining this.")
 endif()
 
 #TODO: appimage building support
@@ -37,8 +48,20 @@ option(NEOSURF_INSTALL_NSGENBIND "Installs the nsgenbind utility with neosurf" O
 option(NEOSURF_INSTALL_GEN_PARSER "Installs the libcss gen_parser utility with neosurf" OFF)
 option(NEOSURF_BUILD_XXD "Build and install a complimentary xxd implementation" OFF)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -std=c99 -Werror -Wno-unused-variable -DNDEBUG -Wno-unused-function -D_POSIX_C_SOURCE=200809L")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include -I${CMAKE_SOURCE_DIR}/contrib/libdom/include -I${CMAKE_SOURCE_DIR}/contrib/libnsutils/include -I${CMAKE_SOURCE_DIR}/contrib/libnsgif/include -I${CMAKE_BINARY_DIR}/contrib/libsvgtiny -I${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/include -I${CMAKE_SOURCE_DIR}/contrib/libparserutils/include -I${CMAKE_SOURCE_DIR}/contrib/libcss/include -I${CMAKE_BINARY_DIR}/contrib/libcss -I${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/src -I${CMAKE_BINARY_DIR}/contrib/libhubbub/src")
+include_directories(
+	"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include"
+	"${CMAKE_SOURCE_DIR}/contrib/libdom/include"
+	"${CMAKE_SOURCE_DIR}/contrib/libnsutils/include"
+	"${CMAKE_SOURCE_DIR}/contrib/libnsgif/include"
+	"${CMAKE_BINARY_DIR}/contrib/libsvgtiny"
+	"${CMAKE_SOURCE_DIR}/contrib/libnsbmp/include"
+	"${CMAKE_SOURCE_DIR}/contrib/libhubbub/include"
+	"${CMAKE_SOURCE_DIR}/contrib/libparserutils/include"
+	"${CMAKE_SOURCE_DIR}/contrib/libcss/include"
+	"${CMAKE_BINARY_DIR}/contrib/libcss"
+	"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/src"
+	"${CMAKE_BINARY_DIR}/contrib/libhubbub/src"
+)
 
 add_subdirectory(contrib)
 add_subdirectory(src)

@@ -37,6 +37,6 @@ add_library(hubbub SHARED
 
 target_link_libraries(hubbub parserutils)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/contrib/libhubbub/src")
+include_directories(${CMAKE_SOURCE_DIR}/contrib/libhubbub/src)
 
 install(TARGETS hubbub DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})

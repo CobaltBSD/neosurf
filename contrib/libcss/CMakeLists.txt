@@ -9,6 +9,8 @@ execute_process(COMMAND python3 ${CMAKE_SOURCE_DIR}/contrib/libcss/src/select/se
 
 aux_source_directory(${CMAKE_BINARY_DIR}/contrib/libcss/properties PROPSRC)
 
+include_directories("${CMAKE_SOURCE_DIR}/contrib/libcss/src")
+
 add_library(css SHARED
 	src/stylesheet.c
 	src/charset/detect.c
@@ -194,5 +196,3 @@ add_library(css SHARED
 target_link_libraries(css nsutils parserutils)
 
 install(TARGETS css DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
-
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/contrib/libcss/src")

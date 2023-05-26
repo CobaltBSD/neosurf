@@ -1,5 +1,13 @@
 find_package(PkgConfig)
 
+include_directories(
+	"${CMAKE_SOURCE_DIR}/src"
+	"${CMAKE_SOURCE_DIR}/src/content/handlers"
+	"${CMAKE_SOURCE_DIR}/src/include"
+	"${CMAKE_SOURCE_DIR}/src/frontends"
+	"${CMAKE_BINARY_DIR}"
+)
+
 pkg_check_modules(LIBJPEG REQUIRED libjpeg)
 include_directories(${LIBJPEG_INCLUDE_DIRS})
 
@@ -17,6 +25,12 @@ include_directories(${LIBPSL_INCLUDE_DIRS})
 
 pkg_check_modules(LIBWEBP REQUIRED libwebp)
 include_directories(${LIBWEBP_INCLUDE_DIRS})
+
+pkg_check_modules(ZLIB REQUIRED zlib)
+include_directories(${ZLIB_INCLUDE_DIRS})
+
+pkg_check_modules(LIBSSL REQUIRED libssl)
+include_directories(${LIBSSL_INCLUDE_DIRS})
 
 if(NEOSURF_BUILD_GTK3_FRONTEND)
 	pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
@@ -44,7 +58,7 @@ if(NEOSURF_BUILD_VI_FRONTEND)
 endif()
 
 # Build nsgenbind at configure time
-execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ${CMAKE_SOURCE_DIR}/contrib/nsgenbind -G ${CMAKE_GENERATOR})
+execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ../contrib/nsgenbind -G ${CMAKE_GENERATOR} -DYACC=${YACC})
 execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/nsgenbind)
 
 execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/duktape)
@@ -246,10 +260,10 @@ if(NEOSURF_BUILD_XXD)
 	)
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wundef -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-declarations -Wuninitialized -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -D_BSD_SOURCE -D_DEFAULT_SOURCE -std=c99 -Werror -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-cast-align -Wno-strict-prototypes -Dvi -Dnsvi -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -D_NETBSD_SOURCE -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -Wno-format-security -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -Wno-deprecated-declarations -Wno-nested-externs -Wno-use-after-free -DNEOSURF_LOG_LEVEL=DEEPDEBUG -DG_DISABLE_SINGLE_INCLUDES -DG_DISABLE_DEPRECATED -DGTK_DISABLE_SINGLE_INCLUDES -DGTK_MULTIHEAD_SAFE -DPANGO_DISABLE_DEPRECATED -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-label -Wno-unused-function -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -I${CMAKE_SOURCE_DIR}/src -I${CMAKE_SOURCE_DIR}/src/content/handlers -I${CMAKE_SOURCE_DIR}/src/include -I${CMAKE_SOURCE_DIR}/src/frontends -I${CMAKE_BINARY_DIR}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -DNDEBUG -Dvi -Dnsvi -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE")
 
 # Note: libpsl used for detecting supercookies
-set(NEOSURF_COMMON_LIBS css dom nsutils parserutils nsgif nsbmp svgtiny dom-hubbub-bindings ${LIBCRYPTO_LIBRARIES} ${LIBPNG_LIBRARIES} ${LIBCURL_LIBRARIES} ${LIBJPEG_LIBRARIES} ${LIBWEBP_LIBRARIES} ${LIBPSL_LIBRARIES})
+set(NEOSURF_COMMON_LIBS css dom nsutils parserutils nsgif nsbmp svgtiny dom-hubbub-bindings ${LIBCRYPTO_LIBRARIES} ${LIBPNG_LIBRARIES} ${LIBCURL_LIBRARIES} ${LIBJPEG_LIBRARIES} ${LIBWEBP_LIBRARIES} ${LIBPSL_LIBRARIES} ${ZLIB_LIBRARIES} ${LIBSSL_LIBRARIES})
 target_link_libraries(neosurf ${NEOSURF_COMMON_LIBS})
 if(NEOSURF_BUILD_VI_FRONTEND)
 	target_link_libraries(neosurf-vi neosurf ${NEOSURF_COMMON_LIBS} ${XKBCOMMON_LIBRARIES} ${CAIRO_LIBRARIES} ${WAYLAND_CURSOR_LIBRARIES} ${WAYLAND_CLIENT_LIBRARIES} ${PANGO_LIBRARIES} ${PANGOCAIRO_LIBRARIES})
