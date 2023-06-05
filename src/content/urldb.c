@@ -3878,8 +3878,10 @@ bool urldb_set_cookie(const char *header, nsurl *url, nsurl *referer)
 			dot++;
 		}
 
-		const psl_ctx_t *psl = psl_builtin();
-		if (psl_is_public_suffix(psl, dot)) {
+		psl_ctx_t *psl = psl_builtin();
+		bool is_public_suffix = psl_is_public_suffix(psl, dot);
+		psl_free(psl);
+		if(is_public_suffix) {
 			NSLOG(neosurf, INFO,
 			      "domain %s was a public suffix domain", dot);
 			urldb_free_cookie(c);

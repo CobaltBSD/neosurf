@@ -23,6 +23,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include<libpsl.h>
 
 #include "utils/utils.h"
 #include "utils/log.h"
@@ -323,8 +324,11 @@ search_web_omni(const char *term,
 	nsurl *url;
 	char *eterm; /* encoded/altered search term */
 
-	if ((flags & SEARCH_WEB_OMNI_SEARCHONLY) == 0) {
-
+	psl_ctx_t *psl = psl_builtin();
+	bool valid_domain = psl_registrable_domain(psl, term) != NULL;
+	psl_free(psl);
+	// Try interpreting as a URL before searching
+	if(valid_domain) {
 		/* first check to see if the term is a url */
 		ret = nsurl_create(term, &url);
 		if (ret == NSERROR_OK) {
@@ -344,22 +348,26 @@ search_web_omni(const char *term,
 			*url_out = url;
 			return NSERROR_OK;
 		}
-
+	} else {
+		puts("AAA");
 		/* do not pass to search if user has disabled the option */
-		if (nsoption_bool(search_url_bar) == false) {
-			return NSERROR_BAD_URL;
+		//if (nsoption_bool(search_url_bar) == false) {
+		//	return NSERROR_BAD_URL;
+		//}
+		puts("BBB");
+
+		/* must be initialised */
+		if (search_web_ctx.providers == NULL) {
+			return NSERROR_INIT_FAILED;
 		}
-	}
+		puts("CCC");
 
-	/* must be initialised */
-	if (search_web_ctx.providers == NULL) {
-		return NSERROR_INIT_FAILED;
-	}
-
-	/* turn search into a nsurl */
-	ret = make_search_nsurl(&search_web_ctx.providers[search_web_ctx.current], term, &url);
-	if (ret != NSERROR_OK) {
-		return ret;
+		/* turn search into a nsurl */
+		ret = make_search_nsurl(&search_web_ctx.providers[search_web_ctx.current], term, &url);
+		if (ret != NSERROR_OK) {
+			return ret;
+		}
+		puts("DDD");
 	}
 
 	*url_out = url;

@@ -43,16 +43,11 @@ struct gui_search_web_table {
 };
 
 /**
- * Flags which alter the behaviour of the omin search.
+ * Flags which alter the behaviour of the omni search.
  */
 enum search_web_omni_flags {
 	/** no changes to default operation */
-	SEARCH_WEB_OMNI_NONE = 0,
-
-	/** The search does not attempt to interpret the url as a url
-	 * before using it as a search term.
-	 */
-	SEARCH_WEB_OMNI_SEARCHONLY = 1,
+	SEARCH_WEB_OMNI_NONE = 0
 };
 
 /**

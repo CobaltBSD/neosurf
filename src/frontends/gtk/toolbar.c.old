@@ -101,7 +101,7 @@
 /**
  * the 'normal' width of the websearch bar
  */
-#define NSGTK_WEBSEARCH_WIDTH 350
+#define NSGTK_WEBSEARCH_WIDTH 150
 
 /**
  * toolbar item context
@@ -414,14 +414,12 @@ make_toolbar_item_websearch(bool sensitivity, bool edit)
 		gtk_tool_button_set_icon_widget(GTK_TOOL_BUTTON(item),
 						entry);
 	} else {
-		//gtk_widget_set_size_request(entry, NSGTK_WEBSEARCH_WIDTH, -1);
+		gtk_widget_set_size_request(entry, NSGTK_WEBSEARCH_WIDTH, -1);
 
 		item = gtk_tool_item_new();
 		if (item == NULL) {
 			return NULL;
 		}
-		
-		gtk_tool_item_set_expand(item, TRUE);
 
 		gtk_container_add(GTK_CONTAINER(item), entry);
 	}
@@ -530,6 +528,10 @@ make_toolbar_item(nsgtk_toolbar_button itemid, bool sensitivity)
 		toolitem = make_toolbar_item_history(sensitivity, false);
 		break;
 
+	case URL_BAR_ITEM:
+		toolitem = make_toolbar_item_url_bar(sensitivity, false);
+		break;
+
 	case THROBBER_ITEM:
 		toolitem = make_toolbar_item_throbber(sensitivity, false);
 		break;
@@ -583,6 +585,10 @@ make_toolbox_item(nsgtk_toolbar_button itemid, bool bar)
 
 	case HISTORY_BUTTON:
 		toolitem = make_toolbar_item_history(true, true);
+		break;
+
+	case URL_BAR_ITEM:
+		toolitem = make_toolbar_item_url_bar(false, true);
 		break;
 
 	case THROBBER_ITEM:
@@ -1033,6 +1039,7 @@ apply_user_button_customisation(struct nsgtk_toolbar *tb)
 		tb->items[HISTORY_BUTTON].location = location++;
 		tb->items[FORWARD_BUTTON].location = location++;
 		tb->items[RELOADSTOP_BUTTON].location = location++;
+		tb->items[URL_BAR_ITEM].location = location++;
 		tb->items[WEBSEARCH_ITEM].location = location++;
 		tb->items[OPENMENU_BUTTON].location = location++;
 		tb->items[THROBBER_ITEM].location = location++;
@@ -1747,9 +1754,9 @@ toolbar_item_size_allocate_cb(GtkWidget *widget,
 			tb->offset = alloc->width - 20;
 		}
 		alloc->width = 20;
-	} else if (tb->items[itemid].location <= tb->items[WEBSEARCH_ITEM].location) {
+	} else if (tb->items[itemid].location <= tb->items[URL_BAR_ITEM].location) {
 		alloc->x -= tb->offset;
-		if (itemid == WEBSEARCH_ITEM) {
+		if (itemid == URL_BAR_ITEM) {
 			alloc->width += tb->offset;
 		}
 	}
@@ -3043,7 +3050,7 @@ openlocation_button_clicked_cb(GtkWidget *widget, gpointer data)
 	struct nsgtk_toolbar *tb = (struct nsgtk_toolbar *)data;
 	GtkToolItem *urltitem;
 
-	urltitem = tb->items[WEBSEARCH_ITEM].button;
+	urltitem = tb->items[URL_BAR_ITEM].button;
 	if (urltitem != NULL) {
 		GtkEntry *entry;
 		entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(urltitem)));
@@ -3319,6 +3326,28 @@ toolbar_connect_signal(struct nsgtk_toolbar *tb, nsgtk_toolbar_button itemid)
 	}
 
 	switch (itemid) {
+	case URL_BAR_ITEM:
+		entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(item->button)));
+
+		g_signal_connect(GTK_WIDGET(entry),
+				 "activate",
+				 G_CALLBACK(url_entry_activate_cb),
+				 tb);
+		g_signal_connect(GTK_WIDGET(entry),
+				 "icon-release",
+				 G_CALLBACK(url_entry_icon_release_cb),
+				 tb);
+		g_signal_connect(GTK_WIDGET(entry),
+				 "changed",
+				 G_CALLBACK(url_entry_changed_cb),
+				 tb);
+
+		nsgtk_completion_connect_signals(entry,
+						 tb->get_bw,
+						 tb->get_ctx);
+		break;
+
+
 	case WEBSEARCH_ITEM:
 		entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(item->button)));
 
@@ -3582,11 +3611,11 @@ nserror nsgtk_toolbar_page_info_change(struct nsgtk_toolbar *tb)
 	struct browser_window *bw;
 	const char *icon_name;
 
-	if (tb->items[WEBSEARCH_ITEM].button == NULL) {
+	if (tb->items[URL_BAR_ITEM].button == NULL) {
 		/* no toolbar item */
 		return NSERROR_INVALID;
 	}
-	url_entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(tb->items[WEBSEARCH_ITEM].button)));
+	url_entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(tb->items[URL_BAR_ITEM].button)));
 
 	bw = tb->get_bw(tb->get_ctx);
 
@@ -3637,11 +3666,11 @@ nserror nsgtk_toolbar_set_url(struct nsgtk_toolbar *tb, nsurl *url)
 	const char *url_text = NULL;
 	GtkEntry *url_entry;
 
-	if (tb->items[WEBSEARCH_ITEM].button == NULL) {
+	if (tb->items[URL_BAR_ITEM].button == NULL) {
 		/* no toolbar item */
 		return NSERROR_INVALID;
 	}
-	url_entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(tb->items[WEBSEARCH_ITEM].button)));
+	url_entry = GTK_ENTRY(gtk_bin_get_child(GTK_BIN(tb->items[URL_BAR_ITEM].button)));
 
 	if (nsoption_bool(display_decoded_idn) == true) {
 		if (nsurl_get_utf8(url, &idn_url_s, &idn_url_l) != NSERROR_OK) {
@@ -3798,7 +3827,7 @@ nsgtk_toolbar_get_icon_window_position(struct nsgtk_toolbar *tb,
 	gint rootx, rooty, x, y;
 
 	switch (item_idx) {
-	case WEBSEARCH_ITEM:
+	case URL_BAR_ITEM:
 		widget = GTK_WIDGET(gtk_bin_get_child(GTK_BIN(item->button)));
 		break;
 	default:
@@ -3831,7 +3860,7 @@ nserror nsgtk_toolbar_position_page_info(struct nsgtk_toolbar *tb,
 	nserror res;
 	int x, y;
 
-	res = nsgtk_toolbar_get_icon_window_position(tb, WEBSEARCH_ITEM, &x, &y);
+	res = nsgtk_toolbar_get_icon_window_position(tb, URL_BAR_ITEM, &x, &y);
 	if (res != NSERROR_OK) {
 		return res;
 	}

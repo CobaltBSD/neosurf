@@ -352,8 +352,8 @@ static struct nsgtk_edit_menu *nsgtk_menu_edit_submenu(GtkAccelGroup *group)
 	IMAGE_ITEM(edit, selectall, gtkSelectAll, ret, group);
 	ADD_SEP(edit, ret);
 	IMAGE_ITEM(edit, find, gtkFind, ret, group);
-	ADD_SEP(edit, ret);
-	IMAGE_ITEM(edit, preferences, gtkPreferences, ret, group);
+	//ADD_SEP(edit, ret);
+	//IMAGE_ITEM(edit, preferences, gtkPreferences, ret, group);
 
 	return ret;
 }

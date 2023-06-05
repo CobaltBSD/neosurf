@@ -1,3 +1,10 @@
+0.12 - Jun 5 2023
+- Minor compatibility improvements
+- Added proper check for pkg-config or pkgconf
+- Consolidated the search and URL bars on GTK frontend
+- Temporarily removed Gtk3 preferences menu; it was broken in upstream
+NetSurf and should be rewritten
+
 0.11 - May 26 2023
 - Added byacc support
 - Removed some previous bison artifacts

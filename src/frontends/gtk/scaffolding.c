@@ -1071,7 +1071,7 @@ static nserror nsgtk_menu_initialise(struct nsgtk_scaffolding *g)
 	ITEM_MB(DELETE, delete, edit);
 	ITEM_MB(SELECTALL, selectall, edit);
 	ITEM_MB(FIND, find, edit);
-	ITEM_MB(PREFERENCES, preferences, edit);
+//	ITEM_MB(PREFERENCES, preferences, edit);
 
 	/* view menu */
 	ITEM_MB(FULLSCREEN, fullscreen, view);

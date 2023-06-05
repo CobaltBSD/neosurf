@@ -46,7 +46,7 @@ struct nsgtk_edit_menu {
 	GtkWidget *delete_menuitem;
 	GtkWidget *selectall_menuitem;
 	GtkWidget *find_menuitem;
-	GtkWidget *preferences_menuitem;
+//	GtkWidget *preferences_menuitem;
 };
 
 struct nsgtk_view_menu {
