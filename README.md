@@ -4,7 +4,7 @@ This project is a fork of Netsurf with various improvements and additions, and a
 
 ## Why?
 
-NeoSurf has different development goals than NetSurf. It aims to emphasize privacy while introducing a look and feel of the modern web.
+NeoSurf has different development goals than NetSurf. It aims to emphasize privacy while introducing a look and feel of the modern web. NeoSurf also streamlines the process of developing new frontends: You can simply use NeoSurf's shared library and headers rather than needing to add the frontend to the source tree.
 
 NeoSurf is still in very early development and has some issues; help would be appreciated.
 
