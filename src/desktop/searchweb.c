@@ -349,27 +349,31 @@ search_web_omni(const char *term,
 			*url_out = url;
 			return NSERROR_OK;
 		}
-	} else if(nsurl_get_scheme_type(term) == NSURL_SCHEME_OTHER) {
-		/* do not pass to search if user has disabled the option */
-		//if (nsoption_bool(search_url_bar) == false) {
-		//	return NSERROR_BAD_URL;
-		//}
-
-		/* must be initialised */
-		if (search_web_ctx.providers == NULL) {
-			return NSERROR_INIT_FAILED;
-		}
-
-		/* turn search into a nsurl */
-		ret = make_search_nsurl(&search_web_ctx.providers[search_web_ctx.current], term, &url);
-		if (ret != NSERROR_OK) {
-			return ret;
-		}
 	} else {
-		ret = nsurl_create(term, &url);
-		if (ret == NSERROR_OK) {
-			*url_out = url;
-			return NSERROR_OK;
+		// If URL is valid as written, use it; otherwise use search engine
+		// Scheme type needs to be validated before being turned into nsurl #TODO optimize
+		if(strncmp(term, "http:", 5) == 0 || strncmp(term, "https:", 6) == 0 || strncmp(term, "file:", 5) == 0 || strncmp(term, "ftp:", 4) == 0 || strncmp(term, "ftps:", 5) == 0 || strncmp(term, "mailto:", 7) == 0 || strncmp(term, "data:", 5) == 0 || strncmp(term, "about:", 6) == 0) {
+			ret = nsurl_create(term, &url);
+			if(ret == NSERROR_OK) {
+				*url_out = url;
+				return NSERROR_OK;
+			}
+		} else {
+			/* do not pass to search if user has disabled the option */
+			//if (nsoption_bool(search_url_bar) == false) {
+			//	return NSERROR_BAD_URL;
+			//}
+
+			/* must be initialised */
+			if (search_web_ctx.providers == NULL) {
+				return NSERROR_INIT_FAILED;
+			}
+
+			/* turn search into a nsurl */
+			ret = make_search_nsurl(&search_web_ctx.providers[search_web_ctx.current], term, &url);
+			if (ret != NSERROR_OK) {
+				return ret;
+			}
 		}
 	}
 

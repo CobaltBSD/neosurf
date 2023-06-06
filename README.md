@@ -11,13 +11,11 @@ NeoSurf is still in very early development and has some issues; help would be ap
 ![NeoSurf](img/scr1.png?raw=true "NeoSurf Homepage")
 ![GNU.org](img/scr2.png?raw=true "GNU.org")
 
-## Why?
-Mainline Netsurf is fairly antiquated and is no longer suitable for browsing most websites. Furthermore, all major web browsers are labrynthine in complexity which makes auditing them realistically impossible. Neosurf aims to be a fully usable web browser that is both minimalist and easy to use and navigate with. Focus is prioritized on standard desktop platforms, rather than obscure operating systems.
-
-NeoSurf aims to be a modernized, desktop-focused browser focused on providing a minimalist browsing experience. It's mid-way between a standard web browser and the numerous text-based browsers.
-
 ## Development
 Current focus is on general improvements to the codebase, as well as fixing a number of issues and bugs that were present in the most recent versions of NetSurf.
+
+## Known Issues
+At the moment preferences on Gtk3 frontend do not take effect, and as such this menu is currently disabled. NeoSurf also has a number of memory issues and unpredictable behavior which doesn't directly impact the user experience in any direct way, but are highly problematic nonetheless. Both of these issues are inherited from NetSurf and are slowly being stamped out.
 
 ## Building and installation
 In the root of the source tree:
