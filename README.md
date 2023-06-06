@@ -15,7 +15,7 @@ NeoSurf is still in very early development and has some issues; help would be ap
 Current focus is on general improvements to the codebase, as well as fixing a number of issues and bugs that were present in the most recent versions of NetSurf.
 
 ## Known Issues
-At the moment preferences on Gtk3 frontend do not take effect, and as such this menu is currently disabled. NeoSurf also has a number of memory issues and unpredictable behavior which doesn't directly impact the user experience in any direct way, but are highly problematic nonetheless. Both of these issues are inherited from NetSurf and are slowly being stamped out.
+At the moment preferences on Gtk3 frontend do not take effect, and as such this menu is currently disabled. This issue is inherited from NetSurf and will be amended soon.
 
 ## Building and installation
 In the root of the source tree:
