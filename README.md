@@ -3,16 +3,21 @@
 This project is a fork of Netsurf with various improvements and additions, and a revamped build system.
 
 ## Why?
-
-NeoSurf has different development goals than NetSurf. It aims to emphasize privacy while introducing a look and feel of the modern web. NeoSurf also streamlines the process of developing new frontends: You can simply use NeoSurf's shared library and headers rather than needing to add the frontend to the source tree.
-
-NeoSurf is still in very early development and has some issues; help would be appreciated.
+NeoSurf has a different development vision from NetSurf.
 
 ![NeoSurf](img/scr1.png?raw=true "NeoSurf Homepage")
 ![GNU.org](img/scr2.png?raw=true "GNU.org")
 
 ## Development
 Current focus is on general improvements to the codebase, as well as fixing a number of issues and bugs that were present in the most recent versions of NetSurf.
+
+## Biggest differences from NetSurf
+* [https://sr.ht/~sircmpwn/visurf/](Visurf support), with various upstream improvements and fixes
+* Various upstream improvements and UI enhancements to Gtk3 frontend
+* Removed compatibility for super old and/or obscure libraries/software/operating systems
+* Dedicated LibreSSL support
+* Various privacy improvements
+* Rewritten build system
 
 ## Known Issues
 At the moment preferences on Gtk3 frontend do not take effect, and as such this menu is currently disabled. This issue is inherited from NetSurf and will be amended soon.
