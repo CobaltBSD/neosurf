@@ -12,7 +12,7 @@ NeoSurf has a different development vision from NetSurf.
 Current focus is on general improvements to the codebase, as well as fixing a number of issues and bugs that were present in the most recent versions of NetSurf.
 
 ## Biggest differences from NetSurf
-* [https://sr.ht/~sircmpwn/visurf/](Visurf support), with various upstream improvements and fixes
+* [Visurf support](https://sr.ht/~sircmpwn/visurf/), with various upstream improvements and fixes
 * Various upstream improvements and UI enhancements to Gtk3 frontend
 * Removed compatibility for super old and/or obscure libraries/software/operating systems
 * Dedicated LibreSSL support
