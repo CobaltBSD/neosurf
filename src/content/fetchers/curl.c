@@ -92,6 +92,10 @@
 /* Open SSL compatability for certificate handling */
 #ifdef WITH_OPENSSL
 
+#if(OPENSSL_VERSION_MAJOR == 3)
+#error "NeoSurf is incompatible with OpenSSL 1.x.x
+#endif
+
 #include <openssl/ssl.h>
 #include <openssl/x509v3.h>
 

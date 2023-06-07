@@ -31,6 +31,11 @@ include_directories(${ZLIB_INCLUDE_DIRS})
 
 pkg_check_modules(LIBSSL REQUIRED libssl)
 include_directories(${LIBSSL_INCLUDE_DIRS})
+string(REPLACE "." ";" LIBSSL_VERSION_STRING ${LIBSSL_VERSION})
+list(GET LIBSSL_VERSION_STRING 0 LIBSSL_VERSION_MAJOR)
+if(LIBSSL_VERSION_MAJOR EQUAL 1)
+	message(FATAL_ERROR "NeoSurf does not support OpenSSL 1.x.x")
+endif()
 
 if(NEOSURF_BUILD_GTK3_FRONTEND)
 	pkg_check_modules(GTK3 REQUIRED gtk+-3.0)

@@ -1,3 +1,6 @@
+0.13 - ...
+- CMake prevents building on OpenSSL 1.x.x
+
 0.12 - Jun 5 2023
 - Minor compatibility improvements
 - Added proper check for pkg-config or pkgconf
