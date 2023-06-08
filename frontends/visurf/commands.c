@@ -13,9 +13,7 @@
 #include <neosurf/content/handlers/html/box.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
 #include <neosurf/content/handlers/html/html.h>
-#if 0
-#include "content/handlers/html/html_save.h"
-#endif
+#include <neosurf/content/handlers/html/html_save.h>
 #include <neosurf/content/hlcache.h>
 #include <neosurf/desktop/browser_history.h>
 #include <neosurf/desktop/search.h>

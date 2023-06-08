@@ -30,13 +30,13 @@
 
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/errors.h>
-#include "css/select.h"
+#include "content/handlers/css/select.h"
 
 #include <neosurf/content/handlers/html/private.h>
-#include "html/table.h"
+#include "content/handlers/html/table.h"
 #include <neosurf/content/handlers/html/box.h>
-#include "html/box_manipulate.h"
-#include "html/box_normalise.h"
+#include "content/handlers/html/box_manipulate.h"
+#include "content/handlers/html/box_normalise.h"
 
 /**
  * Row spanning information for a cell

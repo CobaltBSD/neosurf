@@ -28,16 +28,16 @@
 
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/messages.h>
-#include "neosurf/plotters.h"
-#include "neosurf/bitmap.h"
-#include "neosurf/content.h"
+#include <neosurf/plotters.h>
+#include <neosurf/bitmap.h>
+#include <neosurf/content.h>
 #include <neosurf/content/llcache.h>
 #include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 #include <neosurf/desktop/gui_internal.h>
 #include "desktop/bitmap.h"
 
-#include "image/bmp.h"
+#include "content/handlers/image/bmp.h"
 
 /** bmp context. */
 typedef struct nsbmp_content {

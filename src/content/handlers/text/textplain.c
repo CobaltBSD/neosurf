@@ -34,11 +34,11 @@
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/utf8.h>
 #include <neosurf/utils/nsoption.h>
-#include "neosurf/content.h"
-#include "neosurf/keypress.h"
-#include "neosurf/browser_window.h"
-#include "neosurf/plotters.h"
-#include "neosurf/layout.h"
+#include <neosurf/content.h>
+#include <neosurf/keypress.h>
+#include <neosurf/browser_window.h>
+#include <neosurf/plotters.h>
+#include <neosurf/layout.h>
 #include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 #include <neosurf/content/hlcache.h>
@@ -47,7 +47,7 @@
 #include "desktop/selection.h"
 #include <neosurf/desktop/gui_internal.h>
 
-#include "text/textplain.h"
+#include "content/handlers/text/textplain.h"
 
 struct textplain_line {
 	size_t	start;

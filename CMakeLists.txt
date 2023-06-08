@@ -73,9 +73,8 @@ add_subdirectory(contrib)
 add_subdirectory(src)
 add_subdirectory(frontends)
 
-#TODO: install headers for libcss, libdom, etc
-#TODO: ensure frontends do not use any headers that aren't installed (e.g. they can be built separately)
-
 #TODO: ensure posix compliant shell scripts
+
+#TODO: quickjs/wasm3
 
 install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

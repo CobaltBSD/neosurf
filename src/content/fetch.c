@@ -57,7 +57,7 @@
 #include "content/fetchers/curl.h"
 #include "content/fetchers/data.h"
 #include "content/fetchers/file/file.h"
-#include "javascript/fetcher.h"
+#include "content/handlers/javascript/fetcher.h"
 #include "content/urldb.h"
 
 /** The maximum number of fetchers that can be added */

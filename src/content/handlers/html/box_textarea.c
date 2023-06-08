@@ -27,16 +27,16 @@
 #include <neosurf/utils/config.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/messages.h>
-#include "neosurf/keypress.h"
-#include "neosurf/misc.h"
+#include <neosurf/keypress.h>
+#include <neosurf/misc.h>
 #include <neosurf/desktop/textarea.h>
 
 #include <neosurf/content/handlers/html/private.h>
 #include <neosurf/content/handlers/html/interaction.h>
 #include <neosurf/content/handlers/html/box.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/box_textarea.h"
-#include "html/font.h"
+#include "content/handlers/html/box_textarea.h"
+#include "content/handlers/html/font.h"
 #include <neosurf/content/handlers/html/form_internal.h>
 
 

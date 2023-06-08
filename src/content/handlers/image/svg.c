@@ -31,12 +31,12 @@
 #include <neosurf/utils/messages.h>
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/nsurl.h>
-#include "neosurf/plotters.h"
-#include "neosurf/content.h"
+#include <neosurf/plotters.h>
+#include <neosurf/content.h>
 #include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 
-#include "image/svg.h"
+#include "content/handlers/image/svg.h"
 
 typedef struct svg_content {
 	struct content base;

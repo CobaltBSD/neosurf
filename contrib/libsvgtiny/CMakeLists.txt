@@ -12,3 +12,5 @@ add_library(svgtiny SHARED
 target_link_libraries(svgtiny nsutils dom m)
 
 install(TARGETS svgtiny DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

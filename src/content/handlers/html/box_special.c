@@ -39,18 +39,18 @@
 #include <neosurf/utils/ascii.h>
 #include <neosurf/utils/nsurl.h>
 #include <neosurf/plot_style.h>
-#include "css/hints.h"
+#include "content/handlers/css/hints.h"
 #include <neosurf/desktop/frame_types.h>
 #include "content/content_factory.h"
 
 #include <neosurf/content/handlers/html/html.h>
 #include <neosurf/content/handlers/html/private.h>
-#include "html/object.h"
+#include "content/handlers/html/object.h"
 #include <neosurf/content/handlers/html/box.h>
-#include "html/box_manipulate.h"
-#include "html/box_construct.h"
-#include "html/box_special.h"
-#include "html/box_textarea.h"
+#include "content/handlers/html/box_manipulate.h"
+#include "content/handlers/html/box_construct.h"
+#include "content/handlers/html/box_special.h"
+#include "content/handlers/html/box_textarea.h"
 #include <neosurf/content/handlers/html/form_internal.h>
 
 

@@ -18,6 +18,7 @@ Current focus is on general improvements to the codebase, as well as fixing a nu
 * Dedicated LibreSSL support
 * Various privacy improvements
 * Rewritten build system
+* Simplified frontend development
 
 ## Known Issues
 At the moment preferences on Gtk frontend do not take effect, and as such this menu is currently disabled. This issue is inherited from NetSurf and will be amended soon.

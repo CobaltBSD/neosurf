@@ -196,3 +196,4 @@ add_library(css SHARED
 target_link_libraries(css nsutils parserutils)
 
 install(TARGETS css DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

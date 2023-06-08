@@ -26,7 +26,7 @@
 #include <libwapcaplet/libwapcaplet.h>
 #include <dom/dom.h>
 
-#include "neosurf/inttypes.h"
+#include <neosurf/inttypes.h>
 #include <neosurf/utils/config.h>
 #include <neosurf/utils/errors.h>
 #include "utils/nscolour.h"
@@ -43,19 +43,19 @@
 #include "content/mimesniff.h"
 #include "content/urldb.h"
 #include <neosurf/content/handlers/css/css.h>
-#include "image/image.h"
-#include "image/image_cache.h"
-#include "javascript/js.h"
+#include "content/handlers/image/image.h"
+#include "content/handlers/image/image_cache.h"
+#include "content/handlers/javascript/js.h"
 #include <neosurf/content/handlers/html/html.h>
-#include "text/textplain.h"
+#include "content/handlers/text/textplain.h"
 
-#include "neosurf/browser_window.h"
+#include <neosurf/browser_window.h>
 #include "desktop/system_colour.h"
 #include <neosurf/desktop/page-info.h>
 #include <neosurf/desktop/searchweb.h>
-#include "neosurf/misc.h"
+#include <neosurf/misc.h>
 #include <neosurf/desktop/gui_internal.h>
-#include "neosurf/neosurf.h"
+#include <neosurf/neosurf.h>
 
 
 /** \todo QUERY - Remove this import later */

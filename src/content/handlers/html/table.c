@@ -30,7 +30,7 @@
 #include <neosurf/content/handlers/css/utils.h>
 
 #include <neosurf/content/handlers/html/box.h>
-#include "html/table.h"
+#include "content/handlers/html/table.h"
 
 /**
  * Container for border values during table border calculations

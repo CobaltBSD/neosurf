@@ -37,7 +37,7 @@
 #include <neosurf/content/handlers/html/form_internal.h>
 #include <neosurf/content/handlers/html/interaction.h>
 #include <neosurf/content/handlers/html/box.h>
-#include "html/box_manipulate.h"
+#include "content/handlers/html/box_manipulate.h"
 
 
 /**

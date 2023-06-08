@@ -22,20 +22,20 @@
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/messages.h>
-#include "neosurf/plotters.h"
-#include "neosurf/bitmap.h"
-#include "neosurf/content.h"
+#include <neosurf/plotters.h>
+#include <neosurf/bitmap.h>
+#include <neosurf/content.h>
 #include <neosurf/desktop/gui_internal.h>
 #include "desktop/bitmap.h"
 
-#include "image/bmp.h"
-#include "image/gif.h"
-#include "image/ico.h"
-#include "image/jpeg.h"
-#include "image/png.h"
-#include "image/svg.h"
-#include "image/webp.h"
-#include "image/image.h"
+#include "content/handlers/image/bmp.h"
+#include "content/handlers/image/gif.h"
+#include "content/handlers/image/ico.h"
+#include "content/handlers/image/jpeg.h"
+#include "content/handlers/image/png.h"
+#include "content/handlers/image/svg.h"
+#include "content/handlers/image/webp.h"
+#include "content/handlers/image/image.h"
 
 /**
  * Initialise image content handlers

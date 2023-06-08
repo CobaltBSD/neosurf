@@ -33,8 +33,8 @@
 #include <neosurf/content/handlers/html/private.h>
 #include <neosurf/content/handlers/html/box.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/font.h"
-#include "html/textselection.h"
+#include "content/handlers/html/font.h"
+#include "content/handlers/html/textselection.h"
 
 #define SPACE_LEN(b) ((b->space == 0) ? 0 : 1)
 

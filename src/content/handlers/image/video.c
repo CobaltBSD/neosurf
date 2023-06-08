@@ -21,7 +21,7 @@
 #include "content/content_factory.h"
 #include <neosurf/content/content_protected.h>
 
-#include "image/video.h"
+#include "content/handlers/image/video.h"
 
 typedef struct nsvideo_content {
 	struct content base;

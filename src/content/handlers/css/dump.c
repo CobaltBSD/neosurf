@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <libcss/libcss.h>
 
-#include "css/dump.h"
+#include "content/handlers/css/dump.h"
 #include <neosurf/content/handlers/css/utils.h>
 
 /**

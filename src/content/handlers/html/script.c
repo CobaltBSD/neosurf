@@ -33,8 +33,8 @@
 #include <neosurf/utils/corestrings.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/messages.h>
-#include "neosurf/content.h"
-#include "javascript/js.h"
+#include <neosurf/content.h>
+#include "content/handlers/javascript/js.h"
 #include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 #include <neosurf/content/fetch.h>

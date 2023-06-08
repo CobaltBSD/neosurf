@@ -26,7 +26,7 @@
 
 #include "neosurf/types.h"
 
-#include "image/image_cache.h"
+#include "content/handlers/image/image_cache.h"
 
 #include "private.h"
 #include "imagecache.h"

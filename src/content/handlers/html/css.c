@@ -33,15 +33,15 @@
 #include <neosurf/utils/nsoption.h>
 #include <neosurf/utils/corestrings.h>
 #include <neosurf/utils/log.h>
-#include "neosurf/misc.h"
-#include "neosurf/content.h"
+#include <neosurf/misc.h>
+#include <neosurf/content.h>
 #include <neosurf/content/hlcache.h>
 #include <neosurf/content/handlers/css/css.h>
 #include <neosurf/desktop/gui_internal.h>
 
 #include <neosurf/content/handlers/html/html.h>
 #include <neosurf/content/handlers/html/private.h>
-#include "html/css.h"
+#include "content/handlers/html/css.h"
 
 static nsurl *html_default_stylesheet_url;
 static nsurl *html_adblock_stylesheet_url;

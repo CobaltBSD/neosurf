@@ -25,8 +25,8 @@
 #include <neosurf/utils/nsurl.h>
 #include <neosurf/utils/utils.h>
 
-#include "css/hints.h"
-#include "css/select.h"
+#include "content/handlers/css/hints.h"
+#include "content/handlers/css/select.h"
 
 /******************************************************************************
  * Utility functions                                                          *

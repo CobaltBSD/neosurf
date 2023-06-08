@@ -26,7 +26,7 @@
 #include <neosurf/plot_style.h>
 #include <neosurf/content/handlers/css/utils.h>
 
-#include "html/font.h"
+#include "content/handlers/html/font.h"
 
 /**
  * Map a generic CSS font family to a generic plot font family

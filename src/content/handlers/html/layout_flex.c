@@ -40,7 +40,7 @@
 #include <neosurf/content/handlers/html/html.h>
 #include <neosurf/content/handlers/html/private.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/layout_internal.h"
+#include "content/handlers/html/layout_internal.h"
 
 /**
  * Flex item data

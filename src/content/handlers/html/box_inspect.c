@@ -27,11 +27,11 @@
 
 #include <neosurf/utils/nsurl.h>
 #include <neosurf/utils/errors.h>
-#include "neosurf/types.h"
-#include "neosurf/content.h"
-#include "neosurf/mouse.h"
+#include <neosurf/types.h>
+#include <neosurf/content.h>
+#include <neosurf/mouse.h>
 #include <neosurf/content/handlers/css/utils.h>
-#include "css/dump.h"
+#include "content/handlers/css/dump.h"
 #include "desktop/scrollbar.h"
 
 #include <neosurf/content/handlers/html/private.h>

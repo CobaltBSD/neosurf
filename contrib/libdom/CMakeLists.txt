@@ -108,3 +108,5 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/contrib/libdom/src
 	${LIBXML2_INCLUDE_DIRS}
 )
+
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

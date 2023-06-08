@@ -33,7 +33,7 @@
 #include <neosurf/utils/utils.h>
 #include "neosurf/content.h"
 #include <neosurf/content/handlers/html/box.h>
-#include "html/html_save.h"
+#include <neosurf/content/handlers/html/html_save.h>
 
 #include "neosurf/utf8.h"
 #include <neosurf/desktop/gui_internal.h>

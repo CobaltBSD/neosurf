@@ -40,10 +40,10 @@
 #include "utils/url.h"
 #include <neosurf/utils/utf8.h>
 #include <neosurf/utils/ascii.h>
-#include "neosurf/browser_window.h"
-#include "neosurf/mouse.h"
-#include "neosurf/plotters.h"
-#include "neosurf/misc.h"
+#include <neosurf/browser_window.h>
+#include <neosurf/mouse.h>
+#include <neosurf/plotters.h>
+#include <neosurf/misc.h>
 #include <neosurf/content/fetch.h>
 #include <neosurf/content/hlcache.h>
 #include <neosurf/content/handlers/css/utils.h>
@@ -53,10 +53,10 @@
 
 #include <neosurf/content/handlers/html/html.h>
 #include <neosurf/content/handlers/html/private.h>
-#include "html/layout.h"
+#include "content/handlers/html/layout.h"
 #include <neosurf/content/handlers/html/box.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/font.h"
+#include "content/handlers/html/font.h"
 #include <neosurf/content/handlers/html/form_internal.h>
 
 #define MAX_SELECT_HEIGHT 210

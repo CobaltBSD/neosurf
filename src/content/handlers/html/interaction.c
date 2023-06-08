@@ -35,28 +35,28 @@
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/nsoption.h>
-#include "neosurf/content.h"
-#include "neosurf/browser_window.h"
-#include "neosurf/mouse.h"
-#include "neosurf/misc.h"
-#include "neosurf/layout.h"
-#include "neosurf/keypress.h"
+#include <neosurf/content.h>
+#include <neosurf/browser_window.h>
+#include <neosurf/mouse.h>
+#include <neosurf/misc.h>
+#include <neosurf/layout.h>
+#include <neosurf/keypress.h>
 #include <neosurf/content/hlcache.h>
 #include "content/textsearch.h"
 #include "desktop/frames.h"
 #include "desktop/scrollbar.h"
 #include "desktop/selection.h"
 #include <neosurf/desktop/textarea.h>
-#include "javascript/js.h"
+#include "content/handlers/javascript/js.h"
 #include <neosurf/desktop/gui_internal.h>
 
 #include <neosurf/content/handlers/html/box.h>
-#include "html/box_textarea.h"
+#include "content/handlers/html/box_textarea.h"
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/font.h"
+#include "content/handlers/html/font.h"
 #include <neosurf/content/handlers/html/form_internal.h>
 #include <neosurf/content/handlers/html/private.h>
-#include "html/imagemap.h"
+#include "content/handlers/html/imagemap.h"
 #include <neosurf/content/handlers/html/interaction.h>
 
 /**

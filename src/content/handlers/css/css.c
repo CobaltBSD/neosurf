@@ -34,8 +34,8 @@
 #include "desktop/system_colour.h"
 
 #include <neosurf/content/handlers/css/css.h>
-#include "css/hints.h"
-#include "css/internal.h"
+#include "content/handlers/css/hints.h"
+#include "content/handlers/css/internal.h"
 
 /** Screen DPI in fixed point units: defaults to 90, which RISC OS uses */
 css_fixed nscss_screen_dpi = F_90;

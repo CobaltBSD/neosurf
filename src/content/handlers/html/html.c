@@ -41,36 +41,36 @@
 #include <neosurf/utils/nsoption.h>
 #include <neosurf/utils/string.h>
 #include <neosurf/utils/ascii.h>
-#include "neosurf/content.h"
-#include "neosurf/browser_window.h"
-#include "neosurf/utf8.h"
-#include "neosurf/keypress.h"
-#include "neosurf/layout.h"
-#include "neosurf/misc.h"
+#include <neosurf/content.h>
+#include <neosurf/browser_window.h>
+#include <neosurf/utf8.h>
+#include <neosurf/keypress.h>
+#include <neosurf/layout.h>
+#include <neosurf/misc.h>
 #include <neosurf/content/hlcache.h>
 #include "content/content_factory.h"
 #include "content/textsearch.h"
 #include "desktop/selection.h"
 #include "desktop/scrollbar.h"
 #include <neosurf/desktop/textarea.h>
-#include "neosurf/bitmap.h"
-#include "javascript/js.h"
+#include <neosurf/bitmap.h>
+#include "content/handlers/javascript/js.h"
 #include <neosurf/desktop/gui_internal.h>
 
 #include <neosurf/content/handlers/html/html.h>
 #include <neosurf/content/handlers/html/private.h>
-#include "html/dom_event.h"
-#include "html/css.h"
-#include "html/object.h"
-#include "html/html_save.h"
+#include "content/handlers/html/dom_event.h"
+#include "content/handlers/html/css.h"
+#include "content/handlers/html/object.h"
+#include <neosurf/content/handlers/html/html_save.h>
 #include <neosurf/content/handlers/html/interaction.h>
 #include <neosurf/content/handlers/html/box.h>
-#include "html/box_construct.h"
+#include "content/handlers/html/box_construct.h"
 #include <neosurf/content/handlers/html/box_inspect.h>
 #include <neosurf/content/handlers/html/form_internal.h>
-#include "html/imagemap.h"
-#include "html/layout.h"
-#include "html/textselection.h"
+#include "content/handlers/html/imagemap.h"
+#include "content/handlers/html/layout.h"
+#include "content/handlers/html/textselection.h"
 
 #define CHUNK 4096
 

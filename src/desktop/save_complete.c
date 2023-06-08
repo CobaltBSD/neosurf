@@ -44,7 +44,7 @@
 #include <neosurf/content/hlcache.h>
 #include <neosurf/content/handlers/css/css.h>
 #include <neosurf/content/handlers/html/box.h>
-#include "html/html_save.h"
+#include <neosurf/content/handlers/html/html_save.h>
 #include <neosurf/content/handlers/html/html.h>
 
 #include "neosurf/misc.h"

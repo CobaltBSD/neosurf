@@ -27,15 +27,15 @@
 #include <stdint.h>
 #include <nsutils/time.h>
 
-#include "neosurf/inttypes.h"
+#include <neosurf/inttypes.h>
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/nsoption.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/corestrings.h>
 #include <neosurf/content/content.h>
 
-#include "javascript/js.h"
-#include "javascript/content.h"
+#include "content/handlers/javascript/js.h"
+#include "content/handlers/javascript/content.h"
 
 #include "duktape/binding.h"
 #include "generics.js.inc"

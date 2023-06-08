@@ -33,8 +33,8 @@
 #include <neosurf/utils/config.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/nsoption.h>
-#include "neosurf/content.h"
-#include "neosurf/misc.h"
+#include <neosurf/content.h>
+#include <neosurf/misc.h>
 #include <neosurf/content/hlcache.h>
 #include <neosurf/content/handlers/css/utils.h>
 #include "desktop/scrollbar.h"
@@ -45,7 +45,7 @@
 #include <neosurf/content/handlers/html/interaction.h>
 #include <neosurf/content/handlers/html/box.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/object.h"
+#include "content/handlers/html/object.h"
 
 /* break reference loop */
 static void html_object_refresh(void *p);

@@ -2,7 +2,6 @@ find_package(PkgConfig)
 
 include_directories(
 	"${CMAKE_SOURCE_DIR}/src"
-	"${CMAKE_SOURCE_DIR}/src/content/handlers"
 	"${CMAKE_SOURCE_DIR}/include"
 	"${CMAKE_BINARY_DIR}"
 )

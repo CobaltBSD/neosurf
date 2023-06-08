@@ -28,16 +28,16 @@
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/messages.h>
-#include "neosurf/bitmap.h"
-#include "neosurf/content.h"
+#include <neosurf/bitmap.h>
+#include <neosurf/content.h>
 #include <neosurf/content/llcache.h>
 #include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 #include <neosurf/desktop/gui_internal.h>
 #include "desktop/bitmap.h"
 
-#include "image/image.h"
-#include "image/ico.h"
+#include "content/handlers/image/image.h"
+#include "content/handlers/image/ico.h"
 
 typedef struct nsico_content {
 	struct content base;

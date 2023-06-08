@@ -11,3 +11,5 @@ add_library(parserutils SHARED
 install(TARGETS parserutils DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/contrib/libparserutils/src)
+
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

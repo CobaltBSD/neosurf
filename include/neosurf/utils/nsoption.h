@@ -57,10 +57,10 @@
 #define NSOPTION_COLOUR(NAME, DEFAULT)
 
 #include <neosurf/desktop/options.h>
-#if defined(nsgtk)
-#include "gtk/options.h"
-#elif defined(nsvi)
-#include "visurf/options.h"
+#ifdef nsgtk
+#include "gtk/options.h" // XXX
+#elif nsvi
+#include "visurf/options.h" // XXX
 #endif
 
 #undef NSOPTION_BOOL
@@ -118,10 +118,10 @@ struct nsoption_s {
 
 enum nsoption_e {
 #include <neosurf/desktop/options.h>
-#if defined(nsgtk)
-#include "gtk/options.h"
-#elif defined(nsvi)
-#include "visurf/options.h"
+#ifdef nsgtk
+#include "gtk/options.h" // XXX
+#elif nsvi
+#include "visurf/options.h" // XXX
 #endif
 	NSOPTION_LISTEND /* end of list */
 };

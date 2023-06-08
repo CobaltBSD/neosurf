@@ -24,13 +24,13 @@
 #include <neosurf/utils/corestrings.h>
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/nsurl.h>
-#include "neosurf/plot_style.h"
-#include "neosurf/url_db.h"
+#include <neosurf/plot_style.h>
+#include <neosurf/url_db.h>
 #include "desktop/system_colour.h"
 
-#include "css/internal.h"
-#include "css/hints.h"
-#include "css/select.h"
+#include "content/handlers/css/internal.h"
+#include "content/handlers/css/hints.h"
+#include "content/handlers/css/select.h"
 
 static css_error node_name(void *pw, void *node, css_qname *qname);
 static css_error node_classes(void *pw, void *node,

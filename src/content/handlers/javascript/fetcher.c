@@ -32,7 +32,7 @@
 #include <neosurf/content/fetch.h>
 #include "content/fetchers.h"
 
-#include "javascript/fetcher.h"
+#include "content/handlers/javascript/fetcher.h"
 
 /** Context for an resource fetch */
 struct fetch_javascript_context {

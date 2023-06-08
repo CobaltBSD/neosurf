@@ -50,7 +50,7 @@
 
 #include <neosurf/content/handlers/html/html.h>
 #include <neosurf/content/handlers/html/form_internal.h>
-#include "javascript/js.h"
+#include "content/handlers/javascript/js.h"
 
 #include "desktop/browser_private.h"
 #include "desktop/scrollbar.h"

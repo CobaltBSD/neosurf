@@ -63,15 +63,6 @@ struct nsoption_s *nsoptions_default = NULL;
 static struct nsoption_s defaults[] = {
 #include <neosurf/desktop/options.h>
 
-#if defined(riscos)
-#include "riscos/options.h"
-#elif defined(nsgtk)
-#include "gtk/options.h"
-#elif defined(nswin32)
-#include "windows/options.h"
-#elif defined(nsvi)
-#include "visurf/options.h"
-#endif
 	{ NULL, 0, OPTION_INTEGER, { 0 } }
 };
 

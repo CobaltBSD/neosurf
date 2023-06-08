@@ -32,17 +32,17 @@
 #include <neosurf/utils/string.h>
 #include <neosurf/utils/nsurl.h>
 #include <neosurf/content/content.h>
-#include "javascript/js.h"
+#include "content/handlers/javascript/js.h"
 
 #include <neosurf/bitmap.h>
 
 #include <neosurf/content/handlers/html/private.h>
-#include "html/object.h"
-#include "html/css.h"
+#include "content/handlers/html/object.h"
+#include "content/handlers/html/css.h"
 #include <neosurf/content/handlers/html/box.h>
-#include "html/box_construct.h"
+#include "content/handlers/html/box_construct.h"
 #include <neosurf/content/handlers/html/form_internal.h>
-#include "html/dom_event.h"
+#include "content/handlers/html/dom_event.h"
 
 
 /**

@@ -31,7 +31,7 @@ binding duk_libdom {
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/nsurl.h>
 
-#include "javascript/duktape/duktape.h"
+#include "content/handlers/javascript/duktape/duktape.h"
 
 struct browser_window;
 struct html_content;
@@ -49,7 +49,7 @@ struct dom_html_br_element;
 %};
 
 	prologue %{
-#include "javascript/duktape/dukky.h"
+#include "content/handlers/javascript/duktape/dukky.h"
 %};
 
 };

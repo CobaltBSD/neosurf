@@ -34,7 +34,7 @@
 #include <neosurf/utils/log.h>
 #include <neosurf/utils/messages.h>
 #include <neosurf/utils/utils.h>
-#include "javascript/content.h"
+#include "content/handlers/javascript/content.h"
 
 typedef struct javascript_content {
 	struct content base;

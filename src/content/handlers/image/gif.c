@@ -43,9 +43,9 @@
 #include <neosurf/utils/utils.h>
 #include <neosurf/utils/messages.h>
 #include <neosurf/utils/nsoption.h>
-#include "neosurf/misc.h"
-#include "neosurf/bitmap.h"
-#include "neosurf/content.h"
+#include <neosurf/misc.h>
+#include <neosurf/bitmap.h>
+#include <neosurf/content.h>
 #include <neosurf/content/llcache.h>
 #include <neosurf/content/content.h>
 #include <neosurf/content/content_protected.h>
@@ -53,8 +53,8 @@
 #include <neosurf/desktop/gui_internal.h>
 #include "desktop/bitmap.h"
 
-#include "image/image.h"
-#include "image/gif.h"
+#include "content/handlers/image/image.h"
+#include "content/handlers/image/gif.h"
 
 typedef struct gif_content {
 	struct content base;

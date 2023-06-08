@@ -49,10 +49,10 @@
 #include <neosurf/utils/nsoption.h>
 #include <neosurf/utils/corestrings.h>
 #include <neosurf/utils/nsurl.h>
-#include "neosurf/inttypes.h"
-#include "neosurf/content.h"
-#include "neosurf/browser_window.h"
-#include "neosurf/layout.h"
+#include <neosurf/inttypes.h>
+#include <neosurf/content.h>
+#include <neosurf/browser_window.h>
+#include <neosurf/layout.h>
 #include <neosurf/content/content.h>
 #include <neosurf/content/content_protected.h>
 #include <neosurf/content/handlers/css/utils.h>
@@ -60,15 +60,15 @@
 #include <neosurf/desktop/textarea.h>
 
 #include <neosurf/content/handlers/html/html.h>
-#include "html/html_save.h"
+#include <neosurf/content/handlers/html/html_save.h>
 #include <neosurf/content/handlers/html/private.h>
 #include <neosurf/content/handlers/html/box.h>
 #include <neosurf/content/handlers/html/box_inspect.h>
-#include "html/font.h"
+#include "content/handlers/html/font.h"
 #include <neosurf/content/handlers/html/form_internal.h>
-#include "html/layout.h"
-#include "html/layout_internal.h"
-#include "html/table.h"
+#include "content/handlers/html/layout.h"
+#include "content/handlers/html/layout_internal.h"
+#include "content/handlers/html/table.h"
 
 /** Array of per-side access functions for computed style margins. */
 const css_len_func margin_funcs[4] = {
