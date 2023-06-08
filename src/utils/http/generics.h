@@ -21,7 +21,7 @@
 
 #include <stdbool.h>
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 /**
  * Representation of an item

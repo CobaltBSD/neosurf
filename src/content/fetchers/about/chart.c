@@ -33,12 +33,12 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 #include "neosurf/inttypes.h"
-#include "utils/config.h"
-#include "utils/utils.h"
-#include "utils/errors.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/nsurl.h>
 
 #include "private.h"
 #include "chart.h"

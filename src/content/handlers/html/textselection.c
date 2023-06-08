@@ -23,16 +23,16 @@
 
 #include <stdlib.h>
 
-#include "utils/errors.h"
-#include "utils/utils.h"
-#include "neosurf/types.h"
-#include "neosurf/plot_style.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/types.h>
+#include <neosurf/plot_style.h>
 #include "desktop/selection.h"
-#include "desktop/save_text.h"
+#include <neosurf/desktop/save_text.h>
 
-#include "html/private.h"
-#include "html/box.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/private.h>
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 #include "html/font.h"
 #include "html/textselection.h"
 

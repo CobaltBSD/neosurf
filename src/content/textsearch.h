@@ -24,7 +24,7 @@
 #ifndef NETSURF_CONTENT_SEARCH_H
 #define NETSURF_CONTENT_SEARCH_H
 
-#include "desktop/search.h"
+#include <neosurf/desktop/search.h>
 
 struct textsearch_context;
 struct content;

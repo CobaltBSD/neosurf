@@ -19,13 +19,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include "utils/config.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/nsoption.h>
 #include "utils/sys_time.h"
 #include "utils/utsname.h"
-#include "desktop/version.h"
+#include <neosurf/desktop/version.h>
 
-#include "utils/log.h"
+#include <neosurf/utils/log.h>
 
 /** flag to enable verbose logging */
 bool verbose_log = false;

@@ -25,7 +25,7 @@
 #ifndef _NETSURF_UTILS_URL_H_
 #define _NETSURF_UTILS_URL_H_
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 
 /**

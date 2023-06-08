@@ -27,8 +27,8 @@
 #include <strings.h>
 
 #include "utils/http.h"
-#include "utils/utils.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/corestrings.h>
 
 #include "content/content_factory.h"
 #include "content/mimesniff.h"

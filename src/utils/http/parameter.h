@@ -21,7 +21,7 @@
 
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 typedef struct http_parameter http_parameter;
 

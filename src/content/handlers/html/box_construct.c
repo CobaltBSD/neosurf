@@ -28,25 +28,25 @@
 #include <string.h>
 #include <dom/dom.h>
 
-#include "utils/errors.h"
-#include "utils/nsoption.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/corestrings.h>
 #include "utils/talloc.h"
-#include "utils/string.h"
-#include "utils/ascii.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/string.h>
+#include <neosurf/utils/ascii.h>
+#include <neosurf/utils/nsurl.h>
 #include "neosurf/misc.h"
 #include "css/select.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
-#include "html/private.h"
+#include <neosurf/content/handlers/html/private.h>
 #include "html/object.h"
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_manipulate.h"
 #include "html/box_construct.h"
 #include "html/box_special.h"
 #include "html/box_normalise.h"
-#include "html/form_internal.h"
+#include <neosurf/content/handlers/html/form_internal.h>
 
 /**
  * Context for box tree construction

@@ -10,7 +10,7 @@
 
 prologue DOMImplementation ()
 %{
-#include "utils/corestrings.h"
+#include <neosurf/utils/corestrings.h>
 %}
 
 method DOMImplemention::hasFeature ()

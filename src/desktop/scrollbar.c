@@ -26,11 +26,11 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
 #include "utils/nscolour.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/browser_window.h"
 #include "neosurf/mouse.h"
 #include "neosurf/plotters.h"

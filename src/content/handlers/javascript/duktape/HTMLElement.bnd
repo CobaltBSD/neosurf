@@ -10,7 +10,7 @@
 
 prologue HTMLElement()
 %{
-#include <utils/corestrings.h>
+#include <neosurf/utils/corestrings.h>
 #define HANDLER_MAGIC MAGIC(HANDLER_MAP)
 %}
 

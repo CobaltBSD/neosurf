@@ -30,8 +30,8 @@
 #include <stdbool.h>
 #include <curl/curl.h>
 
-#include "utils/ascii.h"
-#include "utils/errors.h"
+#include <neosurf/utils/ascii.h>
+#include <neosurf/utils/errors.h>
 #include "utils/time.h"
 
 

@@ -19,7 +19,7 @@
 #include <gst/gst.h>
 
 #include "content/content_factory.h"
-#include "content/content_protected.h"
+#include <neosurf/content/content_protected.h>
 
 #include "image/video.h"
 

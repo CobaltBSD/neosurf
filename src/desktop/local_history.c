@@ -24,8 +24,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "utils/nsurl.h"
-#include "utils/errors.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/errors.h>
 
 #include "neosurf/types.h"
 #include "neosurf/layout.h"
@@ -37,12 +37,12 @@
 #include "utils/nscolour.h"
 
 #include "desktop/cw_helper.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/system_colour.h"
 #include "desktop/browser_private.h"
-#include "desktop/browser_history.h"
+#include <neosurf/desktop/browser_history.h>
 #include "desktop/local_history_private.h"
-#include "desktop/local_history.h"
+#include <neosurf/desktop/local_history.h>
 
 /**
  * local history viewer context

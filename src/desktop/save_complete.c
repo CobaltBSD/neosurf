@@ -30,26 +30,26 @@
 #include <sys/types.h>
 #include <dom/dom.h>
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 #include "utils/regex.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
-#include "utils/nsurl.h"
-#include "utils/utf8.h"
-#include "utils/utils.h"
-#include "utils/file.h"
-#include "utils/messages.h"
-#include "utils/ascii.h"
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/file.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/ascii.h>
 #include "neosurf/content.h"
-#include "content/hlcache.h"
-#include "css/css.h"
-#include "html/box.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/css/css.h>
+#include <neosurf/content/handlers/html/box.h>
 #include "html/html_save.h"
-#include "html/html.h"
+#include <neosurf/content/handlers/html/html.h>
 
 #include "neosurf/misc.h"
-#include "desktop/gui_internal.h"
-#include "desktop/save_complete.h"
+#include <neosurf/desktop/gui_internal.h>
+#include <neosurf/desktop/save_complete.h>
 
 static regex_t save_complete_import_re;
 

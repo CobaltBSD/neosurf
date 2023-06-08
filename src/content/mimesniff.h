@@ -27,7 +27,7 @@
 #include <stdbool.h>
 
 #include <libwapcaplet/libwapcaplet.h>
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 struct llcache_handle;
 

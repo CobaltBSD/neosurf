@@ -25,11 +25,11 @@
 #include <assert.h>
 #include <dom/dom.h>
 
-#include "utils/log.h"
+#include <neosurf/utils/log.h>
 #include "utils/talloc.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/table.h"
 
 /**

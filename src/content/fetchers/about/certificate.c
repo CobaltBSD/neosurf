@@ -26,9 +26,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "utils/errors.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "neosurf/inttypes.h"
 #include "neosurf/ssl_certs.h"
 

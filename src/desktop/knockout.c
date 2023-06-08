@@ -67,14 +67,14 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "utils/utils.h"
-#include "utils/log.h"
-#include "utils/errors.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/errors.h>
 #include "neosurf/bitmap.h"
-#include "content/content.h"
+#include <neosurf/content/content.h>
 #include "neosurf/plotters.h"
 
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/knockout.h"
 
 #define KNOCKOUT_ENTRIES 3072	/* 40 bytes each */

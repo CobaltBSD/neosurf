@@ -20,7 +20,7 @@
  * Custom configuration for duktape
  */
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #ifndef HAVE_STRPTIME
 #undef DUK_USE_DATE_PRS_STRPTIME

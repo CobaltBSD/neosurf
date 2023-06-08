@@ -34,9 +34,9 @@
 #include <string.h>
 
 #include "utils/dirent.h" /** \todo why is this necessary for atari to get PATH_MAX and is there a better way */
-#include "utils/utils.h"
-#include "utils/config.h"
-#include "utils/filepath.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/filepath.h>
 
 /** maximum number of elements in the resource vector */
 #define MAX_RESPATH 128

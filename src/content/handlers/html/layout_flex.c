@@ -33,13 +33,13 @@
 
 #include <string.h>
 
-#include "utils/log.h"
-#include "utils/utils.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utils.h>
 
-#include "html/box.h"
-#include "html/html.h"
-#include "html/private.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/private.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 #include "html/layout_internal.h"
 
 /**

@@ -28,12 +28,12 @@
 #include <iconv.h>
 #include <parserutils/charset/utf8.h>
 
-#include "utils/config.h"
-#include "utils/log.h"
-#include "utils/utf8.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utf8.h>
 
 #include "neosurf/utf8.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
 
 /* exported interface documented in utils/utf8.h */

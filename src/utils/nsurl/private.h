@@ -21,8 +21,8 @@
 
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "utils/nsurl.h"
-#include "utils/utils.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/utils.h>
 
 
 /**

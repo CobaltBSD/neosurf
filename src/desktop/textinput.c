@@ -29,21 +29,21 @@
 #include <string.h>
 #include <dom/dom.h>
 
-#include "utils/log.h"
+#include <neosurf/utils/log.h>
 #include "utils/talloc.h"
-#include "utils/utf8.h"
-#include "utils/utils.h"
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/utils.h>
 #include "neosurf/types.h"
 #include "neosurf/mouse.h"
 #include "neosurf/form.h"
 #include "neosurf/window.h"
 #include "neosurf/browser_window.h"
 #include "neosurf/keypress.h"
-#include "content/content.h"
+#include <neosurf/content/content.h>
 
 #include "desktop/browser_private.h"
-#include "desktop/textinput.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/textinput.h>
+#include <neosurf/desktop/gui_internal.h>
 
 /* exported interface documented in desktop/textinput.h */
 void browser_window_place_caret(struct browser_window *bw, int x, int y,

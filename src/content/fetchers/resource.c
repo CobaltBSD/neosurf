@@ -30,17 +30,17 @@
 #include <libwapcaplet/libwapcaplet.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/nsurl.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
 #include "utils/time.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
 #include "utils/ring.h"
 #include "neosurf/fetch.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
-#include "content/fetch.h"
+#include <neosurf/content/fetch.h>
 #include "content/fetchers.h"
 #include "content/fetchers/resource.h"
 

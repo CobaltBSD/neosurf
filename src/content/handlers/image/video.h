@@ -19,7 +19,7 @@
 #ifndef NETSURF_IMAGE_VIDEO_H_
 #define NETSURF_IMAGE_VIDEO_H_
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 nserror nsvideo_init(void);
 

@@ -26,14 +26,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "utils/errors.h"
-#include "utils/config.h"
-#include "content/content_protected.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/config.h>
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
-#include "content/hlcache.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
 #include "javascript/content.h"
 
 typedef struct javascript_content {

@@ -35,8 +35,8 @@
 #include <zlib.h>
 #include <errno.h>
 
-#include "utils/log.h"
-#include "utils/hashtable.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/hashtable.h>
 
 
 struct hash_entry {

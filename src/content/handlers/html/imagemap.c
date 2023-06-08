@@ -30,14 +30,14 @@
 
 #include <dom/dom.h>
 
-#include "utils/log.h"
-#include "utils/corestrings.h"
-#include "content/content_protected.h"
-#include "content/hlcache.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/content/content_protected.h>
+#include <neosurf/content/hlcache.h>
 
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_construct.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/private.h>
 #include "html/imagemap.h"
 
 #define HASH_SIZE 31 /* fixed size hash table */

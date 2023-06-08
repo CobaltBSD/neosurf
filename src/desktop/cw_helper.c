@@ -23,11 +23,11 @@
  * Helpers to simplify core use of corewindow.
  */
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "neosurf/browser.h"
 #include "neosurf/core_window.h"
 #include "neosurf/types.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 #include "desktop/cw_helper.h"
 
 /* exported interface documented in cw_helper.h */

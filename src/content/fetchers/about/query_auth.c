@@ -28,10 +28,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "utils/errors.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "content/fetch.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/content/fetch.h>
 
 #include "private.h"
 #include "query_auth.h"

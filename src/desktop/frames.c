@@ -29,13 +29,13 @@
 #include <time.h>
 #include <math.h>
 
-#include "utils/log.h"
-#include "utils/utils.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utils.h>
 #include "neosurf/content.h"
-#include "content/hlcache.h"
-#include "html/html.h"
-#include "html/box.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 
 #include "desktop/browser_private.h"
 #include "desktop/frames.h"

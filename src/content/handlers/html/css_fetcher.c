@@ -30,16 +30,16 @@
 #include <libwapcaplet/libwapcaplet.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/config.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
 #include "utils/ring.h"
-#include "utils/nsurl.h"
-#include "utils/utils.h"
-#include "content/fetch.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/content/fetch.h>
 #include "content/fetchers.h"
 
-#include "html/private.h"
+#include <neosurf/content/handlers/html/private.h>
 
 typedef struct html_css_fetcher_item {
 	uint32_t key;

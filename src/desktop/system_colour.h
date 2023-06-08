@@ -31,7 +31,7 @@
 
 #include <libcss/libcss.h>
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "neosurf/types.h"
 
 /**

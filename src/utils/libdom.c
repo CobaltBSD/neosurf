@@ -24,8 +24,8 @@
 #include <string.h>
 #include <dom/dom.h>
 
-#include "utils/config.h"
-#include "utils/log.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/log.h>
 #include "utils/libdom.h"
 
 

@@ -26,20 +26,20 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "utils/log.h"
-#include "utils/utf8.h"
-#include "utils/utils.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/utils.h>
 #include "neosurf/browser_window.h"
 #include "neosurf/plotters.h"
 #include "neosurf/mouse.h"
 #include "neosurf/keypress.h"
 #include "neosurf/clipboard.h"
 #include "neosurf/layout.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 
-#include "desktop/textarea.h"
+#include <neosurf/desktop/textarea.h>
 #include "desktop/scrollbar.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
 #define CARET_COLOR 0x0000FF
 #define TA_ALLOC_STEP 512

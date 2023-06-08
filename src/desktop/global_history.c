@@ -21,15 +21,15 @@
 #include <string.h>
 #include <time.h>
 
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/utf8.h"
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/utf8.h>
 #include "utils/libdom.h"
-#include "utils/log.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
 #include "content/urldb.h"
 
-#include "desktop/global_history.h"
+#include <neosurf/desktop/global_history.h>
 #include "desktop/treeview.h"
 #include "neosurf/browser_window.h"
 

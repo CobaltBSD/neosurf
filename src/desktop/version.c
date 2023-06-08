@@ -16,9 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "desktop/version.h"
+#include <neosurf/desktop/version.h>
 
-const char * const neosurf_version = "0.6 (Dev)"
-	;
+const char * const neosurf_version = "0.13 (Dev)";
 const int neosurf_version_major = 0;
-const int neosurf_version_minor = 6;
+const int neosurf_version_minor = 13;

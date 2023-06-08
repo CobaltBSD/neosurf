@@ -25,18 +25,18 @@
 #include <stdio.h>
 #include <dom/dom.h>
 
-#include "utils/nsurl.h"
-#include "utils/errors.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/errors.h>
 #include "neosurf/types.h"
 #include "neosurf/content.h"
 #include "neosurf/mouse.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 #include "css/dump.h"
 #include "desktop/scrollbar.h"
 
-#include "html/private.h"
-#include "html/box.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/private.h>
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 
 /**
  * Direction to move in a box-tree walk

@@ -21,10 +21,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 #include "utils/utsname.h"
-#include "desktop/version.h"
-#include "utils/log.h"
+#include <neosurf/desktop/version.h>
+#include <neosurf/utils/log.h>
 #include "utils/useragent.h"
 
 static const char *core_user_agent_string = NULL;

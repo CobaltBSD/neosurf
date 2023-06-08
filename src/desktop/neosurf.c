@@ -27,34 +27,34 @@
 #include <dom/dom.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/config.h"
-#include "utils/errors.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/errors.h>
 #include "utils/nscolour.h"
-#include "utils/nsoption.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
-#include "utils/string.h"
-#include "utils/utf8.h"
-#include "utils/messages.h"
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/string.h>
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/messages.h>
 #include "utils/useragent.h"
 #include "content/content_factory.h"
 #include "content/fetchers.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 #include "content/mimesniff.h"
 #include "content/urldb.h"
-#include "css/css.h"
+#include <neosurf/content/handlers/css/css.h>
 #include "image/image.h"
 #include "image/image_cache.h"
 #include "javascript/js.h"
-#include "html/html.h"
+#include <neosurf/content/handlers/html/html.h>
 #include "text/textplain.h"
 
 #include "neosurf/browser_window.h"
 #include "desktop/system_colour.h"
-#include "desktop/page-info.h"
-#include "desktop/searchweb.h"
+#include <neosurf/desktop/page-info.h>
+#include <neosurf/desktop/searchweb.h>
 #include "neosurf/misc.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "neosurf/neosurf.h"
 
 

@@ -33,10 +33,10 @@
 #include <strings.h>
 
 #include "neosurf/plot_style.h"
-#include "utils/errors.h"
-#include "utils/log.h"
-#include "utils/utils.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/nsoption.h>
 
 /** Length of buffer used to read lines from input file */
 #define NSOPTION_MAX_LINE_LEN 1024
@@ -61,7 +61,7 @@ struct nsoption_s *nsoptions_default = NULL;
 
 /** The table of compiled in default options */
 static struct nsoption_s defaults[] = {
-#include "desktop/options.h"
+#include <neosurf/desktop/options.h>
 
 #if defined(riscos)
 #include "riscos/options.h"

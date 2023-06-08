@@ -25,8 +25,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utils/nsurl.h"
-#include "utils/messages.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/messages.h>
 #include "utils/nscolour.h"
 
 #include "neosurf/types.h"

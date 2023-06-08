@@ -23,9 +23,9 @@
 
 #include <stdlib.h>
 
-#include "utils/errors.h"
-#include "utils/nsurl.h"
-#include "utils/messages.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/messages.h>
 
 #include "query.h"
 

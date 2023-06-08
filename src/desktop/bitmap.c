@@ -24,11 +24,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "utils/log.h"
-#include "utils/errors.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/errors.h>
 
 #include "desktop/bitmap.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
 /** The client bitmap format. */
 bitmap_fmt_t bitmap_fmt;

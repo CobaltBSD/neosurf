@@ -20,24 +20,24 @@
  * Implementation of paginated output.
  */
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #include <assert.h>
 #include <string.h>
 #include <dom/dom.h>
 
-#include "utils/utils.h"
-#include "utils/nsoption.h"
-#include "utils/log.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/log.h>
 #include "utils/talloc.h"
 #include "neosurf/content.h"
 #include "neosurf/plotters.h"
-#include "content/hlcache.h"
-#include "css/utils.h"
-#include "html/box.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/css/utils.h>
+#include <neosurf/content/handlers/html/box.h>
 
-#include "desktop/print.h"
-#include "desktop/printer.h"
+#include <neosurf/desktop/print.h>
+#include <neosurf/desktop/printer.h>
 
 /* Default print settings */
 #define DEFAULT_PAGE_WIDTH 595

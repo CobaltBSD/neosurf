@@ -24,7 +24,7 @@
 #include <libwapcaplet/libwapcaplet.h>
 
 #include "neosurf/content_type.h"
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 #define CONTENT_FACTORY_REGISTER_TYPES(HNAME, HTYPELIST, HHANDLER)	\
 									\

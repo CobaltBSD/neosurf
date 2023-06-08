@@ -24,44 +24,44 @@
  * Browser window creation and manipulation implementation.
  */
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include <nsutils/time.h>
 
-#include "utils/errors.h"
-#include "utils/log.h"
-#include "utils/corestrings.h"
-#include "utils/messages.h"
-#include "utils/nsoption.h"
-#include "neosurf/types.h"
-#include "neosurf/browser_window.h"
-#include "neosurf/window.h"
-#include "neosurf/misc.h"
-#include "neosurf/content.h"
-#include "neosurf/search.h"
-#include "neosurf/plotters.h"
-#include "content/content.h"
-#include "content/hlcache.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/types.h>
+#include <neosurf/browser_window.h>
+#include <neosurf/window.h>
+#include <neosurf/misc.h>
+#include <neosurf/content.h>
+#include <neosurf/search.h>
+#include <neosurf/plotters.h>
+#include <neosurf/content/content.h>
+#include <neosurf/content/hlcache.h>
 #include "content/urldb.h"
 #include "content/content_debug.h"
 
-#include "html/html.h"
-#include "html/form_internal.h"
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/form_internal.h>
 #include "javascript/js.h"
 
 #include "desktop/browser_private.h"
 #include "desktop/scrollbar.h"
-#include "desktop/gui_internal.h"
-#include "desktop/download.h"
+#include <neosurf/desktop/gui_internal.h>
+#include <neosurf/desktop/download.h>
 #include "desktop/frames.h"
-#include "desktop/global_history.h"
-#include "desktop/textinput.h"
-#include "desktop/hotlist.h"
+#include <neosurf/desktop/global_history.h>
+#include <neosurf/desktop/textinput.h>
+#include <neosurf/desktop/hotlist.h>
 #include "desktop/knockout.h"
-#include "desktop/browser_history.h"
+#include <neosurf/desktop/browser_history.h>
 #include "desktop/theme.h"
 
 /**

@@ -30,7 +30,7 @@
 
 #include "neosurf/plot_style.h"
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "utils/nscolour.h"
 #include "desktop/system_colour.h"
 

@@ -25,15 +25,15 @@
 #include <string.h>
 #include<libpsl.h>
 
-#include "utils/utils.h"
-#include "utils/log.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
 #include "utils/url.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/content.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 
-#include "desktop/searchweb.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/searchweb.h>
+#include <neosurf/desktop/gui_internal.h>
 
 struct search_provider {
 	char *name; /**< readable name such as 'duckduckgo', 'seeks', etc */
@@ -324,9 +324,9 @@ search_web_omni(const char *term,
 	nsurl *url;
 	char *eterm; /* encoded/altered search term */
 
-	psl_ctx_t *psl = psl_builtin();
+	const psl_ctx_t *psl = psl_builtin();
 	bool valid_domain = psl_registrable_domain(psl, term) != NULL;
-	psl_free(psl);
+	psl_free((psl_ctx_t*) psl);
 
 	// Try interpreting as a URL before searching
 	if(valid_domain) {

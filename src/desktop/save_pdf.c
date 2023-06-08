@@ -43,10 +43,10 @@
  * 	horizontal or scale or, better, find a new layout.
  */
 
-#include "utils/config.h"
-#include "utils/errors.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/errors.h>
 
-#include "desktop/save_pdf.h"
+#include <neosurf/desktop/save_pdf.h>
 
 #ifdef WITH_PDF_EXPORT
 
@@ -55,16 +55,16 @@
 #include <string.h>
 #include <hpdf.h>
 
-#include "utils/log.h"
-#include "utils/utils.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utils.h>
 #include "utils/useragent.h"
-#include "content/hlcache.h"
-#include "utils/nsoption.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/bitmap.h"
 
 #include "neosurf/plotters.h"
-#include "desktop/print.h"
-#include "desktop/printer.h"
+#include <neosurf/desktop/print.h>
+#include <neosurf/desktop/printer.h>
 
 #include "font_haru.h"
 

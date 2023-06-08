@@ -26,8 +26,8 @@
 #include <string.h>
 
 #include "neosurf/types.h"
-#include "utils/errors.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/nsoption.h>
 
 #include "private.h"
 #include "config.h"

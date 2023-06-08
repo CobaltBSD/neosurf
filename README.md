@@ -13,14 +13,14 @@ Current focus is on general improvements to the codebase, as well as fixing a nu
 
 ## Biggest differences from NetSurf
 * [Visurf support](https://sr.ht/~sircmpwn/visurf/), with various upstream improvements and fixes
-* Various upstream improvements and UI enhancements to Gtk3 frontend
+* Various upstream improvements and UI enhancements to Gtk frontend
 * Removed compatibility for super old and/or obscure libraries/software/operating systems
 * Dedicated LibreSSL support
 * Various privacy improvements
 * Rewritten build system
 
 ## Known Issues
-At the moment preferences on Gtk3 frontend do not take effect, and as such this menu is currently disabled. This issue is inherited from NetSurf and will be amended soon.
+At the moment preferences on Gtk frontend do not take effect, and as such this menu is currently disabled. This issue is inherited from NetSurf and will be amended soon.
 
 ## Building and installation
 In the root of the source tree:
@@ -29,21 +29,21 @@ $ mkdir -v build
 $ cd build
 ```
 
-To build with both Visurf and Gtk3 frontends:
+To build with both Visurf and Gtk frontends:
 ```sh
 $ cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 ```
 To build with Visurf only:
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK3_FRONTEND=OFF
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK_FRONTEND=OFF
 ```
-To build with Gtk3 only:
+To build with Gtk only:
 ```sh
 $ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_VI_FRONTEND=OFF
 ```
 To build libneosurf only (no frontend):
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK3_FRONTEND=OFF -DNEOSURF_BUILD_VI_FRONTEND=OFF
+$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK_FRONTEND=OFF -DNEOSURF_BUILD_VI_FRONTEND=OFF
 ```
 
 Then:
@@ -66,11 +66,11 @@ At runtime and build-time, the following libraries and their development headers
 * flex
 * bison or byacc
 * pkg-config or pkgconf
-* cairo (Visurf and Gtk3 only)
-* pango (Visurf and Gtk3 only)
+* cairo (Visurf and Gtk only)
+* pango (Visurf and Gtk only)
 * wayland (Visurf only)
 * xkbcommon (Visurf only)
-* gtk+3 (Gtk3 only)
+* gtk+ (Gtk only)
 
 However you obtain these utilities and libraries depends on your distribution.
 

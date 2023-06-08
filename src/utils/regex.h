@@ -19,7 +19,7 @@
 #ifndef NETSURF_UTILS_REGEX_H_
 #define NETSURF_UTILS_REGEX_H_
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #ifdef HAVE_REGEX
 #include <sys/types.h>

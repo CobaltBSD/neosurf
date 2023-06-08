@@ -96,21 +96,21 @@
 #include <time.h>
 #include <libpsl.h>
 
-#include "utils/inet.h"
-#include "utils/nsoption.h"
-#include "utils/log.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/inet.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/corestrings.h>
 #include "utils/url.h"
-#include "utils/utils.h"
+#include <neosurf/utils/utils.h>
 #include "utils/bloom.h"
 #include "utils/time.h"
-#include "utils/nsurl.h"
-#include "utils/ascii.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/ascii.h>
 #include "utils/http.h"
 #include "neosurf/bitmap.h"
-#include "desktop/cookie_manager.h"
+#include <neosurf/desktop/cookie_manager.h>
 
-#include "content/content.h"
+#include <neosurf/content/content.h>
 #include "content/urldb.h"
 
 /**
@@ -3878,9 +3878,9 @@ bool urldb_set_cookie(const char *header, nsurl *url, nsurl *referer)
 			dot++;
 		}
 
-		psl_ctx_t *psl = psl_builtin();
+		const psl_ctx_t *psl = psl_builtin();
 		bool is_public_suffix = psl_is_public_suffix(psl, dot);
-		psl_free(psl);
+		psl_free((psl_ctx_t*) psl);
 		if(is_public_suffix) {
 			NSLOG(neosurf, INFO,
 			      "domain %s was a public suffix domain", dot);

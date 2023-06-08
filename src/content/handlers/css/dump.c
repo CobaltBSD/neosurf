@@ -20,7 +20,7 @@
 #include <libcss/libcss.h>
 
 #include "css/dump.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 
 /**
  * Dump a fixed point value to the stream in a textual form.

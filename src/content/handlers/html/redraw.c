@@ -28,7 +28,7 @@
  * Redrawing CONTENT_HTML implementation.
  */
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 #include <assert.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -36,32 +36,32 @@
 #include <math.h>
 #include <dom/dom.h>
 
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/nsoption.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/corestrings.h>
 #include "neosurf/content.h"
 #include "neosurf/browser_window.h"
 #include "neosurf/plotters.h"
 #include "neosurf/bitmap.h"
 #include "neosurf/layout.h"
-#include "content/content.h"
-#include "content/content_protected.h"
+#include <neosurf/content/content.h>
+#include <neosurf/content/content_protected.h>
 #include "content/textsearch.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 #include "desktop/selection.h"
-#include "desktop/print.h"
+#include <neosurf/desktop/print.h>
 #include "desktop/scrollbar.h"
-#include "desktop/textarea.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/textarea.h>
+#include <neosurf/desktop/gui_internal.h>
 
-#include "html/box.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 #include "html/box_manipulate.h"
 #include "html/font.h"
-#include "html/form_internal.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/form_internal.h>
+#include <neosurf/content/handlers/html/private.h>
 #include "html/layout.h"
 
 

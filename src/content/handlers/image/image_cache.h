@@ -37,7 +37,7 @@
 #ifndef NETSURF_IMAGE_IMAGE_CACHE_H_
 #define NETSURF_IMAGE_IMAGE_CACHE_H_
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "neosurf/content_type.h"
 
 struct content;

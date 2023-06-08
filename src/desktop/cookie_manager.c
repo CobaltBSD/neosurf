@@ -35,12 +35,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/log.h"
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
 #include "content/urldb.h"
 
-#include "desktop/cookie_manager.h"
+#include <neosurf/desktop/cookie_manager.h>
 #include "desktop/treeview.h"
 
 enum cookie_manager_field {

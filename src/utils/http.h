@@ -25,7 +25,7 @@
 
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 #include "utils/http/cache-control.h"
 #include "utils/http/content-disposition.h"

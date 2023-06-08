@@ -25,8 +25,8 @@
 #ifndef NETSURF_DESKTOP_BROWSER_PRIVATE_H_
 #define NETSURF_DESKTOP_BROWSER_PRIVATE_H_
 
-#include "content/fetch.h"
-#include "desktop/frame_types.h"
+#include <neosurf/content/fetch.h>
+#include <neosurf/desktop/frame_types.h>
 
 struct box;
 struct hlcache_handle;

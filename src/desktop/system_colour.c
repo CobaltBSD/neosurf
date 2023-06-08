@@ -23,10 +23,10 @@
 
 #include <string.h>
 
-#include "utils/config.h"
-#include "utils/utils.h"
-#include "utils/log.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/css.h"
 
 #include "desktop/system_colour.h"

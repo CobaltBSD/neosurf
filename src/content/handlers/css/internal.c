@@ -19,7 +19,7 @@
 #include <string.h>
 #include <libcss/libcss.h>
 
-#include "utils/nsurl.h"
+#include <neosurf/utils/nsurl.h>
 
 #include "css/internal.h"
 

@@ -26,10 +26,10 @@
 #include <stdlib.h>
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "utils/nsurl.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/corestrings.h>
 #include "utils/ring.h"
-#include "content/fetch.h"
+#include <neosurf/content/fetch.h>
 #include "content/fetchers.h"
 
 #include "javascript/fetcher.h"

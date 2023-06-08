@@ -23,7 +23,7 @@
 
 #include <stdlib.h>
 #include "utils/bloom.h"
-#include "utils/utils.h"
+#include <neosurf/utils/utils.h>
 
 /**
  * Hash a string, returning a 32bit value.  The hash algorithm used is

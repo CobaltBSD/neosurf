@@ -19,7 +19,7 @@
 #ifndef NETSURF_UTILS_HTTP_PARAMETER_INTERNAL_H_
 #define NETSURF_UTILS_HTTP_PARAMETER_INTERNAL_H_
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "utils/http/parameter.h"
 
 nserror http__parse_parameter(const char **input, http_parameter **parameter);

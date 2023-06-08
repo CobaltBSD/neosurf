@@ -21,7 +21,7 @@
  * Processing for html content css operations.
  */
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #include <assert.h>
 #include <ctype.h>
@@ -30,17 +30,17 @@
 #include <strings.h>
 #include <stdlib.h>
 
-#include "utils/nsoption.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
 #include "neosurf/misc.h"
 #include "neosurf/content.h"
-#include "content/hlcache.h"
-#include "css/css.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/css/css.h>
+#include <neosurf/desktop/gui_internal.h>
 
-#include "html/html.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/private.h>
 #include "html/css.h"
 
 static nsurl *html_default_stylesheet_url;

@@ -24,20 +24,20 @@
 #include <string.h>
 #include <dom/dom.h>
 
-#include "utils/config.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "neosurf/keypress.h"
 #include "neosurf/misc.h"
-#include "desktop/textarea.h"
+#include <neosurf/desktop/textarea.h>
 
-#include "html/private.h"
-#include "html/interaction.h"
-#include "html/box.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/private.h>
+#include <neosurf/content/handlers/html/interaction.h>
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 #include "html/box_textarea.h"
 #include "html/font.h"
-#include "html/form_internal.h"
+#include <neosurf/content/handlers/html/form_internal.h>
 
 
 nserror box_textarea_keypress(html_content *html, struct box *box, uint32_t key)

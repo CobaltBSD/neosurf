@@ -26,7 +26,7 @@
 #include <string.h>
 
 #include "neosurf/types.h"
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 #include "private.h"
 #include "blank.h"

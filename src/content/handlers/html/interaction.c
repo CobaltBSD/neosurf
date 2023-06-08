@@ -30,34 +30,34 @@
 
 #include <dom/dom.h>
 
-#include "utils/corestrings.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/log.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/content.h"
 #include "neosurf/browser_window.h"
 #include "neosurf/mouse.h"
 #include "neosurf/misc.h"
 #include "neosurf/layout.h"
 #include "neosurf/keypress.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 #include "content/textsearch.h"
 #include "desktop/frames.h"
 #include "desktop/scrollbar.h"
 #include "desktop/selection.h"
-#include "desktop/textarea.h"
+#include <neosurf/desktop/textarea.h>
 #include "javascript/js.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_textarea.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/box_inspect.h>
 #include "html/font.h"
-#include "html/form_internal.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/form_internal.h>
+#include <neosurf/content/handlers/html/private.h>
 #include "html/imagemap.h"
-#include "html/interaction.h"
+#include <neosurf/content/handlers/html/interaction.h>
 
 /**
  * Get pointer shape for given box

@@ -28,13 +28,13 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "utils/log.h"
-#include "utils/errors.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/errors.h>
 #include "css/select.h"
 
-#include "html/private.h"
+#include <neosurf/content/handlers/html/private.h>
 #include "html/table.h"
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_manipulate.h"
 #include "html/box_normalise.h"
 

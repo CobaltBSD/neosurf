@@ -24,7 +24,7 @@
 #ifndef NETSURF_DESKTOP_BROWSER_HISTORY_PRIVATE_H
 #define NETSURF_DESKTOP_BROWSER_HISTORY_PRIVATE_H
 
-#include "content/handlers/css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 
 #define LOCAL_HISTORY_WIDTH \
 		(FIXTOINT(css_unit_css2device_px(INTTOFIX(116), nscss_screen_dpi)))

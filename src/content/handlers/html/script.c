@@ -29,19 +29,19 @@
 #include <strings.h>
 #include <stdlib.h>
 
-#include "utils/config.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "neosurf/content.h"
 #include "javascript/js.h"
-#include "content/content_protected.h"
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
-#include "content/fetch.h"
-#include "content/hlcache.h"
+#include <neosurf/content/fetch.h>
+#include <neosurf/content/hlcache.h>
 
-#include "html/html.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/private.h>
 
 typedef bool (script_handler_t)(struct jsthread *jsthread, const uint8_t *data, size_t size, const char *name);
 

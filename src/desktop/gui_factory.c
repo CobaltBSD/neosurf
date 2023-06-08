@@ -21,16 +21,16 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "utils/config.h"
-#include "utils/errors.h"
-#include "utils/file.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/file.h>
 #include "neosurf/bitmap.h"
-#include "content/hlcache.h"
-#include "content/backing_store.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/backing_store.h>
 
-#include "desktop/save_pdf.h"
-#include "desktop/download.h"
-#include "desktop/searchweb.h"
+#include <neosurf/desktop/save_pdf.h>
+#include <neosurf/desktop/download.h>
+#include <neosurf/desktop/searchweb.h>
 #include "neosurf/download.h"
 #include "neosurf/fetch.h"
 #include "neosurf/misc.h"

@@ -28,12 +28,12 @@
 
 #include <svgtiny.h>
 
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/nsurl.h>
 #include "neosurf/plotters.h"
 #include "neosurf/content.h"
-#include "content/content_protected.h"
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 
 #include "image/svg.h"

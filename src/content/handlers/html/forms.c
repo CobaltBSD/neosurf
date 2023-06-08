@@ -23,12 +23,12 @@
 
 #include <string.h>
 
-#include "utils/config.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
 
-#include "html/form_internal.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/form_internal.h>
+#include <neosurf/content/handlers/html/private.h>
 
 /**
  * process form element from dom

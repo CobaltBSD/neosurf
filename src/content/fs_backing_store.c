@@ -44,16 +44,16 @@
 #include <nsutils/unistd.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/filepath.h"
-#include "utils/file.h"
-#include "utils/nsurl.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/filepath.h>
+#include <neosurf/utils/file.h>
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "utils/hashmap.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "neosurf/misc.h"
 
-#include "content/backing_store.h"
+#include <neosurf/content/backing_store.h>
 
 /** Backing store file format version */
 #define CONTROL_VERSION 202

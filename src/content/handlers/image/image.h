@@ -23,7 +23,7 @@
 #ifndef NETSURF_IMAGE_IMAGE_H_
 #define NETSURF_IMAGE_IMAGE_H_
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 
 struct content_redraw_data;
 

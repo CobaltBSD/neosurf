@@ -26,17 +26,17 @@
  */
 
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "utils/talloc.h"
-#include "utils/nsurl.h"
-#include "neosurf/types.h"
-#include "neosurf/mouse.h"
-#include "desktop/scrollbar.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/types.h>
+#include <neosurf/mouse.h>
+#include <desktop/scrollbar.h>
 
-#include "html/private.h"
-#include "html/form_internal.h"
-#include "html/interaction.h"
-#include "html/box.h"
+#include <neosurf/content/handlers/html/private.h>
+#include <neosurf/content/handlers/html/form_internal.h>
+#include <neosurf/content/handlers/html/interaction.h>
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_manipulate.h"
 
 

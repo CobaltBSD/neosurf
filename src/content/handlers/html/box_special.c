@@ -30,28 +30,28 @@
 #include <stdbool.h>
 #include <dom/dom.h>
 
-#include "utils/nsoption.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "utils/talloc.h"
-#include "utils/string.h"
-#include "utils/ascii.h"
-#include "utils/nsurl.h"
-#include "neosurf/plot_style.h"
+#include <neosurf/utils/string.h>
+#include <neosurf/utils/ascii.h>
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/plot_style.h>
 #include "css/hints.h"
-#include "desktop/frame_types.h"
+#include <neosurf/desktop/frame_types.h>
 #include "content/content_factory.h"
 
-#include "html/html.h"
-#include "html/private.h"
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/private.h>
 #include "html/object.h"
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_manipulate.h"
 #include "html/box_construct.h"
 #include "html/box_special.h"
 #include "html/box_textarea.h"
-#include "html/form_internal.h"
+#include <neosurf/content/handlers/html/form_internal.h>
 
 
 static const content_type image_types = CONTENT_IMAGE;

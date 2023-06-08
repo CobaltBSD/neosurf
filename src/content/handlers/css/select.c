@@ -20,10 +20,10 @@
 #include <string.h>
 #include <strings.h>
 
-#include "utils/nsoption.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
 #include "neosurf/plot_style.h"
 #include "neosurf/url_db.h"
 #include "desktop/system_colour.h"

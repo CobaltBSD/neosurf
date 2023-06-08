@@ -27,17 +27,17 @@
 
 #include <dom/dom.h>
 
-#include "utils/config.h"
-#include "utils/log.h"
-#include "utils/utf8.h"
-#include "utils/utils.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/utils.h>
 #include "neosurf/content.h"
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/html_save.h"
 
 #include "neosurf/utf8.h"
-#include "desktop/gui_internal.h"
-#include "desktop/save_text.h"
+#include <neosurf/desktop/gui_internal.h>
+#include <neosurf/desktop/save_text.h>
 
 static void extract_text(struct box *box, bool *first,
 		save_text_whitespace *before, struct save_text_state *save);

@@ -28,11 +28,11 @@
 #include <nsutils/time.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/utils.h"
-#include "utils/nsoption.h"
-#include "utils/log.h"
-#include "utils/corestrings.h"
-#include "content/content.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/content/content.h>
 
 #include "javascript/js.h"
 #include "javascript/content.h"

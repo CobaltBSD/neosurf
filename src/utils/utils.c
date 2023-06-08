@@ -28,11 +28,11 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "utils/messages.h"
+#include <neosurf/utils/messages.h>
 #include "utils/dirent.h"
-#include "utils/inet.h"
-#include "utils/string.h"
-#include "utils/utils.h"
+#include <neosurf/utils/inet.h>
+#include <neosurf/utils/string.h>
+#include <neosurf/utils/utils.h>
 
 /* exported interface documented in utils/string.h */
 char *squash_whitespace(const char *s)

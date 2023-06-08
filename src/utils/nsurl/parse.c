@@ -39,14 +39,14 @@
 
 #include "neosurf/inttypes.h"
 
-#include "utils/ascii.h"
-#include "utils/corestrings.h"
-#include "utils/errors.h"
+#include <neosurf/utils/ascii.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/errors.h>
 #include "utils/idna.h"
-#include "utils/log.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
 #include "utils/nsurl/private.h"
-#include "utils/utils.h"
+#include <neosurf/utils/utils.h>
 
 
 /** Marker set, indicating positions of sections within a URL string */

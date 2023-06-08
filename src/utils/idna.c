@@ -30,13 +30,13 @@
 
 #include "neosurf/inttypes.h"
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "utils/idna.h"
 #include "utils/idna_props.h"
-#include "utils/log.h"
+#include <neosurf/utils/log.h>
 #include "utils/punycode.h"
-#include "utils/utf8.h"
-#include "utils/utils.h"
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/utils.h>
 
 
 /**

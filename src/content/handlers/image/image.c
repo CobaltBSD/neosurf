@@ -19,13 +19,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "utils/utils.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "neosurf/plotters.h"
 #include "neosurf/bitmap.h"
 #include "neosurf/content.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/bitmap.h"
 
 #include "image/bmp.h"

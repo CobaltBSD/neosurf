@@ -47,7 +47,7 @@ endif()
 
 #TODO: appimage building support
 
-option(NEOSURF_BUILD_GTK3_FRONTEND "Build and install the bundled Gtk3 frontend" ON)
+option(NEOSURF_BUILD_GTK_FRONTEND "Build and install the bundled Gtk frontend" ON)
 option(NEOSURF_BUILD_VI_FRONTEND "Build and install the bundled Visurf frontend" ON)
 option(NEOSURF_INSTALL_NSGENBIND "Installs the nsgenbind utility with neosurf" OFF)
 option(NEOSURF_INSTALL_GEN_PARSER "Installs the libcss gen_parser utility with neosurf" OFF)
@@ -66,12 +66,16 @@ include_directories(
 	"${CMAKE_BINARY_DIR}/contrib/libcss"
 	"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/src"
 	"${CMAKE_BINARY_DIR}/contrib/libhubbub/src"
+	"${CMAKE_SOURCE_DIR}/frontends"
 )
 
 add_subdirectory(contrib)
 add_subdirectory(src)
+add_subdirectory(frontends)
 
 #TODO: install headers for libcss, libdom, etc
 #TODO: ensure frontends do not use any headers that aren't installed (e.g. they can be built separately)
 
 #TODO: ensure posix compliant shell scripts
+
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

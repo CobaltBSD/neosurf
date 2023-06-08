@@ -28,7 +28,7 @@
  */
 
 /* must come first to ensure winsock2.h vs windows.h ordering issues */
-#include "utils/inet.h"
+#include <neosurf/utils/inet.h>
 
 #include <assert.h>
 #include <errno.h>
@@ -42,21 +42,21 @@
 #include <libwapcaplet/libwapcaplet.h>
 #include <nsutils/time.h>
 
-#include "utils/corestrings.h"
+#include <neosurf/utils/corestrings.h>
 #include "utils/hashmap.h"
-#include "utils/nsoption.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
 #include "utils/ring.h"
 #include "utils/useragent.h"
-#include "utils/file.h"
-#include "utils/string.h"
-#include "neosurf/fetch.h"
-#include "neosurf/misc.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/utils/file.h>
+#include <neosurf/utils/string.h>
+#include <neosurf/fetch.h>
+#include <neosurf/misc.h>
+#include <neosurf/desktop/gui_internal.h>
 
-#include "content/fetch.h"
+#include <neosurf/content/fetch.h>
 #include "content/fetchers.h"
 #include "content/fetchers/curl.h"
 #include "content/urldb.h"

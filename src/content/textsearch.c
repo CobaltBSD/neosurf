@@ -27,15 +27,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "utils/errors.h"
-#include "utils/utils.h"
-#include "utils/ascii.h"
-#include "neosurf/types.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/ascii.h>
+#include <neosurf/types.h>
 #include "desktop/selection.h"
 
-#include "content/content.h"
-#include "content/content_protected.h"
-#include "content/hlcache.h"
+#include <neosurf/content/content.h>
+#include <neosurf/content/content_protected.h>
+#include <neosurf/content/hlcache.h>
 #include "content/textsearch.h"
 
 /**

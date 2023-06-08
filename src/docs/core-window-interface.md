@@ -252,10 +252,10 @@ frontends/example/corewindow.c
     #include <string.h>
     #include <math.h>
     
-    #include "utils/log.h"
-    #include "utils/utils.h"
-    #include "utils/messages.h"
-    #include "utils/utf8.h"
+    #include <neosurf/utils/log.h>
+    #include <neosurf/utils/utils.h>
+    #include <neosurf/utils/messages.h>
+    #include <neosurf/utils/utf8.h>
     #include "neosurf/keypress.h"
     #include "neosurf/mouse.h"
     #include "neosurf/plot_style.h"
@@ -485,7 +485,7 @@ frontends/example/ssl_cert.c
     #include <stdint.h>
     #include <stdlib.h>
     
-    #include "utils/log.h"
+    #include <neosurf/utils/log.h>
     #include "neosurf/keypress.h"
     #include "neosurf/plotters.h"
     #include "desktop/sslcert_viewer.h"

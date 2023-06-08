@@ -28,11 +28,11 @@
 #include "neosurf/clipboard.h"
 #include "neosurf/browser_window.h"
 #include "neosurf/window.h"
-#include "utils/utils.h"
-#include "content/content_protected.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/content/content_protected.h>
 
 #include "desktop/browser_private.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/selection.h"
 
 

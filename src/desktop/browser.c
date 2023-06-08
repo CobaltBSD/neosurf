@@ -22,11 +22,11 @@
  * Browser core functionality
  */
 
-#include "utils/errors.h"
-#include "utils/log.h"
-#include "utils/utils.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utils.h>
 #include "neosurf/browser.h"
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 
 /* exported interface documented in netsurf/browser.h */
 nserror browser_set_dpi(int dpi)

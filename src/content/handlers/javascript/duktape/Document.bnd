@@ -10,11 +10,11 @@
 
 prologue Document()
 %{
-#include "utils/corestrings.h"
+#include <neosurf/utils/corestrings.h>
 #include "utils/libdom.h"
-#include "utils/utils.h"
-#include "content/hlcache.h"
-#include "html/private.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/html/private.h>
 #include "content/urldb.h"
 
 #define HANDLER_MAGIC MAGIC(HANDLER_MAP)

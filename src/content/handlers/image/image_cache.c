@@ -28,13 +28,13 @@
 #include <stdlib.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/utils.h"
-#include "utils/log.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
 #include "neosurf/misc.h"
 #include "neosurf/bitmap.h"
-#include "content/llcache.h"
-#include "content/content_protected.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/content/llcache.h>
+#include <neosurf/content/content_protected.h>
+#include <neosurf/desktop/gui_internal.h>
 
 #include "image/image_cache.h"
 #include "image/image.h"

@@ -22,15 +22,15 @@
  * Treeview handling implementation.
  */
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #include <string.h>
 
-#include "utils/utils.h"
-#include "utils/log.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
 #include "utils/nscolour.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/bitmap.h"
 #include "neosurf/content.h"
 #include "neosurf/plotters.h"
@@ -38,15 +38,15 @@
 #include "neosurf/layout.h"
 #include "neosurf/keypress.h"
 #include "neosurf/core_window.h"
-#include "content/hlcache.h"
-#include "css/utils.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/css/utils.h>
 
 #include "desktop/bitmap.h"
 #include "desktop/knockout.h"
-#include "desktop/textarea.h"
+#include <neosurf/desktop/textarea.h>
 #include "desktop/treeview.h"
 #include "desktop/cw_helper.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/system_colour.h"
 
 /**

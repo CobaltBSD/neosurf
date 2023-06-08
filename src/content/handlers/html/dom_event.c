@@ -24,24 +24,24 @@
 
 #include <string.h>
 
-#include "utils/config.h"
-#include "utils/corestrings.h"
-#include "utils/nsoption.h"
-#include "utils/log.h"
-#include "utils/ascii.h"
-#include "utils/string.h"
-#include "utils/nsurl.h"
-#include "content/content.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/nsoption.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/ascii.h>
+#include <neosurf/utils/string.h>
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/content/content.h>
 #include "javascript/js.h"
 
-#include "neosurf/bitmap.h"
+#include <neosurf/bitmap.h>
 
-#include "html/private.h"
+#include <neosurf/content/handlers/html/private.h>
 #include "html/object.h"
 #include "html/css.h"
-#include "html/box.h"
+#include <neosurf/content/handlers/html/box.h>
 #include "html/box_construct.h"
-#include "html/form_internal.h"
+#include <neosurf/content/handlers/html/form_internal.h>
 #include "html/dom_event.h"
 
 

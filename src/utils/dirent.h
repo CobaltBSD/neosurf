@@ -31,7 +31,7 @@
 #ifndef NETSURF_UTILS_DIRENT_H
 #define NETSURF_UTILS_DIRENT_H
 
-#include "utils/config.h"
+#include <neosurf/utils/config.h>
 
 #include <dirent.h>
 

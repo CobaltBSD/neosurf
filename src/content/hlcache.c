@@ -26,18 +26,18 @@
 #include <string.h>
 
 #include "utils/http.h"
-#include "utils/log.h"
-#include "utils/messages.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
 #include "utils/ring.h"
-#include "utils/utils.h"
+#include <neosurf/utils/utils.h>
 #include "neosurf/misc.h"
 #include "neosurf/content.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
 #include "content/mimesniff.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 // Note, this is *ONLY* so that we can abort cleanly during shutdown of the cache
-#include "content/content_protected.h"
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
 
 typedef struct hlcache_entry hlcache_entry;

@@ -39,20 +39,20 @@
 #include <nsutils/base64.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/config.h"
-#include "utils/corestrings.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/nsurl.h"
-#include "utils/utils.h"
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/utils.h>
 #include "utils/time.h"
 #include "utils/http.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/misc.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
-#include "content/fetch.h"
-#include "content/backing_store.h"
+#include <neosurf/content/fetch.h>
+#include <neosurf/content/backing_store.h>
 #include "content/urldb.h"
 
 /**

@@ -29,22 +29,22 @@
 #include <stdlib.h>
 #include <nsutils/time.h>
 
-#include "utils/corestrings.h"
-#include "utils/config.h"
-#include "utils/log.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/content.h"
 #include "neosurf/misc.h"
-#include "content/hlcache.h"
-#include "css/utils.h"
+#include <neosurf/content/hlcache.h>
+#include <neosurf/content/handlers/css/utils.h>
 #include "desktop/scrollbar.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
-#include "html/html.h"
-#include "html/private.h"
-#include "html/interaction.h"
-#include "html/box.h"
-#include "html/box_inspect.h"
+#include <neosurf/content/handlers/html/html.h>
+#include <neosurf/content/handlers/html/private.h>
+#include <neosurf/content/handlers/html/interaction.h>
+#include <neosurf/content/handlers/html/box.h>
+#include <neosurf/content/handlers/html/box_inspect.h>
 #include "html/object.h"
 
 /* break reference loop */

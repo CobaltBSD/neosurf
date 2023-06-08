@@ -21,19 +21,19 @@
 #include <libwapcaplet/libwapcaplet.h>
 #include <dom/dom.h>
 
-#include "utils/errors.h"
-#include "utils/corestrings.h"
-#include "utils/utils.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/corestrings.h>
+#include <neosurf/utils/utils.h>
 #include "utils/http.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "content/content_protected.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
-#include "content/fetch.h"
-#include "content/hlcache.h"
+#include <neosurf/content/fetch.h>
+#include <neosurf/content/hlcache.h>
 #include "desktop/system_colour.h"
 
-#include "css/css.h"
+#include <neosurf/content/handlers/css/css.h>
 #include "css/hints.h"
 #include "css/internal.h"
 

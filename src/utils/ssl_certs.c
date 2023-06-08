@@ -26,9 +26,9 @@
 #include <string.h>
 #include <nsutils/base64.h>
 
-#include "utils/errors.h"
-#include "utils/log.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
 
 #include "neosurf/ssl_certs.h"
 

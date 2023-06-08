@@ -29,14 +29,14 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
-#include "utils/utils.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/corestrings.h>
 #include "utils/url.h"
-#include "utils/nsurl.h"
-#include "utils/string.h"
-#include "utils/file.h"
+#include <neosurf/utils/nsurl.h>
+#include <neosurf/utils/string.h>
+#include <neosurf/utils/file.h>
 #include "utils/dirent.h"
 
 /**

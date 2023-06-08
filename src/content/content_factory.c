@@ -27,10 +27,10 @@
 
 #include "utils/http.h"
 
-#include "content/content.h"
+#include <neosurf/content/content.h>
 #include "content/content_factory.h"
-#include "content/content_protected.h"
-#include "content/llcache.h"
+#include <neosurf/content/content_protected.h>
+#include <neosurf/content/llcache.h>
 
 /**
  * Entry in list of content handlers

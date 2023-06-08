@@ -24,9 +24,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 
-#include "utils/nsurl.h"
+#include <neosurf/utils/nsurl.h>
 #include "utils/nscolour.h"
 
 #include "neosurf/mouse.h"
@@ -37,8 +37,8 @@
 #include "neosurf/browser_window.h"
 
 #include "desktop/knockout.h"
-#include "desktop/page-info.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/page-info.h>
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/system_colour.h"
 
 /**

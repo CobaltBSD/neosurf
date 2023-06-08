@@ -28,21 +28,21 @@
 #include <string.h>
 #include <time.h>
 
-#include "utils/log.h"
-#include "utils/utils.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/utils.h>
 #include "neosurf/layout.h"
 #include "neosurf/content.h"
 #include "neosurf/window.h"
 #include "neosurf/browser_window.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 #include "content/urldb.h"
 #include "neosurf/bitmap.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/corestrings.h>
 
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/browser_private.h"
 #include "desktop/local_history_private.h"
-#include "desktop/browser_history.h"
+#include <neosurf/desktop/browser_history.h>
 
 /**
  * Clone a history entry

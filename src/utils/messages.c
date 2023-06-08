@@ -34,10 +34,10 @@
 #include <zlib.h>
 #include <stdarg.h>
 
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/hashtable.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/hashtable.h>
 
 /** Messages are stored in a fixed-size hash table. */
 #define HASH_SIZE 101

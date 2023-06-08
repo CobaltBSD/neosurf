@@ -28,8 +28,8 @@ binding duk_libdom {
 
 #include <dom/dom.h>
 
-#include "utils/log.h"
-#include "utils/nsurl.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/nsurl.h>
 
 #include "javascript/duktape/duktape.h"
 

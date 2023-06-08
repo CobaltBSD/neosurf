@@ -27,18 +27,18 @@
 #include <nsutils/time.h>
 
 #include "neosurf/inttypes.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/corestrings.h>
 #include "neosurf/browser_window.h"
 #include "neosurf/bitmap.h"
 #include "neosurf/content.h"
 #include "desktop/knockout.h"
 
-#include "content/content_protected.h"
+#include <neosurf/content/content_protected.h>
 #include "content/textsearch.h"
 #include "content/content_debug.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 #include "content/urldb.h"
 
 #define URL_FMT_SPC "%.140s"

@@ -25,13 +25,13 @@
 
 #include <stdbool.h>
 
-#include "utils/errors.h"
+#include <neosurf/utils/errors.h>
 #include "content/textsearch.h"
 #include "neosurf/types.h"
 #include "neosurf/browser_window.h"
 
 #include "desktop/browser_private.h"
-#include "desktop/search.h"
+#include <neosurf/desktop/search.h>
 
 /* exported function documented in desktop/search.h */
 void browser_window_search(struct browser_window *bw, void *context,

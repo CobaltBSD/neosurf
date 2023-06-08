@@ -26,15 +26,15 @@
 #include <stdlib.h>
 #include <libnsbmp.h>
 
-#include "utils/utils.h"
-#include "utils/messages.h"
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/messages.h>
 #include "neosurf/plotters.h"
 #include "neosurf/bitmap.h"
 #include "neosurf/content.h"
-#include "content/llcache.h"
-#include "content/content_protected.h"
+#include <neosurf/content/llcache.h>
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 #include "desktop/bitmap.h"
 
 #include "image/bmp.h"

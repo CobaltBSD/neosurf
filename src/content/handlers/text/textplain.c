@@ -26,26 +26,26 @@
 #include <string.h>
 #include <parserutils/input/inputstream.h>
 
-#include "utils/errors.h"
-#include "utils/corestrings.h"
+#include <neosurf/utils/errors.h>
+#include <neosurf/utils/corestrings.h>
 #include "utils/http.h"
-#include "utils/log.h"
-#include "utils/messages.h"
-#include "utils/utils.h"
-#include "utils/utf8.h"
-#include "utils/nsoption.h"
+#include <neosurf/utils/log.h>
+#include <neosurf/utils/messages.h>
+#include <neosurf/utils/utils.h>
+#include <neosurf/utils/utf8.h>
+#include <neosurf/utils/nsoption.h>
 #include "neosurf/content.h"
 #include "neosurf/keypress.h"
 #include "neosurf/browser_window.h"
 #include "neosurf/plotters.h"
 #include "neosurf/layout.h"
-#include "content/content_protected.h"
+#include <neosurf/content/content_protected.h>
 #include "content/content_factory.h"
-#include "content/hlcache.h"
+#include <neosurf/content/hlcache.h>
 #include "content/textsearch.h"
-#include "content/handlers/css/utils.h"
+#include <neosurf/content/handlers/css/utils.h>
 #include "desktop/selection.h"
-#include "desktop/gui_internal.h"
+#include <neosurf/desktop/gui_internal.h>
 
 #include "text/textplain.h"
 

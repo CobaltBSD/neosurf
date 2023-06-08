@@ -10,7 +10,7 @@
 
 class Element {
 	prologue %{
-#include <utils/corestrings.h>
+#include <neosurf/utils/corestrings.h>
 #include <dom/bindings/hubbub/parser.h>
 %};
 };

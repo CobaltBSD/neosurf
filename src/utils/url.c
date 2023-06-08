@@ -37,9 +37,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "utils/ascii.h"
-#include "utils/config.h"
-#include "utils/log.h"
+#include <neosurf/utils/ascii.h>
+#include <neosurf/utils/config.h>
+#include <neosurf/utils/log.h>
 #include "utils/url.h"
 
 
