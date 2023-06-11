@@ -4,9 +4,10 @@
 - Renamed "netsurf-gtk3" to "netsurf-gtk"
 - Headers are now installed for libcss, libdom, etc
 - Entering an address into the bar uses the current tab instead of opening a
-new one (TODO)
-- Merged libdom-hubbub-bindings with libdom (TODO)
+new one
+- Merged libdom-hubbub-bindings with libdom
 - Various small code improvements
+- Introduced basic AppImage support
 
 0.12 - Jun 5 2023
 - Minor compatibility improvements

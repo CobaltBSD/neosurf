@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#TODO: ensure posix compliance
 
 if [[ $# -lt 3 ]]; then
 	echo "Requires at least three arguments (output directory, gen_parser binary location, properties.gen location)"

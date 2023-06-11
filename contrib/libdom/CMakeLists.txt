@@ -96,11 +96,10 @@ add_library(dom SHARED
 	src/utils/validate.c
 	src/utils/walk.c
 	bindings/xml/xmlparser.c
+	bindings/hubbub/parser.c
 )
 
-add_subdirectory(bindings/hubbub)
-
-target_link_libraries(dom nsutils parserutils ${LIBXML2_LIBRARIES})
+target_link_libraries(dom nsutils parserutils hubbub ${LIBXML2_LIBRARIES})
 
 install(TARGETS dom DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 

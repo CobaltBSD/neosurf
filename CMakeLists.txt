@@ -73,8 +73,6 @@ add_subdirectory(contrib)
 add_subdirectory(src)
 add_subdirectory(frontends)
 
-#TODO: ensure posix compliant shell scripts
-
 #TODO: quickjs/wasm3
 
 install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})

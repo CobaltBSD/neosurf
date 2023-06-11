@@ -19,7 +19,7 @@
 #ifndef NETSURF_GTK_OPTIONS_H_
 #define NETSURF_GTK_OPTIONS_H_
 
-// Nothing currently here
+/* currently nothing here */
 
 #endif
 

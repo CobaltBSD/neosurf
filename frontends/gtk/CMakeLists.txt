@@ -45,4 +45,4 @@ target_link_libraries(neosurf-gtk neosurf m ${NEOSURF_COMMON_LIBS} ${GTK_LIBRARI
 install(TARGETS neosurf-gtk DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(DIRECTORY res/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -DNDEBUG -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk3\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -DNDEBUG -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE")
