@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ViSurf
+Exec=neosurf-vi
+Type=Application
+Categories=Utility;
+Icon=neosurf

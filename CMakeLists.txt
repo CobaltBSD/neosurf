@@ -45,8 +45,6 @@ if(${M4} STREQUAL M4-NOTFOUND)
 	message(FATAL_ERROR "Missing `m4` utility. Please refer to your distribution package manager for obtaining this.")
 endif()
 
-#TODO: appimage building support
-
 option(NEOSURF_BUILD_GTK_FRONTEND "Build and install the bundled Gtk frontend" ON)
 option(NEOSURF_BUILD_VI_FRONTEND "Build and install the bundled Visurf frontend" ON)
 option(NEOSURF_INSTALL_NSGENBIND "Installs the nsgenbind utility with neosurf" OFF)

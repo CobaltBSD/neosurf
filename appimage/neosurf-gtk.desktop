@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=NeoSurf-GTK
+Exec=neosurf-gtk
+Type=Application
+Categories=Utility;
+Icon=neosurf
