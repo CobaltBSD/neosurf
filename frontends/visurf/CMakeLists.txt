@@ -1,5 +1,7 @@
 find_package(PkgConfig)
 
+add_definitions(-DVISURF_RESPATH="${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk")
+
 pkg_check_modules(XKBCOMMON REQUIRED xkbcommon)
 include_directories(${XKBCOMMON_INCLUDE_DIRS})
 
@@ -41,5 +43,3 @@ target_link_libraries(neosurf-vi neosurf ${NEOSURF_COMMON_LIBS} ${XKBCOMMON_LIBR
 
 install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(DIRECTORY ../gtk/res/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk) # Visurf uses the same resources as the Gtk frontend
-
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -DNDEBUG -Dvi -Dnsvi -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk\\\" -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE")

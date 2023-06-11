@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-exec neosurf-vi
+LD_LIBRARY_PATH="${APPDIR}/usr/lib" exec neosurf-vi

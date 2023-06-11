@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-#TODO this will be integrated into cmake later
 
 # All this does currently is create a basic file structure for AppImages
 
@@ -14,3 +13,5 @@ cp -v AppRun-vi "$TMPDIR_VI/AppRun"
 
 cp -v neosurf.xpm "$TMPDIR_GTK"
 cp -v neosurf.xpm "$TMPDIR_VI"
+
+#TODO bundle libpsl, openssl

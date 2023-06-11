@@ -6,11 +6,15 @@ include_directories(
 	"${CMAKE_BINARY_DIR}"
 )
 
-pkg_check_modules(LIBJPEG REQUIRED libjpeg)
-include_directories(${LIBJPEG_INCLUDE_DIRS})
+if(NEOSURF_USE_JPEG)
+	pkg_check_modules(LIBJPEG REQUIRED libjpeg)
+	include_directories(${LIBJPEG_INCLUDE_DIRS})
+endif()
 
-pkg_check_modules(LIBPNG REQUIRED libpng)
-include_directories(${LIBPNG_INCLUDE_DIRS})
+if(NEOSURF_USE_PNG)
+	pkg_check_modules(LIBPNG REQUIRED libpng)
+	include_directories(${LIBPNG_INCLUDE_DIRS})
+endif()
 
 pkg_check_modules(LIBCURL REQUIRED libcurl)
 include_directories(${LIBCURL_INCLUDE_DIRS})
@@ -21,8 +25,10 @@ include_directories(${LIBCRYPTO_INCLUDE_DIRS})
 pkg_check_modules(LIBPSL REQUIRED libpsl)
 include_directories(${LIBPSL_INCLUDE_DIRS})
 
-pkg_check_modules(LIBWEBP REQUIRED libwebp)
-include_directories(${LIBWEBP_INCLUDE_DIRS})
+if(NEOSURF_USE_WEBP)
+	pkg_check_modules(LIBWEBP REQUIRED libwebp)
+	include_directories(${LIBWEBP_INCLUDE_DIRS})
+endif()
 
 pkg_check_modules(ZLIB REQUIRED zlib)
 include_directories(${ZLIB_INCLUDE_DIRS})
@@ -105,11 +111,11 @@ add_library(neosurf SHARED
 	content/handlers/image/bmp.c
 	content/handlers/image/gif.c
 	content/handlers/image/ico.c
-	content/handlers/image/jpeg.c
-	content/handlers/image/png.c
+	${JPEG_SRC}
+	${PNG_SRC}
 	content/handlers/image/svg.c
-	#content/handlers/image/video.c # requires gstreamer
-	content/handlers/image/webp.c # requires libwebp
+	#content/handlers/image/video.c # requires gstreamer TODO: replace with ffmpeg/libmpv
+	${WEBP_SRC}
 	content/handlers/javascript/fetcher.c
 	content/handlers/javascript/content.c
 	content/handlers/javascript/duktape/dukky.c
@@ -182,9 +188,6 @@ if(NEOSURF_BUILD_XXD)
 	)
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -DNDEBUG -Dvi -Dnsvi -DVISURF_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk\\\" -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DWITH_PNG -DWITH_WEBP -DWITH_NS_SVG -Dgtk -Dnsgtk -DGTK_RESPATH=\\\"${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk\\\" -DNEOSURF_HOMEPAGE=\\\"about:welcome\\\" -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE")
-
-# Note: libpsl used for detecting supercookies
 set(NEOSURF_COMMON_LIBS css dom nsutils parserutils nsgif nsbmp svgtiny ${LIBCRYPTO_LIBRARIES} ${LIBPNG_LIBRARIES} ${LIBCURL_LIBRARIES} ${LIBJPEG_LIBRARIES} ${LIBWEBP_LIBRARIES} ${LIBPSL_LIBRARIES} ${ZLIB_LIBRARIES} ${LIBSSL_LIBRARIES})
 target_link_libraries(neosurf ${NEOSURF_COMMON_LIBS})
 
