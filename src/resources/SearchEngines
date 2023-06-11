@@ -1,4 +1,5 @@
 DuckDuckGo|www.duckduckgo.com|http://www.duckduckgo.com/html/?q=%s|http://www.duckduckgo.com/favicon.ico|fixme:Their ico upsets the current implementation
+wiby|wiby.me|https://wiby.me/?q=%s|https://wiby.me/favicon.ico|
 Dictionary.com|dictionary.reference.com|http://dictionary.reference.com/browse/%s?jss=0|http://dictionary.reference.com/favicon.ico|
 Wikipedia|en.wikipedia.org|http://en.wikipedia.org/w/index.php?title=Special%%3ASearch&search=%s|http://en.wikipedia.org/favicon.ico|
 SearX|searx.neocities.org|https://searx.neocities.org/#q=%s&general_category=on|https://searx.neocities.org/favicon.ico|
