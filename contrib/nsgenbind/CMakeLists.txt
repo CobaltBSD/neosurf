@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 project(nsgenbind)
 
+add_definitions(-D_POSIX_C_SOURCE=200809L)
+add_compile_options(-std=c99 -Wno-void-pointer-to-int-cast -Wno-int-conversion)
+
 execute_process(COMMAND flex -P=nsgenbind_ --outfile=${CMAKE_BINARY_DIR}/nsgenbind-lexer.c --header-file=${CMAKE_BINARY_DIR}/nsgenbind-lexer.h ${CMAKE_SOURCE_DIR}/src/nsgenbind-lexer.l)
 if(${YACC} STREQUAL bison)
 	execute_process(COMMAND bison --output=${CMAKE_BINARY_DIR}/nsgenbind-parser.c --header=${CMAKE_BINARY_DIR}/nsgenbind-parser.h ${CMAKE_SOURCE_DIR}/src/nsgenbind-parser.y -p nsgenbind_)
@@ -34,8 +37,6 @@ add_executable(nsgenbind
 	${CMAKE_BINARY_DIR}/webidl-parser.c
 	${CMAKE_BINARY_DIR}/webidl-lexer.c
 )
-
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -Wno-void-pointer-to-int-cast -Wno-int-conversion -D_POSIX_C_SOURCE=200809L")
 
 include_directories(
 	${CMAKE_SOURCE_DIR}/contrib/nsgenbind/include
