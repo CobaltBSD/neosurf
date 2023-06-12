@@ -11,7 +11,7 @@ cp -v neosurf-vi.desktop "$TMPDIR_VI"
 cp -v AppRun-gtk "$TMPDIR_GTK/AppRun"
 cp -v AppRun-vi "$TMPDIR_VI/AppRun"
 
-cp -v neosurf.xpm "$TMPDIR_GTK"
-cp -v neosurf.xpm "$TMPDIR_VI"
+cp -v neosurf.png "$TMPDIR_GTK"
+cp -v neosurf.png "$TMPDIR_VI"
 
 #TODO bundle libpsl, openssl

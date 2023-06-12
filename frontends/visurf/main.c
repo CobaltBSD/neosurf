@@ -1268,7 +1268,7 @@ main(int argc, char *argv[]) {
 		fatal("NeoSurf operation table failed registration");
 	}
 
-	respaths = nsvi_init_resource("${HOME}/.neosurf/:${NEOSURFRES}:"VISURF_RESPATH":./frontends/visurf/res");
+	respaths = nsvi_init_resource("${HOME}/.neosurf/:${NEOSURFRES}:"VISURF_RESPATH);
 	nslog_init(nslog_stream_configure, &argc, argv);
 	ret = nsoption_init(set_defaults, &nsoptions, &nsoptions_default);
 	if (ret != NSERROR_OK) {

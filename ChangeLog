@@ -1,11 +1,10 @@
-0.14.1 - Jun 11 2023
-- Build fix
-
-0.14 - Jun 11 2023
+14 - Jun 11 2023
 - Added Wiby search engine
 - Fixed AppImages not loading certain libraries
 - libpng, libjpeg-turbo and libwebp are now optional
-- Build system improvements and fixes
+- Critical build system improvements and fixes
+- Versioning scheme change
+- Added versions to SONAME
 
 0.13 - Jun 10 2023
 - CMake prevents building on OpenSSL 1.x.x

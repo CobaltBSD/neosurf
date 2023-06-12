@@ -16,7 +16,7 @@
 
 #include <dom/dom.h>
 
-#include "parser.h"
+#include <dom/bindings/hubbub/parser.h>
 #include "utils.h"
 
 #include "core/document.h"

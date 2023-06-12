@@ -26,18 +26,8 @@
 #define _NETSURF_DESKTOP_VERSION_H_
 
 /**
- * User friendly version string.
+ * NeoSurf browser version number.
  */
-extern const char * const neosurf_version;
-
-/**
- * NetSuf browser major version number.
- */
-extern const int neosurf_version_major;
-
-/**
- * NetSuf browser minor version number.
- */
-extern const int neosurf_version_minor;
+extern const int neosurf_version;
 
 #endif

@@ -181,6 +181,7 @@ add_library(neosurf SHARED
 	utils/nsurl/parse.c
 	${DSRC}
 )
+set_target_properties(neosurf PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 if(NEOSURF_BUILD_XXD)
 	add_executable(xxd

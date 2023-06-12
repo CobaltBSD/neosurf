@@ -266,7 +266,7 @@ nserror nslog_init(nslog_ensure_t *ensure, int *pargc, char **argv)
 
 	/* sucessfull logging initialisation so log system info */
 	if (ret == NSERROR_OK) {
-		NSLOG(neosurf, INFO, "NeoSurf version '%s'", neosurf_version);
+		NSLOG(neosurf, INFO, "NeoSurf version '%d'", neosurf_version);
 		if (uname(&utsname) < 0) {
 			NSLOG(neosurf, INFO,
 			      "Failed to extract machine information");

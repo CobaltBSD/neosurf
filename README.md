@@ -53,20 +53,24 @@ $ make
 $ sudo make install
 ```
 
-At build-time, NeoSurf requires Python3, CMake, GNU make (or another CMake-compatible build utility), and a POSIX-compliant shell.
-
-At runtime and build-time, the following libraries and their development headers are required:
-* libjpeg-turbo (or mozjpeg)
-* libpng
-* libcurl
-* OpenSSL or LibreSSL (libcrypto, libssl)
-* libwebp
-* libpsl
+At build-time, NeoSurf requires the following programs:
+* python3
+* cmake
+* any CMake-compatible build utility (typically GNU make)
+* a POSIX-compliant shell
 * gperf
-* libxml2
 * flex
 * bison or byacc
 * pkg-config or pkgconf
+
+At runtime and build-time, the following libraries and their development headers are required:
+* libcurl
+* OpenSSL or LibreSSL (libcrypto, libssl)
+* libpsl
+* libxml2
+* libjpeg, libjpeg-turbo or mozjpeg (optional)
+* libpng (optional)
+* libwebp (optional)
 * cairo (Visurf and Gtk only)
 * pango (Visurf and Gtk only)
 * wayland (Visurf only)

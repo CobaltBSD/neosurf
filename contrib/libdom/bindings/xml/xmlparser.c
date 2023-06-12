@@ -17,8 +17,8 @@
 
 #include <libwapcaplet/libwapcaplet.h>
 
-#include "xmlerror.h"
-#include "xmlparser.h"
+#include <dom/bindings/xml/xmlerror.h>
+#include <dom/bindings/xml/xmlparser.h>
 #include "utils.h"
 
 #include "core/document.h"

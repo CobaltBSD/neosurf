@@ -18,6 +18,4 @@
 
 #include <neosurf/desktop/version.h>
 
-const char * const neosurf_version = "0.13 (Dev)";
-const int neosurf_version_major = 0;
-const int neosurf_version_minor = 13;
+const int neosurf_version = NEOSURF_VERSION;

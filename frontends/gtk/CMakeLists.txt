@@ -1,6 +1,7 @@
 find_package(PkgConfig)
 
-add_definitions(-DGTK_RESPATH="${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk" -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -DNEOSURF_HOMEPAGE="about:welcome")
+# Second GTK_RESPATH entry is for AppImages
+add_definitions(-DGTK_RESPATH="${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk:./${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk" -DWITH_GRESOURCE -DWITH_BUILTIN_PIXBUF -DNEOSURF_HOMEPAGE="about:welcome")
 
 pkg_check_modules(GTK REQUIRED gtk+-3.0)
 include_directories(${GTK_INCLUDE_DIRS})

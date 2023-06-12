@@ -192,6 +192,7 @@ add_library(css SHARED
 	src/select/unit.c
 	src/utils/utils.c
 )
+set_target_properties(css PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 target_link_libraries(css nsutils parserutils)
 

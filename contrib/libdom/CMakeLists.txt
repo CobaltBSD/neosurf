@@ -98,6 +98,7 @@ add_library(dom SHARED
 	bindings/xml/xmlparser.c
 	bindings/hubbub/parser.c
 )
+set_target_properties(dom PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 target_link_libraries(dom nsutils parserutils hubbub ${LIBXML2_LIBRARIES})
 

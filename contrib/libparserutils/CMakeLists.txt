@@ -7,6 +7,7 @@ add_library(parserutils SHARED
 	src/utils/stack.c
 	src/utils/vector.c
 )
+set_target_properties(parserutils PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 install(TARGETS parserutils DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 
