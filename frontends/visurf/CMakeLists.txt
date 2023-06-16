@@ -41,5 +41,5 @@ add_executable(neosurf-vi
 
 target_link_libraries(neosurf-vi neosurf ${NEOSURF_COMMON_LIBS} ${XKBCOMMON_LIBRARIES} ${CAIRO_LIBRARIES} ${WAYLAND_CURSOR_LIBRARIES} ${WAYLAND_CLIENT_LIBRARIES} ${PANGO_LIBRARIES} ${PANGOCAIRO_LIBRARIES})
 
-install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(DIRECTORY ../gtk/res/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk) # Visurf uses the same resources as the Gtk frontend
+install(TARGETS neosurf-vi DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY ../gtk/res/ DESTINATION ${CMAKE_INSTALL_DATADIR}/neosurf-gtk) # Visurf uses the same resources as the Gtk frontend

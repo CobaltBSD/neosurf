@@ -102,11 +102,11 @@ set_target_properties(dom PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 target_link_libraries(dom nsutils parserutils hubbub ${LIBXML2_LIBRARIES})
 
-install(TARGETS dom DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+install(TARGETS dom DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 include_directories(
 	${CMAKE_SOURCE_DIR}/contrib/libdom/src
 	${LIBXML2_INCLUDE_DIRS}
 )
 
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(DIRECTORY include/dom DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

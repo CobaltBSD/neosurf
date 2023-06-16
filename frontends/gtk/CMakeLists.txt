@@ -45,5 +45,5 @@ add_executable(neosurf-gtk
 
 target_link_libraries(neosurf-gtk neosurf m ${NEOSURF_COMMON_LIBS} ${GTK_LIBRARIES})
 
-install(TARGETS neosurf-gtk DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(DIRECTORY res/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/neosurf-gtk)
+install(TARGETS neosurf-gtk DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY res/ DESTINATION ${CMAKE_INSTALL_DATADIR}/neosurf-gtk)
