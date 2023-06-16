@@ -40,5 +40,5 @@ target_link_libraries(hubbub parserutils)
 
 include_directories(${CMAKE_SOURCE_DIR}/contrib/libhubbub/src)
 
-install(TARGETS hubbub DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(TARGETS hubbub DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY include/hubbub DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

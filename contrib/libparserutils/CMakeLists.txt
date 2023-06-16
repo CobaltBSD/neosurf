@@ -9,8 +9,8 @@ add_library(parserutils SHARED
 )
 set_target_properties(parserutils PROPERTIES SOVERSION ${NEOSURF_ABI})
 
-install(TARGETS parserutils DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+install(TARGETS parserutils DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 include_directories(${CMAKE_SOURCE_DIR}/contrib/libparserutils/src)
 
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(DIRECTORY include/parserutils DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

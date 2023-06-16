@@ -7,7 +7,7 @@ set(NEOSURF_VERSION 14)
 add_definitions(-DNDEBUG -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_NS_SVG -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE -DNEOSURF_VERSION=${NEOSURF_VERSION})
 add_compile_options(-std=c99 -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion)
 
-set(CMAKE_INSTALL_LIBDIR lib CACHE STRING "Directory to install to inside of CMAKE_INSTALL_PREFIX")
+include(GNUInstallDirs)
 
 # Abort if source or build directory has white space
 if(${CMAKE_SOURCE_DIR} MATCHES "^(.* +.*)+$")
@@ -101,4 +101,4 @@ add_subdirectory(frontends)
 
 #TODO: quickjs/wasm3
 
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(DIRECTORY include/neosurf DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

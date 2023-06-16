@@ -12,6 +12,6 @@ set_target_properties(svgtiny PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 target_link_libraries(svgtiny nsutils dom m)
 
-install(TARGETS svgtiny DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+install(TARGETS svgtiny DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(FILES include/svgtiny.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

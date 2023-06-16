@@ -196,5 +196,5 @@ set_target_properties(css PROPERTIES SOVERSION ${NEOSURF_ABI})
 
 target_link_libraries(css nsutils parserutils)
 
-install(TARGETS css DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(TARGETS css DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY include/libcss DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
