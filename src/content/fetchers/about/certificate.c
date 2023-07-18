@@ -139,12 +139,144 @@ static nserror free_ns_cert_info(struct ns_cert_info *cinfo)
 #define ns_ASN1_STRING_get0_data ASN1_STRING_get0_data
 #define ns_RSA_get0_n RSA_get0_n
 #define ns_RSA_get0_e RSA_get0_e
-#define ns_EVP_PKEY_get_bn_param EVP_PKEY_get_bn_param
-#define ns_EVP_PKEY_get_octet_string_param EVP_PKEY_get_octet_string_param
-#define ns_EVP_PKEY_get_utf8_string_param EVP_PKEY_get_utf8_string_param
+//#define ns_EVP_PKEY_get_bn_param EVP_PKEY_get_bn_param
+//#define ns_EVP_PKEY_get_octet_string_param EVP_PKEY_get_octet_string_param
+//#define ns_EVP_PKEY_get_utf8_string_param EVP_PKEY_get_utf8_string_param
 #define ns_RSA_bits RSA_bits
 #define ns_DSA_bits DSA_bits
 #define ns_DH_bits DH_bits
+
+static int ns_EVP_PKEY_get_bn_param(const EVP_PKEY *pkey,
+		const char *key_name, BIGNUM **bn) {
+	RSA *rsa;
+	BIGNUM *result = NULL;
+
+	/* Check parameters: only support allocation-form *bn */
+	if (pkey == NULL || key_name == NULL || bn == NULL || *bn != NULL)
+		return 0;
+
+	/* Only support RSA keys */
+	if (EVP_PKEY_base_id(pkey) != EVP_PKEY_RSA)
+		return 0;
+
+	rsa = EVP_PKEY_get1_RSA((EVP_PKEY *) pkey);
+	if (rsa == NULL)
+		return 0;
+
+	if (strcmp(key_name, "n") == 0) {
+		const BIGNUM *n = ns_RSA_get0_n(rsa);
+		if (n != NULL)
+			result = BN_dup(n);
+	} else if (strcmp(key_name, "e") == 0) {
+		const BIGNUM *e = ns_RSA_get0_e(rsa);
+		if (e != NULL)
+			result = BN_dup(e);
+	}
+
+	RSA_free(rsa);
+
+	*bn = result;
+
+	return (result != NULL) ? 1 : 0;
+}
+
+static int ns_EVP_PKEY_get_utf8_string_param(const EVP_PKEY *pkey,
+		const char *key_name, char *str, size_t max_len,
+		size_t *out_len)
+{
+	const EC_GROUP *ecgroup;
+	const char *group;
+	EC_KEY *ec;
+	int ret = 0;
+
+	if (pkey == NULL || key_name == NULL)
+		return 0;
+
+	/* Only support EC keys */
+	if (EVP_PKEY_base_id(pkey) != EVP_PKEY_EC)
+		return 0;
+
+	/* Only support fetching the group */
+	if (strcmp(key_name, "group") != 0)
+		return 0;
+
+	ec = EVP_PKEY_get1_EC_KEY((EVP_PKEY *) pkey);
+
+	ecgroup = EC_KEY_get0_group(ec);
+	if (ecgroup == NULL) {
+		group = "";
+	} else {
+		group = OBJ_nid2ln(EC_GROUP_get_curve_name(ecgroup));
+	}
+
+	if (str != NULL && max_len > strlen(group)) {
+		strcpy(str, group);
+		str[strlen(group)] = '\0';
+		ret = 1;
+	}
+	if (out_len != NULL)
+		*out_len = strlen(group);
+
+	EC_KEY_free(ec);
+
+	return ret;
+}
+
+static int ns_EVP_PKEY_get_octet_string_param(const EVP_PKEY *pkey,
+		const char *key_name, unsigned char *buf, size_t max_len,
+		size_t *out_len)
+{
+	const EC_GROUP *ecgroup;
+	const EC_POINT *ecpoint;
+	size_t len;
+	BN_CTX *bnctx;
+	EC_KEY *ec;
+	int ret = 0;
+
+	if (pkey == NULL || key_name == NULL)
+		return 0;
+
+	/* Only support EC keys */
+	if (EVP_PKEY_base_id(pkey) != EVP_PKEY_EC)
+		return 0;
+
+	if (strcmp(key_name, "encoded-pub-key") != 0)
+		return 0;
+
+	ec = EVP_PKEY_get1_EC_KEY((EVP_PKEY *) pkey);
+	if (ec == NULL)
+		return 0;
+
+	ecgroup = EC_KEY_get0_group(ec);
+	if (ecgroup != NULL) {
+		ecpoint = EC_KEY_get0_public_key(ec);
+		if (ecpoint != NULL) {
+			bnctx = BN_CTX_new();
+			len = EC_POINT_point2oct(ecgroup,
+						 ecpoint,
+						 POINT_CONVERSION_UNCOMPRESSED,
+						 NULL,
+						 0,
+						 bnctx);
+			if (len != 0 && len <= max_len) {
+				if (EC_POINT_point2oct(ecgroup,
+						       ecpoint,
+						       POINT_CONVERSION_UNCOMPRESSED,
+						       buf,
+						       len,
+						       bnctx) == len)
+					ret = 1;
+			}
+			if (out_len != NULL)
+				*out_len = len;
+			BN_CTX_free(bnctx);
+		}
+	}
+
+	EC_KEY_free(ec);
+
+	return ret;
+}
 #endif
 
 /**
