@@ -102,3 +102,6 @@ add_subdirectory(frontends)
 #TODO: quickjs/wasm3
 
 install(DIRECTORY include/neosurf DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+#FIXME: gtk frontend seems to segfault if no proper cursor theme is installed
+#FIXME: will fail in mysterious ways if user does not have write access to their ~/.config/
