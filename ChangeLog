@@ -1,3 +1,7 @@
+15 - ...
+- Build and runtime fixes for byacc and libressl
+- Other build system improvements
+
 14 - Jun 11 2023
 - Added Wiby search engine
 - Fixed AppImages not loading certain libraries
