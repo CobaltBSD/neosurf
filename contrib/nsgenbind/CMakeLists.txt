@@ -8,14 +8,14 @@ execute_process(COMMAND flex -P=nsgenbind_ --outfile=${CMAKE_BINARY_DIR}/nsgenbi
 if(${YACC} STREQUAL bison)
 	execute_process(COMMAND bison --output=${CMAKE_BINARY_DIR}/nsgenbind-parser.c --header=${CMAKE_BINARY_DIR}/nsgenbind-parser.h ${CMAKE_SOURCE_DIR}/src/nsgenbind-parser.y -p nsgenbind_)
 else()
-	execute_process(COMMAND byacc --output=${CMAKE_BINARY_DIR}/nsgenbind-parser.c -d ${CMAKE_SOURCE_DIR}/src/nsgenbind-parser.y -p nsgenbind_)
+	execute_process(COMMAND byacc --output=${CMAKE_BINARY_DIR}/nsgenbind-parser.c -d -p nsgenbind_ ${CMAKE_SOURCE_DIR}/src/nsgenbind-parser.y)
 endif()
 
 execute_process(COMMAND flex -P=webidl_ --outfile=${CMAKE_BINARY_DIR}/webidl-lexer.c --header-file=${CMAKE_BINARY_DIR}/webidl-lexer.h ${CMAKE_SOURCE_DIR}/src/webidl-lexer.l)
 if(${YACC} STREQUAL bison)
 	execute_process(COMMAND bison --output=${CMAKE_BINARY_DIR}/webidl-parser.c --header=${CMAKE_BINARY_DIR}/webidl-parser.h ${CMAKE_SOURCE_DIR}/src/webidl-parser.y -p webidl_)
 else()
-	execute_process(COMMAND byacc --output=${CMAKE_BINARY_DIR}/webidl-parser.c -d ${CMAKE_SOURCE_DIR}/src/webidl-parser.y -p webidl_)
+	execute_process(COMMAND byacc --output=${CMAKE_BINARY_DIR}/webidl-parser.c -d -p webidl_ ${CMAKE_SOURCE_DIR}/src/webidl-parser.y)
 endif()
 
 add_executable(nsgenbind
