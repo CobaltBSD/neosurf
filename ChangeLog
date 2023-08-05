@@ -1,6 +1,7 @@
 15 - ...
 - Build and runtime fixes for byacc and libressl
 - Other build system improvements
+- Superior CMake error handling
 
 14 - Jun 11 2023
 - Added Wiby search engine

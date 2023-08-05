@@ -1,11 +1,26 @@
 # Build gen_parser at configure time
-execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/gen_parser -G ${CMAKE_GENERATOR})
-execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser)
+execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/gen_parser -G ${CMAKE_GENERATOR} RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "libcss gen_parser configure failed (error ${RET})")
+endif()
+execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "libcss gen_parser build failed (error ${RET})")
+endif()
 
-execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/contrib/libcss/properties)
-execute_process(COMMAND ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/parser_wrapper.sh ${CMAKE_BINARY_DIR}/contrib/libcss/properties ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser/gen_parser ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/properties.gen)
+execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/contrib/libcss/properties RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "Unable to create directory: ${CMAKE_BINARY_DIR}/contrib/libcss/properties (error ${RET})")
+endif()
+execute_process(COMMAND ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/parser_wrapper.sh ${CMAKE_BINARY_DIR}/contrib/libcss/properties ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser/gen_parser ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/properties.gen RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "libcss parser_wrapper.sh failed (error ${RET})")
+endif()
 
-execute_process(COMMAND python3 ${CMAKE_SOURCE_DIR}/contrib/libcss/src/select/select_generator.py)
+execute_process(COMMAND python3 ${CMAKE_SOURCE_DIR}/contrib/libcss/src/select/select_generator.py RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "libcss select_generator.py failed (error ${RET})")
+endif()
 
 aux_source_directory(${CMAKE_BINARY_DIR}/contrib/libcss/properties PROPSRC)
 

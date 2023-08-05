@@ -42,11 +42,23 @@ if(LIBSSL_VERSION_MAJOR EQUAL 1)
 endif()
 
 # Build nsgenbind at configure time
-execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ../contrib/nsgenbind -G ${CMAKE_GENERATOR} -DYACC=${YACC})
-execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/nsgenbind)
+execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ../contrib/nsgenbind -G ${CMAKE_GENERATOR} -DYACC=${YACC} RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "nsgenbind configure failed (error ${RET})")
+endif()
+execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/contrib/nsgenbind RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "nsgenbind build failed (error ${RET})")
+endif()
 
-execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/duktape)
-execute_process(COMMAND ${CMAKE_BINARY_DIR}/contrib/nsgenbind/nsgenbind -I ${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/WebIDL ${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape/neosurf.bnd ${CMAKE_BINARY_DIR}/duktape)
+execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/duktape RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "Unable to create directory: ${CMAKE_BINARY_DIR}/duktape (error ${RET})")
+endif()
+execute_process(COMMAND ${CMAKE_BINARY_DIR}/contrib/nsgenbind/nsgenbind -I ${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/WebIDL ${CMAKE_SOURCE_DIR}/src/content/handlers/javascript/duktape/neosurf.bnd ${CMAKE_BINARY_DIR}/duktape RESULT_VARIABLE RET)
+if(NOT RET EQUAL 0)
+	message(FATAL_ERROR "Unable to generate bindings (error ${RET})")
+endif()
 
 aux_source_directory(${CMAKE_BINARY_DIR}/duktape DSRC)
 

@@ -41,6 +41,8 @@ else()
 		set(YACC bison)
 	endif()
 endif()
+message("yacc program found: ${YACC}")
+
 find_program(PKGCONFIG pkg-config)
 find_program(PKGCONF pkgconf)
 if(${PKGCONFIG} STREQUAL PKGCONFIG-NOTFOUND AND ${PKGCONF} STREQUAL PKGCONF-NOTFOUND)
