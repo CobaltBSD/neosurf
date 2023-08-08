@@ -137,8 +137,18 @@ static nserror free_ns_cert_info(struct ns_cert_info *cinfo)
 
 #define ns_X509_get_signature_nid X509_get_signature_nid
 #define ns_ASN1_STRING_get0_data ASN1_STRING_get0_data
+#if !defined(LIBRESSL_VERSION_NUMBER) || LIBRESSL_VERSION_NUMBER >= 0x030502000
 #define ns_RSA_get0_n RSA_get0_n
 #define ns_RSA_get0_e RSA_get0_e
+#else
+const BIGNUM *ns_RSA_get0_n(const RSA *d) {
+	return d->n;
+}
+
+const BIGNUM *ns_RSA_get0_e(const RSA *d) {
+	return d->e;
+}
+#endif
 //#define ns_EVP_PKEY_get_bn_param EVP_PKEY_get_bn_param
 //#define ns_EVP_PKEY_get_octet_string_param EVP_PKEY_get_octet_string_param
 //#define ns_EVP_PKEY_get_utf8_string_param EVP_PKEY_get_utf8_string_param
