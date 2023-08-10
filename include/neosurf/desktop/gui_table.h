@@ -52,7 +52,7 @@ struct neosurf_table {
 	 *
 	 * Provides miscellaneous browser functionality.
 	 *
-	 * The table is mandantory and must be provided.
+	 * The table is mandatory and must be provided.
 	 */
 	struct gui_misc_table *misc;
 
@@ -61,7 +61,7 @@ struct neosurf_table {
 	 *
 	 * Provides all operations which affect a frontends display window.
 	 *
-	 * The table is mandantory and must be provided.
+	 * The table is mandatory and must be provided.
 	 */
 	struct gui_window_table *window;
 
@@ -80,7 +80,7 @@ struct neosurf_table {
 	/**
 	 * Fetcher table
 	 *
-	 * The table is mandantory and must be provided.
+	 * The table is mandatory and must be provided.
 	 */
 	struct gui_fetch_table *fetch;
 
@@ -136,10 +136,10 @@ struct neosurf_table {
 	/**
 	 * Bitmap table.
 	 *
-	 * Used by the image convertors as a generic interface to
+	 * Used by the image converters as a generic interface to
 	 * native platform-specific image formats.
 	 *
-	 * The table is mandantory and must be provided.
+	 * The table is mandatory and must be provided.
 	 */
 	struct gui_bitmap_table *bitmap;
 
@@ -149,7 +149,7 @@ struct neosurf_table {
 	 * Used by the layout process to measure glyphs in a frontend
 	 * specific manner.
 	 *
-	 * The table is mandantory and must be provided.
+	 * The table is mandatory and must be provided.
 	 */
 	struct gui_layout_table *layout;
 };

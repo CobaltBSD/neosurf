@@ -170,7 +170,7 @@ bmp_result ico_collection_create(ico_collection *ico,
  * \param bmp the BMP image to analyse.
  * \param size The size of data in cdata.
  * \param data The bitmap source data.
- * \return BMP_OK on success or error code on faliure.
+ * \return BMP_OK on success or error code on failure.
  */
 bmp_result bmp_analyse(bmp_image *bmp, size_t size, uint8_t *data);
 
