@@ -3879,7 +3879,7 @@ bool urldb_set_cookie(const char *header, nsurl *url, nsurl *referer)
 		}
 
 		const psl_ctx_t *psl = psl_builtin();
-		bool is_public_suffix = psl_is_public_suffix(psl, dot);
+		bool is_public_suffix = psl_is_public_suffix2(psl, dot, PSL_TYPE_NO_STAR_RULE);
 		psl_free((psl_ctx_t*) psl);
 		if(is_public_suffix) {
 			NSLOG(neosurf, INFO,

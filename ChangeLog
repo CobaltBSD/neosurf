@@ -3,6 +3,7 @@
 - Other build system improvements
 - Superior CMake error handling
 - Support for older versions of LibreSSL
+- Improved usage of libpsl
 
 14 - Jun 11 2023
 - Added Wiby search engine
