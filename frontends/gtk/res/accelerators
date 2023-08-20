@@ -38,3 +38,5 @@ gtkAddBookMarks:<Control>d
 gtkShowBookMarks:F6
 gtkShowCookies:F9
 gtkOpenLocation:<Control>l
+ScrollPDown:<space>
+ScrollPUp:<shift><space>
