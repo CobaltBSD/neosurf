@@ -1,6 +1,6 @@
 # NeoSurf
 
-This project is a fork of Netsurf with various improvements and additions, and a revamped build system.
+This project is a fork of Netsurf with various privacy-focused improvements and additions, and a revamped build system.
 
 ## Why?
 NeoSurf has a different development vision from NetSurf.
@@ -53,6 +53,8 @@ $ make
 $ sudo make install
 ```
 
+NeoSurf is geared towards the Cobalt operating system, but is intended to remaining portable.
+
 At build-time, NeoSurf requires the following programs:
 * python3
 * cmake
@@ -62,6 +64,7 @@ At build-time, NeoSurf requires the following programs:
 * flex
 * bison or byacc
 * pkg-config or pkgconf
+* Z Shell
 
 At runtime and build-time, the following libraries and their development headers are required:
 * libcurl

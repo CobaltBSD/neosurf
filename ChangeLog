@@ -1,3 +1,7 @@
+16 - Sep 14 2023
+- Build fixes oriented at *BSD
+- Fixed compilation from a different directory
+
 15 - Aug 21 2023
 - Build and runtime fixes for byacc and libressl
 - Other build system improvements

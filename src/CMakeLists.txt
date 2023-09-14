@@ -42,7 +42,7 @@ if(LIBSSL_VERSION_MAJOR EQUAL 1)
 endif()
 
 # Build nsgenbind at configure time
-execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ../contrib/nsgenbind -G ${CMAKE_GENERATOR} -DYACC=${YACC} RESULT_VARIABLE RET)
+execute_process(COMMAND cmake -B ${CMAKE_BINARY_DIR}/contrib/nsgenbind ${CMAKE_SOURCE_DIR}/contrib/nsgenbind -G ${CMAKE_GENERATOR} -DYACC=${YACC} RESULT_VARIABLE RET)
 if(NOT RET EQUAL 0)
 	message(FATAL_ERROR "nsgenbind configure failed (error ${RET})")
 endif()
@@ -51,7 +51,7 @@ if(NOT RET EQUAL 0)
 	message(FATAL_ERROR "nsgenbind build failed (error ${RET})")
 endif()
 
-execute_process(COMMAND mkdir -pv ${CMAKE_BINARY_DIR}/duktape RESULT_VARIABLE RET)
+execute_process(COMMAND mkdir -p ${CMAKE_BINARY_DIR}/duktape RESULT_VARIABLE RET)
 if(NOT RET EQUAL 0)
 	message(FATAL_ERROR "Unable to create directory: ${CMAKE_BINARY_DIR}/duktape (error ${RET})")
 endif()
