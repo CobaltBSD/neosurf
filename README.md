@@ -16,7 +16,7 @@ Current focus is on general improvements to the codebase, as well as fixing a nu
 * Various upstream improvements and UI enhancements to Gtk frontend
 * Removed compatibility for super old and/or obscure libraries/software/operating systems
 * Dedicated LibreSSL support
-* Various privacy improvements
+* Numerous privacy improvements
 * Rewritten build system
 * Simplified frontend development
 
@@ -24,47 +24,44 @@ Current focus is on general improvements to the codebase, as well as fixing a nu
 At the moment preferences on Gtk frontend do not take effect, and as such this menu is currently disabled. This issue is inherited from NetSurf and will be amended soon.
 
 ## Building and installation
-In the root of the source tree:
-```sh
-$ mkdir -v build
-$ cd build
-```
-
 To build with both Visurf and Gtk frontends:
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+$ cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
 ```
 To build with Visurf only:
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK_FRONTEND=OFF
+$ cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK_FRONTEND=OFF
 ```
 To build with Gtk only:
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_VI_FRONTEND=OFF
+$ cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_VI_FRONTEND=OFF
 ```
 To build libneosurf only (no frontend):
 ```sh
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK_FRONTEND=OFF -DNEOSURF_BUILD_VI_FRONTEND=OFF
+$ cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DNEOSURF_BUILD_GTK_FRONTEND=OFF -DNEOSURF_BUILD_VI_FRONTEND=OFF
 ```
 
 Then:
 ```sh
-$ make
-$ sudo make install
+$ make -C build
 ```
 
-NeoSurf is geared towards the Cobalt operating system, but is intended to remaining portable.
+And as root:
+```sh
+# make -C build install
+```
+
+NeoSurf is geared towards the Cobalt operating system, but is intended to remaining portable on any Linux or BSD-based platforms.
 
 At build-time, NeoSurf requires the following programs:
 * python3
 * cmake
 * any CMake-compatible build utility (typically GNU make)
-* a POSIX-compliant shell
+* Z Shell
 * gperf
 * flex
 * bison or byacc
 * pkg-config or pkgconf
-* Z Shell
 
 At runtime and build-time, the following libraries and their development headers are required:
 * libcurl
