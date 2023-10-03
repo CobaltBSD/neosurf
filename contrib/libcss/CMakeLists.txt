@@ -12,7 +12,7 @@ execute_process(COMMAND mkdir -p ${CMAKE_BINARY_DIR}/contrib/libcss/properties R
 if(NOT RET EQUAL 0)
 	message(FATAL_ERROR "Unable to create directory: ${CMAKE_BINARY_DIR}/contrib/libcss/properties (error ${RET})")
 endif()
-execute_process(COMMAND ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/parser_wrapper.sh ${CMAKE_BINARY_DIR}/contrib/libcss/properties ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser/gen_parser ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/properties.gen RESULT_VARIABLE RET)
+execute_process(COMMAND ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/parser_wrapper.py ${CMAKE_BINARY_DIR}/contrib/libcss/properties ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser/gen_parser ${CMAKE_SOURCE_DIR}/contrib/libcss/src/parse/properties/properties.gen RESULT_VARIABLE RET)
 if(NOT RET EQUAL 0)
 	message(FATAL_ERROR "libcss parser_wrapper.sh failed (error ${RET})")
 endif()
