@@ -381,7 +381,12 @@ wl_keyboard_keymap(void *data, struct wl_keyboard *wl_keyboard,
 	struct nsvi_state *state = data;
 	assert(format == WL_KEYBOARD_KEYMAP_FORMAT_XKB_V1);
 
-	char *map_shm = mmap(NULL, size, PROT_READ, MAP_SHARED, fd, 0);
+	char *map_shm = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+        if ((void *) -1 == map_shm) {
+            printf("Could not map memory: %d %s\n", errno,strerror(errno));
+            exit(1);
+        }
+
 	struct xkb_keymap *xkb_keymap = xkb_keymap_new_from_string(
 			state->xkb_context, map_shm,
 			XKB_KEYMAP_FORMAT_TEXT_V1, XKB_KEYMAP_COMPILE_NO_FLAGS);
@@ -704,8 +709,27 @@ static void wl_data_offer_offer(void *data,
 	}
 }
 
+/* Notification of actions available to D&D sources */
+
+static void wl_data_offer_source_actions(void *data,
+                                       struct wl_data_offer *offer, uint32_t source_actions)
+{
+  printf("wl_data_offer # source_actions | offer:%p, source_actions:", offer);
+  printf("\n");
+}
+
+/* Server-selected action will be notified (for drop destination) */
+
+static void wl_data_offer_action(void *data, struct wl_data_offer *offer, uint32_t dnd_action)
+{
+  printf("wl_data_offer # action | offer:%p, dnd_action:", offer);
+  printf("\n");
+}
+
 static const struct wl_data_offer_listener wl_data_offer_listener = {
 	.offer = wl_data_offer_offer,
+  .action = wl_data_offer_action,
+  .source_actions = wl_data_offer_source_actions,
 };
 
 static void
