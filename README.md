@@ -64,7 +64,7 @@ At build-time, NeoSurf requires the following programs:
 
 At runtime and build-time, the following libraries and their development headers are required:
 * libcurl
-* OpenSSL or LibreSSL (libcrypto, libssl)
+* OpenSSL 3.x or LibreSSL (libcrypto, libssl)
 * libpsl
 * libxml2
 * libjpeg, libjpeg-turbo or mozjpeg (optional)
