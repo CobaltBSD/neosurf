@@ -1,5 +1,3 @@
-# This is deprecated in favor of GNU Make
-
 cmake_minimum_required(VERSION 3.20)
 project(neosurf LANGUAGES C)
 
