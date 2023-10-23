@@ -9,7 +9,6 @@ PKG_CONFIG = pkgconf
 M4 = m4
 
 all: libcss
-	@echo TEST $(CFLAGS) ABC
 
 libcss:
 	$(MAKE) -C contrib/libcss
