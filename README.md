@@ -57,7 +57,6 @@ At build-time, NeoSurf requires the following programs:
 * python3
 * cmake
 * any CMake-compatible build utility (typically GNU make)
-* Z Shell
 * gperf
 * flex
 * bison or byacc
