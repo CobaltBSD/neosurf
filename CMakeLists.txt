@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(neosurf LANGUAGES C)
 
+#FIXME: Abort if -ffast-math compile option is used (such as when enabled by -Ofast)
+
 set(NEOSURF_ABI 14)
 set(NEOSURF_VERSION 15)
 
