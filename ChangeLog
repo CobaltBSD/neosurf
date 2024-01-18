@@ -1,6 +1,6 @@
 17 - ...
 - Removed Zsh dependency
-- Deprecated CMake build system in favor of GNU Make
+- Deprecated CMake build system in favor of Meson/Muon
 
 16 - Sep 14 2023
 - Build fixes oriented at *BSD

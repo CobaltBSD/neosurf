@@ -195,12 +195,6 @@ add_library(neosurf SHARED
 )
 set_target_properties(neosurf PROPERTIES SOVERSION ${NEOSURF_ABI})
 
-if(NEOSURF_BUILD_XXD)
-	add_executable(xxd
-		xxd.c
-	)
-endif()
-
 set(NEOSURF_COMMON_LIBS css dom nsutils parserutils nsgif nsbmp svgtiny ${LIBCRYPTO_LIBRARIES} ${LIBPNG_LIBRARIES} ${LIBCURL_LIBRARIES} ${LIBJPEG_LIBRARIES} ${LIBWEBP_LIBRARIES} ${LIBPSL_LIBRARIES} ${ZLIB_LIBRARIES} ${LIBSSL_LIBRARIES})
 target_link_libraries(neosurf ${NEOSURF_COMMON_LIBS})
 
@@ -213,8 +207,4 @@ endif()
 
 if(NEOSURF_INSTALL_GEN_PARSER)
 	install(FILES ${CMAKE_BINARY_DIR}/contrib/libcss/gen_parser/gen_parser DESTINATION ${CMAKE_INSTALL_BINDIR} PERMISSIONS WORLD_EXECUTE)
-endif()
-
-if(NEOSURF_BUILD_XXD)
-	install(TARGETS xxd DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif()

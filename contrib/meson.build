@@ -1,0 +1,8 @@
+#subdir('libcss')
+#subdir('libdom')
+#subdir('libhubbub')
+subdir('libnsbmp')
+subdir('libnsgif')
+subdir('libnsutils')
+subdir('libparserutils')
+#subdir('libsvgtiny')

@@ -4,7 +4,7 @@ project(neosurf LANGUAGES C)
 #FIXME: Abort if -ffast-math compile option is used (such as when enabled by -Ofast)
 
 set(NEOSURF_ABI 14)
-set(NEOSURF_VERSION 15)
+set(NEOSURF_VERSION 17)
 
 add_definitions(-DNDEBUG -DWITH_OPENSSL -DWITH_BMP -DWITH_GIF -DWITH_NS_SVG -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE -DNEOSURF_VERSION=${NEOSURF_VERSION})
 add_compile_options(-std=c99 -Wno-unused-parameter -Wno-deprecated-declarations -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-int-conversion)
@@ -83,7 +83,6 @@ if(NEOSURF_BUILD_VI_FRONTEND)
 endif()
 option(NEOSURF_INSTALL_NSGENBIND "Installs the nsgenbind utility with neosurf" OFF)
 option(NEOSURF_INSTALL_GEN_PARSER "Installs the libcss gen_parser utility with neosurf" OFF)
-option(NEOSURF_BUILD_XXD "Build and install a complimentary xxd implementation" OFF)
 
 include_directories(
 	"${CMAKE_SOURCE_DIR}/contrib/libsvgtiny/include"
