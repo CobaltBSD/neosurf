@@ -52,7 +52,6 @@ And as root:
 NeoSurf is geared towards the Cobalt operating system, but is intended to remaining portable on any Linux or BSD-based platforms.
 
 At build-time, NeoSurf requires the following programs:
-* python3
 * cmake
 * any CMake-compatible build utility (typically GNU make)
 * gperf
