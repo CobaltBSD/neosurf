@@ -1144,6 +1144,7 @@ nsvi_init_bindings(struct nsvi_state *state, struct nsvi_bindings *bindings)
 	nsvi_bindings_new(bindings, "<Home>", "scroll -p 0%");
 	nsvi_bindings_new(bindings, "<End>", "scroll -p 100%");
 	nsvi_bindings_new(bindings, "<space>", "scroll 100%-");
+	nsvi_bindings_new(bindings, "<C-space>", "scroll 100%+");
 	nsvi_bindings_new(bindings, "<plus>", "zoom 10%+");
 	nsvi_bindings_new(bindings, "<minus>", "zoom 10%-");
 	nsvi_bindings_new(bindings, "<equal>", "zoom 1");
