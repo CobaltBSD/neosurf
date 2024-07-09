@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <assert.h>
+#include <stdlib.h>
 
 #include <libxml/parser.h>
 #include <libxml/SAX2.h>
