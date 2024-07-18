@@ -6,8 +6,7 @@
  * Copyright 2012 Vincent Sanders <vince@netsurf-browser.org>
  */
 
-//%define api.pure
-%pure-parser
+%define api.pure
 
 %locations
 

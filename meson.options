@@ -1,0 +1,9 @@
+option('NEOSURF_BUILD_GTK_FRONTEND',
+    type: 'boolean',
+    value: true
+)
+
+option('NEOSURF_BUILD_VI_FRONTEND',
+    type: 'boolean',
+    value: true
+)

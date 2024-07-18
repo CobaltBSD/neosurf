@@ -468,7 +468,6 @@ int main(int argc, char **argv)
 {
 	char *descriptor;
 	char *curpos; /* current position in input string */
-	struct keyval *parser_id; /* the parser we are creating output for */
 	FILE *outputf;
 	struct keyval *rkv; /* current read key:val */
 	struct keyval_list *curlist;

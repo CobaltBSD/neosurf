@@ -110,7 +110,7 @@ typedef enum css_rule_parent_type {
 	CSS_RULE_PARENT_RULE
 } css_rule_parent_type;
 
-static struct css_rule {
+struct css_rule {
 	void *parent;				/**< containing rule or owning
 						 * stylesheet (defined by ptype)
 						 */
@@ -121,7 +121,7 @@ static struct css_rule {
 	uint16_t items; /**< number of items (selectors) in rule */
 	uint8_t type;   /**< css_rule_type */
 	uint8_t ptype;  /**< css_rule_parent_type */
-} _ALIGNED;
+};
 
 typedef struct css_rule_selector {
 	css_rule base;
