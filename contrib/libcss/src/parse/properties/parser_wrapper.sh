@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ ${#} -lt 3 ]]; then
 	echo "Requires at least three arguments (output directory, gen_parser binary location, properties.gen location)"
